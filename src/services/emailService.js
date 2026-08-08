@@ -80,25 +80,25 @@ export function generateNoReplyEmailHtml({
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${title} — Zebrold System</title>
 </head>
-<body style="margin:0; padding:0; background-color:#0c0e0d; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; -webkit-font-smoothing:antialiased; color:#FFFFFF;">
-  <table width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color:#0c0e0d; padding:40px 12px;">
+<body style="margin:0; padding:0; background-color:#F3F4F6; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; -webkit-font-smoothing:antialiased; color:#111827;">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color:#F3F4F6; padding:40px 12px;">
     <tr>
       <td align="center">
         <!-- Container Card -->
-        <table width="100%" border="0" cellspacing="0" cellpadding="0" style="max-width:540px; background-color:#141715; border:1px solid rgba(255,255,255,0.08); border-radius:10px; overflow:hidden; box-shadow:0 20px 40px rgba(0,0,0,0.6);">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" style="max-width:540px; background-color:#FFFFFF; border:1px solid rgba(0,0,0,0.08); border-radius:10px; overflow:hidden; box-shadow:0 20px 40px rgba(0,0,0,0.05);">
           
 
           <!-- Header Logo Bar -->
           <tr>
-            <td style="padding:24px 32px; border-bottom:1px solid rgba(255,255,255,0.08);">
+            <td style="padding:24px 32px; border-bottom:1px solid rgba(0,0,0,0.08);">
               <table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr>
                   <td align="left" valign="middle">
                     <img src="${ZEBROLD_LOGO_URL}" onerror="this.onerror=null;this.src='/favicon.png';" alt="Zebrold" width="56" height="28" style="display:block; height:28px; width:auto; max-width:60px; object-fit:contain; border:0; outline:none; text-decoration:none;" />
                   </td>
                   <td align="right" valign="middle" style="line-height:1.2;">
-                    <div style="font-size:16px; font-weight:700; letter-spacing:-0.4px; color:#FFFFFF;">Zebrold International</div>
-                    <div style="font-size:16px; font-weight:700; letter-spacing:-0.4px; color:#FFFFFF;">Holdings Limited</div>
+                    <div style="font-size:16px; font-weight:700; letter-spacing:-0.4px; color:#111827;">Zebrold International</div>
+                    <div style="font-size:16px; font-weight:700; letter-spacing:-0.4px; color:#111827;">Holdings Limited</div>
                   </td>
                 </tr>
               </table>
@@ -108,27 +108,27 @@ export function generateNoReplyEmailHtml({
           <!-- Body Content -->
           <tr>
             <td style="padding:32px 32px 24px 32px;">
-              <h1 style="font-size:22px; font-weight:700; color:#FFFFFF; margin:0 0 16px 0; letter-spacing:-0.4px;">${title}</h1>
+              <h1 style="font-size:22px; font-weight:700; color:#111827; margin:0 0 16px 0; letter-spacing:-0.4px;">${title}</h1>
               
-              <p style="font-size:14px; line-height:1.6; color:#E0DDD5; margin:0 0 16px 0;">
-                Hello <strong style="color:#FFFFFF;">${recipientName}</strong>,
+              <p style="font-size:14px; line-height:1.6; color:#374151; margin:0 0 16px 0;">
+                Hello <strong style="color:#111827;">${recipientName}</strong>,
               </p>
 
-              <div style="font-size:14px; line-height:1.7; color:#CCCCCC; margin:0 0 24px 0;">
+              <div style="font-size:14px; line-height:1.7; color:#4B5563; margin:0 0 24px 0;">
                 ${formattedMessage}
               </div>
 
               ${otpCode ? `
               <!-- Monospace Code Box -->
-              <div style="background-color:#0d0f0e; border:1px solid #792D32; border-radius:8px; padding:22px 18px; text-align:center; margin:24px 0;">
-                <div style="font-family:monospace; font-size:11px; font-weight:700; letter-spacing:2px; color:#FFFFFF; text-transform:uppercase; margin-bottom:8px;">
+              <div style="background-color:#F3F4F6; border:1px solid #792D32; border-radius:8px; padding:22px 18px; text-align:center; margin:24px 0;">
+                <div style="font-family:monospace; font-size:11px; font-weight:700; letter-spacing:2px; color:#111827; text-transform:uppercase; margin-bottom:8px;">
                   SECURITY VERIFICATION CODE
                 </div>
-                <div style="font-family:'Courier New', Courier, monospace; font-size:36px; font-weight:900; letter-spacing:8px; color:#FFFFFF; padding:4px 0;">
+                <div style="font-family:'Courier New', Courier, monospace; font-size:36px; font-weight:900; letter-spacing:8px; color:#111827; padding:4px 0;">
                   ${otpCode}
                 </div>
-                <div style="font-size:11.5px; color:#888888; margin-top:8px;">
-                  Expires in <strong style="color:#FFFFFF;">${expiresIn}</strong>. Do not share this code with anyone.
+                <div style="font-size:11.5px; color:#6B7280; margin-top:8px;">
+                  Expires in <strong style="color:#111827;">${expiresIn}</strong>. Do not share this code with anyone.
                 </div>
               </div>
               ` : ''}
@@ -136,30 +136,30 @@ export function generateNoReplyEmailHtml({
               ${actionUrl ? `
               <!-- CTA Button -->
               <div style="text-align:center; margin:28px 0 20px 0;">
-                <a href="${actionUrl}" style="display:inline-block; background-color:#792D32; color:#FFFFFF; font-size:13.5px; font-weight:700; text-decoration:none; padding:12px 26px; border-radius:6px; letter-spacing:0.5px;">
+                <a href="${actionUrl}" style="display:inline-block; background-color:#792D32; color:#111827; font-size:13.5px; font-weight:700; text-decoration:none; padding:12px 26px; border-radius:6px; letter-spacing:0.5px;">
                   ${actionText} &rarr;
                 </a>
               </div>
               ` : ''}
 
               <!-- Security Metadata Table -->
-              <table width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color:#0f1110; border:1px solid rgba(255,255,255,0.06); border-radius:6px; margin-top:24px; padding:12px 16px;">
+              <table width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color:#F9FAFB; border:1px solid rgba(0,0,0,0.06); border-radius:6px; margin-top:24px; padding:12px 16px;">
                 <tr>
-                  <td style="font-family:monospace; font-size:10.5px; color:#777777; padding:4px 0;">Reference ID:</td>
-                  <td align="right" style="font-family:monospace; font-size:10.5px; color:#FFFFFF; font-weight:700; padding:4px 0;">${refCode}</td>
+                  <td style="font-family:monospace; font-size:10.5px; color:#9CA3AF; padding:4px 0;">Reference ID:</td>
+                  <td align="right" style="font-family:monospace; font-size:10.5px; color:#111827; font-weight:700; padding:4px 0;">${refCode}</td>
                 </tr>
                 <tr>
-                  <td style="font-family:monospace; font-size:10.5px; color:#777777; padding:4px 0;">Dispatched At:</td>
-                  <td align="right" style="font-family:monospace; font-size:10.5px; color:#AAAAAA; padding:4px 0;">${timestamp}</td>
+                  <td style="font-family:monospace; font-size:10.5px; color:#9CA3AF; padding:4px 0;">Dispatched At:</td>
+                  <td align="right" style="font-family:monospace; font-size:10.5px; color:#6B7280; padding:4px 0;">${timestamp}</td>
                 </tr>
                 <tr>
-                  <td style="font-family:monospace; font-size:10.5px; color:#777777; padding:4px 0;">Security Gateway:</td>
-                  <td align="right" style="font-family:monospace; font-size:10.5px; color:#AAAAAA; padding:4px 0;">FRA-GW01 (Frankfurt, DE)</td>
+                  <td style="font-family:monospace; font-size:10.5px; color:#9CA3AF; padding:4px 0;">Security Gateway:</td>
+                  <td align="right" style="font-family:monospace; font-size:10.5px; color:#6B7280; padding:4px 0;">FRA-GW01 (Frankfurt, DE)</td>
                 </tr>
                 ${metadata ? Object.entries(metadata).map(([k, v]) => `
                 <tr>
-                  <td style="font-family:monospace; font-size:10.5px; color:#777777; padding:4px 0;">${k}:</td>
-                  <td align="right" style="font-family:monospace; font-size:10.5px; color:#AAAAAA; padding:4px 0;">${v}</td>
+                  <td style="font-family:monospace; font-size:10.5px; color:#9CA3AF; padding:4px 0;">${k}:</td>
+                  <td align="right" style="font-family:monospace; font-size:10.5px; color:#6B7280; padding:4px 0;">${v}</td>
                 </tr>
                 `).join('') : ''}
               </table>
@@ -169,12 +169,12 @@ export function generateNoReplyEmailHtml({
 
           <!-- System Disclaimer Footer -->
           <tr>
-            <td style="background-color:#0e100f; padding:20px 32px; border-top:1px solid rgba(255,255,255,0.05); text-align:center;">
-              <p style="font-size:11px; line-height:1.6; color:#666666; margin:0 0 8px 0;">
+            <td style="background-color:#F9FAFB; padding:20px 32px; border-top:1px solid rgba(0,0,0,0.05); text-align:center;">
+              <p style="font-size:11px; line-height:1.6; color:#9CA3AF; margin:0 0 8px 0;">
                 <strong>Please do not reply to this email</strong> as this inbox is automatically managed and unattended.
               </p>
-              <p style="font-size:10.5px; color:#555555; margin:0;">
-                &copy; 2026 Zebrold International Holdings Limited &bull; Frankfurt am Main, Germany &bull; <a href="https://www.zebrold.de" style="color:#777777; text-decoration:underline;">zebrold.de</a>
+              <p style="font-size:10.5px; color:#9CA3AF; margin:0;">
+                &copy; 2026 Zebrold International Holdings Limited &bull; Frankfurt am Main, Germany &bull; <a href="https://www.zebrold.de" style="color:#9CA3AF; text-decoration:underline;">zebrold.de</a>
               </p>
             </td>
           </tr>
@@ -250,24 +250,24 @@ export function generateTalentEmailHtml({
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Application Update: ${jobTitle} — Zebrold Talent Acquisition</title>
 </head>
-<body style="margin:0; padding:0; background-color:#111312; font-family:'Helvetica Neue', Arial, sans-serif; -webkit-font-smoothing:antialiased; color:#FFFFFF;">
-  <table width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color:#111312; padding:40px 12px;">
+<body style="margin:0; padding:0; background-color:#F3F4F6; font-family:'Helvetica Neue', Arial, sans-serif; -webkit-font-smoothing:antialiased; color:#111827;">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color:#F3F4F6; padding:40px 12px;">
     <tr>
       <td align="center">
         <!-- Main Card -->
-        <table width="100%" border="0" cellspacing="0" cellpadding="0" style="max-width:580px; background-color:#191C1B; border:1px solid rgba(255,255,255,0.12); border-radius:12px; overflow:hidden; box-shadow:0 24px 48px rgba(0,0,0,0.5);">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" style="max-width:580px; background-color:#FFFFFF; border:1px solid rgba(0,0,0,0.12); border-radius:12px; overflow:hidden; box-shadow:0 24px 48px rgba(0,0,0,0.05);">
           
           <!-- Editorial Top Banner -->
           <tr>
-            <td style="background-color:#222624; padding:24px 36px; border-bottom:3px solid #792D32;">
+            <td style="background-color:#F9FAFB; padding:24px 36px; border-bottom:3px solid #792D32;">
               <table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr>
                   <td align="left" valign="middle">
                     <img src="${ZEBROLD_LOGO_URL}" onerror="this.onerror=null;this.src='/favicon.png';" alt="Zebrold" width="56" height="28" style="display:block; height:28px; width:auto; max-width:60px; object-fit:contain; border:0; outline:none; text-decoration:none;" />
                   </td>
                   <td align="right" valign="middle" style="line-height:1.2;">
-                    <div style="font-size:16px; font-weight:700; letter-spacing:-0.4px; color:#FFFFFF;">Zebrold International</div>
-                    <div style="font-size:16px; font-weight:700; letter-spacing:-0.4px; color:#FFFFFF;">Holdings Limited</div>
+                    <div style="font-size:16px; font-weight:700; letter-spacing:-0.4px; color:#111827;">Zebrold International</div>
+                    <div style="font-size:16px; font-weight:700; letter-spacing:-0.4px; color:#111827;">Holdings Limited</div>
                   </td>
                 </tr>
               </table>
@@ -280,12 +280,12 @@ export function generateTalentEmailHtml({
               
               <!-- Role Badge -->
               <div style="margin-bottom:18px;">
-                <span style="background-color:rgba(121,45,50,0.2); border:1px solid #792D32; color:#FFFFFF; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:1px; padding:4px 10px; border-radius:4px; display:inline-block;">
+                <span style="background-color:rgba(121,45,50,0.2); border:1px solid #792D32; color:#111827; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:1px; padding:4px 10px; border-radius:4px; display:inline-block;">
                   ${jobTitle} &bull; ${department}
                 </span>
               </div>
 
-              <h1 style="font-family:Georgia, serif; font-size:24px; font-weight:700; color:#FFFFFF; margin:0 0 16px 0; line-height:1.3;">
+              <h1 style="font-family:Georgia, serif; font-size:24px; font-weight:700; color:#111827; margin:0 0 16px 0; line-height:1.3;">
                 Dear ${candidateName},
               </h1>
 
@@ -293,7 +293,7 @@ export function generateTalentEmailHtml({
               <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-bottom:24px;">
                 <tr>
                   <td style="background-color:${statusBadgeBg}; border-left:4px solid ${statusBorder}; padding:14px 18px; border-radius:4px;">
-                    <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:1.5px; color:#CCCCCC;">
+                    <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:1.5px; color:#4B5563;">
                       Application Status:
                     </div>
                     <div style="font-size:15px; font-weight:800; color:${statusBadgeColor}; letter-spacing:1px; margin-top:2px;">
@@ -304,16 +304,16 @@ export function generateTalentEmailHtml({
               </table>
 
               <!-- Main Message -->
-              <div style="font-size:14.5px; line-height:1.75; color:#DCD8CD; margin:0 0 26px 0;">
+              <div style="font-size:14.5px; line-height:1.75; color:#4B5563; margin:0 0 26px 0;">
                 ${messageBody}
               </div>
 
               ${interviewDetails ? `
               <!-- Interview Details Card -->
-              <table width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color:#131514; border:1px solid rgba(121,45,50,0.4); border-radius:8px; margin-bottom:26px; overflow:hidden;">
+              <table width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color:#F9FAFB; border:1px solid rgba(121,45,50,0.4); border-radius:8px; margin-bottom:26px; overflow:hidden;">
                 <tr>
                   <td style="background-color:rgba(121,45,50,0.25); padding:12px 18px; border-bottom:1px solid rgba(121,45,50,0.3);">
-                    <strong style="color:#FFFFFF; font-size:12px; letter-spacing:1px; text-transform:uppercase;">Scheduled Interview Details</strong>
+                    <strong style="color:#111827; font-size:12px; letter-spacing:1px; text-transform:uppercase;">Scheduled Interview Details</strong>
                   </td>
                 </tr>
                 <tr>
@@ -321,23 +321,23 @@ export function generateTalentEmailHtml({
                     <table width="100%" border="0" cellspacing="0" cellpadding="4">
                       ${interviewDetails.date ? `
                       <tr>
-                        <td width="35%" style="font-size:12.5px; color:#888888;">Date &amp; Time:</td>
-                        <td style="font-size:13px; font-weight:600; color:#FFFFFF;">${interviewDetails.date} ${interviewDetails.time ? `at ${interviewDetails.time} (${interviewDetails.timezone || 'CET'})` : ''}</td>
+                        <td width="35%" style="font-size:12.5px; color:#6B7280;">Date &amp; Time:</td>
+                        <td style="font-size:13px; font-weight:600; color:#111827;">${interviewDetails.date} ${interviewDetails.time ? `at ${interviewDetails.time} (${interviewDetails.timezone || 'CET'})` : ''}</td>
                       </tr>` : ''}
                       ${interviewDetails.format ? `
                       <tr>
-                        <td style="font-size:12.5px; color:#888888;">Format / Platform:</td>
-                        <td style="font-size:13px; color:#FFFFFF;">${interviewDetails.format}</td>
+                        <td style="font-size:12.5px; color:#6B7280;">Format / Platform:</td>
+                        <td style="font-size:13px; color:#111827;">${interviewDetails.format}</td>
                       </tr>` : ''}
                       ${interviewDetails.interviewer ? `
                       <tr>
-                        <td style="font-size:12.5px; color:#888888;">Interview Panel:</td>
-                        <td style="font-size:13px; color:#FFFFFF;">${interviewDetails.interviewer}</td>
+                        <td style="font-size:12.5px; color:#6B7280;">Interview Panel:</td>
+                        <td style="font-size:13px; color:#111827;">${interviewDetails.interviewer}</td>
                       </tr>` : ''}
                       ${interviewDetails.link ? `
                       <tr>
-                        <td style="font-size:12.5px; color:#888888;">Meeting Link:</td>
-                        <td style="font-size:13px;"><a href="${interviewDetails.link}" style="color:#FFFFFF; text-decoration:underline; font-weight:700;">Join Meeting Link &rarr;</a></td>
+                        <td style="font-size:12.5px; color:#6B7280;">Meeting Link:</td>
+                        <td style="font-size:13px;"><a href="${interviewDetails.link}" style="color:#111827; text-decoration:underline; font-weight:700;">Join Meeting Link &rarr;</a></td>
                       </tr>` : ''}
                     </table>
                   </td>
@@ -347,18 +347,18 @@ export function generateTalentEmailHtml({
 
               ${offerDetails ? `
               <!-- Offer Details Card -->
-              <table width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color:#131514; border:1px solid rgba(121,45,50,0.5); border-radius:8px; margin-bottom:26px; overflow:hidden;">
+              <table width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color:#F9FAFB; border:1px solid rgba(121,45,50,0.5); border-radius:8px; margin-bottom:26px; overflow:hidden;">
                 <tr>
                   <td style="background-color:rgba(121,45,50,0.3); padding:12px 18px; border-bottom:1px solid rgba(121,45,50,0.4);">
-                    <strong style="color:#FFFFFF; font-size:12px; letter-spacing:1px; text-transform:uppercase;">Employment Offer Overview</strong>
+                    <strong style="color:#111827; font-size:12px; letter-spacing:1px; text-transform:uppercase;">Employment Offer Overview</strong>
                   </td>
                 </tr>
                 <tr>
                   <td style="padding:16px 18px;">
                     <table width="100%" border="0" cellspacing="0" cellpadding="4">
-                      ${offerDetails.role ? `<tr><td width="35%" style="font-size:12.5px; color:#888888;">Position:</td><td style="font-size:13px; font-weight:700; color:#FFFFFF;">${offerDetails.role}</td></tr>` : ''}
-                      ${offerDetails.startDate ? `<tr><td style="font-size:12.5px; color:#888888;">Expected Start:</td><td style="font-size:13px; color:#FFFFFF;">${offerDetails.startDate}</td></tr>` : ''}
-                      ${offerDetails.deadline ? `<tr><td style="font-size:12.5px; color:#888888;">Offer Validity:</td><td style="font-size:13px; color:#FFFFFF; font-weight:700;">Until ${offerDetails.deadline}</td></tr>` : ''}
+                      ${offerDetails.role ? `<tr><td width="35%" style="font-size:12.5px; color:#6B7280;">Position:</td><td style="font-size:13px; font-weight:700; color:#111827;">${offerDetails.role}</td></tr>` : ''}
+                      ${offerDetails.startDate ? `<tr><td style="font-size:12.5px; color:#6B7280;">Expected Start:</td><td style="font-size:13px; color:#111827;">${offerDetails.startDate}</td></tr>` : ''}
+                      ${offerDetails.deadline ? `<tr><td style="font-size:12.5px; color:#6B7280;">Offer Validity:</td><td style="font-size:13px; color:#111827; font-weight:700;">Until ${offerDetails.deadline}</td></tr>` : ''}
                     </table>
                   </td>
                 </tr>
@@ -367,22 +367,22 @@ export function generateTalentEmailHtml({
 
               ${actionUrl ? `
               <div style="text-align:left; margin:28px 0;">
-                <a href="${actionUrl}" style="display:inline-block; background-color:#792D32; color:#FFFFFF; font-size:13.5px; font-weight:700; text-decoration:none; padding:12px 28px; border-radius:6px; letter-spacing:0.5px;">
+                <a href="${actionUrl}" style="display:inline-block; background-color:#792D32; color:#111827; font-size:13.5px; font-weight:700; text-decoration:none; padding:12px 28px; border-radius:6px; letter-spacing:0.5px;">
                   ${actionText} &rarr;
                 </a>
               </div>
               ` : ''}
 
               <!-- Recruiter Sign-off -->
-              <div style="border-top:1px solid rgba(255,255,255,0.08); padding-top:20px; margin-top:28px;">
-                <p style="font-size:13.5px; line-height:1.6; color:#9E9B93; margin:0 0 6px 0;">
+              <div style="border-top:1px solid rgba(0,0,0,0.08); padding-top:20px; margin-top:28px;">
+                <p style="font-size:13.5px; line-height:1.6; color:#6B7280; margin:0 0 6px 0;">
                   Warm regards,
                 </p>
-                <div style="font-size:14.5px; font-weight:700; color:#FFFFFF;">
+                <div style="font-size:14.5px; font-weight:700; color:#111827;">
                   Zebrold Group Talent Acquisition Desk
                 </div>
-                <div style="font-size:12px; color:#888888; margin-top:3px;">
-                  Direct: <a href="mailto:talent.acquisition@zebrold.de" style="color:#FFFFFF; text-decoration:underline;">talent.acquisition@zebrold.de</a> &bull; <a href="https://www.zebrold.de/careers" style="color:#9E9B93; text-decoration:underline;">zebrold.de/careers</a>
+                <div style="font-size:12px; color:#6B7280; margin-top:3px;">
+                  Direct: <a href="mailto:talent.acquisition@zebrold.de" style="color:#111827; text-decoration:underline;">talent.acquisition@zebrold.de</a> &bull; <a href="https://www.zebrold.de/careers" style="color:#6B7280; text-decoration:underline;">zebrold.de/careers</a>
                 </div>
               </div>
 
@@ -391,12 +391,12 @@ export function generateTalentEmailHtml({
 
           <!-- Footer -->
           <tr>
-            <td style="background-color:#141615; padding:24px 36px; border-top:1px solid rgba(255,255,255,0.06); text-align:center;">
-              <p style="font-size:11px; line-height:1.6; color:#888888; margin:0 0 6px 0;">
+            <td style="background-color:#F9FAFB; padding:24px 36px; border-top:1px solid rgba(0,0,0,0.06); text-align:center;">
+              <p style="font-size:11px; line-height:1.6; color:#6B7280; margin:0 0 6px 0;">
                 You are receiving this communication regarding your application to Zebrold Group.
-                <br/>For inquiries regarding your candidate profile, reply directly to <a href="mailto:talent.acquisition@zebrold.de" style="color:#FFFFFF; text-decoration:underline;">talent.acquisition@zebrold.de</a>.
+                <br/>For inquiries regarding your candidate profile, reply directly to <a href="mailto:talent.acquisition@zebrold.de" style="color:#111827; text-decoration:underline;">talent.acquisition@zebrold.de</a>.
               </p>
-              <p style="font-size:10.5px; color:#666666; margin:0;">
+              <p style="font-size:10.5px; color:#9CA3AF; margin:0;">
                 &copy; 2026 Zebrold International Holdings Limited &bull; Bockenheimer Landstraße, 60323 Frankfurt am Main, Germany
               </p>
             </td>
@@ -441,24 +441,24 @@ export function generateInfoEmailHtml({
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${subject} — Zebrold Group</title>
 </head>
-<body style="margin:0; padding:0; background-color:#0d0f0e; font-family:'Helvetica Neue', Arial, sans-serif; -webkit-font-smoothing:antialiased; color:#FFFFFF;">
-  <table width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color:#0d0f0e; padding:44px 12px;">
+<body style="margin:0; padding:0; background-color:#F3F4F6; font-family:'Helvetica Neue', Arial, sans-serif; -webkit-font-smoothing:antialiased; color:#111827;">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color:#F3F4F6; padding:44px 12px;">
     <tr>
       <td align="center">
         <!-- Letterhead Card -->
-        <table width="100%" border="0" cellspacing="0" cellpadding="0" style="max-width:600px; background-color:#161917; border:1px solid rgba(255,255,255,0.1); border-radius:8px; overflow:hidden; box-shadow:0 24px 60px rgba(0,0,0,0.65);">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" style="max-width:600px; background-color:#FFFFFF; border:1px solid rgba(0,0,0,0.1); border-radius:8px; overflow:hidden; box-shadow:0 24px 60px rgba(0,0,0,0.05);">
           
           <!-- Executive Letterhead Header -->
           <tr>
-            <td style="background-color:#0e100f; padding:26px 40px; border-bottom:2px solid #792D32;">
+            <td style="background-color:#F9FAFB; padding:26px 40px; border-bottom:2px solid #792D32;">
               <table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr>
                   <td align="left" valign="middle">
                     <img src="${ZEBROLD_LOGO_URL}" onerror="this.onerror=null;this.src='/favicon.png';" alt="Zebrold" width="56" height="28" style="display:block; height:28px; width:auto; max-width:60px; object-fit:contain; border:0; outline:none; text-decoration:none;" />
                   </td>
                   <td align="right" valign="middle" style="line-height:1.2;">
-                    <div style="font-size:16px; font-weight:700; letter-spacing:-0.4px; color:#FFFFFF;">Zebrold International</div>
-                    <div style="font-size:16px; font-weight:700; letter-spacing:-0.4px; color:#FFFFFF;">Holdings Limited</div>
+                    <div style="font-size:16px; font-weight:700; letter-spacing:-0.4px; color:#111827;">Zebrold International</div>
+                    <div style="font-size:16px; font-weight:700; letter-spacing:-0.4px; color:#111827;">Holdings Limited</div>
                   </td>
                 </tr>
               </table>
@@ -467,11 +467,11 @@ export function generateInfoEmailHtml({
 
           <!-- Memo Header Fields -->
           <tr>
-            <td style="padding:24px 40px 16px 40px; background-color:#131514; border-bottom:1px solid rgba(255,255,255,0.06);">
+            <td style="padding:24px 40px 16px 40px; background-color:#F9FAFB; border-bottom:1px solid rgba(0,0,0,0.06);">
               <table width="100%" border="0" cellspacing="0" cellpadding="4">
                 <tr>
-                  <td width="20%" style="font-family:monospace; font-size:11px; font-weight:700; color:#888888; text-transform:uppercase;">SUBJECT:</td>
-                  <td style="font-size:13px; font-weight:700; color:#FFFFFF;">${subject}</td>
+                  <td width="20%" style="font-family:monospace; font-size:11px; font-weight:700; color:#6B7280; text-transform:uppercase;">SUBJECT:</td>
+                  <td style="font-size:13px; font-weight:700; color:#111827;">${subject}</td>
                 </tr>
               </table>
             </td>
@@ -480,36 +480,36 @@ export function generateInfoEmailHtml({
           <!-- Letter Body -->
           <tr>
             <td style="padding:36px 40px 28px 40px;">
-              <div style="font-size:14.5px; line-height:1.8; color:#DCD8CD; margin:0 0 24px 0;">
+              <div style="font-size:14.5px; line-height:1.8; color:#4B5563; margin:0 0 24px 0;">
                 ${formattedContent}
               </div>
 
               ${highlightBox ? `
               <!-- Highlight / Executive Notice Box -->
-              <div style="background-color:#111312; border-left:3px solid #792D32; border-top:1px solid rgba(255,255,255,0.05); border-right:1px solid rgba(255,255,255,0.05); border-bottom:1px solid rgba(255,255,255,0.05); padding:18px 22px; border-radius:0 6px 6px 0; margin:24px 0;">
-                <div style="font-size:11px; font-weight:700; color:#FFFFFF; letter-spacing:1px; text-transform:uppercase; margin-bottom:6px;">Executive Note / Summary</div>
-                <div style="font-size:13.5px; line-height:1.6; color:#E0DDD5;">${highlightBox}</div>
+              <div style="background-color:#F3F4F6; border-left:3px solid #792D32; border-top:1px solid rgba(0,0,0,0.05); border-right:1px solid rgba(0,0,0,0.05); border-bottom:1px solid rgba(0,0,0,0.05); padding:18px 22px; border-radius:0 6px 6px 0; margin:24px 0;">
+                <div style="font-size:11px; font-weight:700; color:#111827; letter-spacing:1px; text-transform:uppercase; margin-bottom:6px;">Executive Note / Summary</div>
+                <div style="font-size:13.5px; line-height:1.6; color:#374151;">${highlightBox}</div>
               </div>
               ` : ''}
 
               ${actionUrl ? `
               <div style="margin:30px 0 24px 0; text-align:left;">
-                <a href="${actionUrl}" style="display:inline-block; background-color:#792D32; border:none; color:#FFFFFF; font-size:13.5px; font-weight:700; text-decoration:none; padding:12px 26px; border-radius:4px; letter-spacing:0.5px;">
+                <a href="${actionUrl}" style="display:inline-block; background-color:#792D32; border:none; color:#111827; font-size:13.5px; font-weight:700; text-decoration:none; padding:12px 26px; border-radius:4px; letter-spacing:0.5px;">
                   ${actionText} &rarr;
                 </a>
               </div>
               ` : ''}
 
               <!-- Signatory Block -->
-              <div style="margin-top:36px; padding-top:24px; border-top:1px solid rgba(255,255,255,0.08);">
-                <div style="font-family:Georgia, serif; font-size:18px; font-style:italic; color:#FFFFFF; margin-bottom:6px;">
+              <div style="margin-top:36px; padding-top:24px; border-top:1px solid rgba(0,0,0,0.08);">
+                <div style="font-family:Georgia, serif; font-size:18px; font-style:italic; color:#111827; margin-bottom:6px;">
                   ${signatoryName}
                 </div>
-                <div style="font-size:12.5px; font-weight:700; color:#A09D95;">
+                <div style="font-size:12.5px; font-weight:700; color:#6B7280;">
                   ${signatoryTitle}
                 </div>
-                <div style="font-size:11.5px; color:#888888; margin-top:2px;">
-                  Zebrold Group Global Executive Office &bull; <a href="mailto:info@zebrold.de" style="color:#FFFFFF; text-decoration:underline;">info@zebrold.de</a>
+                <div style="font-size:11.5px; color:#6B7280; margin-top:2px;">
+                  Zebrold Group Global Executive Office &bull; <a href="mailto:info@zebrold.de" style="color:#111827; text-decoration:underline;">info@zebrold.de</a>
                 </div>
               </div>
 
@@ -518,12 +518,12 @@ export function generateInfoEmailHtml({
 
           <!-- Footer -->
           <tr>
-            <td style="background-color:#141615; padding:24px 36px; border-top:1px solid rgba(255,255,255,0.06); text-align:center;">
-              <p style="font-size:11px; line-height:1.6; color:#888888; margin:0 0 6px 0;">
+            <td style="background-color:#F9FAFB; padding:24px 36px; border-top:1px solid rgba(0,0,0,0.06); text-align:center;">
+              <p style="font-size:11px; line-height:1.6; color:#6B7280; margin:0 0 6px 0;">
                 You are receiving this official correspondence from Zebrold Group Executive Communications.
-                <br/>For inquiries or responses regarding this communication, reply directly to <a href="mailto:info@zebrold.de" style="color:#FFFFFF; text-decoration:underline;">info@zebrold.de</a>.
+                <br/>For inquiries or responses regarding this communication, reply directly to <a href="mailto:info@zebrold.de" style="color:#111827; text-decoration:underline;">info@zebrold.de</a>.
               </p>
-              <p style="font-size:10.5px; color:#666666; margin:0;">
+              <p style="font-size:10.5px; color:#9CA3AF; margin:0;">
                 &copy; 2026 Zebrold International Holdings Limited &bull; Bockenheimer Landstraße, 60323 Frankfurt am Main, Germany
               </p>
             </td>
