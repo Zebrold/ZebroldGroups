@@ -90,7 +90,7 @@ export function generateNoReplyEmailHtml({
 
           <!-- Header Logo Bar -->
           <tr>
-            <td style="padding:24px 32px; border-bottom:1px solid rgba(0,0,0,0.08);">
+            <td style="padding:24px 32px; border-bottom:3px solid #792D32;">
               <table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr>
                   <td align="left" valign="middle">
