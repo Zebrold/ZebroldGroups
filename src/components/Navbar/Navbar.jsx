@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLanguage } from '../../context/LanguageContext';
 import LanguageSwitcher from '../LanguageSwitcher/LanguageSwitcher';
-import Magnetic from '../Magnetic/Magnetic';
+
 import zebroldLogoMark from '../../assets/zebrold_logo_mark.png';
 import './Navbar.css';
 
@@ -103,12 +103,10 @@ export default function Navbar() {
         {/* Right: Language Switcher & Contact Pill */}
         <div className="arrodz-nav-actions">
           <LanguageSwitcher className="nav-lang-switcher" />
-          <Magnetic strength={0.32}>
-            <Link to="/contact" className="arrodz-contact-btn">
-              <span>{t('nav_contact')}</span>
-              <span className="contact-btn-arrow" aria-hidden="true">→</span>
-            </Link>
-          </Magnetic>
+          <Link to="/contact" className="arrodz-contact-btn">
+            <span>{t('nav_contact')}</span>
+            <span className="contact-btn-arrow" aria-hidden="true">→</span>
+          </Link>
         </div>
 
         {/* Mobile Hamburger → X Morph */}

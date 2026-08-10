@@ -14,6 +14,7 @@ const EMAILJS_TEMPLATE_CONTACT = import.meta.env.VITE_EMAILJS_TEMPLATE_CONTACT |
 const EMAILJS_TEMPLATE_CAREER = import.meta.env.VITE_EMAILJS_TEMPLATE_CAREER || '';
 const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || '';
 
+export const ZEBROLD_LOGO_URL = 'https://www.zebrold.de/favicon.png';
 export const SENT_EMAILS_STORAGE_KEY = 'zebrold_sent_mail_logs';
 
 /**
@@ -26,7 +27,7 @@ export const MAILBOX_CONFIG = {
     name: 'Zebrold Automated Notification System',
     shortName: 'System & Security',
     purpose: 'Automated transactional alerts, password reset verification OTPs, and system notices. Do-not-reply channel.',
-    badgeColor: '#3B82F6',
+    badgeColor: '#792D32',
     headerTag: 'AUTOMATED TRANSACTIONAL DISPATCH — DO NOT REPLY',
     defaultSubject: 'Zebrold System Notification',
   },
@@ -36,7 +37,7 @@ export const MAILBOX_CONFIG = {
     name: 'Zebrold Group Talent Acquisition',
     shortName: 'Talent & Recruitment',
     purpose: 'Candidate status updates, interview invitations, recruiter communications, and formal offer letters.',
-    badgeColor: '#8B3A3A',
+    badgeColor: '#792D32',
     headerTag: 'TALENT ACQUISITION & RECRUITMENT OPERATIONS',
     defaultSubject: 'Application Update — Zebrold Group',
   },
@@ -46,7 +47,7 @@ export const MAILBOX_CONFIG = {
     name: 'Zebrold Group Executive Communications',
     shortName: 'Official Corporate & Inquiries',
     purpose: 'Official inquiry responses, corporate announcements, executive memorandums, and partner communications.',
-    badgeColor: '#D4AF37',
+    badgeColor: '#792D32',
     headerTag: 'OFFICIAL CORPORATE COMMUNIQUÉ',
     defaultSubject: 'Official Communication from Zebrold Group',
   }
@@ -55,7 +56,7 @@ export const MAILBOX_CONFIG = {
 /**
  * ═══════════════════════════════════════════════════════════
  * 1. HTML EMAIL GENERATOR: no-reply@zebrold.de
- * Minimalist Dark-Tech / Swiss Security Aesthetic
+ * Minimalist Dark-Tech / Swiss Security Aesthetic (#792D32 & #FFFFFF)
  * ═══════════════════════════════════════════════════════════
  */
 export function generateNoReplyEmailHtml({
@@ -82,7 +83,7 @@ export function generateNoReplyEmailHtml({
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${title} — Zebrold System</title>
 </head>
-<body style="margin:0; padding:0; background-color:#0c0e0d; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; -webkit-font-smoothing:antialiased; color:#E6E4DD;">
+<body style="margin:0; padding:0; background-color:#0c0e0d; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; -webkit-font-smoothing:antialiased; color:#FFFFFF;">
   <table width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color:#0c0e0d; padding:40px 12px;">
     <tr>
       <td align="center">
@@ -95,11 +96,11 @@ export function generateNoReplyEmailHtml({
               <table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr>
                   <td align="left">
-                    <span style="display:inline-block; width:7px; height:7px; border-radius:50%; background-color:#3B82F6; margin-right:8px; vertical-align:middle;"></span>
-                    <span style="font-family:monospace; font-size:10.5px; font-weight:700; letter-spacing:1.5px; color:#3B82F6; text-transform:uppercase; vertical-align:middle;">${alertType}</span>
+                    <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background-color:#792D32; margin-right:8px; vertical-align:middle;"></span>
+                    <span style="font-family:monospace; font-size:10.5px; font-weight:700; letter-spacing:1.5px; color:#FFFFFF; text-transform:uppercase; vertical-align:middle;">${alertType}</span>
                   </td>
                   <td align="right">
-                    <span style="font-family:monospace; font-size:10px; color:#777777; letter-spacing:1px;">DO NOT REPLY</span>
+                    <span style="font-family:monospace; font-size:10px; color:#888888; letter-spacing:1px;">DO NOT REPLY</span>
                   </td>
                 </tr>
               </table>
@@ -108,17 +109,14 @@ export function generateNoReplyEmailHtml({
 
           <!-- Header Logo Bar -->
           <tr>
-            <td style="padding:28px 32px 20px 32px; border-bottom:1px solid rgba(255,255,255,0.05);">
+            <td style="padding:24px 32px; border-bottom:1px solid rgba(255,255,255,0.08);">
               <table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr>
-                  <td width="48" valign="middle">
-                    <div style="width:42px; height:42px; background-color:#D4AF37; border-radius:6px; text-align:center; line-height:42px;">
-                      <span style="font-family:Georgia, serif; font-size:24px; font-weight:900; color:#0c0e0d;">Z</span>
-                    </div>
+                  <td align="left" valign="middle">
+                    <img src="${ZEBROLD_LOGO_URL}" onerror="this.onerror=null;this.src='/favicon.png';" alt="Zebrold" width="56" height="28" style="display:block; height:28px; width:auto; max-width:60px; object-fit:contain; border:0; outline:none; text-decoration:none;" />
                   </td>
-                  <td style="padding-left:14px;" valign="middle">
-                    <div style="font-size:15px; font-weight:800; letter-spacing:2px; color:#F5F2E8; text-transform:uppercase;">ZEBROLD GROUP</div>
-                    <div style="font-family:monospace; font-size:10px; color:#888888; letter-spacing:1px;">AUTOMATED TRANSACTION DISPATCH &bull; NO-REPLY@ZEBROLD.DE</div>
+                  <td align="right" valign="middle">
+                    <span style="font-family:Georgia, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size:18px; font-weight:800; letter-spacing:2px; color:#FFFFFF; text-transform:uppercase;">Zebrold IHL</span>
                   </td>
                 </tr>
               </table>
@@ -130,25 +128,25 @@ export function generateNoReplyEmailHtml({
             <td style="padding:32px 32px 24px 32px;">
               <h1 style="font-size:22px; font-weight:700; color:#FFFFFF; margin:0 0 16px 0; letter-spacing:-0.4px;">${title}</h1>
               
-              <p style="font-size:14px; line-height:1.6; color:#C4C2BA; margin:0 0 16px 0;">
+              <p style="font-size:14px; line-height:1.6; color:#E0DDD5; margin:0 0 16px 0;">
                 Hello <strong style="color:#FFFFFF;">${recipientName}</strong>,
               </p>
 
-              <div style="font-size:14px; line-height:1.7; color:#A8A69E; margin:0 0 24px 0;">
+              <div style="font-size:14px; line-height:1.7; color:#CCCCCC; margin:0 0 24px 0;">
                 ${formattedMessage}
               </div>
 
               ${otpCode ? `
               <!-- Monospace Code Box -->
-              <div style="background-color:#0d0f0e; border:1px solid #D4AF37; border-radius:8px; padding:22px 18px; text-align:center; margin:24px 0;">
-                <div style="font-family:monospace; font-size:11px; font-weight:700; letter-spacing:2px; color:#D4AF37; text-transform:uppercase; margin-bottom:8px;">
+              <div style="background-color:#0d0f0e; border:1px solid #792D32; border-radius:8px; padding:22px 18px; text-align:center; margin:24px 0;">
+                <div style="font-family:monospace; font-size:11px; font-weight:700; letter-spacing:2px; color:#FFFFFF; text-transform:uppercase; margin-bottom:8px;">
                   SECURITY VERIFICATION CODE
                 </div>
                 <div style="font-family:'Courier New', Courier, monospace; font-size:36px; font-weight:900; letter-spacing:8px; color:#FFFFFF; padding:4px 0;">
                   ${otpCode}
                 </div>
                 <div style="font-size:11.5px; color:#888888; margin-top:8px;">
-                  Expires in <strong style="color:#E6E4DD;">${expiresIn}</strong>. Do not share this code with anyone.
+                  Expires in <strong style="color:#FFFFFF;">${expiresIn}</strong>. Do not share this code with anyone.
                 </div>
               </div>
               ` : ''}
@@ -156,7 +154,7 @@ export function generateNoReplyEmailHtml({
               ${actionUrl ? `
               <!-- CTA Button -->
               <div style="text-align:center; margin:28px 0 20px 0;">
-                <a href="${actionUrl}" style="display:inline-block; background-color:#D4AF37; color:#0c0e0d; font-size:13.5px; font-weight:700; text-decoration:none; padding:12px 26px; border-radius:6px; letter-spacing:0.5px;">
+                <a href="${actionUrl}" style="display:inline-block; background-color:#792D32; color:#FFFFFF; font-size:13.5px; font-weight:700; text-decoration:none; padding:12px 26px; border-radius:6px; letter-spacing:0.5px;">
                   ${actionText} &rarr;
                 </a>
               </div>
@@ -166,7 +164,7 @@ export function generateNoReplyEmailHtml({
               <table width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color:#0f1110; border:1px solid rgba(255,255,255,0.06); border-radius:6px; margin-top:24px; padding:12px 16px;">
                 <tr>
                   <td style="font-family:monospace; font-size:10.5px; color:#777777; padding:4px 0;">Reference ID:</td>
-                  <td align="right" style="font-family:monospace; font-size:10.5px; color:#D4AF37; padding:4px 0;">${refCode}</td>
+                  <td align="right" style="font-family:monospace; font-size:10.5px; color:#FFFFFF; font-weight:700; padding:4px 0;">${refCode}</td>
                 </tr>
                 <tr>
                   <td style="font-family:monospace; font-size:10.5px; color:#777777; padding:4px 0;">Dispatched At:</td>
@@ -191,7 +189,7 @@ export function generateNoReplyEmailHtml({
           <tr>
             <td style="background-color:#0e100f; padding:20px 32px; border-top:1px solid rgba(255,255,255,0.05); text-align:center;">
               <p style="font-size:11px; line-height:1.6; color:#666666; margin:0 0 8px 0;">
-                This automated dispatch was sent to <span style="color:#888888;">${recipientEmail}</span> by the Zebrold Automated Notification System.
+                This automated dispatch was sent to <span style="color:#FFFFFF;">${recipientEmail}</span> by the Zebrold Automated Notification System.
                 <br/><strong>Please do not reply to this email</strong> as this inbox is automatically managed and unattended.
               </p>
               <p style="font-size:10.5px; color:#555555; margin:0;">
@@ -211,7 +209,7 @@ export function generateNoReplyEmailHtml({
 /**
  * ═══════════════════════════════════════════════════════════
  * 2. HTML EMAIL GENERATOR: talent.acquisition@zebrold.de
- * Warm Editorial Luxury / Contemporary Corporate Recruitment Aesthetic
+ * Warm Editorial Luxury / Branded Recruitment Aesthetic (#792D32 & #FFFFFF)
  * ═══════════════════════════════════════════════════════════
  */
 export function generateTalentEmailHtml({
@@ -230,29 +228,35 @@ export function generateTalentEmailHtml({
   const statusUpper = (status || 'APPLICATION RECEIVED').toUpperCase();
   const applicationId = `ZBR-APP-${Math.floor(10000 + Math.random() * 90000)}`;
 
-  let statusBadgeColor = '#8B3A3A';
-  let statusBadgeBg = 'rgba(139, 58, 58, 0.15)';
+  let statusBadgeColor = '#FFFFFF';
+  let statusBadgeBg = 'rgba(121, 45, 50, 0.25)';
+  let statusBorder = '#792D32';
   let defaultMessage = `Thank you for your interest in career opportunities with Zebrold Group. We have received your application for the position of <strong>${jobTitle}</strong>. Our talent team is actively reviewing your background.`;
 
   if (statusUpper === 'HIRED' || statusUpper.includes('OFFER')) {
-    statusBadgeColor = '#34D399';
-    statusBadgeBg = 'rgba(52, 211, 153, 0.15)';
+    statusBadgeColor = '#FFFFFF';
+    statusBadgeBg = 'rgba(121, 45, 50, 0.35)';
+    statusBorder = '#792D32';
     defaultMessage = `We are delighted to extend a formal offer of employment for the position of <strong>${jobTitle}</strong> with Zebrold Group. We were deeply impressed by your experience and look forward to welcoming you to our global team.`;
   } else if (statusUpper === 'INTERVIEW' || statusUpper.includes('INVITATION') || statusUpper.includes('SCHEDULED')) {
-    statusBadgeColor = '#D3B673';
-    statusBadgeBg = 'rgba(211, 182, 115, 0.15)';
+    statusBadgeColor = '#FFFFFF';
+    statusBadgeBg = 'rgba(121, 45, 50, 0.25)';
+    statusBorder = '#792D32';
     defaultMessage = `Great news! After reviewing your application for the <strong>${jobTitle}</strong> position, our hiring panel would like to invite you for an interview.`;
   } else if (statusUpper === 'SHORTLISTED') {
-    statusBadgeColor = '#60A5FA';
-    statusBadgeBg = 'rgba(96, 165, 250, 0.15)';
+    statusBadgeColor = '#FFFFFF';
+    statusBadgeBg = 'rgba(121, 45, 50, 0.2)';
+    statusBorder = '#792D32';
     defaultMessage = `Your profile for <strong>${jobTitle}</strong> has been shortlisted by our talent acquisition panel. Our lead recruiter will reach out regarding next steps.`;
   } else if (statusUpper === 'UNDER REVIEW') {
-    statusBadgeColor = '#D3B673';
-    statusBadgeBg = 'rgba(211, 182, 115, 0.15)';
+    statusBadgeColor = '#FFFFFF';
+    statusBadgeBg = 'rgba(121, 45, 50, 0.15)';
+    statusBorder = '#792D32';
     defaultMessage = `Your application for <strong>${jobTitle}</strong> is currently under detailed review by the ${department} hiring committee.`;
   } else if (statusUpper === 'REJECTED' || statusUpper.includes('NOT SELECTED')) {
     statusBadgeColor = '#9CA3AF';
     statusBadgeBg = 'rgba(156, 163, 175, 0.15)';
+    statusBorder = '#4B5563';
     defaultMessage = `Thank you for taking the time to apply for the <strong>${jobTitle}</strong> position at Zebrold Group. After careful consideration, we have decided to move forward with other candidates whose experience more closely matches our immediate requirements. We wish you every success in your career journey.`;
   }
 
@@ -265,28 +269,23 @@ export function generateTalentEmailHtml({
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Application Update: ${jobTitle} — Zebrold Talent Acquisition</title>
 </head>
-<body style="margin:0; padding:0; background-color:#111312; font-family:'Helvetica Neue', Arial, sans-serif; -webkit-font-smoothing:antialiased; color:#E8E6DF;">
+<body style="margin:0; padding:0; background-color:#111312; font-family:'Helvetica Neue', Arial, sans-serif; -webkit-font-smoothing:antialiased; color:#FFFFFF;">
   <table width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color:#111312; padding:40px 12px;">
     <tr>
       <td align="center">
         <!-- Main Card -->
-        <table width="100%" border="0" cellspacing="0" cellpadding="0" style="max-width:580px; background-color:#191C1B; border:1px solid rgba(245,242,232,0.12); border-radius:12px; overflow:hidden; box-shadow:0 24px 48px rgba(0,0,0,0.5);">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" style="max-width:580px; background-color:#191C1B; border:1px solid rgba(255,255,255,0.12); border-radius:12px; overflow:hidden; box-shadow:0 24px 48px rgba(0,0,0,0.5);">
           
           <!-- Editorial Top Banner -->
           <tr>
-            <td style="background-color:#222624; padding:28px 36px; border-bottom:3px solid #6E2A2A;">
+            <td style="background-color:#222624; padding:24px 36px; border-bottom:3px solid #792D32;">
               <table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr>
-                  <td>
-                    <div style="font-family:Georgia, serif; font-size:22px; font-weight:700; letter-spacing:1px; color:#F5F2E8;">ZEBROLD GROUP</div>
-                    <div style="font-size:11px; font-weight:700; letter-spacing:2px; color:#D3B673; text-transform:uppercase; margin-top:4px;">
-                      TALENT ACQUISITION &amp; PEOPLE OPERATIONS
-                    </div>
+                  <td align="left" valign="middle">
+                    <img src="${ZEBROLD_LOGO_URL}" onerror="this.onerror=null;this.src='/favicon.png';" alt="Zebrold" width="56" height="28" style="display:block; height:28px; width:auto; max-width:60px; object-fit:contain; border:0; outline:none; text-decoration:none;" />
                   </td>
                   <td align="right" valign="middle">
-                    <span style="font-family:monospace; font-size:10px; color:#999999; background:rgba(255,255,255,0.06); padding:4px 10px; border-radius:4px; border:1px solid rgba(255,255,255,0.08);">
-                      REF: ${applicationId}
-                    </span>
+                    <span style="font-family:Georgia, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size:18px; font-weight:800; letter-spacing:2px; color:#FFFFFF; text-transform:uppercase;">Zebrold IHL</span>
                   </td>
                 </tr>
               </table>
@@ -299,7 +298,7 @@ export function generateTalentEmailHtml({
               
               <!-- Role Badge -->
               <div style="margin-bottom:18px;">
-                <span style="background-color:rgba(211,182,115,0.1); border:1px solid rgba(211,182,115,0.25); color:#D3B673; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:1px; padding:4px 10px; border-radius:4px; display:inline-block;">
+                <span style="background-color:rgba(121,45,50,0.2); border:1px solid #792D32; color:#FFFFFF; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:1px; padding:4px 10px; border-radius:4px; display:inline-block;">
                   ${jobTitle} &bull; ${department}
                 </span>
               </div>
@@ -311,8 +310,8 @@ export function generateTalentEmailHtml({
               <!-- Status Notification Pill -->
               <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-bottom:24px;">
                 <tr>
-                  <td style="background-color:${statusBadgeBg}; border-left:4px solid ${statusBadgeColor}; padding:14px 18px; border-radius:4px;">
-                    <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:1.5px; color:#AAAAAA;">
+                  <td style="background-color:${statusBadgeBg}; border-left:4px solid ${statusBorder}; padding:14px 18px; border-radius:4px;">
+                    <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:1.5px; color:#CCCCCC;">
                       Application Status:
                     </div>
                     <div style="font-size:15px; font-weight:800; color:${statusBadgeColor}; letter-spacing:1px; margin-top:2px;">
@@ -323,16 +322,16 @@ export function generateTalentEmailHtml({
               </table>
 
               <!-- Main Message -->
-              <div style="font-size:14.5px; line-height:1.75; color:#D4D1C7; margin:0 0 26px 0;">
+              <div style="font-size:14.5px; line-height:1.75; color:#DCD8CD; margin:0 0 26px 0;">
                 ${messageBody}
               </div>
 
               ${interviewDetails ? `
               <!-- Interview Details Card -->
-              <table width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color:#131514; border:1px solid rgba(211,182,115,0.2); border-radius:8px; margin-bottom:26px; overflow:hidden;">
+              <table width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color:#131514; border:1px solid rgba(121,45,50,0.4); border-radius:8px; margin-bottom:26px; overflow:hidden;">
                 <tr>
-                  <td style="background-color:rgba(211,182,115,0.08); padding:12px 18px; border-bottom:1px solid rgba(211,182,115,0.15);">
-                    <strong style="color:#D3B673; font-size:12px; letter-spacing:1px; text-transform:uppercase;">Scheduled Interview Details</strong>
+                  <td style="background-color:rgba(121,45,50,0.25); padding:12px 18px; border-bottom:1px solid rgba(121,45,50,0.3);">
+                    <strong style="color:#FFFFFF; font-size:12px; letter-spacing:1px; text-transform:uppercase;">Scheduled Interview Details</strong>
                   </td>
                 </tr>
                 <tr>
@@ -346,17 +345,17 @@ export function generateTalentEmailHtml({
                       ${interviewDetails.format ? `
                       <tr>
                         <td style="font-size:12.5px; color:#888888;">Format / Platform:</td>
-                        <td style="font-size:13px; color:#E0E0E0;">${interviewDetails.format}</td>
+                        <td style="font-size:13px; color:#FFFFFF;">${interviewDetails.format}</td>
                       </tr>` : ''}
                       ${interviewDetails.interviewer ? `
                       <tr>
                         <td style="font-size:12.5px; color:#888888;">Interview Panel:</td>
-                        <td style="font-size:13px; color:#E0E0E0;">${interviewDetails.interviewer}</td>
+                        <td style="font-size:13px; color:#FFFFFF;">${interviewDetails.interviewer}</td>
                       </tr>` : ''}
                       ${interviewDetails.link ? `
                       <tr>
                         <td style="font-size:12.5px; color:#888888;">Meeting Link:</td>
-                        <td style="font-size:13px;"><a href="${interviewDetails.link}" style="color:#D3B673; text-decoration:underline;">Join Meeting Link &rarr;</a></td>
+                        <td style="font-size:13px;"><a href="${interviewDetails.link}" style="color:#FFFFFF; text-decoration:underline; font-weight:700;">Join Meeting Link &rarr;</a></td>
                       </tr>` : ''}
                     </table>
                   </td>
@@ -366,18 +365,18 @@ export function generateTalentEmailHtml({
 
               ${offerDetails ? `
               <!-- Offer Details Card -->
-              <table width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color:#131514; border:1px solid rgba(52,211,153,0.3); border-radius:8px; margin-bottom:26px; overflow:hidden;">
+              <table width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color:#131514; border:1px solid rgba(121,45,50,0.5); border-radius:8px; margin-bottom:26px; overflow:hidden;">
                 <tr>
-                  <td style="background-color:rgba(52,211,153,0.1); padding:12px 18px; border-bottom:1px solid rgba(52,211,153,0.2);">
-                    <strong style="color:#34D399; font-size:12px; letter-spacing:1px; text-transform:uppercase;">Employment Offer Overview</strong>
+                  <td style="background-color:rgba(121,45,50,0.3); padding:12px 18px; border-bottom:1px solid rgba(121,45,50,0.4);">
+                    <strong style="color:#FFFFFF; font-size:12px; letter-spacing:1px; text-transform:uppercase;">Employment Offer Overview</strong>
                   </td>
                 </tr>
                 <tr>
                   <td style="padding:16px 18px;">
                     <table width="100%" border="0" cellspacing="0" cellpadding="4">
                       ${offerDetails.role ? `<tr><td width="35%" style="font-size:12.5px; color:#888888;">Position:</td><td style="font-size:13px; font-weight:700; color:#FFFFFF;">${offerDetails.role}</td></tr>` : ''}
-                      ${offerDetails.startDate ? `<tr><td style="font-size:12.5px; color:#888888;">Expected Start:</td><td style="font-size:13px; color:#E0E0E0;">${offerDetails.startDate}</td></tr>` : ''}
-                      ${offerDetails.deadline ? `<tr><td style="font-size:12.5px; color:#888888;">Offer Validity:</td><td style="font-size:13px; color:#D3B673;">Until ${offerDetails.deadline}</td></tr>` : ''}
+                      ${offerDetails.startDate ? `<tr><td style="font-size:12.5px; color:#888888;">Expected Start:</td><td style="font-size:13px; color:#FFFFFF;">${offerDetails.startDate}</td></tr>` : ''}
+                      ${offerDetails.deadline ? `<tr><td style="font-size:12.5px; color:#888888;">Offer Validity:</td><td style="font-size:13px; color:#FFFFFF; font-weight:700;">Until ${offerDetails.deadline}</td></tr>` : ''}
                     </table>
                   </td>
                 </tr>
@@ -386,7 +385,7 @@ export function generateTalentEmailHtml({
 
               ${actionUrl ? `
               <div style="text-align:left; margin:28px 0;">
-                <a href="${actionUrl}" style="display:inline-block; background-color:#8B3A3A; color:#FFFFFF; font-size:13.5px; font-weight:700; text-decoration:none; padding:12px 28px; border-radius:6px; letter-spacing:0.5px;">
+                <a href="${actionUrl}" style="display:inline-block; background-color:#792D32; color:#FFFFFF; font-size:13.5px; font-weight:700; text-decoration:none; padding:12px 28px; border-radius:6px; letter-spacing:0.5px;">
                   ${actionText} &rarr;
                 </a>
               </div>
@@ -397,11 +396,11 @@ export function generateTalentEmailHtml({
                 <p style="font-size:13.5px; line-height:1.6; color:#9E9B93; margin:0 0 6px 0;">
                   Warm regards,
                 </p>
-                <div style="font-size:14.5px; font-weight:700; color:#F5F2E8;">
+                <div style="font-size:14.5px; font-weight:700; color:#FFFFFF;">
                   Zebrold Group Talent Acquisition Desk
                 </div>
                 <div style="font-size:12px; color:#888888; margin-top:3px;">
-                  Direct: <a href="mailto:talent.acquisition@zebrold.de" style="color:#D3B673; text-decoration:none;">talent.acquisition@zebrold.de</a> &bull; <a href="https://www.zebrold.de/careers" style="color:#9E9B93; text-decoration:underline;">zebrold.de/careers</a>
+                  Direct: <a href="mailto:talent.acquisition@zebrold.de" style="color:#FFFFFF; text-decoration:underline;">talent.acquisition@zebrold.de</a> &bull; <a href="https://www.zebrold.de/careers" style="color:#9E9B93; text-decoration:underline;">zebrold.de/careers</a>
                 </div>
               </div>
 
@@ -411,11 +410,11 @@ export function generateTalentEmailHtml({
           <!-- Footer -->
           <tr>
             <td style="background-color:#141615; padding:24px 36px; border-top:1px solid rgba(255,255,255,0.06); text-align:center;">
-              <p style="font-size:11px; line-height:1.6; color:#6B6963; margin:0 0 6px 0;">
+              <p style="font-size:11px; line-height:1.6; color:#888888; margin:0 0 6px 0;">
                 You are receiving this communication regarding your application to Zebrold Group.
-                <br/>For inquiries regarding your candidate profile, reply directly to <a href="mailto:talent.acquisition@zebrold.de" style="color:#888888;">talent.acquisition@zebrold.de</a>.
+                <br/>For inquiries regarding your candidate profile, reply directly to <a href="mailto:talent.acquisition@zebrold.de" style="color:#FFFFFF; text-decoration:underline;">talent.acquisition@zebrold.de</a>.
               </p>
-              <p style="font-size:10.5px; color:#555555; margin:0;">
+              <p style="font-size:10.5px; color:#666666; margin:0;">
                 &copy; 2026 Zebrold International Holdings Limited &bull; Bockenheimer Landstraße, 60323 Frankfurt am Main, Germany
               </p>
             </td>
@@ -432,7 +431,7 @@ export function generateTalentEmailHtml({
 /**
  * ═══════════════════════════════════════════════════════════
  * 3. HTML EMAIL GENERATOR: info@zebrold.de
- * Swiss Minimalist Executive Corporate Letterhead Aesthetic
+ * Swiss Minimalist Executive Corporate Letterhead Aesthetic (#792D32 & #FFFFFF)
  * ═══════════════════════════════════════════════════════════
  */
 export function generateInfoEmailHtml({
@@ -460,7 +459,7 @@ export function generateInfoEmailHtml({
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${subject} — Zebrold Group</title>
 </head>
-<body style="margin:0; padding:0; background-color:#0d0f0e; font-family:'Helvetica Neue', Arial, sans-serif; -webkit-font-smoothing:antialiased; color:#E8E6DE;">
+<body style="margin:0; padding:0; background-color:#0d0f0e; font-family:'Helvetica Neue', Arial, sans-serif; -webkit-font-smoothing:antialiased; color:#FFFFFF;">
   <table width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color:#0d0f0e; padding:44px 12px;">
     <tr>
       <td align="center">
@@ -469,21 +468,14 @@ export function generateInfoEmailHtml({
           
           <!-- Executive Letterhead Header -->
           <tr>
-            <td style="background-color:#0e100f; padding:36px 40px 28px 40px; border-bottom:2px solid #D4AF37;">
+            <td style="background-color:#0e100f; padding:26px 40px; border-bottom:2px solid #792D32;">
               <table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr>
-                  <td>
-                    <div style="display:inline-block; vertical-align:middle; width:36px; height:36px; background-color:#D4AF37; border-radius:4px; text-align:center; line-height:36px; margin-right:12px;">
-                      <span style="font-family:Georgia, serif; font-size:20px; font-weight:900; color:#0e100f;">Z</span>
-                    </div>
-                    <div style="display:inline-block; vertical-align:middle;">
-                      <div style="font-family:Georgia, serif; font-size:20px; font-weight:700; letter-spacing:2px; color:#F5F2E8; text-transform:uppercase;">ZEBROLD GROUP</div>
-                      <div style="font-size:10px; font-weight:600; letter-spacing:2.5px; color:#888888; text-transform:uppercase;">CORPORATE COMMUNIQU&Eacute;</div>
-                    </div>
+                  <td align="left" valign="middle">
+                    <img src="${ZEBROLD_LOGO_URL}" onerror="this.onerror=null;this.src='/favicon.png';" alt="Zebrold" width="56" height="28" style="display:block; height:28px; width:auto; max-width:60px; object-fit:contain; border:0; outline:none; text-decoration:none;" />
                   </td>
-                  <td align="right" valign="top">
-                    <div style="font-family:monospace; font-size:11px; color:#D4AF37;">${dateStr}</div>
-                    <div style="font-family:monospace; font-size:10px; color:#777777; margin-top:3px;">${reference}</div>
+                  <td align="right" valign="middle">
+                    <span style="font-family:Georgia, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size:18px; font-weight:800; letter-spacing:2px; color:#FFFFFF; text-transform:uppercase;">Zebrold IHL</span>
                   </td>
                 </tr>
               </table>
@@ -500,7 +492,7 @@ export function generateInfoEmailHtml({
                 </tr>
                 <tr>
                   <td style="font-family:monospace; font-size:11px; font-weight:700; color:#888888; text-transform:uppercase;">FROM:</td>
-                  <td style="font-size:13px; color:#D4AF37;">${department} &lt;info@zebrold.de&gt;</td>
+                  <td style="font-size:13px; color:#FFFFFF; font-weight:600;">${department} &lt;info@zebrold.de&gt;</td>
                 </tr>
                 <tr>
                   <td style="font-family:monospace; font-size:11px; font-weight:700; color:#888888; text-transform:uppercase;">SUBJECT:</td>
@@ -519,15 +511,15 @@ export function generateInfoEmailHtml({
 
               ${highlightBox ? `
               <!-- Highlight / Executive Notice Box -->
-              <div style="background-color:#111312; border-left:3px solid #D4AF37; border-top:1px solid rgba(255,255,255,0.05); border-right:1px solid rgba(255,255,255,0.05); border-bottom:1px solid rgba(255,255,255,0.05); padding:18px 22px; border-radius:0 6px 6px 0; margin:24px 0;">
-                <div style="font-size:11px; font-weight:700; color:#D4AF37; letter-spacing:1px; text-transform:uppercase; margin-bottom:6px;">Executive Note / Summary</div>
+              <div style="background-color:#111312; border-left:3px solid #792D32; border-top:1px solid rgba(255,255,255,0.05); border-right:1px solid rgba(255,255,255,0.05); border-bottom:1px solid rgba(255,255,255,0.05); padding:18px 22px; border-radius:0 6px 6px 0; margin:24px 0;">
+                <div style="font-size:11px; font-weight:700; color:#FFFFFF; letter-spacing:1px; text-transform:uppercase; margin-bottom:6px;">Executive Note / Summary</div>
                 <div style="font-size:13.5px; line-height:1.6; color:#E0DDD5;">${highlightBox}</div>
               </div>
               ` : ''}
 
               ${actionUrl ? `
               <div style="margin:30px 0 24px 0; text-align:left;">
-                <a href="${actionUrl}" style="display:inline-block; background-color:#1A1E1C; border:1px solid #D4AF37; color:#F5F2E8; font-size:13.5px; font-weight:700; text-decoration:none; padding:12px 26px; border-radius:4px; letter-spacing:0.5px;">
+                <a href="${actionUrl}" style="display:inline-block; background-color:#792D32; border:none; color:#FFFFFF; font-size:13.5px; font-weight:700; text-decoration:none; padding:12px 26px; border-radius:4px; letter-spacing:0.5px;">
                   ${actionText} &rarr;
                 </a>
               </div>
@@ -535,39 +527,29 @@ export function generateInfoEmailHtml({
 
               <!-- Signatory Block -->
               <div style="margin-top:36px; padding-top:24px; border-top:1px solid rgba(255,255,255,0.08);">
-                <div style="font-family:Georgia, serif; font-size:18px; font-style:italic; color:#F5F2E8; margin-bottom:6px;">
+                <div style="font-family:Georgia, serif; font-size:18px; font-style:italic; color:#FFFFFF; margin-bottom:6px;">
                   ${signatoryName}
                 </div>
                 <div style="font-size:12.5px; font-weight:700; color:#A09D95;">
                   ${signatoryTitle}
                 </div>
-                <div style="font-size:11.5px; color:#777777; margin-top:2px;">
-                  Zebrold Group Global Executive Office &bull; <a href="mailto:info@zebrold.de" style="color:#D4AF37; text-decoration:none;">info@zebrold.de</a>
+                <div style="font-size:11.5px; color:#888888; margin-top:2px;">
+                  Zebrold Group Global Executive Office &bull; <a href="mailto:info@zebrold.de" style="color:#FFFFFF; text-decoration:underline;">info@zebrold.de</a>
                 </div>
               </div>
 
             </td>
           </tr>
 
-          <!-- Global Offices Footer -->
+          <!-- Footer -->
           <tr>
-            <td style="background-color:#0e100f; padding:28px 40px; border-top:1px solid rgba(255,255,255,0.06);">
-              
-              <!-- Offices Line -->
-              <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-bottom:16px;">
-                <tr>
-                  <td align="center" style="font-size:10.5px; font-weight:700; letter-spacing:1px; color:#888888; text-transform:uppercase;">
-                    Frankfurt &bull; London &bull; Dubai &bull; Sydney &bull; Hyderabad &bull; Singapore
-                  </td>
-                </tr>
-              </table>
-
-              <p style="font-size:10.5px; line-height:1.6; color:#555555; text-align:center; margin:0 0 6px 0;">
-                Zebrold International Holdings Limited &bull; Global Headquarters: Frankfurt am Main, Germany
-                <br/>Official inquiries and business correspondence may be directed to <a href="mailto:info@zebrold.de" style="color:#777777;">info@zebrold.de</a> or phone +49 69 2100 4800.
+            <td style="background-color:#141615; padding:24px 36px; border-top:1px solid rgba(255,255,255,0.06); text-align:center;">
+              <p style="font-size:11px; line-height:1.6; color:#888888; margin:0 0 6px 0;">
+                You are receiving this official correspondence from Zebrold Group Executive Communications.
+                <br/>For inquiries or responses regarding this communication, reply directly to <a href="mailto:info@zebrold.de" style="color:#FFFFFF; text-decoration:underline;">info@zebrold.de</a>.
               </p>
-              <p style="font-size:10px; color:#444444; text-align:center; margin:0;">
-                &copy; 2026 Zebrold Group. All rights reserved. &bull; <a href="https://www.zebrold.de" style="color:#666666; text-decoration:underline;">www.zebrold.de</a>
+              <p style="font-size:10.5px; color:#666666; margin:0;">
+                &copy; 2026 Zebrold International Holdings Limited &bull; Bockenheimer Landstraße, 60323 Frankfurt am Main, Germany
               </p>
             </td>
           </tr>

@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import { useSmoothTilt } from '../../hooks/useSmoothTilt';
 import './SectorCard.css';
 
 // Import our premium backgrounds to use as the visual card covers
@@ -22,11 +21,6 @@ import mediaSectorImg from '../../assets/media_sector.png';
 const bgImages = [heroBg1, heroBg2, heroBg3];
 
 export default function SectorCard({ sector, delay = 0, index = 0 }) {
-  const { ref, style, glareStyle, onMouseMove, onMouseEnter, onMouseLeave } = useSmoothTilt({
-    maxTilt: 4.5,
-    scale: 1.015,
-  });
-
   let bgImg = bgImages[index % 3];
   if (sector.name === 'EV Charging & Battery') bgImg = evSectorImg;
   else if (sector.name === 'Semiconductors') bgImg = semiSectorImg;
@@ -46,18 +40,12 @@ export default function SectorCard({ sector, delay = 0, index = 0 }) {
 
   return (
     <Link
-      ref={ref}
       to={`/sectors/${slug}`}
       className="mobbin-sector-card reveal"
       data-delay={delay}
-      style={style}
-      onMouseMove={onMouseMove}
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
       aria-label={`${sector.name} sector`}
     >
-      {/* Dynamic Specular Glare */}
-      <div className="card-glare-sheen" style={glareStyle} aria-hidden="true" />
+      {/* Removed glare sheen */}
 
       <div className="mobbin-sector-visual">
         <div className="mobbin-sector-img" style={{ backgroundImage: `url(${bgImg})` }} />

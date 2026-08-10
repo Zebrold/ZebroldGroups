@@ -7,7 +7,6 @@ import { useLanguage } from '../../context/LanguageContext';
 import { getExpertise, getStats, getDomains, getFaq, getNewsSection, getAboutScroll, getCta, getSectionOrder, getTicker, getWhatWeDo } from '../../utils/homepageData';
 import { sendContactEmail } from '../../services/emailService';
 import SEO from '../../components/SEO/SEO';
-import Magnetic from '../../components/Magnetic/Magnetic';
 import './Home.css';
 import heroBg1 from '../../assets/hero_bg_meridian.png';
 import heroBg2 from '../../assets/hero_bg_northvolt.png';
@@ -584,33 +583,7 @@ export default function Home() {
   const [chatMsg, setChatMsg] = useState('');
   const [chatSent, setChatSent] = useState(false);
 
-  /* Hero Mouse Movement Parallax */
-  const heroRef = useRef(null);
-  const badgeCreamRef = useRef(null);
-  const badgeBrownRef = useRef(null);
-
-  const handleHeroMouseMove = useCallback((e) => {
-    if (!heroRef.current) return;
-    const rect = heroRef.current.getBoundingClientRect();
-    const nx = (e.clientX - rect.left) / rect.width - 0.5; // -0.5 to 0.5
-    const ny = (e.clientY - rect.top) / rect.height - 0.5;
-
-    if (badgeCreamRef.current) {
-      badgeCreamRef.current.style.transform = `translate3d(${(-nx * 24).toFixed(2)}px, ${(-ny * 18).toFixed(2)}px, 0) rotate(-3.5deg)`;
-    }
-    if (badgeBrownRef.current) {
-      badgeBrownRef.current.style.transform = `translate3d(${(-nx * 36).toFixed(2)}px, ${(-ny * 26).toFixed(2)}px, 0) rotate(2.5deg) translateX(0.8rem)`;
-    }
-  }, []);
-
-  const handleHeroMouseLeave = useCallback(() => {
-    if (badgeCreamRef.current) {
-      badgeCreamRef.current.style.transform = 'translate3d(0, 0, 0) rotate(-3.5deg)';
-    }
-    if (badgeBrownRef.current) {
-      badgeBrownRef.current.style.transform = 'translate3d(0, 0, 0) rotate(2.5deg) translateX(0.8rem)';
-    }
-  }, []);
+  /* Hero Movement Parallax Removed */
 
   const handleQuickSubmit = (e) => {
     e.preventDefault();
@@ -967,10 +940,7 @@ export default function Home() {
       />
       {/* ═══════ SECTION 1: HERO ═══════ */}
       <section
-        ref={heroRef}
         className="hero-section"
-        onMouseMove={handleHeroMouseMove}
-        onMouseLeave={handleHeroMouseLeave}
       >
         <div className="hero-bg">
           <img src={heroBg1} alt="Zebrold International Holdings Limited Hero Background" className="hero-bg-img" loading="eager" width="1920" height="1080" />
@@ -1009,16 +979,14 @@ export default function Home() {
                       className={`hero-letter ${isBrown ? 'is-brown' : ''} ${isO ? 'is-o' : ''}`}
                     >
                       {isO ? (
-                        <Magnetic strength={0.3}>
-                          <Link to="/contact" className="hero-o-pill">
-                            <span className="hero-o-pill-text">{t('hero_cta')}</span>
-                            <span className="hero-o-pill-arrow">
-                              <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
-                                <path d="M2.15 10c0 .46.37.83.83.83h8.91c.89 0 1.34 1.08.71 1.71l-2.11 2.11a.83.83 0 001.18 1.18l5.12-5.13a1 1 0 000-1.41L11.67 4.17a.83.83 0 00-1.18 1.18l2.11 2.11c.63.63.19 1.71-.71 1.71H2.99A.83.83 0 002.15 10z" fill="currentColor" />
-                              </svg>
-                            </span>
-                          </Link>
-                        </Magnetic>
+                        <Link to="/contact" className="hero-o-pill">
+                          <span className="hero-o-pill-text">{t('hero_cta')}</span>
+                          <span className="hero-o-pill-arrow">
+                            <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
+                              <path d="M2.15 10c0 .46.37.83.83.83h8.91c.89 0 1.34 1.08.71 1.71l-2.11 2.11a.83.83 0 001.18 1.18l5.12-5.13a1 1 0 000-1.41L11.67 4.17a.83.83 0 00-1.18 1.18l2.11 2.11c.63.63.19 1.71-.71 1.71H2.99A.83.83 0 002.15 10z" fill="currentColor" />
+                            </svg>
+                          </span>
+                        </Link>
                       ) : (
                         letter
                       )}
@@ -1522,7 +1490,7 @@ export default function Home() {
       )}
 
       {/* Floating Contact Button */}
-      <Magnetic strength={0.35} className="home-floating-phone-wrap">
+      <div className="home-floating-phone-wrap">
         <button
           type="button"
           onClick={() => setIsChatOpen(!isChatOpen)}
@@ -1537,7 +1505,7 @@ export default function Home() {
             </svg>
           )}
         </button>
-      </Magnetic>
+      </div>
     </div>
   );
 }

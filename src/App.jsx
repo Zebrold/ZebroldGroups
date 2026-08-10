@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import { motion, useScroll, useSpring } from 'framer-motion';
 import { LanguageProvider } from './context/LanguageContext';
-import SmoothCursor from './components/SmoothCursor/SmoothCursor';
+
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
 import Home from './pages/Home/Home';
@@ -30,7 +30,7 @@ function ScrollToTop() {
 function SiteLayout({ children }) {
   return (
     <>
-      <SmoothCursor />
+
       <Navbar />
       <main>
         {children}

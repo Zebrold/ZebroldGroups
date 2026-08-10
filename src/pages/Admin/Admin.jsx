@@ -515,9 +515,9 @@ function MailCenterModule({ onSave, session }) {
       {/* Mailbox Selector Tabs */}
       <div className="mailcenter-tabs">
         {[
-          { key: 'no-reply@zebrold.de', icon: '🔒', title: 'no-reply@zebrold.de', sub: 'System & Security OTPs', color: '#3B82F6' },
-          { key: 'talent.acquisition@zebrold.de', icon: '💼', title: 'talent.acquisition@zebrold.de', sub: 'Talent & Recruitment', color: '#8B3A3A' },
-          { key: 'info@zebrold.de', icon: '🌐', title: 'info@zebrold.de', sub: 'Corporate Inquiries & Press', color: '#D4AF37' }
+          { key: 'no-reply@zebrold.de', icon: '🔒', title: 'no-reply@zebrold.de', sub: 'System & Security OTPs', color: '#792D32' },
+          { key: 'talent.acquisition@zebrold.de', icon: '💼', title: 'talent.acquisition@zebrold.de', sub: 'Talent & Recruitment', color: '#792D32' },
+          { key: 'info@zebrold.de', icon: '🌐', title: 'info@zebrold.de', sub: 'Corporate Inquiries & Press', color: '#792D32' }
         ].map(mb => (
           <button
             key={mb.key}

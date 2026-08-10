@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import { useSmoothTilt } from '../../hooks/useSmoothTilt';
 import './NewsCard.css';
 
 // Importing premium assets to use as dynamic editorial photography
@@ -18,26 +17,15 @@ function formatDate(dateStr) {
 }
 
 export default function NewsCard({ post, featured = false, delay = 0 }) {
-  const { ref, style, glareStyle, onMouseMove, onMouseEnter, onMouseLeave } = useSmoothTilt({
-    maxTilt: 4,
-    scale: 1.015,
-  });
-
   // Use post.id to deterministically assign an editorial image
   const imgUrl = bgImages[(post.id - 1) % bgImages.length];
 
   return (
     <article
-      ref={ref}
       className={`news-editorial-card reveal ${featured ? 'news-card-featured' : ''}`}
       data-delay={delay}
-      style={style}
-      onMouseMove={onMouseMove}
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
     >
-      {/* Dynamic Specular Glare */}
-      <div className="card-glare-sheen" style={glareStyle} aria-hidden="true" />
+      {/* Removed glare sheen */}
 
       {/* Slow Infinite Zoom Mask */}
       <div className="news-image-mask">
