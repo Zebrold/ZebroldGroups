@@ -144,7 +144,7 @@ export function generateNoReplyEmailHtml({
               ${actionUrl ? `
               <!-- CTA Button -->
               <div style="text-align:center; margin:28px 0 20px 0;">
-                <a href="${actionUrl}" style="display:inline-block; background-color:#792D32; color:#111827; font-size:13.5px; font-weight:700; text-decoration:none; padding:12px 26px; border-radius:6px; letter-spacing:0.5px;">
+                <a href="${actionUrl}" style="display:inline-block; background-color:#792D32; color:#FFFFFF; font-size:13.5px; font-weight:700; text-decoration:none; padding:12px 26px; border-radius:6px; letter-spacing:0.5px;">
                   ${actionText} &rarr;
                 </a>
               </div>
@@ -375,7 +375,7 @@ export function generateTalentEmailHtml({
 
               ${actionUrl ? `
               <div style="text-align:left; margin:28px 0;">
-                <a href="${actionUrl}" style="display:inline-block; background-color:#792D32; color:#111827; font-size:13.5px; font-weight:700; text-decoration:none; padding:12px 28px; border-radius:6px; letter-spacing:0.5px;">
+                <a href="${actionUrl}" style="display:inline-block; background-color:#792D32; color:#FFFFFF; font-size:13.5px; font-weight:700; text-decoration:none; padding:12px 28px; border-radius:6px; letter-spacing:0.5px;">
                   ${actionText} &rarr;
                 </a>
               </div>
@@ -491,7 +491,7 @@ export function generateInfoEmailHtml({
 
               ${actionUrl ? `
               <div style="margin:30px 0 24px 0; text-align:left;">
-                <a href="${actionUrl}" style="display:inline-block; background-color:#792D32; border:none; color:#111827; font-size:13.5px; font-weight:700; text-decoration:none; padding:12px 26px; border-radius:4px; letter-spacing:0.5px;">
+                <a href="${actionUrl}" style="display:inline-block; background-color:#792D32; border:none; color:#FFFFFF; font-size:13.5px; font-weight:700; text-decoration:none; padding:12px 26px; border-radius:4px; letter-spacing:0.5px;">
                   ${actionText} &rarr;
                 </a>
               </div>

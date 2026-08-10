@@ -404,7 +404,6 @@ const FAQ_ITEMS = [
    ═══════════════════════════════════════════ */
 function HomeLoader({ onComplete }) {
   const loaderRef = useRef(null);
-  const counterRef = useRef(null);
   useEffect(() => {
     const seen = localStorage.getItem('hasSeenLoader');
     const ts = parseInt(seen, 10);
@@ -418,19 +417,7 @@ function HomeLoader({ onComplete }) {
         onComplete();
       },
     });
-    /* Phase 1: Counter 0→100 */
-    const counter = { val: 0 };
-    tl.to(counter, {
-      val: 100,
-      duration: 1.6,
-      ease: 'power2.inOut',
-      onUpdate: () => {
-        if (counterRef.current) {
-          counterRef.current.textContent = Math.floor(counter.val) + '%';
-        }
-      },
-    });
-    /* Phase 2: Letters stagger in */
+    /* Phase 1: Letters stagger in */
     tl.fromTo(
       '.loader-letter',
       { y: '120%', opacity: 0, rotateX: -40 },
@@ -441,17 +428,11 @@ function HomeLoader({ onComplete }) {
         duration: 0.7,
         stagger: 0.06,
         ease: 'power4.out',
-      },
-      '-=0.5'
+        delay: 0.3,
+      }
     );
-    /* Phase 3: Pause + scale down + blur out */
+    /* Phase 2: Pause + scale down + blur out */
     tl.to({}, { duration: 0.4 })
-      .to('.loader-counter', {
-        opacity: 0,
-        y: -20,
-        duration: 0.3,
-        ease: 'power2.in',
-      })
       .to('.loader-letter', {
         scale: 1.3,
         letterSpacing: '0.2em',
@@ -460,12 +441,6 @@ function HomeLoader({ onComplete }) {
         ease: 'power2.in',
         stagger: 0.03,
       })
-      .to('.loader-progress-fill', {
-        scaleX: 0,
-        transformOrigin: 'right center',
-        duration: 0.4,
-        ease: 'power2.in',
-      }, '<')
       .to(loaderRef.current, {
         clipPath: 'inset(0% 0% 100% 0%)',
         duration: 0.7,
@@ -476,14 +451,10 @@ function HomeLoader({ onComplete }) {
   return (
     <div ref={loaderRef} className="home-loader">
       <div className="loader-container">
-        <div className="loader-counter" ref={counterRef}>0%</div>
         <div className="loader-letters">
           {BRAND_LETTERS.map((letter, i) => (
             <span key={i} className="loader-letter">{letter}</span>
           ))}
-        </div>
-        <div className="loader-progress">
-          <div className="loader-progress-fill" />
         </div>
       </div>
     </div>
