@@ -399,67 +399,7 @@ const FAQ_ITEMS = [
     a: 'Ja. Mit sechsundzwanzig Tochtergesellschaften in zwölf Sektoren bieten wir vielfältige Karrierewege in den Bereichen Ingenieurwesen, Finanzen, Technologie, Gesundheitswesen, Bildung und mehr. Jede Tochtergesellschaft leitet ihre eigene Rekrutierung, während die Gruppe übergreifende Mobilitätsprogramme für Talente koordiniert.',
   },
 ];
-/* ═══════════════════════════════════════════
-   LOADER COMPONENT
-   ═══════════════════════════════════════════ */
-function HomeLoader({ onComplete }) {
-  const loaderRef = useRef(null);
-  useEffect(() => {
-    const seen = localStorage.getItem('hasSeenLoader');
-    const ts = parseInt(seen, 10);
-    if (seen && (Date.now() - ts < 3600000)) {
-      onComplete();
-      return;
-    }
-    const tl = gsap.timeline({
-      onComplete: () => {
-        localStorage.setItem('hasSeenLoader', Date.now().toString());
-        onComplete();
-      },
-    });
-    /* Phase 1: Letters stagger in */
-    tl.fromTo(
-      '.loader-letter',
-      { y: '120%', opacity: 0, rotateX: -40 },
-      {
-        y: '0%',
-        opacity: 1,
-        rotateX: 0,
-        duration: 0.7,
-        stagger: 0.06,
-        ease: 'power4.out',
-        delay: 0.3,
-      }
-    );
-    /* Phase 2: Pause + scale down + blur out */
-    tl.to({}, { duration: 0.4 })
-      .to('.loader-letter', {
-        scale: 1.3,
-        letterSpacing: '0.2em',
-        opacity: 0,
-        duration: 0.5,
-        ease: 'power2.in',
-        stagger: 0.03,
-      })
-      .to(loaderRef.current, {
-        clipPath: 'inset(0% 0% 100% 0%)',
-        duration: 0.7,
-        ease: 'power3.inOut',
-      }, '-=0.2');
-    return () => tl.kill();
-  }, [onComplete]);
-  return (
-    <div ref={loaderRef} className="home-loader">
-      <div className="loader-container">
-        <div className="loader-letters">
-          {BRAND_LETTERS.map((letter, i) => (
-            <span key={i} className="loader-letter">{letter}</span>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
+
 /* ═══════════════════════════════════════════
    ANIMATED COUNTER COMPONENT
    ═══════════════════════════════════════════ */
@@ -542,7 +482,6 @@ function FaqItem({ question, answer, index }) {
    ═══════════════════════════════════════════ */
 export default function Home() {
   const { t, lang } = useLanguage();
-  const [loaderDone, setLoaderDone] = useState(false);
   const homeRef = useRef(null);
   const aboutSectionRef = useRef(null);
   const aboutTextRef = useRef(null);
@@ -612,7 +551,7 @@ export default function Home() {
      MASTER GSAP ANIMATION SETUP
      ════════════════════════════════════════ */
   useEffect(() => {
-    if (!loaderDone || !homeRef.current) return;
+    if (!homeRef.current) return;
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReduced) return;
     const ctx = gsap.context(() => {
@@ -843,13 +782,7 @@ export default function Home() {
       );
     }, homeRef);
     return () => ctx.revert();
-  }, [loaderDone]);
-
-  /* Callback for loader */
-  const handleLoaderComplete = useCallback(() => setLoaderDone(true), []);
-  if (!loaderDone) {
-    return <HomeLoader onComplete={handleLoaderComplete} />;
-  }
+  }, []);
 
   const schemaData = {
     "@context": "https://schema.org",
@@ -976,11 +909,11 @@ export default function Home() {
       <section className="what-we-do-section">
         <div className="padding-global padding-section-large">
           <div className="container-large">
-            {/* Giant Interlocking Typography "WE WHAT DO" */}
+            {/* Giant Interlocking Typography "WHAT WE DO" */}
             <div className="wwd-header">
               <div className="wwd-title-wrap">
-                <span className="wwd-word-we">WE</span>
                 <span className="wwd-word-what">WHAT</span>
+                <span className="wwd-word-we">WE</span>
                 <span className="wwd-word-do">DO</span>
               </div>
             </div>
