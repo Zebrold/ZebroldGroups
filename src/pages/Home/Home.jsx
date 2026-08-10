@@ -963,10 +963,10 @@ export default function Home() {
               <div className="hero-brand-letters">
                 {/* Floating Badges */}
                 <div className="hero-badges-wrapper">
-                  <div ref={badgeCreamRef} className="hero-badge hero-badge-cream">
+                  <div className="hero-badge hero-badge-cream">
                     {t('hero_badge_1')}
                   </div>
-                  <div ref={badgeBrownRef} className="hero-badge hero-badge-brown">
+                  <div className="hero-badge hero-badge-brown">
                     {t('hero_badge_2')}
                   </div>
                 </div>
