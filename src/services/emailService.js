@@ -8,7 +8,6 @@
 // Environment Keys (if configured)
 const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID || '';
 const EMAILJS_TEMPLATE_CONTACT = import.meta.env.VITE_EMAILJS_TEMPLATE_CONTACT || '';
-const EMAILJS_TEMPLATE_CAREER = import.meta.env.VITE_EMAILJS_TEMPLATE_CAREER || '';
 const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || '';
 
 export const ZEBROLD_LOGO_URL = 'https://www.zebrold.de/favicon.png';
@@ -27,6 +26,9 @@ export const MAILBOX_CONFIG = {
     badgeColor: '#792D32',
     headerTag: 'AUTOMATED TRANSACTIONAL DISPATCH — DO NOT REPLY',
     defaultSubject: 'Zebrold System Notification',
+    emailJsServiceId: import.meta.env.VITE_EMAILJS_SERVICE_ID_NOREPLY || import.meta.env.VITE_EMAILJS_SERVICE_ID || '',
+    emailJsTemplateId: import.meta.env.VITE_EMAILJS_TEMPLATE_NOREPLY || import.meta.env.VITE_EMAILJS_TEMPLATE_CONTACT || '',
+    emailJsPublicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY_NOREPLY || import.meta.env.VITE_EMAILJS_PUBLIC_KEY || '',
   },
   'talent.acquisition@zebrold.de': {
     id: 'talent',
@@ -37,6 +39,9 @@ export const MAILBOX_CONFIG = {
     badgeColor: '#792D32',
     headerTag: 'TALENT ACQUISITION & RECRUITMENT OPERATIONS',
     defaultSubject: 'Application Update — Zebrold Group',
+    emailJsServiceId: import.meta.env.VITE_EMAILJS_SERVICE_ID_TALENT || import.meta.env.VITE_EMAILJS_SERVICE_ID || '',
+    emailJsTemplateId: import.meta.env.VITE_EMAILJS_TEMPLATE_TALENT || import.meta.env.VITE_EMAILJS_TEMPLATE_CONTACT || '',
+    emailJsPublicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY_TALENT || import.meta.env.VITE_EMAILJS_PUBLIC_KEY || '',
   },
   'info@zebrold.de': {
     id: 'info',
@@ -47,6 +52,9 @@ export const MAILBOX_CONFIG = {
     badgeColor: '#792D32',
     headerTag: 'OFFICIAL CORPORATE COMMUNIQUÉ',
     defaultSubject: 'Official Communication from Zebrold Group',
+    emailJsServiceId: import.meta.env.VITE_EMAILJS_SERVICE_ID_INFO || import.meta.env.VITE_EMAILJS_SERVICE_ID || '',
+    emailJsTemplateId: import.meta.env.VITE_EMAILJS_TEMPLATE_INFO || import.meta.env.VITE_EMAILJS_TEMPLATE_CONTACT || '',
+    emailJsPublicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY_INFO || import.meta.env.VITE_EMAILJS_PUBLIC_KEY || '',
   }
 };
 
@@ -465,17 +473,6 @@ export function generateInfoEmailHtml({
             </td>
           </tr>
 
-          <!-- Memo Header Fields -->
-          <tr>
-            <td style="padding:24px 40px 16px 40px; background-color:#F9FAFB; border-bottom:1px solid rgba(0,0,0,0.06);">
-              <table width="100%" border="0" cellspacing="0" cellpadding="4">
-                <tr>
-                  <td width="20%" style="font-family:monospace; font-size:11px; font-weight:700; color:#6B7280; text-transform:uppercase;">SUBJECT:</td>
-                  <td style="font-size:13px; font-weight:700; color:#111827;">${subject}</td>
-                </tr>
-              </table>
-            </td>
-          </tr>
 
           <!-- Letter Body -->
           <tr>
@@ -595,17 +592,21 @@ export function clearSentEmailLogs() {
 async function sendPayloadViaEndpoints({ fromAddress, fromName, toEmail, toName, subject, htmlContent, plainText, extraData = {} }) {
   let deliveryResult = { success: false, provider: 'Simulated', message: '' };
 
+  const mailbox = MAILBOX_CONFIG[fromAddress] || MAILBOX_CONFIG['no-reply@zebrold.de'];
+  const serviceId = mailbox.emailJsServiceId;
+  const templateId = mailbox.emailJsTemplateId;
+  const publicKey = mailbox.emailJsPublicKey;
+
   // 1. Try EmailJS if keys are available
-  if (EMAILJS_SERVICE_ID && EMAILJS_PUBLIC_KEY) {
+  if (serviceId && publicKey) {
     try {
-      const templateId = EMAILJS_TEMPLATE_CONTACT || EMAILJS_TEMPLATE_CAREER;
       const res = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          service_id: EMAILJS_SERVICE_ID,
+          service_id: serviceId,
           template_id: templateId,
-          user_id: EMAILJS_PUBLIC_KEY,
+          user_id: publicKey,
           template_params: {
             from_name: fromName,
             from_email: fromAddress,
