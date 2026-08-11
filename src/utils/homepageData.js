@@ -108,7 +108,7 @@ export { DOMAINS_DEFAULTS };
    STATS  (3 items)
    ══════════════════════════════════════════════════════ */
 const STATS_DEFAULTS = [
-  { value: 2.1, prefix: '€', suffix: ' Mrd.', label_de: 'Umsatz der Tochtergesellschaften', label_en: 'Subsidiary Revenue' },
+  { value: 216, prefix: '€', suffix: ' Mio.', label_de: 'Umsatz der Tochtergesellschaften', label_en: 'Subsidiary Revenue' },
   { value: 26, prefix: '', suffix: '', label_de: 'Unternehmen in unserem Portfolio', label_en: 'Companies in Our Portfolio' },
   { value: 40, prefix: '+', suffix: '%', label_de: 'Wachstum gegenüber dem Vorjahr in Schlüsselsektoren', label_en: 'Year-over-Year Growth in Key Sectors' },
 ];

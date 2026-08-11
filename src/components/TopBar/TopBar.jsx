@@ -3,7 +3,7 @@ import './TopBar.css';
 
 const stockData = [
   { label: 'EUR/INR', value: '₹90.32', change: '-0.15%', up: false },
-  { label: 'FY25 Revenue', value: 'EUR 2.1B', change: '+4.2%', up: true },
+  { label: 'FY25 Revenue', value: 'EUR 216M', change: '+4.2%', up: true },
 ];
 
 export default function TopBar() {

@@ -2025,7 +2025,7 @@ function ApplicationsModule({ onSave }) {
    ═══════════════════════════════════════════════════════════ */
 function AnnouncementModule({ onSave }) {
   const [form, setForm] = useState(() => loadFromStorage('zebrold_announcement', {
-    text: 'Zebrold Group FY 2025–26 Annual Report now available — EUR 2.1B Revenue · 14% YoY Growth',
+    text: 'Zebrold Group FY 2025–26 Annual Report now available — EUR 216M Revenue · 14% YoY Growth',
     color: 'blue',
     visible: true,
   }));
@@ -2101,7 +2101,7 @@ function AnnouncementModule({ onSave }) {
 function HeroBannerModule({ onSave }) {
   const [form, setForm] = useState(() => loadFromStorage('zebrold_hero', {
     headline: 'Building Industries.\nDefining Futures.',
-    subline: 'EUR 2.1 Billion · 26 Companies · 12 Sectors · Frankfurt, Germany',
+    subline: 'EUR 216 Million · 26 Companies · 12 Sectors · Frankfurt, Germany',
     ctaLabel: 'Explore the Group →',
     ctaUrl: '/about',
     imagePreview: null,

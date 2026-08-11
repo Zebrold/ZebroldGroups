@@ -352,7 +352,7 @@ const DOMAINS_LIST = [
   },
 ];
 const STATS = [
-  { value: 2.1, prefix: '€', suffix: ' Mrd.', label: 'Umsatz der Tochtergesellschaften' },
+  { value: 216, prefix: '€', suffix: ' Mio.', label: 'Umsatz der Tochtergesellschaften' },
   { value: 26, prefix: '', suffix: '', label: 'Unternehmen in unserem Portfolio' },
   { value: 40, prefix: '+', suffix: '%', label: 'Wachstum gegenüber dem Vorjahr in Schlüsselsektoren' },
 ];
@@ -837,7 +837,7 @@ export default function Home() {
     <div className="home-page" ref={homeRef}>
       <SEO 
         title="Zebrold International Holdings Limited (Zebrold IHL) — Global Conglomerate"
-        description="Official portal of Zebrold International Holdings Limited (Zebrold IHL). A globally diversified German conglomerate headquartered in Frankfurt am Main with EUR 2.1B revenue and 26 subsidiaries across 12 sectors."
+        description="Official portal of Zebrold International Holdings Limited (Zebrold IHL). A globally diversified German conglomerate headquartered in Frankfurt am Main with EUR 216M revenue and 26 subsidiaries across 12 sectors."
         keywords="Zebrold, Zebrold IHL, Zebrold International Holdings Limited, Zebrold Group, Zebrold Holdings, ZIHL, Frankfurt conglomerate, German conglomerate, EV charging, semiconductors, finance, healthcare, industrial engineering"
         url="/"
         schemaData={schemaData}

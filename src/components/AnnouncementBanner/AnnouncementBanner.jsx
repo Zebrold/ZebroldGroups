@@ -22,7 +22,7 @@ export default function AnnouncementBanner() {
       }
     } else {
       setContent({
-        text: 'Zebrold Group FY 2025–26 Annual Report now available — EUR 2.1B Revenue · 14% YoY Growth',
+        text: 'Zebrold Group FY 2025–26 Annual Report now available — EUR 216M Revenue · 14% YoY Growth',
         color: 'blue',
         visible: true,
       });

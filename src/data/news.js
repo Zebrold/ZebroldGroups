@@ -25,7 +25,7 @@ export const news = [
   },
   {
     id: 4,
-    title: "Zebrold Group Reports EUR 2.1B Revenue for FY 2025–26",
+    title: "Zebrold Group Reports EUR 216M Revenue for FY 2025–26",
     date: "2026-04-15",
     sector: "Group Announcement",
     excerpt: "The Group's annual results reflect a 14% year-on-year revenue growth, underpinned by strong performances in Finance, Technology, and Industrial divisions.",
@@ -51,7 +51,7 @@ export const news = [
 
 export const announcement = {
   id: "main-announcement",
-  text: "Zebrold Group FY 2025–26 Annual Report now available — EUR 2.1B Revenue · 14% YoY Growth",
+  text: "Zebrold Group FY 2025–26 Annual Report now available — EUR 216M Revenue · 14% YoY Growth",
   visible: true,
   color: "blue",
 };

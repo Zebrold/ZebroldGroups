@@ -9,7 +9,7 @@ export const DEFAULT_JOBS = [
     type: "Full-Time",
     experience: "5+ Years",
     status: "Active",
-    description: "Lead capital allocation models and portfolio performance evaluation across Zebrold Group's EUR 2.1B subsidiary network. Work closely with executive leadership on industrial growth mandates.",
+    description: "Lead capital allocation models and portfolio performance evaluation across Zebrold Group's EUR 216M subsidiary network. Work closely with executive leadership on industrial growth mandates.",
     requirements: [
       "Master's degree in Finance, Economics, or Quantitative discipline",
       "5+ years experience in Private Equity, Investment Banking, or Corporate M&A",
