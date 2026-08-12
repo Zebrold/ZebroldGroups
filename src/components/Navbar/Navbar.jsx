@@ -43,7 +43,7 @@ export default function Navbar() {
   const { t } = useLanguage();
 
   const navLinks = [
-    { label: t('nav_business'), path: '/sectors', hasDropdown: true },
+    { label: t('nav_business'), path: '/Aman', hasDropdown: true },
     { label: t('nav_portfolio'), path: '/subsidiaries', hasDropdown: true },
     { label: t('nav_about'), path: '/about', hasDropdown: false },
     { label: t('nav_news'), path: '/news', hasDropdown: false },
