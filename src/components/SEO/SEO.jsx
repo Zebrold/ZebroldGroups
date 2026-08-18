@@ -61,7 +61,7 @@ function setStructuredData(schemaData) {
 }
 
 export default function SEO({
-  title = 'Zebrold International Holdings Limited (Zebrold IHL) — Global Conglomerate',
+  title = 'Zebrold International Holdings Limited (Zebrold IHL)',
   description = 'Official portal of Zebrold International Holdings Limited (Zebrold IHL) — A globally diversified German conglomerate headquartered in Frankfurt am Main.',
   keywords = DEFAULT_KEYWORDS,
   name = 'Zebrold International Holdings Limited (Zebrold IHL)',

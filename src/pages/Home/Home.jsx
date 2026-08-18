@@ -836,7 +836,7 @@ export default function Home() {
   return (
     <div className="home-page" ref={homeRef}>
       <SEO 
-        title="Zebrold International Holdings Limited (Zebrold IHL) — Global Conglomerate"
+        title="Zebrold International Holdings Limited (Zebrold IHL)"
         description="Official portal of Zebrold International Holdings Limited (Zebrold IHL). A globally diversified German conglomerate headquartered in Frankfurt am Main with EUR 216M revenue and 26 subsidiaries across 12 sectors."
         keywords="Zebrold, Zebrold IHL, Zebrold International Holdings Limited, Zebrold Group, Zebrold Holdings, ZIHL, Frankfurt conglomerate, German conglomerate, EV charging, semiconductors, finance, healthcare, industrial engineering"
         url="/"
