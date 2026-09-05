@@ -5,16 +5,17 @@ import { useLanguage } from '../../context/LanguageContext';
 import { getStoredJobs, addApplication } from '../../data/careersData';
 import Toast from '../../components/Toast/Toast';
 import SEO from '../../components/SEO/SEO';
+import leadershipTeamImg from '../../assets/leadership_team_zebrold.jpg';
+import industrialSectorImg from '../../assets/industrial_sector.png';
+import techSectorImg from '../../assets/tech_sector.png';
+import financeSectorImg from '../../assets/finance_sector.png';
+import healthcareSectorImg from '../../assets/healthcare_sector.png';
 import './Careers.css';
 
 export default function Careers() {
   const { t, lang } = useLanguage();
   const [jobs, setJobs] = useState([]);
-  const [searchTerm, setSearchTerm] = useState('');
-  const [selectedDept, setSelectedDept] = useState('All');
-  const [selectedLoc, setSelectedLoc] = useState('All');
-  const [expandedJobId, setExpandedJobId] = useState(null);
-  
+
   // Application modal state
   const [activeJobForApp, setActiveJobForApp] = useState(null);
   const [form, setForm] = useState({
@@ -32,23 +33,6 @@ export default function Careers() {
   useEffect(() => {
     setJobs(getStoredJobs().filter(j => j.status === 'Active' || !j.status));
   }, []);
-
-  // Filter options
-  const departments = ['All', ...new Set(jobs.map(j => j.department))];
-  const locations = ['All', ...new Set(jobs.map(j => j.location))];
-
-  const filteredJobs = jobs.filter(job => {
-    const matchSearch =
-      job.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      job.department.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      job.location.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      job.description.toLowerCase().includes(searchTerm.toLowerCase());
-    
-    const matchDept = selectedDept === 'All' || job.department === selectedDept;
-    const matchLoc = selectedLoc === 'All' || job.location === selectedLoc;
-
-    return matchSearch && matchDept && matchLoc;
-  });
 
   // Handle File Upload & Base64 conversion
   const handleFile = (file) => {
@@ -132,6 +116,93 @@ export default function Careers() {
     }, 600);
   };
 
+  /* ── "Grow as a person and a professional" cards ──
+     Placeholder culture/benefits copy — replace with real HR-sourced
+     content before launch (flagged in the task summary). */
+  const growCards = [
+    {
+      id: 'jumpstart',
+      icon: (
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" />
+          <path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" />
+          <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0" />
+          <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" />
+        </svg>
+      ),
+      title: lang === 'en' ? 'Jumpstart your future' : 'Starten Sie Ihre Zukunft',
+      desc: lang === 'en'
+        ? 'Internship and graduate programs that turn ambitious engineers and analysts into industry leaders.'
+        : 'Praktikums- und Traineeprogramme, die ambitionierte Ingenieure und Analysten zu Branchenführern machen.',
+    },
+    {
+      id: 'fuel',
+      icon: (
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+          <polyline points="17 6 23 6 23 12" />
+        </svg>
+      ),
+      title: lang === 'en' ? 'Fuel your career' : 'Treiben Sie Ihre Karriere voran',
+      desc: lang === 'en'
+        ? 'Structured mentoring, hands-on project ownership, and continuous technical training keep your skills sharp.'
+        : 'Strukturiertes Mentoring, eigenverantwortliche Projekte und kontinuierliche fachliche Weiterbildung halten Ihre Fähigkeiten scharf.',
+    },
+    {
+      id: 'live-well',
+      icon: (
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+        </svg>
+      ),
+      title: lang === 'en' ? 'Live well, do good' : 'Gut leben, Gutes tun',
+      desc: lang === 'en'
+        ? 'Flexible working arrangements, wellbeing support, and the chance to work on technology that matters.'
+        : 'Flexible Arbeitsmodelle, Unterstützung für Ihr Wohlbefinden und die Möglichkeit, an Technologie zu arbeiten, die wirklich zählt.',
+    },
+  ];
+
+  /* ── "Featured Opportunities" — real departments pulled from careersData.js,
+     using existing sector photography already licensed/used elsewhere on the site. */
+  const featuredDepartments = [
+    {
+      id: 'engineering-cleantech',
+      dept: 'Engineering & CleanTech',
+      title: lang === 'en' ? 'Engineering & CleanTech' : 'Engineering & CleanTech',
+      desc: lang === 'en'
+        ? 'Architect next-generation energy systems and industrial hardware for our manufacturing network.'
+        : 'Entwickeln Sie Energiesysteme und Industriehardware der nächsten Generation für unser Fertigungsnetzwerk.',
+      image: industrialSectorImg,
+    },
+    {
+      id: 'software-ai',
+      dept: 'Software & AI',
+      title: lang === 'en' ? 'Software & AI' : 'Software & KI',
+      desc: lang === 'en'
+        ? 'Build the platforms, data pipelines, and intelligent systems behind our industrial operations.'
+        : 'Entwickeln Sie die Plattformen, Datenpipelines und intelligenten Systeme hinter unserem industriellen Betrieb.',
+      image: techSectorImg,
+    },
+    {
+      id: 'investment-finance',
+      dept: 'Investment & Finance',
+      title: lang === 'en' ? 'Investment & Finance' : 'Investment & Finanzen',
+      desc: lang === 'en'
+        ? 'Shape capital strategy and portfolio performance across a EUR 216M subsidiary network.'
+        : 'Gestalten Sie Kapitalstrategie und Portfolioleistung in einem Tochtergesellschafts-Netzwerk von 216 Mio. EUR.',
+      image: financeSectorImg,
+    },
+    {
+      id: 'healthcare-medtech',
+      dept: 'Healthcare & MedTech',
+      title: lang === 'en' ? 'Healthcare & MedTech' : 'Healthcare & MedTech',
+      desc: lang === 'en'
+        ? 'Drive technology partnerships that bring medical innovation from lab to market.'
+        : 'Treiben Sie Technologiepartnerschaften voran, die medizinische Innovation vom Labor zur Marktreife bringen.',
+      image: healthcareSectorImg,
+    },
+  ];
+
   const careersSchema = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
@@ -174,9 +245,17 @@ export default function Careers() {
         url="/careers"
         schemaData={careersSchema}
       />
-      {/* Hero Banner — Home Theme */}
-      <section className="careers-hero">
-        <div className="padding-global">
+      {/* Hero Banner — flat solid maroon overlay (::before) over image, no gradients */}
+      <section
+        className="careers-hero"
+        style={{
+          backgroundImage: `url(${leadershipTeamImg})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center 30%',
+        }}
+      >
+        <div className="careers-hero-overlay" aria-hidden="true" />
+        <div className="padding-global careers-hero-content">
           <div className="container-large">
             <motion.div
               className="careers-hero-inner"
@@ -191,162 +270,198 @@ export default function Careers() {
               <h1 className="careers-hero-title">{t('careers_hero_title')}</h1>
               <p className="careers-hero-sub">{t('careers_hero_subtitle')}</p>
 
-              {/* General Spontaneous Application CTA */}
-              <div className="careers-spontaneous-bar">
-                <div className="spontaneous-info">
-                  <span className="spontaneous-tag">{lang === 'en' ? 'OPEN TALENT NETWORK' : 'TALENT NETWORK'}</span>
-                  <p>{lang === 'en' ? 'Don’t see your exact role? Submit a spontaneous CV application to our executive team.' : 'Keine passende Stelle gefunden? Reichen Sie eine Initiativbewerbung ein.'}</p>
-                </div>
-                <button
-                  className="btn-wine-pill"
-                  onClick={() => setActiveJobForApp({ id: 'spontaneous', title: lang === 'en' ? 'Spontaneous Application' : 'Initiativbewerbung' })}
-                >
-                  {lang === 'en' ? 'Upload CV directly →' : 'CV direkt hochladen →'}
-                </button>
+              {/* CTA — navigates to the dedicated Open Positions page (existing route, unchanged) */}
+              <div className="careers-toggle-row">
+                <Link to="/careers/open-positions" className="btn-wine-pill careers-toggle-btn">
+                  {lang === 'en' ? 'View Open Positions →' : 'Offene Stellen ansehen →'}
+                </Link>
               </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Job Search & Listings Section */}
-      <section className="careers-listings-section" id="open-positions">
+      {/* ═══════ SECONDARY CTA — Oracle-style "video thumbnail" row, flat white card overlapping the hero ═══════ */}
+      <section className="careers-subcta-section">
         <div className="padding-global">
           <div className="container-large">
-            <div className="careers-section-header">
-              <div>
-                <span className="careers-section-caption">
-                  {lang === 'en' ? 'Current Opportunities' : 'Aktuelle Stellenangebote'}
-                </span>
-                <h2 className="careers-section-h2">
-                  {lang === 'en' ? 'Explore Open Positions' : 'Offene Positionen erkunden'}
-                </h2>
+            <motion.div
+              className="careers-subcta-card"
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6 }}
+            >
+              <div className="careers-subcta-text">
+                <h3 className="careers-subcta-title">
+                  {lang === 'en' ? 'Transform the world for the better' : 'Verändern Sie die Welt zum Besseren'}
+                </h3>
+                <p className="careers-subcta-desc">
+                  {lang === 'en'
+                    ? 'See how our people are engineering the vehicles, aircraft systems, and medical robotics that shape a better shared future.'
+                    : 'Erfahren Sie, wie unsere Mitarbeitenden an Fahrzeugen, Luftfahrtsystemen und Medizinrobotik arbeiten, die eine bessere gemeinsame Zukunft gestalten.'}
+                </p>
               </div>
-              <div className="careers-count-badge">
-                {filteredJobs.length} {filteredJobs.length === 1 ? (lang === 'en' ? 'Position' : 'Stelle') : (lang === 'en' ? 'Positions' : 'Stellen')}
-              </div>
-            </div>
+              <Link to="/careers/open-positions" className="btn-wine-pill careers-subcta-btn">
+                {lang === 'en' ? 'Search for jobs →' : 'Stellen durchsuchen →'}
+              </Link>
+            </motion.div>
+          </div>
+        </div>
+      </section>
 
-            {/* Controls Bar */}
-            <div className="careers-filter-bar">
-              <div className="careers-search-box">
-                <span className="search-icon">🔍</span>
-                <input
-                  type="text"
-                  placeholder={t('careers_search_placeholder')}
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  className="careers-search-input"
-                />
-                {searchTerm && (
-                  <button className="search-clear-btn" onClick={() => setSearchTerm('')}>✕</button>
-                )}
-              </div>
+      {/* ═══════ GROW AS A PERSON AND A PROFESSIONAL ═══════ */}
+      <section className="careers-grow-section">
+        <div className="padding-global padding-section-large">
+          <div className="container-large">
+            <motion.div
+              className="heading-wrapper is-center"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6 }}
+            >
+              <span className="caption">{lang === 'en' ? 'GROWTH & DEVELOPMENT' : 'WACHSTUM & ENTWICKLUNG'}</span>
+              <h2 className="heading-style-h2 careers-section-title">
+                {lang === 'en' ? 'Grow as a person and a professional' : 'Wachsen Sie als Mensch und als Fachkraft'}
+              </h2>
+              <p className="careers-section-intro">
+                {lang === 'en'
+                  ? 'Wherever you want to take your career, we’ll help you build the skills and momentum to get there.'
+                  : 'Wohin auch immer Sie Ihre Karriere führen wollen — wir helfen Ihnen, die Fähigkeiten und den Antrieb dafür aufzubauen.'}
+              </p>
+            </motion.div>
 
-              <div className="careers-select-row">
-                <div className="careers-select-wrap">
-                  <label htmlFor="dept-filter" className="sr-only">Department</label>
-                  <select
-                    id="dept-filter"
-                    className="careers-select"
-                    value={selectedDept}
-                    onChange={(e) => setSelectedDept(e.target.value)}
-                  >
-                    <option value="All">{t('careers_all_departments')}</option>
-                    {departments.filter(d => d !== 'All').map(d => (
-                      <option key={d} value={d}>{d}</option>
-                    ))}
-                  </select>
-                </div>
-
-                <div className="careers-select-wrap">
-                  <label htmlFor="loc-filter" className="sr-only">Location</label>
-                  <select
-                    id="loc-filter"
-                    className="careers-select"
-                    value={selectedLoc}
-                    onChange={(e) => setSelectedLoc(e.target.value)}
-                  >
-                    <option value="All">{t('careers_all_locations')}</option>
-                    {locations.filter(l => l !== 'All').map(l => (
-                      <option key={l} value={l}>{l}</option>
-                    ))}
-                  </select>
-                </div>
-              </div>
-            </div>
-
-            {/* Jobs List Grid */}
-            {filteredJobs.length === 0 ? (
-              <div className="careers-empty-state">
-                <p>{lang === 'en' ? 'No job openings match your filter criteria.' : 'Keine Stellenangebote entsprechen Ihren Kriterien.'}</p>
-                <button
-                  className="btn-wine-pill"
-                  onClick={() => { setSearchTerm(''); setSelectedDept('All'); setSelectedLoc('All'); }}
+            <div className="grow-card-grid">
+              {growCards.map((card, i) => (
+                <motion.div
+                  key={card.id}
+                  className="grow-card"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.5, delay: i * 0.1 }}
                 >
-                  {lang === 'en' ? 'Reset Filters' : 'Filter zurücksetzen'}
+                  <div className="grow-card-icon">{card.icon}</div>
+                  <h3 className="grow-card-title">{card.title}</h3>
+                  <p className="grow-card-desc">{card.desc}</p>
+                  <Link to="/careers/open-positions" className="grow-card-link">
+                    {lang === 'en' ? 'Learn more →' : 'Mehr erfahren →'}
+                  </Link>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════ FEATURED OPPORTUNITIES ═══════ */}
+      <section className="careers-opportunities-section">
+        <div className="padding-global padding-section-large">
+          <div className="container-large">
+            <motion.div
+              className="heading-wrapper is-center"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6 }}
+            >
+              <span className="caption">{lang === 'en' ? 'FEATURED OPPORTUNITIES' : 'AUSGEWÄHLTE POSITIONEN'}</span>
+              <h2 className="heading-style-h2 careers-section-title">
+                {lang === 'en' ? 'Explore our core teams' : 'Entdecken Sie unsere Kernteams'}
+              </h2>
+              <p className="careers-section-intro">
+                {lang === 'en'
+                  ? 'Opportunities across the engineering and business functions that power Zebrold Group.'
+                  : 'Positionen in den technischen und geschäftlichen Bereichen, die die Zebrold Group antreiben.'}
+              </p>
+            </motion.div>
+
+            <div className="opportunity-card-grid">
+              {featuredDepartments.map((dept, i) => (
+                <motion.div
+                  key={dept.id}
+                  className="opportunity-card"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.5, delay: i * 0.08 }}
+                >
+                  <div
+                    className="opportunity-card-image"
+                    style={{ backgroundImage: `url(${dept.image})` }}
+                    role="img"
+                    aria-label={dept.dept}
+                  />
+                  <div className="opportunity-card-body">
+                    <h3 className="opportunity-card-title">{dept.title}</h3>
+                    <p className="opportunity-card-desc">{dept.desc}</p>
+                    <Link to="/careers/open-positions" className="opportunity-card-link">
+                      {lang === 'en' ? 'Apply now →' : 'Jetzt bewerben →'}
+                    </Link>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════ EMPLOYER OF CHOICE ═══════ */}
+      <section className="careers-employer-section">
+        <div className="padding-global padding-section-small">
+          <div className="container-medium">
+            <motion.div
+              className="careers-employer-inner"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6 }}
+            >
+              <h2 className="careers-employer-title">
+                {lang === 'en' ? 'Employer of choice' : 'Bevorzugter Arbeitgeber'}
+                <span className="careers-employer-underline" aria-hidden="true" />
+              </h2>
+              <p className="careers-employer-desc">
+                {lang === 'en'
+                  ? "We listen to what all our people have to say. It's what makes us a great place to work."
+                  : 'Wir hören zu, was alle unsere Mitarbeitenden zu sagen haben. Das macht uns zu einem großartigen Arbeitgeber.'}
+              </p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════ CLOSING CTA BAND ═══════ */}
+      <section className="careers-cta-band">
+        <div className="padding-global">
+          <div className="container-large">
+            <motion.div
+              className="careers-cta-band-inner"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6 }}
+            >
+              <h2 className="careers-cta-band-title">{lang === 'en' ? 'Apply today' : 'Jetzt bewerben'}</h2>
+              <p className="careers-cta-band-sub">
+                {lang === 'en'
+                  ? 'Explore open roles and find the future of your career.'
+                  : 'Entdecken Sie offene Stellen und finden Sie die Zukunft Ihrer Karriere.'}
+              </p>
+              <div className="careers-cta-band-actions">
+                <Link to="/careers/open-positions" className="btn-wine-pill careers-toggle-btn">
+                  {lang === 'en' ? 'View Open Positions →' : 'Offene Stellen ansehen →'}
+                </Link>
+                <button
+                  type="button"
+                  className="btn-wine-outline"
+                  onClick={() => setActiveJobForApp({ id: 'spontaneous', title: lang === 'en' ? 'Spontaneous Application' : 'Initiativbewerbung' })}
+                >
+                  {lang === 'en' ? 'Join our talent network' : 'Unserem Talentnetzwerk beitreten'}
                 </button>
               </div>
-            ) : (
-              <div className="careers-job-grid">
-                {filteredJobs.map((job) => {
-                  const isExpanded = expandedJobId === job.id;
-                  return (
-                    <motion.div
-                      key={job.id}
-                      className={`careers-job-card ${isExpanded ? 'is-expanded' : ''}`}
-                      layout
-                    >
-                      <div className="job-card-top">
-                        <div className="job-card-meta">
-                          <span className="job-dept-pill">{job.department}</span>
-                          <span className="job-type-pill">{job.type}</span>
-                          <span className="job-exp-pill">{job.experience}</span>
-                        </div>
-                        <span className="job-location-text">{job.location}</span>
-                      </div>
-
-                      <h3 className="job-card-title">{job.title}</h3>
-                      <p className="job-card-desc">{job.description}</p>
-
-                      <AnimatePresence>
-                        {isExpanded && (
-                          <motion.div
-                            className="job-card-expanded-body"
-                            initial={{ opacity: 0, height: 0 }}
-                            animate={{ opacity: 1, height: 'auto' }}
-                            exit={{ opacity: 0, height: 0 }}
-                            transition={{ duration: 0.3 }}
-                          >
-                            <h4 className="expanded-heading">{lang === 'en' ? 'Requirements & Qualifications:' : 'Anforderungen & Qualifikationen:'}</h4>
-                            <ul className="expanded-req-list">
-                              {job.requirements.map((req, idx) => (
-                                <li key={idx}>✓ {req}</li>
-                              ))}
-                            </ul>
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
-
-                      <div className="job-card-actions">
-                        <button
-                          className="btn-link-details"
-                          onClick={() => setExpandedJobId(isExpanded ? null : job.id)}
-                        >
-                          {isExpanded ? (lang === 'en' ? 'Hide Details ▲' : 'Details verbergen ▲') : (lang === 'en' ? 'View Requirements ▼' : 'Anforderungen anzeigen ▼')}
-                        </button>
-                        <Link
-                          className="btn-wine-pill"
-                          to={`/careers/${job.id}`}
-                        >
-                          {t('careers_apply_now')} →
-                        </Link>
-                      </div>
-                    </motion.div>
-                  );
-                })}
-              </div>
-            )}
+            </motion.div>
           </div>
         </div>
       </section>

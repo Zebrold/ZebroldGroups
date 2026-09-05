@@ -4,11 +4,17 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useLanguage } from '../../context/LanguageContext';
-import { getExpertise, getStats, getDomains, getFaq, getNewsSection, getAboutScroll, getCta, getSectionOrder, getTicker, getWhatWeDo } from '../../utils/homepageData';
+import { getExpertise, getStats, getDomains, getNewsSection, getAboutScroll, getCta, getSectionOrder, getTicker } from '../../utils/homepageData';
 import { sendContactEmail } from '../../services/emailService';
 import SEO from '../../components/SEO/SEO';
+import SalesProposalExperience from '../../components/SalesProposalExperience/SalesProposalExperience';
+import IndustryProposals from '../../components/IndustryProposals/IndustryProposals';
+import ManufacturingSection from '../../components/ManufacturingSection/ManufacturingSection';
 import './Home.css';
+
+import companiesManufacturedForImg from '../../assets/companies_manufactured_for.jpg';
 import heroBg1 from '../../assets/hero_bg_meridian.png';
+import heroSection1Img from '../../assets/hero_section1_vr.jpg';
 import heroBg2 from '../../assets/hero_bg_northvolt.png';
 import heroBg3 from '../../assets/hero_bg_everstone.png';
 import evSectorImg from '../../assets/ev_sector.png';
@@ -28,92 +34,6 @@ import instructisLogo from '../../assets/instructis_logo.png';
 import leadershipTeamImg from '../../assets/leadership_team_zebrold.jpg';
 gsap.registerPlugin(ScrollTrigger);
 /* ── Data ── */
-const BRAND_LETTERS = ['Z', 'E', 'B', 'R', 'O', 'L', 'D'];
-const WWD_ITEMS_EN = [
-  {
-    col: 1,
-    items: [
-      { title: 'EV CHARGING & BATTERIES', path: '/sectors/ev-charging-battery' },
-      { title: 'SEMICONDUCTOR MANUFACTURING', path: '/sectors/semiconductors' },
-      { title: 'AUTOMOTIVE MANUFACTURING', path: '/sectors/car-manufacturing' },
-      { title: 'PRECISION ENGINEERING', path: '/sectors/industrial-engineering' },
-      { title: 'CLEAN ENERGY GRIDS', path: '/sectors/ev-charging-battery' },
-    ],
-  },
-  {
-    col: 2,
-    items: [
-      { title: 'HEALTHCARE & PHARMA', path: '/sectors/healthcare-pharma' },
-      { title: 'DIGITAL EDUCATION PLATFORMS', path: '/sectors/education' },
-      { title: 'MEDICAL TECHNOLOGY', path: '/sectors/healthcare-pharma' },
-      { title: 'INSTITUTIONAL GOVERNANCE', path: '/sectors' },
-      { title: 'HUMAN CAPITAL DEVELOPMENT', path: '/sectors/education' },
-    ],
-  },
-  {
-    col: 3,
-    items: [
-      { title: 'TECHNOLOGY & IT SYSTEMS', path: '/sectors/technology-it' },
-      { title: 'LOGISTICS & SUPPLY CHAIN', path: '/sectors/logistics-supply-chain' },
-      { title: 'RETAIL & CONSUMER GOODS', path: '/sectors/retail-consumer' },
-      { title: 'CLOUD & DIGITAL INFRASTRUCTURE', path: '/sectors/technology-it' },
-      { title: 'GLOBAL DISTRIBUTION NETWORKS', path: '/sectors/logistics-supply-chain' },
-    ],
-  },
-  {
-    col: 4,
-    items: [
-      { title: 'INDUSTRIAL & HEAVY ENGINEERING', path: '/sectors/industrial-engineering' },
-      { title: 'FINANCIAL CAPITAL & INVESTMENTS', path: '/sectors/finance-investment' },
-      { title: 'MEDIA & ENTERTAINMENT', path: '/sectors/media-entertainment' },
-      { title: 'ASSET ALLOCATION & M&A', path: '/sectors/finance-investment' },
-      { title: 'STRATEGISCHE TRANSFORMATION', path: '/sectors' },
-    ],
-  },
-];
-
-const WWD_ITEMS_DE = [
-  {
-    col: 1,
-    items: [
-      { title: 'EV-LADE- & BATTERIESYSTEME', path: '/sectors/ev-charging-battery' },
-      { title: 'HALBLEITERFERTIGUNG', path: '/sectors/semiconductors' },
-      { title: 'AUTOMOBILBAU & FAHRZEUGE', path: '/sectors/car-manufacturing' },
-      { title: 'PRÄZISIONSTECHNIK', path: '/sectors/industrial-engineering' },
-      { title: 'SAUBERE ENERGIEINFRASTRUKTUR', path: '/sectors/ev-charging-battery' },
-    ],
-  },
-  {
-    col: 2,
-    items: [
-      { title: 'GESUNDHEITSWESEN & PHARMA', path: '/sectors/healthcare-pharma' },
-      { title: 'DIGITALE BILDUNGSPLATTFORMEN', path: '/sectors/education' },
-      { title: 'MEDIZINTECHNIK & LIFE SCIENCES', path: '/sectors/healthcare-pharma' },
-      { title: 'INSTITUTIONELLE GOVERNANCE', path: '/sectors' },
-      { title: 'HUMANKAPITAL-ENTWICKLUNG', path: '/sectors/education' },
-    ],
-  },
-  {
-    col: 3,
-    items: [
-      { title: 'IT- & TECHNOLOGIESYSTEME', path: '/sectors/technology-it' },
-      { title: 'LOGISTIK & LIEFERKETTE', path: '/sectors/logistics-supply-chain' },
-      { title: 'EINZELHANDEL & KONSUMGÜTER', path: '/sectors/retail-consumer' },
-      { title: 'CLOUD- & DIGITALINFRASTRUKTUR', path: '/sectors/technology-it' },
-      { title: 'GLOBALE VERTRIEBSNETZE', path: '/sectors/logistics-supply-chain' },
-    ],
-  },
-  {
-    col: 4,
-    items: [
-      { title: 'INDUSTRIE & MASCHINENBAU', path: '/sectors/industrial-engineering' },
-      { title: 'FINANZEN & INVESTITIONEN', path: '/sectors/finance-investment' },
-      { title: 'MEDIEN & UNTERHALTUNG', path: '/sectors/media-entertainment' },
-      { title: 'KAPITALALLOKATION & M&A', path: '/sectors/finance-investment' },
-      { title: 'STRATEGISCHE TRANSFORMATION', path: '/sectors' },
-    ],
-  },
-];
 const COMPANY_TICKER_ITEMS = [
   { name: 'Country Health', logo: countryHealthLogo, country: 'Düsseldorf, Deutschland', sector: 'Gesundheitswesen & Pharma' },
   { name: 'Instructis', logo: instructisLogo, country: 'Hyderabad, Indien', sector: 'Bildung & Karriere' },
@@ -352,54 +272,10 @@ const DOMAINS_LIST = [
   },
 ];
 const STATS = [
-  { value: 216, prefix: '€', suffix: ' Mio.', label: 'Umsatz der Tochtergesellschaften' },
-  { value: 26, prefix: '', suffix: '', label: 'Unternehmen in unserem Portfolio' },
+  { value: 216, prefix: '€', suffix: ' Million', label: 'Umsatz der Tochtergesellschaften' },
+  { value: 22, prefix: '', suffix: '', label: 'Unternehmen in unserem Portfolio' },
   { value: 40, prefix: '+', suffix: '%', label: 'Wachstum gegenüber dem Vorjahr in Schlüsselsektoren' },
 ];
-function getFaqItems(t, lang) {
-  /* Read from admin-editable data (localStorage), fall back to hardcoded FAQ_ITEMS */
-  const adminFaq = getFaq();
-  return adminFaq.map(item => ({
-    q: lang === 'en' ? (item.q_en || item.q_de || item.q || '') : (item.q_de || item.q || ''),
-    a: lang === 'en' ? (item.a_en || item.a_de || item.a || '') : (item.a_de || item.a || ''),
-  }));
-}
-
-const FAQ_ITEMS = [
-  {
-    q: 'In welchen Sektoren ist die Zebrold Group tätig?',
-    a: 'Die Zebrold Group ist in zwölf strategischen Sektoren tätig, darunter EV-Laden & Batterien, Halbleiter, Automobilbau, Gesundheitswesen & Pharma, Finanzen & Investitionen, Technologie & IT, Bildung, Einzelhandel & Konsumgüter, Logistik & Lieferkette, Landwirtschaft & Lebensmittel, Industrie & Maschinenbau sowie Medien & Unterhaltung.',
-  },
-  {
-    q: 'Wie viele Tochtergesellschaften hat die Gruppe?',
-    a: 'Wir verwalten sechsundzwanzig marktführende Tochtergesellschaften auf drei Kontinenten. Jede Tochtergesellschaft agiert mit voller operativer Autonomie und profitiert gleichzeitig vom einheitlichen Kapitalrahmen und der institutionellen Governance-Struktur der Gruppe.',
-  },
-  {
-    q: 'Wo befindet sich der Hauptsitz der Zebrold Group?',
-    a: 'Der Hauptsitz der Zebrold Group ist in Frankfurt am Main, Deutschland. Wir unterhalten operative Niederlassungen in Europa, Indien und Australien sowie Produktionsstätten in München, Dresden, Stuttgart und an anderen strategischen Standorten.',
-  },
-  {
-    q: 'Was unterscheidet Zebrold von anderen Konglomeraten?',
-    a: 'Unser Unterscheidungsmerkmal ist die Kombination aus deutscher Ingenieurspräzision und globaler Ausführung. Jede Tochtergesellschaft profitiert von tiefgreifender Branchenexpertise, einer institutionellen Governance durch einen unabhängigen Aufsichtsrat und einem einheitlichen Kapitalrahmen, der den industriellen Wandel beschleunigt.',
-  },
-  {
-    q: 'Investiert Zebrold in Nachhaltigkeit?',
-    a: 'Nachhaltigkeit ist der Kern unserer Strategie. Vom 1,5-GW-Portfolio für saubere Energie von Everstone Energy über die Batterien der nächsten Generation von Northvolt Power bis hin zur kohlenstoffneutralen Logistik von PrimeRoute treiben wir die emissionsfreie Transformation der globalen Infrastruktur aktiv voran.',
-  },
-  {
-    q: 'Wie kann ich mit der Zebrold Group zusammenarbeiten?',
-    a: 'Wir begrüßen strategische Partnerschaften in allen zwölf Sektoren. Ob Sie nach Investitionspartnerschaften, Technologiekooperationen oder Supply-Chain-Integration suchen, unser Team bewertet Möglichkeiten durch einen strukturierten Bewertungsprozess. Kontaktieren Sie uns, um Ihr Projekt zu besprechen.',
-  },
-  {
-    q: 'Wie sieht die Governance-Struktur der Gruppe aus?',
-    a: 'Die Zebrold Group wird von einem unabhängigen Aufsichtsrat geleitet, der Finanzdisziplin und operative Autonomie für jede Tochtergesellschaft garantiert. Wir arbeiten mit institutioneller Strenge und legen Wert auf starke Cash-Generierung, Governance-Compliance und transparente Berichterstattung an die Stakeholder.',
-  },
-  {
-    q: 'Bietet Zebrold Karrieremöglichkeiten?',
-    a: 'Ja. Mit sechsundzwanzig Tochtergesellschaften in zwölf Sektoren bieten wir vielfältige Karrierewege in den Bereichen Ingenieurwesen, Finanzen, Technologie, Gesundheitswesen, Bildung und mehr. Jede Tochtergesellschaft leitet ihre eigene Rekrutierung, während die Gruppe übergreifende Mobilitätsprogramme für Talente koordiniert.',
-  },
-];
-
 /* ═══════════════════════════════════════════
    ANIMATED COUNTER COMPONENT
    ═══════════════════════════════════════════ */
@@ -442,39 +318,6 @@ function AnimatedCounter({ value, prefix = '', suffix = '', isDecimal = false })
         {prefix}0{suffix}
       </span>
     </span>
-  );
-}
-/* ═══════════════════════════════════════════
-   FAQ ACCORDION ITEM
-   ═══════════════════════════════════════════ */
-function FaqItem({ question, answer, index }) {
-  const [open, setOpen] = useState(false);
-  const contentRef = useRef(null);
-  return (
-    <div className={`faq-accordion ${open ? 'is-open' : ''}`} data-faq-index={index}>
-      <button
-        className="faq-question"
-        onClick={() => setOpen(!open)}
-        aria-expanded={open}
-      >
-        <p className="faq-question-text">{question}</p>
-        <div className="faq-icon-wrapper">
-          <div className="faq-plus-v" />
-          <div className="faq-plus-h" />
-          <div className="faq-plus-dot" />
-        </div>
-      </button>
-      <div
-        className="faq-answer"
-        style={{
-          maxHeight: open ? '1000px' : '0px',
-        }}
-      >
-        <div ref={contentRef} className="faq-answer-inner">
-          <p>{answer}</p>
-        </div>
-      </div>
-    </div>
   );
 }
 /* ═══════════════════════════════════════════
@@ -567,15 +410,10 @@ export default function Home() {
           { x: 0, opacity: 1, filter: 'blur(0px)', duration: 1, ease: 'power4.out' },
           0.3
         )
-        .fromTo('.hero-desc-wrap',
-          { x: 120, opacity: 0, filter: 'blur(8px)' },
-          { x: 0, opacity: 1, filter: 'blur(0px)', duration: 1, ease: 'power4.out' },
-          0.5
-        )
-        .fromTo('.hero-letter',
-          { y: '100%', opacity: 0 },
-          { y: '0%', opacity: 1, duration: 0.8, stagger: 0.06, ease: 'power4.out' },
-          0.7
+        .fromTo(['.hero-desc-wrap', '.hero-cta-btn'],
+          { y: 40, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.8, ease: 'power4.out' },
+          0.6
         );
       /* ── 2. Hero parallax on scroll ── */
       gsap.to('.hero-bg-img', {
@@ -600,51 +438,6 @@ export default function Home() {
         },
       });
 
-      /* ── 4. What We Do section reveals ── */
-      gsap.fromTo('.wwd-word-we',
-        { x: -50, opacity: 0 },
-        {
-          x: 0, opacity: 1, duration: 0.9, ease: 'power3.out',
-          scrollTrigger: {
-            trigger: '.what-we-do-section',
-            start: 'top 80%',
-            toggleActions: 'play none none none',
-          },
-        }
-      );
-      gsap.fromTo('.wwd-word-what',
-        { scale: 0.8, opacity: 0 },
-        {
-          scale: 1, opacity: 1, duration: 1.1, ease: 'power3.out', delay: 0.1,
-          scrollTrigger: {
-            trigger: '.what-we-do-section',
-            start: 'top 80%',
-            toggleActions: 'play none none none',
-          },
-        }
-      );
-      gsap.fromTo('.wwd-word-do',
-        { x: 50, opacity: 0 },
-        {
-          x: 0, opacity: 1, duration: 0.9, ease: 'power3.out', delay: 0.2,
-          scrollTrigger: {
-            trigger: '.what-we-do-section',
-            start: 'top 80%',
-            toggleActions: 'play none none none',
-          },
-        }
-      );
-      gsap.fromTo('.wwd-item-row',
-        { y: 20, opacity: 0 },
-        {
-          y: 0, opacity: 1, duration: 0.5, stagger: 0.03, ease: 'power2.out', delay: 0.3,
-          scrollTrigger: {
-            trigger: '.wwd-grid',
-            start: 'top 85%',
-            toggleActions: 'play none none none',
-          },
-        }
-      );
       /* ── 8. Data / Stats section ── */
       const dataTL = gsap.timeline({
         scrollTrigger: {
@@ -662,62 +455,6 @@ export default function Home() {
           { y: 60, opacity: 0, scale: 0.8 },
           { y: 0, opacity: 1, scale: 1, duration: 0.8, stagger: 0.15, ease: 'power3.out' },
           0.2
-        )
-        .fromTo('.data-cta-wrap',
-          { y: 30, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.6, ease: 'power2.out' },
-          0.6
-        );
-      /* ── 10. CTA section ── */
-      const ctaTL = gsap.timeline({
-        scrollTrigger: {
-          trigger: '.cta-section',
-          start: 'top 70%',
-          toggleActions: 'play none none none',
-        },
-      });
-      ctaTL
-        .fromTo('.cta-section .caption',
-          { y: 30, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.5, ease: 'power2.out' }
-        )
-        .fromTo('.cta-h3',
-          { y: 40, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.7, ease: 'power3.out' },
-          0.1
-        )
-        .fromTo('.cta-big-text',
-          { y: 80, opacity: 0, scale: 0.7 },
-          { y: 0, opacity: 1, scale: 1, duration: 1, ease: 'power4.out' },
-          0.2
-        )
-        .fromTo('.cta-bottom',
-          { y: 40, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.7, ease: 'power2.out' },
-          0.5
-        );
-      /* ── 11. FAQ section ── */
-      const faqTL = gsap.timeline({
-        scrollTrigger: {
-          trigger: '.faq-section',
-          start: 'top 75%',
-          toggleActions: 'play none none none',
-        },
-      });
-      faqTL
-        .fromTo('.faq-section .heading-wrapper',
-          { y: 50, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' }
-        )
-        .fromTo('.faq-accordion',
-          { y: 30, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.5, stagger: 0.06, ease: 'power2.out' },
-          0.2
-        )
-        .fromTo('.faq-cta-card',
-          { y: 50, opacity: 0, scale: 0.95 },
-          { y: 0, opacity: 1, scale: 1, duration: 0.8, ease: 'power3.out' },
-          0.3
         );
       /* ── 13. About horizontal scroll & overlay sequence ── */
       const aboutTl = gsap.timeline({
@@ -739,11 +476,12 @@ export default function Home() {
         duration: 0.85,
       }, 0);
 
-      // 2. Giant text fades out smoothly (0.5 to 0.65)
+      // 2. Giant text holds at full opacity until the horizontal scroll (0→0.85)
+      // has fully revealed it — including the final words — then fades out.
       aboutTl.to('.about-scroll-text', {
         opacity: 0,
-        duration: 0.15,
-      }, 0.5);
+        duration: 0.12,
+      }, 0.88);
 
       // 3. Right-side paragraph fades & slides in (0.5 to 1.3)
       aboutTl.fromTo('.about-split-overlay',
@@ -847,7 +585,7 @@ export default function Home() {
         className="hero-section"
       >
         <div className="hero-bg">
-          <img src={heroBg1} alt="Zebrold International Holdings Limited Hero Background" className="hero-bg-img" loading="eager" width="1920" height="1080" />
+          <img src={heroSection1Img} alt="Zebrold International Holdings Limited Hero Background" className="hero-bg-img" loading="eager" width="1672" height="941" />
           <div className="hero-overlay" />
         </div>
         <div className="hero-content">
@@ -862,81 +600,25 @@ export default function Home() {
                     {t('hero_desc')}
                   </p>
                 </div>
-              </div>
-              {/* Brand Letters - Arrodz Layout */}
-              <div className="hero-brand-letters">
-                {/* Floating Badges */}
-                <div className="hero-badges-wrapper">
-                  <div className="hero-badge hero-badge-cream">
-                    {t('hero_badge_1')}
-                  </div>
-                  <div className="hero-badge hero-badge-brown">
-                    {t('hero_badge_2')}
-                  </div>
-                </div>
-                {BRAND_LETTERS.map((letter, i) => {
-                  const isBrown = letter === 'E' || letter === 'R' || letter === 'L';
-                  const isO = letter === 'O';
-                  return (
-                    <span
-                      key={i}
-                      className={`hero-letter ${isBrown ? 'is-brown' : ''} ${isO ? 'is-o' : ''}`}
-                    >
-                      {isO ? (
-                        <Link to="/contact" className="hero-o-pill">
-                          <span className="hero-o-pill-text">{t('hero_cta')}</span>
-                          <span className="hero-o-pill-arrow">
-                            <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
-                              <path d="M2.15 10c0 .46.37.83.83.83h8.91c.89 0 1.34 1.08.71 1.71l-2.11 2.11a.83.83 0 001.18 1.18l5.12-5.13a1 1 0 000-1.41L11.67 4.17a.83.83 0 00-1.18 1.18l2.11 2.11c.63.63.19 1.71-.71 1.71H2.99A.83.83 0 002.15 10z" fill="currentColor" />
-                            </svg>
-                          </span>
-                        </Link>
-                      ) : (
-                        letter
-                      )}
-                    </span>
-                  );
-                })}
+                <Link to="/contact" className="button is-beige hero-cta-btn">
+                  <span className="button-text">{t('hero_cta')} →</span>
+                </Link>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-
-
-      {/* ═══════ WHAT WE DO SECTION (REPLACES EXPERTISE & DOMAINS) ═══════ */}
-      <section className="what-we-do-section">
-        <div className="padding-global padding-section-large">
-          <div className="container-large">
-            {/* Giant Interlocking Typography "WHAT WE DO" */}
-            <div className="wwd-header">
-              <div className="wwd-title-wrap">
-                <span className="wwd-word-what">WHAT</span>
-                <span className="wwd-word-we">WE</span>
-                <span className="wwd-word-do">DO</span>
-              </div>
-            </div>
-
-            {/* 4-Column Grid with Hairline Rows */}
-            <div className="wwd-grid">
-              {(lang === 'de' ? WWD_ITEMS_DE : WWD_ITEMS_EN).map((colGroup, colIdx) => (
-                <div key={colIdx} className="wwd-column">
-                  {colGroup.items.map((item, itemIdx) => (
-                    <Link
-                      key={itemIdx}
-                      to={item.path}
-                      className="wwd-item-row"
-                    >
-                      <span className="wwd-item-text">{item.title}</span>
-                      <span className="wwd-item-arrow">→</span>
-                    </Link>
-                  ))}
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
+      {/* ═══════ COMPANIES WE COLLABORATED WITH ═══════ */}
+      <section className="trusted-companies-section">
+        <img
+          src={companiesManufacturedForImg}
+          alt={lang === 'en' ? 'Companies We Manufactured For' : 'Unternehmen, für die wir gefertigt haben'}
+          className="companies-manufactured-img"
+          loading="lazy"
+          width="1808"
+          height="870"
+        />
       </section>
 
       {/* ═══════ SECTION 7: DATA / STATS ═══════ */}
@@ -946,55 +628,69 @@ export default function Home() {
             <div className="data-component">
               <div className="data-title-wrap">
                 <h2 className="heading-style-h4">
-                  {t('stats_title')}
+                  {lang === 'en' ? 'Building Across Industries' : 'Branchenübergreifend Aufbauen'}
                 </h2>
                 <p className="data-subtitle-text">
                   {lang === 'en'
-                    ? 'Uncompromising commitment to capital deployment, operational precision, and long-term value creation across 12 strategic divisions.'
-                    : 'Kompromissloser Anspruch an Kapitalallokation, operative Präzision und langfristige Wertschöpfung in 12 strategischen Bereichen.'}
+                    ? "Zebrold integrates engineering, advanced manufacturing, software, robotics, and multidisciplinary talent across Aerospace and Automotive, enabling teams to move from concept and design through development, prototyping, and production. By bringing specialized people and technologies together, Zebrold continues to strengthen its industrial capabilities and accelerate high-performance manufacturing across both sectors. Its expansion into Healthcare Robotics further strengthened this ecosystem through the acquisition of Halvex Robotics, adding robotics and intelligent healthcare technologies to the group's growing portfolio."
+                    : 'Zebrold vereint Engineering, fortschrittliche Fertigung, Software, Robotik und interdisziplinäres Talent in den Bereichen Luftfahrt und Automobilbau und ermöglicht es Teams, von Konzept und Design über Entwicklung und Prototyping bis zur Produktion zu gelangen. Durch die Zusammenführung spezialisierter Fachkräfte und Technologien stärkt Zebrold kontinuierlich seine industriellen Fähigkeiten und beschleunigt die Hochleistungsfertigung in beiden Sektoren. Die Erweiterung in den Bereich Healthcare-Robotik stärkte dieses Ökosystem zusätzlich durch die Übernahme von Halvex Robotics, wodurch Robotik- und intelligente Gesundheitstechnologien in das wachsende Portfolio der Gruppe aufgenommen wurden.'}
                 </p>
-              </div>
-              <div className="data-grid">
-                {statsList.map((stat, i) => {
-                  const statSubtext = [
-                    lang === 'en'
-                      ? 'Aggregated annual turnover generated across global subsidiaries.'
-                      : 'Aggregierter Jahresumsatz aller globalen Tochtergesellschaften.',
-                    lang === 'en'
-                      ? 'Specialized market leaders operating across Europe, Asia & Americas.'
-                      : 'Spezialisierte Marktführer in Europa, Asien und Amerika.',
-                    lang === 'en'
-                      ? 'Accelerated expansion in EV, Semiconductors & AI infrastructure.'
-                      : 'Beschleunigtes Wachstum in EV, Halbleitern & KI-Infrastruktur.'
-                  ];
-                  return (
-                    <div key={i} className="data-item">
-                      <div className="data-value">
-                        <AnimatedCounter
-                          value={stat.value}
-                          prefix={stat.prefix}
-                          suffix={stat.suffix}
-                          isDecimal={stat.value % 1 !== 0}
-                        />
-                      </div>
-                      <div className="data-label">{stat.label}</div>
-                      <div className="data-desc-line">{statSubtext[i]}</div>
-                    </div>
-                  );
-                })}
-              </div>
-              <div className="data-cta-wrap">
-                <p className="text-size-medium text-weight-bold">{t('stat_cta_title')}</p>
-                <Link to="/contact" className="button button-small">
-                  <span className="button-text">{t('stat_cta_btn')}</span>
-                </Link>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ═══════ SECTION 8: IN THE NEWS ═══════ */}
+      {/* ═══════ SECTION 9: ABOUT HORIZONTAL SCROLL + SPLIT OVERLAY ═══════ */}
+      <section className="about-home-section">
+        <div className="about-bg-image">
+          <img src={leadershipTeamImg} alt="Zebrold Leadership Team" className="about-bg-img-inner" loading="lazy" width="1920" height="1080" />
+          <div className="about-image-overlay"></div>
+        </div>
+        <div className="about-scroll-section">
+          <div className="about-scroll-sticky">
+            <h2 className="about-scroll-text">
+              {lang === 'en' ? (getAboutScroll().text_en || "BUILT FOR THE COMPLEX. READY FOR WHAT'S NEXT.") : (getAboutScroll().text_de || 'GEBAUT FÜR DAS KOMPLEXE. BEREIT FÜR DAS, WAS KOMMT.')}
+            </h2>
+
+            <div className="about-split-overlay">
+              <div className="about-split-content">
+                <h3 className="about-split-headline">
+                  {lang === 'en'
+                    ? 'Building Businesses. Connecting Markets. Creating Long-Term Value.'
+                    : 'Unternehmen aufbauen. Märkte verbinden. Langfristigen Wert schaffen.'}
+                </h3>
+                <p>
+                  {lang === 'en'
+                    ? "Zebrold connects industrial thinking with real-world execution, bringing together specialist teams, production capabilities, and emerging technologies across Aerospace, Automotive, and Healthcare Robotics."
+                    : "Zebrold verbindet industrielles Denken mit realer Umsetzung und bringt spezialisierte Teams, Produktionskapazitäten und neue Technologien in den Bereichen Luft- und Raumfahrt, Automobilbau und Healthcare-Robotik zusammen."}
+                </p>
+                <p>
+                  {lang === 'en'
+                    ? "We step into complex development challenges where precision matters, ideas need to become tangible, and production has to keep pace with ambition."
+                    : "Wir stellen uns komplexen Entwicklungsherausforderungen, bei denen Präzision entscheidend ist, Ideen greifbar werden müssen und die Produktion mit dem Tempo der Ambition Schritt halten muss."}
+                </p>
+                <p>
+                  {lang === 'en'
+                    ? "From our European manufacturing network to our international technical teams, we create the environment where advanced products can move from development to deployment—and from today's requirements to tomorrow's possibilities."
+                    : "Von unserem europäischen Fertigungsnetzwerk bis zu unseren internationalen technischen Teams schaffen wir das Umfeld, in dem hochentwickelte Produkte von der Entwicklung bis zur Markteinführung gelangen können — und von den Anforderungen von heute zu den Möglichkeiten von morgen."}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════ SMART SALES PROPOSALS 3D EXPERIENCE ═══════ */}
+      <SalesProposalExperience />
+
+      {/* ═══════ PROPOSALS BY INDUSTRY — AUTOMOTIVE ═══════ */}
+      <IndustryProposals />
+
+      {/* ═══════ SECTION 8: MANUFACTURING — MILAN, ITALY ═══════ */}
+      <ManufacturingSection />
+
+      {/* ═══════ IN THE NEWS ═══════ */}
       <section className="home-news-section">
         <div className="home-news-tab">{t('news_tab')}</div>
         <div className="padding-global padding-section-large">
@@ -1081,231 +777,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ═══════ SECTION 9: ABOUT HORIZONTAL SCROLL + SPLIT OVERLAY ═══════ */}
-      <section className="about-home-section">
-        <div className="about-bg-image">
-          <img src={leadershipTeamImg} alt="Zebrold Leadership Team" className="about-bg-img-inner" loading="lazy" width="1920" height="1080" />
-          <div className="about-image-overlay"></div>
-        </div>
-        <div className="about-scroll-section">
-          <div className="about-scroll-sticky">
-            <h2 className="about-scroll-text">
-              {lang === 'en' ? (getAboutScroll().text_en || 'WORKING WITH YOU, NOT JUST FOR YOU') : (getAboutScroll().text_de || 'WIR ARBEITEN MIT IHNEN, NICHT NUR FÜR SIE')}
-            </h2>
-
-            <div className="about-split-overlay">
-              <div className="about-split-content">
-                <span className="about-split-badge">
-                  {lang === 'en' ? 'OUR PHILOSOPHY & STRATEGY' : 'UNSERE PHILOSOPHIE & STRATEGIE'}
-                </span>
-                <p>
-                  {lang === 'en'
-                    ? "We observe, listen, and build strategies that align with your reality. No templated models, no artificial layers: authentic, precise, and sustainable."
-                    : "Wir beobachten, hören zu und entwickeln Strategien, die Ihrer Realität entsprechen. Keine vorgefertigten Modelle, keine künstlichen Schichten: authentisch, präzise und nachhaltig."}
-                </p>
-                <p>
-                  {lang === 'en'
-                    ? "Zebrold was born from a simple idea: to empower the industries that move the world. Those with a clear vision, a dedicated team, and an eye for detail."
-                    : "Zebrold entstand aus einer einfachen Idee: die Industrien zu stärken, die die Welt bewegen. Diejenigen mit einer klaren Vision, einem engagierten Team und einem Auge fürs Detail."}
-                </p>
-                <p>
-                  {lang === 'en'
-                    ? "Our approach relies on exchange and observation. We take the time to understand your daily operations, what sets you apart, and what you aim to achieve."
-                    : "Unser Ansatz basiert auf Austausch und Beobachtung. Wir nehmen uns die Zeit, Ihre täglichen Abläufe zu verstehen, was Sie auszeichnet und was Sie erreichen wollen."}
-                </p>
-                <p>
-                  {lang === 'en'
-                    ? "We don't overplay anything. We just seek the right way to show who you are: sincere content, a coherent strategy, a clear identity. A framework that doesn't distort you, but reveals you."
-                    : "Wir spielen nichts vor. Wir suchen nur den richtigen Weg zu zeigen, wer Sie sind: aufrichtige Inhalte, eine kohärente Strategie, eine klare Identität. Ein Rahmen, der Sie nicht verzerrt, sondern Sie enthüllt."}
-                </p>
-                <p className="text-bold">
-                  {lang === 'en'
-                    ? "We understand your stakes, not just your requests."
-                    : "Wir verstehen Ihre Herausforderungen, nicht nur Ihre Anfragen."}
-                </p>
-                <div className="about-split-pillars">
-                  <span>26 Subsidiaries</span>
-                  <span className="pillar-dot">•</span>
-                  <span>12 Sectors</span>
-                  <span className="pillar-dot">•</span>
-                  <span>German Engineering Rigour</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════ SECTION 9B: CORPORATE GOVERNANCE / ABOUT US ═══════ */}
-      <section className="corporate-about-section" id="governance">
-        <div className="padding-global padding-section-large">
-          <div className="container-large">
-
-            {/* Section Header */}
-            <div className="corp-about-header">
-              <span className="corp-about-eyebrow">
-                {lang === 'en' ? 'ABOUT US' : 'ÜBER UNS'}
-              </span>
-              <h2 className="corp-about-title">
-                Zebrold International
-                <em> Holdings Limited</em>
-              </h2>
-              <p className="corp-about-desc">
-                {lang === 'en'
-                  ? 'A globally diversified holding company headquartered in Frankfurt am Main, Germany, operating across 12 strategic sectors through 26 market-leading subsidiaries on three continents.'
-                  : 'Ein global diversifiziertes Holdinggesellschaft mit Sitz in Frankfurt am Main, Deutschland, tätig in 12 strategischen Sektoren durch 26 marktführende Tochtergesellschaften auf drei Kontinenten.'}
-              </p>
-            </div>
-
-            {/* Board of Directors */}
-            <div className="corp-board-wrap">
-              <div className="corp-table-header-row">
-                <div className="corp-table-label">
-                  <div className="corp-table-label-line" />
-                  <span>{lang === 'en' ? 'Board of Directors' : 'Vorstand'}</span>
-                </div>
-              </div>
-              <div className="corp-board-grid">
-                {[
-                  { initials: 'HKS', role: lang === 'en' ? 'Chairman' : 'Vorsitzender', name: 'Hemendrah Kumar Sadamsetty', bio: lang === 'en' ? 'Founding Chairman and principal architect of the Zebrold Group, overseeing strategic direction across all global subsidiaries and institutional governance.' : 'Gründungsvorsitzender und Hauptarchitekt der Zebrold Group, verantwortlich für die strategische Ausrichtung aller globalen Tochtergesellschaften.', highlight: true },
-                  { initials: 'SH', role: lang === 'en' ? 'Chief Executive Officer' : 'Vorstandsvorsitzender', name: 'Stakwe Haplene', bio: lang === 'en' ? 'Group CEO responsible for operational leadership, portfolio performance, and cross-sector strategic execution across European and global markets.' : 'Gruppen-CEO verantwortlich für operative Führung, Portfolio-Performance und sektorübergreifende strategische Ausführung.' },
-                  { initials: 'IRM', role: lang === 'en' ? 'Managing Director' : 'Geschäftsführer', name: 'Indu Reddy Morthala', bio: lang === 'en' ? 'Group Managing Director overseeing day-to-day operations, compliance frameworks, and subsidiary coordination across the Zebrold Group portfolio.' : 'Geschäftsführer der Gruppe, zuständig für den täglichen Betrieb, Compliance-Frameworks und die Koordination der Tochtergesellschaften.' },
-                ].map((person, i) => (
-                  <div key={i} className={`corp-board-card${person.highlight ? ' corp-board-card--chairman' : ''}`}>
-                    <div className="corp-board-monogram">{person.initials}</div>
-                    <div className="corp-board-card-inner">
-                      <div className="corp-board-role-badge">{person.role}</div>
-                      <h3 className="corp-board-name">{person.name}</h3>
-                      <p className="corp-board-bio">{person.bio}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Subsidiary Leadership Table */}
-            <div className="corp-subsidiary-wrap">
-              <div className="corp-table-header-row">
-                <div className="corp-table-label">
-                  <div className="corp-table-label-line" />
-                  <span>{lang === 'en' ? 'Subsidiary Companies — CEOs & Managing Directors' : 'Tochtergesellschaften — CEOs & Geschäftsführer'}</span>
-                </div>
-                <span className="corp-table-count">18 {lang === 'en' ? 'Companies' : 'Unternehmen'}</span>
-              </div>
-              <div className="corp-subs-table">
-                <div className="corp-subs-thead">
-                  <div className="corp-subs-th corp-subs-th--company">{lang === 'en' ? 'Company' : 'Unternehmen'}</div>
-                  <div className="corp-subs-th">CEO</div>
-                  <div className="corp-subs-th">{lang === 'en' ? 'Managing Director' : 'Geschäftsführer'}</div>
-                </div>
-                <div className="corp-subs-tbody">
-                  {[
-                    { company: 'Everstone Energy', ceo: 'Dr. Klaus Mehringer', md: 'Ms. Priya Venkatesh' },
-                    { company: 'Northvolt Power', ceo: 'Mr. Lars Bergström', md: 'Mr. Rajiv Srinivasan' },
-                    { company: 'Meridian Microelectronics', ceo: 'Prof. Dr. Andrea Fischmann', md: 'Mr. Suresh Ramachandran' },
-                    { company: 'Silicon Crest Technologies', ceo: 'Dr. Maara Krishnamurthy', md: 'Mr. Thomas Kleinhans' },
-                    { company: 'Redford Automotive', ceo: 'Mr. Sebastian Wirth', md: 'Ms. Ananya Reddy' },
-                    { company: 'Westbridge Motors', ceo: 'Mr. Jonathan Hartley', md: 'Mr. Vikram Nair' },
-                    { company: 'PrimeMart Retail', ceo: 'Ms. Helena Brandt', md: 'Mr. Arun Pillai' },
-                    { company: 'UrbanBasket Stores', ceo: 'Mr. Felix Gruber', md: 'Ms. Deepa Iyer' },
-                    { company: 'Brighton Education Group', ceo: 'Dr. Sophie Lindqvist', md: 'Mr. Arjun Krishnan' },
-                    { company: 'Clearpath Learning', ceo: 'Ms. Nadia Schulz', md: 'Dr. Kiran Subramanian' },
-                    { company: 'Instructis Career', ceo: 'Ms. Priya Malhotra', md: 'Mr. Hemendrah Kumar Sadamsetty' },
-                    { company: 'Skybridge Technologies', ceo: 'Mr. Rahul Banerjee', md: 'Ms. Christine Hofer' },
-                    { company: 'Arden Digital Solutions', ceo: 'Ms. Preethi Nambiar', md: 'Mr. Markus Steiner' },
-                    { company: 'Sterling Financial Services', ceo: 'Mr. Aditya Mehta', md: 'Ms. Katarina Vogt' },
-                    { company: 'Harrington Capital Group', ceo: 'Mr. James Harrington IV', md: 'Dr. Anand Subramaniam' },
-                    { company: 'Oakwell Healthcare', ceo: 'Dr. Ramesh Padmanabhan', md: 'Dr. Ingrid Bauer' },
-                    { company: 'Greenford Pharmaceuticals', ceo: 'Dr. Sanjay Kulkarni', md: 'Dr. Petra Zimmermann' },
-                    { company: 'PrimeRoute Logistics', ceo: 'Mr. Sanjiv Kapoor', md: 'Ms. Birgit Hoffmann' },
-                  ].map((row, i) => (
-                    <div key={i} className="corp-subs-row">
-                      <div className="corp-subs-td corp-subs-td--company">
-                        <span className="corp-subs-num">{String(i + 1).padStart(2, '0')}</span>
-                        <span className="corp-subs-company-name">{row.company}</span>
-                      </div>
-                      <div className="corp-subs-td">{row.ceo}</div>
-                      <div className="corp-subs-td">{row.md}</div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      <section className="cta-section">
-        <div className="padding-global padding-section-large">
-          <div className="container-medium">
-            <div className="cta-component">
-              <div className="caption" style={{ color: 'var(--color-cream)', opacity: 0.85 }}>
-                {t('cta_bottom_caption')}
-              </div>
-              <div className="cta-title-wrap">
-                <h2 className="heading-style-h3 cta-h3" style={{ color: '#ffffff', opacity: 1 }}>
-                  {t('cta_bottom_h3')}
-                </h2>
-                <div className="cta-big-text">{t('cta_bottom_big')}</div>
-              </div>
-              <div className="cta-bottom">
-                <div className="max-width-medium">
-                  <p className="cta-desc-text">
-                    {t('cta_bottom_desc')}
-                  </p>
-                </div>
-                <div className="cta-btn-group">
-                  <Link to="/contact" className="button is-beige">
-                    <span className="button-text">{t('cta_bottom_btn')}</span>
-                  </Link>
-                  <span className="cta-fine-print">{t('cta_bottom_fine')}</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      {/* ═══════ SECTION 10: FAQ ═══════ */}
-      <section className="faq-section">
-        <div className="padding-global padding-section-large">
-          <div className="container-large">
-            <div className="faq-component">
-              <div className="faq-left">
-                <div className="heading-wrapper">
-                  <div className="heading-title-wrapper">
-                    <div className="caption">{t('faq_caption')}</div>
-                    <div className="max-width-medium">
-                      <h2 className="heading-style-h2">
-                        {t('faq_h2')}
-                      </h2>
-                    </div>
-                  </div>
-                  <div className="max-width-medium">
-                    <p className="text-size-small">
-                      {t('faq_desc')}
-                    </p>
-                  </div>
-                </div>
-                <div className="faq-list">
-                  {getFaqItems(t, lang).map((item, i) => (
-                    <FaqItem key={i} question={item.q} answer={item.a} index={i} />
-                  ))}
-                </div>
-              </div>
-              <div className="faq-cta-card">
-                <Link to="/contact" className="faq-cta-link">
-                  <p className="text-size-medium text-weight-semibold">
-                    {t('faq_cta_text')}
-                  </p>
-                  <span className="faq-cta-contact">{t('faq_cta_btn')}</span>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Floating Contact Chatbot Widget */}
       {isChatOpen && (
         <div className="home-chat-widget">
@@ -1342,7 +813,11 @@ export default function Home() {
 
                 <div className="chat-options">
                   <a href="tel:+496912345670" className="chat-channel-btn">
-                    <span className="channel-icon">📞</span>
+                    <span className="channel-icon-badge" aria-hidden="true">
+                      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                      </svg>
+                    </span>
                     <div>
                       <strong>Direct Call</strong>
                       <small>+49 (0) 69 1234 5670</small>
@@ -1350,7 +825,12 @@ export default function Home() {
                   </a>
 
                   <a href="mailto:contact@zebrold.de" className="chat-channel-btn">
-                    <span className="channel-icon">✉️</span>
+                    <span className="channel-icon-badge" aria-hidden="true">
+                      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <rect x="2" y="4" width="20" height="16" rx="2" />
+                        <path d="m22 6-10 7L2 6" />
+                      </svg>
+                    </span>
                     <div>
                       <strong>Official Email</strong>
                       <small>contact@zebrold.de</small>
@@ -1384,7 +864,8 @@ export default function Home() {
                     onChange={(e) => setChatMsg(e.target.value)}
                   />
                   <button type="submit" className="chat-submit-btn">
-                    Send Inquiry →
+                    <span>Send Inquiry</span>
+                    <span className="chat-submit-arrow" aria-hidden="true">→</span>
                   </button>
                 </form>
               </>
@@ -1393,23 +874,6 @@ export default function Home() {
         </div>
       )}
 
-      {/* Floating Contact Button */}
-      <div className="home-floating-phone-wrap">
-        <button
-          type="button"
-          onClick={() => setIsChatOpen(!isChatOpen)}
-          className={`home-floating-phone ${isChatOpen ? 'active' : ''}`}
-          aria-label="Toggle Contact Chat Widget"
-        >
-          {isChatOpen ? (
-            <span style={{ fontSize: '1.2rem', fontWeight: 800 }}>✕</span>
-          ) : (
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-            </svg>
-          )}
-        </button>
-      </div>
     </div>
   );
 }

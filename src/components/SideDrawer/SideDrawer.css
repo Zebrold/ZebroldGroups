@@ -18,7 +18,7 @@
   right: 0;
   bottom: 0;
   width: min(520px, 92vw);
-  background-color: var(--color-off-white);
+  background-color: var(--color-white);
   z-index: 1101;
   overflow-y: auto;
   animation: drawerSlideIn 0.45s var(--ease-out-expo) forwards;
@@ -38,7 +38,7 @@
   justify-content: flex-end;
   width: 100%;
   padding: 1.25rem 1.75rem;
-  background-color: var(--color-off-white);
+  background-color: var(--color-white);
   border-bottom: 1px solid var(--color-border);
   z-index: 1;
   color: var(--color-gray-500);

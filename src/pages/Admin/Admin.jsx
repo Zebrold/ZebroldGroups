@@ -3302,7 +3302,7 @@ function SecurityModule({ onSave, session }) {
               <div className="admin-acc-details-list">
                 <div><strong>Department:</strong> {acc.department}</div>
                 <div><strong>Permissions:</strong> {acc.permissions}</div>
-                <div><strong>Current Password:</strong> <code style={{ background: '#f5f2e8', padding: '2px 6px', borderRadius: '4px' }}>{acc.password}</code></div>
+                <div><strong>Current Password:</strong> <code style={{ background: '#F9F9F7', padding: '2px 6px', borderRadius: '4px' }}>{acc.password}</code></div>
                 {acc.lastLogin && <div><strong>Last Login:</strong> {new Date(acc.lastLogin).toLocaleString()}</div>}
               </div>
 

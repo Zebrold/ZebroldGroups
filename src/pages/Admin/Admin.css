@@ -339,7 +339,7 @@
 }
 
 .btn-secondary {
-  background: #f5f2e8;
+  background: #F9F9F7;
   color: #555;
   border-color: #e0e0e0;
 }
@@ -1225,7 +1225,7 @@
 
 .app-job-pill {
   display: inline-block;
-  background: #f5f2e8;
+  background: #F9F9F7;
   color: #555;
   font-size: 0.78rem;
   font-weight: 600;
@@ -1708,7 +1708,7 @@
 }
 
 .admin-login-header {
-  background: #f5f2e8;
+  background: #F9F9F7;
   padding: 2.25rem 2rem 1.75rem;
   text-align: center;
   border-bottom: 3px solid var(--color-wine, #6e2a2a);
@@ -1928,7 +1928,7 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  background: #f5f2e8;
+  background: #F9F9F7;
   padding: 0.4rem 0.85rem;
   border-radius: 20px;
   border: 1px solid #e0dbce;

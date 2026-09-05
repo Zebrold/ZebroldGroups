@@ -1,6 +1,6 @@
-.sectors-page { background-color: var(--color-surface); }
+.sectors-page { background-color: var(--color-white); }
 .sectors-hero { background: linear-gradient(135deg, var(--color-black) 0%, var(--color-wine-dark) 100%); }
-.sectors-main { background-color: var(--color-surface); }
+.sectors-main { background-color: var(--color-white); }
 
 .sector-filters {
   display: flex;
@@ -83,7 +83,7 @@
   transition: background-color var(--duration-fast) var(--ease-out-expo);
 }
 
-.sector-accordion-trigger:hover { background-color: var(--color-surface); }
+.sector-accordion-trigger:hover { background-color: var(--color-white); }
 
 .sector-accordion-name {
   font-family: var(--font-display);
@@ -129,7 +129,7 @@
 .sector-acc-company {
   padding: 1.5rem 1.75rem;
   border-top: 1px solid var(--color-border);
-  background-color: var(--color-surface);
+  background-color: var(--color-white);
 }
 
 .sector-acc-co-header {

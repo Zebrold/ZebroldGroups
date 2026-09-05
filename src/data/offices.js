@@ -1,29 +1,49 @@
-// SVG viewBox: 0 0 1000 500 (simplified Mercator)
-export const offices = [
-  { id: 1,  city: "Frankfurt",  country: "Germany",     region: "Europe",    function: "Global Headquarters",         x: 484, y: 175 },
-  { id: 2,  city: "London",     country: "UK",           region: "Europe",    function: "EMEA Operations",             x: 456, y: 165 },
-  { id: 3,  city: "Berlin",     country: "Germany",     region: "Europe",    function: "Technology & Innovation",     x: 492, y: 168 },
-  { id: 4,  city: "Munich",     country: "Germany",     region: "Europe",    function: "Industry & Engineering",      x: 488, y: 180 },
-  { id: 5,  city: "Hamburg",    country: "Germany",     region: "Europe",    function: "Logistics Hub",               x: 484, y: 162 },
-  { id: 6,  city: "Düsseldorf", country: "Germany",     region: "Europe",    function: "Healthcare Division",         x: 479, y: 170 },
-  { id: 7,  city: "Dortmund",   country: "Germany",     region: "Europe",    function: "Industrial Operations",       x: 480, y: 170 },
-  { id: 8,  city: "Essen",      country: "Germany",     region: "Europe",    function: "Heavy Engineering",           x: 479, y: 171 },
-  { id: 9,  city: "Leipzig",    country: "Germany",     region: "Europe",    function: "Agriculture & Agri-tech",     x: 490, y: 172 },
-  { id: 10, city: "Dresden",    country: "Germany",     region: "Europe",    function: "Semiconductor Manufacturing", x: 493, y: 174 },
-  { id: 11, city: "Stuttgart",  country: "Germany",     region: "Europe",    function: "Automotive HQ",               x: 485, y: 178 },
-  { id: 12, city: "Paris",      country: "France",      region: "Europe",    function: "Western Europe Office",       x: 462, y: 178 },
-  { id: 13, city: "Amsterdam",  country: "Netherlands", region: "Europe",    function: "EV Charging Operations",      x: 470, y: 162 },
-  { id: 14, city: "Dublin",     country: "Ireland",     region: "Europe",    function: "Finance & Tax Office",        x: 445, y: 163 },
-  { id: 15, city: "Brussels",   country: "Belgium",     region: "Europe",    function: "EU Regulatory Affairs",       x: 468, y: 168 },
-  { id: 16, city: "Zurich",     country: "Switzerland", region: "Europe",    function: "Asset Management",            x: 479, y: 181 },
-  { id: 17, city: "Vienna",     country: "Austria",     region: "Europe",    function: "DACH Operations",             x: 492, y: 178 },
-  { id: 18, city: "Warsaw",     country: "Poland",      region: "Europe",    function: "Eastern Europe Office",       x: 504, y: 168 },
-  { id: 19, city: "Prague",     country: "Czech Rep.",  region: "Europe",    function: "Industrial Manufacturing",    x: 495, y: 172 },
-  { id: 20, city: "Stockholm",  country: "Sweden",      region: "Europe",    function: "Nordics Battery Division",    x: 492, y: 150 },
-  { id: 21, city: "Copenhagen", country: "Denmark",     region: "Europe",    function: "Clean Energy Hub",            x: 484, y: 155 },
-  { id: 22, city: "Dubai",      country: "UAE",         region: "Europe",    function: "Middle East & Africa HQ",     x: 574, y: 230 },
-  { id: 23, city: "Hyderabad",  country: "India",       region: "India",     function: "Tech Park & R&D",             x: 638, y: 262 },
-  { id: 24, city: "Sydney",     country: "Australia",   region: "Australia", function: "Australia Pacific HQ",        x: 852, y: 385 },
-  { id: 25, city: "Melbourne",  country: "Australia",   region: "Australia", function: "Finance & Education",         x: 845, y: 395 },
-  { id: 26, city: "Brisbane",   country: "Australia",   region: "Australia", function: "Agriculture & Logistics",     x: 862, y: 375 },
+// Coordinates are standard city/district-level reference points (not street-geocoded —
+// no geocoding service is available in this environment). Frankfurt, Milan, Bangalore
+// and Hyderabad are placed as close as possible to the given street address's
+// neighborhood.
+
+const offices = [
+  {
+    id: 'frankfurt',
+    city: 'Frankfurt',
+    country: 'Germany',
+    region: 'Europe',
+    type: 'Headquarters (Manufacturing) (Primary)',
+    address: 'Bockenheimer Landstrasse 17-19, Frankfurt am Main, Hesse 60311, DE',
+    lat: 50.1155,
+    lng: 8.6570,
+  },
+  {
+    id: 'milan',
+    city: 'Milan',
+    country: 'Italy',
+    region: 'Europe',
+    type: 'Aerospace & Military Software',
+    address: 'Piazza Sei Febbraio, Milan, Lombardy 20145, IT',
+    lat: 45.4685,
+    lng: 9.1917,
+  },
+  {
+    id: 'bangalore',
+    city: 'Bangalore',
+    country: 'India',
+    region: 'India',
+    type: 'Automotive Design',
+    address: 'Fernbank, 3, Rest House Rd, Bangalore, Karnataka 560001, IN',
+    lat: 12.9750,
+    lng: 77.6070,
+  },
+  {
+    id: 'hyderabad',
+    city: 'Hyderabad',
+    country: 'India',
+    region: 'India',
+    type: 'Registered Office',
+    address: 'Plot.No12, New Software Units Layout, Opp.Sattva Gate 2, Madhapur, Hyderabad, Telangana 500081, IN',
+    lat: 17.4483,
+    lng: 78.3915,
+  },
 ];
+
+export default offices;

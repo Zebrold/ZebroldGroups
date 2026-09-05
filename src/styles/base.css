@@ -9,6 +9,7 @@
 html {
   scroll-behavior: smooth;
   font-size: 16px;
+  scrollbar-width: none;
 }
 
 body {
@@ -163,7 +164,7 @@ ol {
 }
 
 .button.is-beige {
-  background-color: var(--color-cream);
+  background-color: var(--color-white);
   color: var(--color-wine);
 }
 
@@ -265,21 +266,12 @@ ol {
   border-radius: 2px;
 }
 
-/* ── Scrollbar ── */
+/* ── Scrollbar ──
+   The document has no dedicated scroll container (body scrolls natively), so
+   this rule governs the browser window scrollbar site-wide. Hidden outright
+   rather than styled — page scrolling (wheel/touch/keyboard) is unaffected. */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--color-gray-900);
-}
-
-::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.15);
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-wine);
+  width: 0;
+  height: 0;
+  display: none;
 }

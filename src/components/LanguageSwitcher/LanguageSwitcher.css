@@ -42,8 +42,8 @@
 }
 
 .lang-btn.is-active {
-  color: #FFFFFF;
-  background-color: #111111;
+  color: #100D0C;
+  background-color: #E8E6E2;
   padding-inline: 0.4rem;
   border-radius: 999px;
 }

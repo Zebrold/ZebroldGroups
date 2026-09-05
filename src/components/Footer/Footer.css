@@ -1,372 +1,230 @@
 /* ════════════════════════════════════════
-   FOOTER — Arrodz.com Exact Style
+   FOOTER — Monochrome corporate redesign
+   Black / white / grey only — no accent color
    ════════════════════════════════════════ */
 
 .footer {
   position: relative;
-  background-color: #1c1d1b;
-  color: #ffffff;
+  background-color: #100D0C;
+  color: #E8E6E2;
   overflow: hidden;
   width: 100%;
 }
 
-.footer-main {
-  position: relative;
-  z-index: 2;
+/* ── Column grid ── */
+.ftr-columns-wrap {
+  padding: clamp(2.75rem, 5vw, 4rem) 0 clamp(2.5rem, 4vw, 3.5rem);
 }
 
-.footer-pad {
-  padding-top: 5rem;
-  padding-bottom: 2.5rem;
-}
-
-/* Two-column layout matching Arrodz */
-.footer-grid-layout {
+.ftr-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 3.5rem;
-  align-items: start;
-}
-
-@media screen and (min-width: 992px) {
-  .footer-grid-layout {
-    grid-template-columns: 1.05fr 1fr;
-    gap: 5rem;
-  }
-}
-
-/* Left Column: Big Bold Condensed Tagline & Logo Mark */
-.footer-col-left {
-  display: flex;
-  flex-direction: column;
-}
-
-.footer-logo-mark-img {
-  height: 52px;
-  width: auto;
-  object-fit: contain;
-  margin-bottom: 1.5rem;
-  align-self: flex-start;
-}
-
-.footer-giant-tagline {
-  font-family: var(--font-display);
-  font-size: clamp(2.5rem, 5.5vw, 4.5rem);
-  font-weight: 800;
-  line-height: 1.05;
-  text-transform: uppercase;
-  color: #ffffff;
-  letter-spacing: -0.01em;
-  max-width: 32rem;
-}
-
-/* Footer Address Block */
-.footer-address-block {
-  margin-top: 1rem;
-  padding: 1rem 1.25rem;
-  background-color: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 8px;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  width: 100%;
-}
-
-.footer-address-label {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-family: var(--font-body);
-  font-size: 0.8125rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: #f5f2e8;
-}
-
-.footer-address-label svg {
-  color: #f5f2e8;
-  flex-shrink: 0;
-}
-
-.footer-address-text {
-  font-family: var(--font-body);
-  font-style: normal;
-  font-size: 0.95rem;
-  line-height: 1.5;
-  color: #ffffff;
-  font-weight: 400;
-}
-
-/* Right Column Container */
-.footer-col-right-container {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
-
-/* Top Row: Nav Links & CTA Block */
-.footer-top-row {
-  display: flex;
-  flex-direction: column;
   gap: 2.5rem;
 }
 
 @media screen and (min-width: 600px) {
-  .footer-top-row {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 2rem;
+  .ftr-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem 2rem;
+  }
+
+  .ftr-col-brand {
+    grid-column: 1 / -1;
+    margin-bottom: 0.5rem;
   }
 }
 
-.footer-nav-list {
+@media screen and (min-width: 1200px) {
+  .ftr-grid {
+    grid-template-columns: 1.4fr 1fr 1fr 1fr 1.2fr;
+    gap: 2.75rem;
+  }
+
+  .ftr-col-brand {
+    grid-column: auto;
+    margin-bottom: 0;
+  }
+}
+
+.ftr-col {
   display: flex;
   flex-direction: column;
-  gap: 0.85rem;
+  gap: 0;
+  min-width: 0;
 }
 
-.footer-nav-item {
-  font-family: var(--font-body);
-  font-size: 0.95rem;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.85);
-  text-decoration: none;
-  transition: color 0.3s ease, transform 0.3s ease;
-  width: fit-content;
-}
-
-.footer-nav-item:hover {
-  color: #ffffff;
-  transform: translateX(4px);
-}
-
-/* CTA Wrapper matching Arrodz cream button */
-.footer-cta-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 1.25rem;
-}
-
-.footer-cta-heading {
-  font-family: var(--font-body);
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: #ffffff;
-  line-height: 1.35;
-  max-width: 15rem;
-}
-
-.footer-cta-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #f5f2e8;
-  color: #1c1d1b;
-  font-family: var(--font-body);
-  font-size: 0.95rem;
-  font-weight: 600;
-  padding: 0.85rem 1.75rem;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  white-space: nowrap;
-}
-
-.footer-cta-button:hover {
-  background-color: #e8e4d8;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-}
-
-/* Social Row */
-.footer-social-row {
-  display: flex;
-  align-items: center;
-  gap: 1.75rem;
-  margin-top: 2rem;
-}
-
-.footer-social-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.65rem;
-  color: #ffffff;
-  font-family: var(--font-body);
-  font-size: 1.25rem;
-  font-weight: 600;
-  text-decoration: none;
-  transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-.footer-social-pill:hover {
-  opacity: 0.85;
-  transform: translateY(-2px);
-}
-
-/* Horizontal Divider Line */
-.footer-divider {
-  width: 100%;
-  height: 1px;
-  background-color: rgba(255, 255, 255, 0.15);
-  margin: 2.5rem 0 2rem 0;
-}
-
-/* Partners Section */
-.footer-partners-section {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-}
-
-.footer-partners-title {
-  font-family: var(--font-body);
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: #ffffff;
-}
-
-.footer-partners-row {
-  display: flex;
-  align-items: center;
-  gap: 2.5rem;
-  flex-wrap: wrap;
-}
-
-.footer-partner-item {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: rgba(255, 255, 255, 0.85);
-  font-family: var(--font-body);
-  font-size: 1rem;
-  font-weight: 600;
-}
-
-.partner-dot {
-  color: rgba(255, 255, 255, 0.5);
-  font-size: 1.2rem;
-}
-
-.partner-logo-img {
-  height: 26px;
-  width: auto;
-  filter: brightness(0) invert(1);
-  opacity: 0.9;
-}
-
-.partner-name {
-  font-family: var(--font-body);
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.9);
-}
-
-.partner-bold-text {
-  font-family: var(--font-display);
-  font-size: 1.25rem;
-  font-weight: 800;
-  color: #ffffff;
-  letter-spacing: 0.04em;
-}
-
-/* Giant Cream Brand Letters Banner */
-.footer-giant-brand-banner {
-  width: 100%;
-  overflow: hidden;
-  background-color: #1c1d1b;
-  line-height: 0.72;
-  padding-top: 1rem;
-  user-select: none;
-}
-
-.footer-giant-letters-wrap {
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  width: 100%;
-  gap: clamp(0.1rem, 0.5vw, 0.5rem);
-  transform: translateY(0.14em);
-}
-
-.footer-giant-letter-item {
-  font-family: var(--font-display);
-  font-size: clamp(6.5rem, 21vw, 20rem);
-  font-weight: 800;
-  color: #f5f2e8;
-  line-height: 0.72;
-  display: inline-block;
-  letter-spacing: -0.03em;
-}
-
-/* Cream Bottom Bar matching Arrodz bottom strip */
-.footer-cream-bar {
-  background-color: #f5f2e8;
-  color: #1c1d1b;
-  padding: 1.25rem 0;
+/* Column header — muted grey, uppercase, letter-spaced */
+.ftr-col-heading {
   font-family: var(--font-body);
   font-size: 0.8125rem;
-  border-top: 1px solid rgba(0, 0, 0, 0.05);
-  position: relative;
-  z-index: 10;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: rgba(230, 228, 225, 0.5);
+  margin-bottom: 0.75rem;
 }
 
-.footer-cream-inner {
+/* Link list — airy vertical rhythm */
+.ftr-link {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: #E8E6E2;
+  text-decoration: none;
+  line-height: 2.2;
+  width: fit-content;
+  transition: color 0.3s ease, opacity 0.3s ease;
+}
+
+.ftr-link:hover {
+  color: #ffffff;
+  opacity: 1;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ── Brand column ── */
+.ftr-logo-mark {
+  height: 44px;
+  width: auto;
+  object-fit: contain;
+  margin-bottom: 1.25rem;
+}
+
+.ftr-brand-desc {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: rgba(230, 228, 225, 0.65);
+  max-width: 22rem;
+  margin: 0 0 1.5rem;
+}
+
+.ftr-follow-label {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(230, 228, 225, 0.5);
+  margin-bottom: 0.9rem;
+}
+
+.ftr-social-row {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 1.5rem;
-  flex-wrap: wrap;
+  gap: 0.65rem;
 }
 
-.footer-cream-left {
+.ftr-social-icon {
   display: flex;
   align-items: center;
-  gap: 1.75rem;
-  color: #4a4a46;
-  flex-wrap: wrap;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: rgba(230, 228, 225, 0.8);
+  transition: border-color 0.3s ease, color 0.3s ease, background-color 0.3s ease;
 }
 
-.footer-legal-link {
-  color: #4a4a46;
+.ftr-social-icon:hover {
+  border-color: #ffffff;
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.06);
+}
+
+/* ── HQ column ── */
+.ftr-col-hq {
+  gap: 0;
+}
+
+.ftr-hq-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  line-height: 1.6;
+}
+
+.ftr-address {
+  font-style: normal;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: rgba(230, 228, 225, 0.8);
+  margin-bottom: 0.85rem;
+}
+
+.ftr-icon {
+  flex-shrink: 0;
+  color: rgba(230, 228, 225, 0.7);
+  margin-top: 0.2rem;
+}
+
+.ftr-col-hq .ftr-link {
+  line-height: 1.6;
+  margin-bottom: 0.85rem;
+}
+
+/* ── Bottom bar ── */
+.footer-bottom-bar {
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 2rem 0 1.75rem;
+}
+
+.footer-bottom-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem 2.5rem;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.footer-bottom-inner span {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: rgba(230, 228, 225, 0.5);
+  text-align: center;
+}
+
+.footer-bottom-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-shrink: 0;
+}
+
+.footer-bottom-link {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: rgba(230, 228, 225, 0.5);
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
-.footer-legal-link:hover {
-  color: #1c1d1b;
-  text-decoration: underline;
+.footer-bottom-link:hover {
+  color: #ffffff;
 }
 
-.footer-cream-right {
-  color: #4a4a46;
-}
-
-/* Responsive Overrides */
-@media screen and (max-width: 991px) {
-  .footer-giant-tagline {
-    font-size: clamp(2rem, 6vw, 3.5rem);
+/* Responsive */
+@media screen and (max-width: 599px) {
+  .ftr-columns-wrap {
+    padding-top: 2.25rem;
+    padding-bottom: 2rem;
   }
 
-  .footer-giant-letter-item {
-    font-size: clamp(4.5rem, 18vw, 12rem);
-  }
-}
-
-@media screen and (max-width: 576px) {
-  .footer-cream-inner {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.75rem;
+  .ftr-grid {
+    gap: 2.25rem;
   }
 
-  .footer-cream-left {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5rem;
+  .ftr-col-brand {
+    grid-column: auto;
+    margin-bottom: 0;
   }
 }

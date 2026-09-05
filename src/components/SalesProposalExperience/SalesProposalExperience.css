@@ -1,0 +1,380 @@
+/* ═══════════════════════════════════════════
+   ZEBROLD — Smart Sales Proposals cinematic experience
+   Warm white → deep charcoal crossfade, driven by --sp-* custom properties
+   set inline from scroll progress (see SalesProposalExperience.jsx).
+   ═══════════════════════════════════════════ */
+
+.sp-scroll {
+  position: relative;
+  height: 700vh;
+  background: var(--sp-bg, #ffffff);
+}
+
+.sp-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--sp-bg, #ffffff);
+}
+
+.sp-canvas-wrap {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.sp-canvas-wrap canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Very subtle radial depth — the background should still read as solid */
+.sp-sticky::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 55%, var(--sp-vignette, rgba(255, 255, 255, 0.55)) 100%);
+}
+
+.sp-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* ── ZEBROLD logo mark, seated in the gap the exploded parts open up.
+   Position/opacity/scale are driven inline from centerReveal (progress-based),
+   not CSS transitions, to stay in lockstep with scroll scrubbing. The 12vh
+   downward offset matches FRAME_SHIFT_FRACTION in animationSystem.js, which
+   holds the 3D object's own center gap that same fraction below true
+   screen-center (clearing room for the header text) — keep the two in sync. ── */
+.sp-center-mark {
+  position: absolute;
+  top: calc(50% + 12vh);
+  left: 50%;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sp-center-logo {
+  display: block;
+  height: clamp(2rem, 3vw, 3.25rem);
+  width: auto;
+}
+
+/* ── Left vertical timeline ── */
+.sp-timeline {
+  position: absolute;
+  left: clamp(1.25rem, 4vw, 3.25rem);
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.15rem;
+}
+
+.sp-timeline-line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--sp-divider, rgba(33, 30, 29, 0.12));
+  transform: translateX(-50%);
+  z-index: -1;
+}
+
+.sp-timeline-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+}
+
+.sp-timeline-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--sp-text-tertiary, rgba(33, 30, 29, 0.5));
+  transition: background 0.35s ease, box-shadow 0.35s ease;
+}
+
+.sp-timeline-num {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--sp-text-tertiary, rgba(33, 30, 29, 0.5));
+  transition: color 0.35s ease;
+}
+
+.sp-timeline-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--sp-text-tertiary, rgba(33, 30, 29, 0.5));
+  text-transform: uppercase;
+  transition: color 0.35s ease;
+}
+
+.sp-timeline-item.is-quote .sp-timeline-label {
+  color: var(--sp-text-primary, #211e1d);
+}
+
+.sp-timeline-item.is-active .sp-timeline-num,
+.sp-timeline-item.is-active .sp-timeline-label {
+  color: var(--sp-text-primary, #211e1d);
+  font-weight: 700;
+}
+
+.sp-timeline-item.is-active .sp-timeline-dot {
+  background: var(--sp-text-primary, #211e1d);
+  box-shadow: 0 0 0 3px var(--sp-divider, rgba(33, 30, 29, 0.12));
+}
+
+.sp-timeline--horizontal {
+  left: 50%;
+  top: clamp(4.5rem, 12vh, 6rem);
+  transform: translateX(-50%);
+  flex-direction: row;
+  gap: 0.85rem;
+}
+
+.sp-timeline--horizontal .sp-timeline-line {
+  left: 0;
+  right: 0;
+  top: 50%;
+  bottom: auto;
+  height: 1px;
+  width: auto;
+  transform: translateY(-50%);
+}
+
+.sp-timeline--horizontal .sp-timeline-item {
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.sp-timeline--horizontal .sp-timeline-label {
+  font-size: 0.55rem;
+  white-space: nowrap;
+}
+
+/* ── Top centered content ── */
+.sp-header {
+  position: absolute;
+  top: calc(var(--navbar-h, 72px) + clamp(0.75rem, 3vh, 2rem));
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(1050px, 90vw);
+  text-align: center;
+  transition: opacity 0.4s ease;
+}
+
+.sp-header-inner {
+  transition: opacity 0.5s ease;
+}
+
+.sp-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--sp-text-tertiary, rgba(33, 30, 29, 0.5));
+}
+
+.sp-eyebrow-triangle {
+  color: #356cc7;
+  font-size: 0.6rem;
+  opacity: 0.9;
+}
+
+.sp-heading {
+  margin: 0.85rem 0 1rem;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: clamp(3rem, 5vw, 4.875rem);
+  letter-spacing: -0.03em;
+  color: var(--sp-text-primary, #211e1d);
+  line-height: 1.08;
+}
+
+.sp-description {
+  margin: 0 auto;
+  max-width: min(950px, 88vw);
+  font-size: 1.125rem;
+  line-height: 1.65;
+  color: var(--sp-text-secondary, rgba(33, 30, 29, 0.7));
+}
+
+/* ── Bottom feature rail ── */
+.sp-feature-rail {
+  position: absolute;
+  bottom: clamp(1.5rem, 5vh, 3rem);
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(1120px, 90vw);
+  display: flex;
+  gap: clamp(1.25rem, 3vw, 2.5rem);
+  border-top: 1px solid var(--sp-divider, rgba(33, 30, 29, 0.12));
+  padding-top: 1.25rem;
+  transition: opacity 0.4s ease;
+}
+
+.sp-feature-item {
+  flex: 1 1 0;
+  padding-left: clamp(1rem, 2vw, 1.5rem);
+  border-left: 1px solid var(--sp-divider, rgba(33, 30, 29, 0.12));
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.sp-feature-item:first-child {
+  padding-left: 0;
+  border-left: none;
+}
+
+.sp-feature-num {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--sp-text-tertiary, rgba(33, 30, 29, 0.5));
+  letter-spacing: 0.06em;
+}
+
+.sp-feature-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--sp-text-primary, #211e1d);
+}
+
+.sp-feature-body {
+  margin: 0;
+  font-size: 0.78rem;
+  line-height: 1.55;
+  color: var(--sp-text-secondary, rgba(33, 30, 29, 0.7));
+}
+
+/* ── Debug panel (dev-only) — always dark for legibility regardless of section theme ── */
+.sp-debug-panel {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 5;
+  pointer-events: auto;
+  background: rgba(0, 0, 0, 0.72);
+  border: 1px solid rgba(230, 228, 223, 0.25);
+  border-radius: 6px;
+  padding: 0.6rem;
+  font-family: monospace;
+  font-size: 0.65rem;
+  color: #e3e1dd;
+  max-width: 190px;
+}
+
+.sp-debug-title {
+  margin-bottom: 0.4rem;
+  letter-spacing: 0.05em;
+}
+
+.sp-debug-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.sp-debug-buttons button {
+  font-family: monospace;
+  font-size: 0.62rem;
+  text-align: left;
+  background: rgba(255, 255, 255, 0.06);
+  color: #e3e1dd;
+  border: 1px solid rgba(230, 228, 223, 0.2);
+  border-radius: 4px;
+  padding: 0.25rem 0.4rem;
+  cursor: pointer;
+}
+
+.sp-debug-buttons button:hover {
+  background: rgba(53, 108, 199, 0.25);
+}
+
+.sp-debug-buttons button.is-live {
+  border-color: #356cc7;
+  color: #356cc7;
+}
+
+/* ── Tablet ── */
+@media (max-width: 1024px) {
+  .sp-heading {
+    font-size: clamp(2.2rem, 4.5vw, 3rem);
+  }
+  .sp-center-logo {
+    height: clamp(1.5rem, 4vw, 2.25rem);
+  }
+  .sp-feature-rail {
+    gap: 1.25rem;
+  }
+  .sp-feature-body {
+    display: none;
+  }
+}
+
+/* ── Mobile: proper stacked layout, not a shrunk desktop ── */
+@media (max-width: 640px) {
+  .sp-scroll {
+    height: 500vh;
+  }
+
+  .sp-header {
+    top: calc(var(--navbar-h, 72px) + clamp(0.75rem, 4vh, 1.5rem));
+    width: 88vw;
+  }
+
+  .sp-heading {
+    font-size: 1.9rem;
+    margin: 0.6rem 0 0.6rem;
+  }
+
+  .sp-description {
+    font-size: 0.88rem;
+    max-width: 34ch;
+  }
+
+  .sp-center-logo {
+    height: 1.15rem;
+  }
+
+  .sp-feature-rail {
+    bottom: 1rem;
+    flex-wrap: wrap;
+    row-gap: 1rem;
+    padding-top: 0.85rem;
+  }
+
+  .sp-feature-item {
+    flex: 1 1 42%;
+  }
+
+  .sp-feature-body {
+    display: none;
+  }
+
+  .sp-debug-panel {
+    max-width: 140px;
+    font-size: 0.55rem;
+  }
+}

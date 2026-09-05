@@ -1,0 +1,511 @@
+/* ════════════════════════════════════════════════════════════
+   777X BY DESIGN — page-scoped design system, aligned to the A321XLR page's
+   spacing/typography tokens so the two pages read as one product family.
+   Everything below is scoped under .x777-by-design; A321XLR, A350F, and Air
+   Traffic Management are untouched.
+   ════════════════════════════════════════════════════════════ */
+
+.x777-by-design {
+  /* Same four-tier scale, same clamp values, as the A321XLR page. */
+  --x777-sm: clamp(24px, 3vw, 40px);
+  --x777-md: clamp(40px, 5vw, 60px);
+  --x777-section: clamp(70px, 8vw, 100px);
+  --x777-chapter: clamp(90px, 10vw, 120px);
+  background-color: var(--color-white, #ffffff);
+}
+
+@media screen and (max-width: 640px) {
+  .x777-by-design {
+    --x777-sm: clamp(18px, 4vw, 28px);
+    --x777-md: clamp(30px, 6vw, 45px);
+    --x777-section: clamp(50px, 8vw, 70px);
+    --x777-chapter: clamp(70px, 9vw, 85px);
+  }
+}
+
+/* ── One spacing system — every section's top/bottom padding ── */
+.x777-by-design .product-section {
+  padding: var(--x777-section) 0;
+  background-color: var(--color-white, #ffffff);
+}
+
+.x777-by-design .product-section-header {
+  margin-bottom: var(--x777-md);
+}
+
+/* ── Typography — matches the A321XLR page's identity exactly ── */
+.x777-by-design .product-caption {
+  font-weight: 600;
+  letter-spacing: 0.16em;
+}
+
+.x777-by-design .product-section-h2 {
+  font-family: var(--font-body);
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  font-size: clamp(1.8rem, 2.6vw, 2.6rem);
+  line-height: 1.08;
+}
+
+.x777-by-design .product-section-lede {
+  font-size: clamp(1rem, 1.1vw, 1.1875rem);
+  line-height: 1.75;
+}
+
+/* ═══════════════════════════════════════
+   HERO — image / text / image, pure white
+   ═══════════════════════════════════════ */
+.x777-hero {
+  background-color: var(--color-white, #ffffff);
+  padding: clamp(70px, 9vw, 110px) 0;
+}
+
+.x777-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr 1fr;
+  gap: clamp(40px, 5vw, 60px);
+  align-items: center;
+}
+
+.x777-hero-imgwrap {
+  overflow: hidden;
+  border-radius: 4px;
+  height: clamp(360px, 40vw, 560px);
+}
+
+.x777-hero-imgwrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.x777-hero-imgwrap--left img {
+  object-position: center 45%;
+}
+
+.x777-hero-imgwrap--right img {
+  object-position: center 55%;
+}
+
+.x777-hero-text {
+  text-align: center;
+}
+
+.x777-hero-label {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-wine, #6E2A2A);
+  margin-bottom: 1.25rem;
+}
+
+.x777-hero-statement {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: clamp(2.5rem, 3.8vw, 4.2rem);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  color: var(--color-text-primary, #121212);
+  margin-bottom: 1.5rem;
+}
+
+.x777-hero-copy {
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 1.1vw, 1.125rem);
+  line-height: 1.7;
+  color: var(--color-text-secondary, #555555);
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+/* ═══════════════════════════════════════
+   ALTERNATING BROWN SECTIONS
+   ═══════════════════════════════════════ */
+.x777-by-design .x777-brown {
+  background-color: var(--color-wine-dark, #4A1C1C);
+}
+
+.x777-by-design .x777-brown .product-caption {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.x777-by-design .x777-brown .product-section-h2 {
+  color: #ffffff;
+}
+
+.x777-by-design .x777-brown .product-section-lede {
+  color: rgba(255, 255, 255, 0.82);
+}
+
+/* Stat rows (By the Numbers) */
+.x777-by-design .x777-brown .product-stat {
+  border-left-color: rgba(255, 255, 255, 0.35);
+}
+
+.x777-by-design .x777-brown .product-stat-value {
+  color: #ffffff;
+}
+
+.x777-by-design .x777-brown .product-stat-label {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* Sticky story (Five decisions) */
+.x777-by-design .x777-brown .product-sticky-story-media {
+  background-color: rgba(255, 255, 255, 0.06);
+}
+
+.x777-by-design .x777-brown .product-sticky-story-number {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.x777-by-design .x777-brown .product-sticky-story-title {
+  color: #ffffff;
+}
+
+.x777-by-design .x777-brown .product-sticky-story-desc {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+/* The shared component dims inactive items to 32% opacity — legible on
+   white, too dim on dark brown. Raise the floor for this page's brown
+   sections only. */
+.x777-by-design .x777-brown .product-sticky-story-item {
+  opacity: 0.55;
+}
+
+.x777-by-design .x777-brown .product-sticky-story-item.is-active {
+  opacity: 1;
+}
+
+/* Column grid (Balanced Design Approach) */
+.x777-by-design .x777-brown .product-column-title {
+  color: #ffffff;
+  border-bottom-color: rgba(255, 255, 255, 0.35);
+}
+
+.x777-by-design .x777-brown .product-column li {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.x777-by-design .x777-brown .product-column li::before {
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.x777-by-design .x777-brown .product-column:hover .product-column-title {
+  border-color: #ffffff;
+}
+
+/* Tabs (Aerodynamics) */
+.x777-by-design .x777-brown .product-tabs-nav {
+  border-bottom-color: rgba(255, 255, 255, 0.2);
+}
+
+.x777-by-design .x777-brown .product-tab-btn {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.x777-by-design .x777-brown .product-tab-btn:hover,
+.x777-by-design .x777-brown .product-tab-btn.is-active {
+  color: #ffffff;
+}
+
+.x777-by-design .x777-brown .product-tab-btn.is-active::after {
+  background: #ffffff;
+}
+
+.x777-by-design .x777-brown .product-tab-panel-title {
+  color: #ffffff;
+}
+
+.x777-by-design .x777-brown .product-tab-panel-desc {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+/* Numbered rows (Flight Deck / Passenger Experience) */
+.x777-by-design .x777-brown .x777-row {
+  border-top-color: rgba(255, 255, 255, 0.18);
+}
+
+.x777-by-design .x777-brown .x777-row-number {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.x777-by-design .x777-brown .x777-row-title {
+  color: #ffffff;
+}
+
+.x777-by-design .x777-brown .x777-row-desc {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+/* ═══════════════════════════════════════
+   FULL-BLEED IMAGE BREAK
+   ═══════════════════════════════════════ */
+.x777-full-bleed {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 21 / 8;
+  max-height: 560px;
+  overflow: hidden;
+}
+
+.x777-full-bleed img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 60%;
+  display: block;
+}
+
+.x777-full-bleed-caption {
+  position: absolute;
+  left: clamp(1.5rem, 5vw, 3rem);
+  bottom: clamp(1.25rem, 3vw, 2rem);
+  color: #ffffff;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.6);
+  max-width: 32rem;
+}
+
+.x777-performance-bullets {
+  margin-top: var(--x777-sm);
+  max-width: 52rem;
+}
+
+/* ═══════════════════════════════════════
+   NUMBERED ROW LISTS — no cards
+   ═══════════════════════════════════════ */
+.x777-row-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.x777-row {
+  display: flex;
+  align-items: baseline;
+  gap: 1.5rem;
+  padding: 1.1rem 0;
+  border-top: 1px solid var(--color-border, rgba(34, 37, 35, 0.12));
+}
+
+.x777-row:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+.x777-row-number {
+  flex-shrink: 0;
+  width: 2rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--color-wine, #6E2A2A);
+}
+
+.x777-row-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.x777-row-title {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 1.05rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--color-text-primary, #222523);
+}
+
+.x777-row-desc {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary, #555555);
+  max-width: 34rem;
+}
+
+/* ── Passenger experience: image + row list ── */
+.x777-passenger-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: var(--x777-md);
+  align-items: center;
+}
+
+.x777-passenger-imgwrap {
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.x777-passenger-imgwrap img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s var(--ease-out-expo, ease);
+}
+
+.x777-passenger-imgwrap:hover img {
+  transform: scale(1.03);
+}
+
+/* ═══════════════════════════════════════
+   OPERATING ECONOMICS — white, two figures side by side
+   ═══════════════════════════════════════ */
+.x777-economics-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--x777-md);
+  margin-bottom: var(--x777-sm);
+}
+
+.x777-economics-value {
+  display: block;
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: clamp(3.5rem, 7vw, 5.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+  color: var(--color-wine, #6E2A2A);
+  margin-bottom: 0.75rem;
+}
+
+.x777-economics-sub {
+  max-width: 46rem;
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--color-text-secondary, #555555);
+}
+
+/* ═══════════════════════════════════════
+   GLOBAL PRESENCE MAP — same component + styling as the A321XLR page
+   ═══════════════════════════════════════ */
+.a321-map {
+  max-width: 900px;
+  margin: var(--x777-sm) auto 0;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background-color: var(--color-off-white, #F5F2E8);
+  overflow: hidden;
+}
+
+.a321-map-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 980 / 460;
+}
+
+.a321-map-ocean {
+  fill: var(--color-off-white, #F5F2E8);
+}
+
+.a321-map-land {
+  fill: rgba(34, 37, 35, 0.14);
+  stroke: var(--color-white, #F9F9F7);
+  stroke-width: 0.75;
+}
+
+.a321-map-marker-group {
+  cursor: pointer;
+  outline: none;
+}
+
+.a321-map-marker-halo {
+  fill: rgba(110, 42, 42, 0.14);
+  stroke: rgba(110, 42, 42, 0.45);
+  stroke-width: 1;
+  transition: r 0.2s ease, fill 0.2s ease;
+}
+
+.a321-map-marker-group:hover .a321-map-marker-halo,
+.a321-map-marker-group:focus-visible .a321-map-marker-halo,
+.a321-map-marker-halo.is-active {
+  fill: rgba(110, 42, 42, 0.3);
+}
+
+.a321-map-marker-core {
+  fill: var(--color-wine-dark, #4A1C1C);
+}
+
+.a321-map-marker-label {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  fill: var(--color-text-muted, #888888);
+  transition: fill 0.2s ease;
+}
+
+.a321-map-marker-group:hover .a321-map-marker-label,
+.a321-map-marker-group:focus-visible .a321-map-marker-label,
+.a321-map-marker-label.is-active {
+  fill: var(--color-wine-dark, #4A1C1C);
+}
+
+/* ── Balanced design columns — subtle hover shift, no cards ── */
+.x777-by-design .product-column {
+  transition: transform 0.35s var(--ease-out-expo, ease);
+}
+
+.x777-by-design .product-column:hover {
+  transform: translateY(-3px);
+}
+
+.x777-by-design .product-column-title {
+  transition: border-color 0.3s ease;
+}
+
+/* ═══════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════ */
+@media (max-width: 900px) {
+  .x777-hero-grid {
+    grid-template-columns: 1fr;
+    gap: var(--x777-sm);
+  }
+
+  .x777-hero-imgwrap {
+    height: clamp(220px, 60vw, 340px);
+  }
+
+  .x777-hero-text {
+    order: -1;
+  }
+
+  .x777-passenger-grid,
+  .x777-economics-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .x777-economics-grid {
+    gap: 1.5rem;
+  }
+
+  .x777-full-bleed {
+    aspect-ratio: 4 / 3;
+    max-height: 420px;
+  }
+}
+
+@media (max-width: 560px) {
+  .x777-row {
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .x777-row-number {
+    width: auto;
+  }
+}

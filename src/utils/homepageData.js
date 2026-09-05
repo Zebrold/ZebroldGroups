@@ -108,8 +108,8 @@ export { DOMAINS_DEFAULTS };
    STATS  (3 items)
    ══════════════════════════════════════════════════════ */
 const STATS_DEFAULTS = [
-  { value: 216, prefix: '€', suffix: ' Mio.', label_de: 'Umsatz der Tochtergesellschaften', label_en: 'Subsidiary Revenue' },
-  { value: 26, prefix: '', suffix: '', label_de: 'Unternehmen in unserem Portfolio', label_en: 'Companies in Our Portfolio' },
+  { value: 216, prefix: '€', suffix: ' Million', label_de: 'Umsatz der Tochtergesellschaften', label_en: 'Subsidiary Revenue' },
+  { value: 22, prefix: '', suffix: '', label_de: 'Unternehmen in unserem Portfolio', label_en: 'Companies in Our Portfolio' },
   { value: 40, prefix: '+', suffix: '%', label_de: 'Wachstum gegenüber dem Vorjahr in Schlüsselsektoren', label_en: 'Year-over-Year Growth in Key Sectors' },
 ];
 
@@ -169,8 +169,8 @@ export { NEWS_SECTION_DEFAULTS };
    ABOUT SCROLL SECTION
    ══════════════════════════════════════════════════════ */
 const ABOUT_SCROLL_DEFAULTS = {
-  text_de: 'WIR ARBEITEN MIT IHNEN, NICHT NUR FÜR SIE',
-  text_en: 'WORKING WITH YOU, NOT JUST FOR YOU',
+  text_de: 'GEBAUT FÜR DAS KOMPLEXE. BEREIT FÜR DAS, WAS KOMMT.',
+  text_en: "BUILT FOR THE COMPLEX. READY FOR WHAT'S NEXT.",
   imagePreview: null, // base64 or null for default asset
 };
 

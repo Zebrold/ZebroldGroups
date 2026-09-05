@@ -1,6 +1,6 @@
-.contact-page { background-color: var(--color-surface); }
+.contact-page { background-color: var(--color-white); }
 .contact-hero { background: linear-gradient(135deg, var(--color-wine-dark) 0%, var(--color-black) 60%); }
-.contact-main { background-color: var(--color-surface); }
+.contact-main { background-color: var(--color-white); }
 
 .contact-grid {
   display: grid;

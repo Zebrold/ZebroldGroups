@@ -1,0 +1,578 @@
+/* ════════════════════════════════════════════════════════════
+   AIR TRAFFIC MANAGEMENT — page-scoped design system.
+   This page is deliberately NOT another aircraft product page: it's about
+   airspace, data, coordination and trajectories, not an airframe. No cards,
+   no rounded media, no colour beyond white / off-white / deep brown /
+   charcoal / warm gray. Thin hairline rules replace borders and shadows
+   throughout, and every image is shown natural — no gradient washes.
+
+   Spacing rhythm (section 21 of the brief): four tiers — major / technical
+   (technology chapters run deliberately larger) / cinematic / data — each
+   with its own mobile-scaled variant, so the page never repeats one
+   padding value top to bottom.
+   ════════════════════════════════════════════════════════════ */
+
+.atm-page {
+  --atm-major: clamp(110px, 13vw, 180px);
+  --atm-technical: clamp(120px, 15vw, 200px);
+  --atm-cinematic-top: clamp(90px, 10vw, 140px);
+  --atm-cinematic-bottom: clamp(120px, 14vw, 180px);
+  --atm-data: clamp(90px, 11vw, 150px);
+}
+
+.atm-page .product-split-media img {
+  border-radius: 0;
+}
+
+/* ── Section padding tiers ── */
+.atm-major { padding: var(--atm-major) 0; }
+.atm-technical { padding: var(--atm-technical) 0; }
+
+/* ── Shared type — thin, editorial, uppercase eyebrows ── */
+.atm-eyebrow {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-wine, #6E2A2A);
+}
+
+.atm-heading {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: clamp(2.6rem, 5vw, 5.2rem);
+  line-height: 1.06;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: var(--color-text-primary, #222523);
+}
+
+.atm-subheading {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: clamp(1.5rem, 2.5vw, 2.5rem);
+  line-height: 1.2;
+  color: var(--color-text-primary, #222523);
+}
+
+.atm-body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: clamp(1.0625rem, 1.2vw, 1.25rem);
+  line-height: 1.75;
+  color: var(--color-text-secondary, #555555);
+}
+
+.atm-body + .atm-body {
+  margin-top: 1.1em;
+}
+
+.atm-divider {
+  height: 1px;
+  background-color: var(--color-border, rgba(34, 37, 35, 0.14));
+}
+
+/* ═══════ HERO — image-dominant, no overlay ═══════ */
+.atm-hero {
+  position: relative;
+  height: clamp(85vh, 90vh, 92vh);
+  min-height: 640px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  background-color: var(--color-off-white, #F5F2E8);
+}
+
+.atm-hero-media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.atm-hero-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* The source photo is mostly open sky above a narrow band of hazy
+     mountain/tarmac at the very bottom — biasing toward the top keeps that
+     busy ground band out of frame so hero type always sits on clean sky. */
+  object-position: 50% 22%;
+  display: block;
+}
+
+.atm-hero-body {
+  position: relative;
+  z-index: 1;
+  padding: clamp(2rem, 6vw, 4rem) clamp(1.5rem, 8vw, 8vw) clamp(3rem, 10vh, 6.5rem);
+  max-width: 1000px;
+}
+
+/* Hero photo is a bright, open sky — dark editorial type (not white)
+   reads cleanly against it, no wash or panel required. */
+.atm-hero .atm-eyebrow {
+  color: var(--color-wine-dark, #4A1C1C);
+}
+
+.atm-hero-title {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: clamp(3.8rem, 7vw, 8rem);
+  line-height: 0.94;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: var(--color-text-primary, #222523);
+  margin: 0.5rem 0 1rem;
+}
+
+.atm-hero-title span {
+  display: block;
+}
+
+.atm-hero-lede {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: clamp(1.0625rem, 1.4vw, 1.25rem);
+  line-height: 1.5;
+  color: var(--color-text-secondary, #444444);
+  max-width: 30rem;
+}
+
+.atm-scroll-cue {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin-top: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+.atm-scroll-cue-line {
+  width: 40px;
+  height: 1px;
+  background-color: var(--color-wine-dark, #4A1C1C);
+  opacity: 0.6;
+}
+
+.atm-scroll-cue-label {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary, #444444);
+}
+
+.atm-scroll-cue-arrow {
+  color: var(--color-wine-dark, #4A1C1C);
+  font-size: 0.85rem;
+}
+
+/* ═══════ INTRO — narrow label column / large statement column ═══════ */
+.atm-intro-grid {
+  display: grid;
+  grid-template-columns: 0.7fr 2.3fr;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: start;
+}
+
+.atm-intro-copy {
+  margin-top: clamp(1.5rem, 2.5vw, 2rem);
+  max-width: 46rem;
+}
+
+/* ═══════ IMPACT — large qualitative editorial statement, no card ═══════ */
+.atm-impact {
+  padding: var(--atm-data) 0;
+}
+
+.atm-impact-inner {
+  max-width: 60rem;
+}
+
+.atm-impact-words {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: clamp(2.75rem, 6vw, 6rem);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: var(--color-wine, #6E2A2A);
+}
+
+.atm-impact-sub {
+  margin-top: clamp(1.5rem, 3vw, 2.25rem);
+  font-family: var(--font-body);
+  font-size: clamp(1.0625rem, 1.2vw, 1.25rem);
+  line-height: 1.7;
+  color: var(--color-text-secondary, #555555);
+  max-width: 38rem;
+}
+
+/* ═══════ FULL-WIDTH CINEMATIC BREAK ═══════ */
+.atm-cinematic {
+  margin: var(--atm-cinematic-top) 0 var(--atm-cinematic-bottom);
+}
+
+.atm-cinematic-frame {
+  position: relative;
+  width: 100%;
+  height: clamp(52vh, 60vw, 72vh);
+  overflow: hidden;
+}
+
+.atm-cinematic-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.atm-cinematic-caption {
+  position: absolute;
+  left: clamp(1.25rem, 4vw, 3rem);
+  bottom: 1.25rem;
+  color: #ffffff;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  background: rgba(28, 24, 22, 0.55);
+  padding: 0.55rem 1rem;
+}
+
+/* ═══════ FLIGHT OPERATIONS — editorial timeline (no cards) ═══════ */
+.atm-timeline-intro {
+  max-width: 46rem;
+  margin-bottom: clamp(3rem, 6vw, 4.5rem);
+}
+
+.atm-timeline {
+  margin-top: clamp(1rem, 3vw, 2rem);
+}
+
+.atm-timeline-nodes {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: clamp(1.25rem, 3vw, 2rem);
+}
+
+.atm-timeline-nodes::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 5px;
+  height: 1px;
+  background-color: var(--color-border, rgba(34, 37, 35, 0.16));
+}
+
+.atm-timeline-node {
+  position: relative;
+  padding-top: clamp(1.75rem, 3vw, 2.25rem);
+  opacity: 0.45;
+  transition: opacity 0.5s ease;
+}
+
+.atm-timeline-node.is-active {
+  opacity: 1;
+}
+
+.atm-timeline-dot {
+  position: absolute;
+  top: -2px;
+  left: 0;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  border: 2px solid var(--color-wine, #6E2A2A);
+  background-color: var(--color-white, #F9F9F7);
+  transition: background-color 0.4s ease;
+}
+
+.atm-timeline-node.is-active .atm-timeline-dot {
+  background-color: var(--color-wine, #6E2A2A);
+}
+
+.atm-timeline-index {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--color-text-muted, #888888);
+  margin-bottom: 0.5rem;
+}
+
+.atm-timeline-stage {
+  display: block;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-primary, #222523);
+  margin-bottom: 0.65rem;
+  transition: color 0.4s ease;
+}
+
+.atm-timeline-node.is-active .atm-timeline-stage {
+  color: var(--color-wine, #6E2A2A);
+}
+
+.atm-timeline-desc {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary, #555555);
+  max-width: 15rem;
+}
+
+/* ═══════ FLIGHT OPS SPLIT — image-dominant 58/42 ═══════ */
+.atm-split-wide .product-split {
+  grid-template-columns: 1.4fr 1fr;
+}
+
+/* ═══════ WAKE ENERGY RETRIEVAL — SVG graphic ═══════ */
+.atm-wake-graphic {
+  margin-top: clamp(3rem, 6vw, 4.5rem);
+  padding-top: clamp(2.5rem, 5vw, 3.5rem);
+  border-top: 1px solid var(--color-border, rgba(34, 37, 35, 0.14));
+}
+
+.atm-wake-svg {
+  width: 100%;
+  height: auto;
+  color: var(--color-wine, #6E2A2A);
+  overflow: visible;
+}
+
+.atm-wake-svg text {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  fill: var(--color-text-muted, #888888);
+}
+
+.atm-wake-svg .atm-wake-aircraft {
+  fill: var(--color-text-primary, #222523);
+  transition: transform 0.6s var(--ease-out-expo, ease);
+}
+
+.atm-wake-svg .atm-wake-lines line {
+  stroke: var(--color-wine, #6E2A2A);
+  stroke-width: 1;
+  stroke-dasharray: 3 4;
+  opacity: 0.55;
+}
+
+.atm-wake-graphic:hover .atm-wake-follow,
+.atm-wake-graphic:focus-within .atm-wake-follow {
+  transform: translateX(14px);
+}
+
+.atm-wake-image {
+  margin-top: var(--atm-cinematic-top);
+  margin-bottom: var(--atm-cinematic-bottom);
+  position: relative;
+  width: 100%;
+  height: clamp(50vh, 55vw, 68vh);
+  overflow: hidden;
+}
+
+.atm-wake-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.atm-wake-image .atm-cinematic-caption {
+  left: clamp(1.25rem, 4vw, 3rem);
+}
+
+/* ═══════ TRAJECTORY-BASED OPERATIONS — 4 data points, no cards ═══════ */
+.atm-datapoints {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+  padding-top: clamp(2rem, 4vw, 3rem);
+  border-top: 1px solid var(--color-border, rgba(34, 37, 35, 0.14));
+}
+
+.atm-datapoint-label {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-muted, #888888);
+  margin-bottom: 0.6rem;
+}
+
+.atm-datapoint-value {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(1.6rem, 3vw, 2.5rem);
+  color: var(--color-wine, #6E2A2A);
+  line-height: 1;
+}
+
+.atm-trajectory-svg-wrap {
+  margin-top: clamp(3rem, 6vw, 4.5rem);
+}
+
+.atm-trajectory-svg {
+  width: 100%;
+  height: auto;
+  color: var(--color-wine, #6E2A2A);
+  overflow: visible;
+}
+
+.atm-trajectory-svg path.atm-trajectory-path {
+  fill: none;
+  stroke: var(--color-text-primary, #222523);
+  stroke-width: 1.25;
+}
+
+.atm-trajectory-svg .atm-trajectory-tick {
+  stroke: var(--color-border, rgba(34, 37, 35, 0.4));
+  stroke-width: 1;
+  stroke-dasharray: 2 3;
+}
+
+.atm-trajectory-svg circle {
+  fill: var(--color-wine, #6E2A2A);
+}
+
+.atm-trajectory-svg text {
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  fill: var(--color-text-muted, #888888);
+}
+
+.atm-trajectory-image {
+  margin-top: clamp(3rem, 6vw, 4.5rem);
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.atm-trajectory-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ═══════ FUTURE OF FLIGHT — split, reversed rhythm ═══════ */
+.atm-future-split .product-split {
+  grid-template-columns: 1fr 1.2fr;
+}
+
+/* ═══════ FINAL TECHNICAL STATEMENT — minimal, centered-left ═══════ */
+.atm-final-statement {
+  max-width: 52rem;
+}
+
+.atm-final-statement .atm-heading {
+  margin-bottom: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+/* ═══════ FINAL CINEMATIC — reuse ParallaxImage, tall + flat ═══════ */
+.atm-page .product-parallax--tall {
+  height: clamp(65vh, 72vw, 80vh);
+}
+
+.atm-page .product-parallax-title,
+.atm-page .product-parallax-subtitle {
+  font-family: var(--font-body);
+}
+
+.atm-page .product-parallax-title {
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+}
+
+/* ═══════ RESPONSIVE ═══════ */
+@media (max-width: 1024px) {
+  .atm-intro-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .atm-intro-copy {
+    margin-top: 0.5rem;
+  }
+
+  .atm-timeline-nodes {
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: clamp(2.5rem, 6vw, 3.5rem);
+  }
+
+  .atm-timeline-nodes::before {
+    display: none;
+  }
+
+  .atm-datapoints {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: clamp(2rem, 4vw, 2.5rem);
+  }
+
+  .atm-split-wide .product-split,
+  .atm-future-split .product-split {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .atm-page {
+    --atm-major: clamp(80px, 20vw, 110px);
+    --atm-technical: clamp(90px, 22vw, 120px);
+    --atm-cinematic-top: clamp(60px, 16vw, 90px);
+    --atm-cinematic-bottom: clamp(60px, 16vw, 90px);
+    --atm-data: clamp(60px, 16vw, 90px);
+  }
+
+  .atm-hero {
+    height: clamp(75vh, 80vh, 85vh);
+    min-height: 560px;
+  }
+
+  .atm-hero-body {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    padding-bottom: clamp(2rem, 8vh, 3.5rem);
+  }
+
+  .atm-timeline-nodes {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .atm-datapoints {
+    grid-template-columns: 1fr;
+    row-gap: 1.75rem;
+  }
+}
+
+/* ═══════ REDUCED MOTION ═══════ */
+@media (prefers-reduced-motion: reduce) {
+  .atm-wake-svg .atm-wake-aircraft {
+    transition: none;
+  }
+
+  .atm-wake-graphic:hover .atm-wake-follow,
+  .atm-wake-graphic:focus-within .atm-wake-follow {
+    transform: none;
+  }
+}

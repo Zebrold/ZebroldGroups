@@ -1,8 +1,8 @@
 export const translations = {
   de: {
     // Navigation
-    nav_business: "Sektoren",
-    nav_portfolio: "Portfolio",
+    nav_products: "Produkte",
+    nav_investors: "Investoren",
     nav_about: "Über uns",
     nav_news: "Aktuelles",
     nav_offices: "Büros",
@@ -14,11 +14,9 @@ export const translations = {
     contact_us: "Kontaktieren Sie uns",
 
     // Hero
-    hero_title: "WIR BAUEN INDUSTRIEN, DIE DIE ZUKUNFT DER GLOBALEN INFRASTRUKTUR DEFINIEREN.",
-    hero_desc: "Zebrold International Holdings Limited (Zebrold IHL) verbindet sechsundzwanzig marktführende Unternehmen in zwölf Sektoren und beschleunigt den industriellen Wandel durch deutsche Ingenieurspräzision und nachhaltige Innovation.",
-    hero_badge_1: "Deutsches Konglomerat",
-    hero_badge_2: "für globale Infrastruktur",
-    hero_cta: "Portfolio erkunden",
+    hero_title: "Die Zukunft gestalten. Autonome Marken entwickeln.",
+    hero_desc: "Zebrold IHL vereint Ingenieurskunst, intelligente Technologien und Präzisionsfertigung, um die Zukunft von Automobilbau, Luftfahrt und Medizinrobotik zu gestalten.",
+    hero_cta: "Produkte erkunden",
 
     // Expertise
     exp_caption: "Wie wir Werte schaffen",
@@ -61,7 +59,7 @@ export const translations = {
     // CTA Bottom
     cta_bottom_caption: "Bereit für den nächsten Schritt?",
     cta_bottom_h3: "Ihre Branche verdient eine Infrastruktur, die für die Ewigkeit gebaut ist.",
-    cta_bottom_big: "Lassen Sie uns bauen?",
+    cta_bottom_big: "Lassen Sie uns etwas Großartiges schaffen.",
     cta_bottom_desc: "Ein offenes Gespräch, um Ihre Bedürfnisse, Einschränkungen und Ziele zu verstehen — kein Druck, nur Ehrlichkeit.",
     cta_bottom_btn: "Kontakt",
     cta_bottom_fine: "Kostenlose Erstberatung, keine Verpflichtung",
@@ -77,8 +75,8 @@ export const translations = {
     nav_careers: "Karriere",
 
     // Careers Page
-    careers_hero_title: "GESTALTEN SIE DIE ZUKUNFT DER GLOBALEN INFRASTRUKTUR",
-    careers_hero_subtitle: "Werden Sie Teil der Zebrold Group. Wir verbinden Ingenieurskunst, strategisches Kapital und erstklassige Talente in 26 Konzernunternehmen.",
+    careers_hero_title: "Karriere bei Zebrold — Gestalten Sie die Zukunft mit uns",
+    careers_hero_subtitle: "Entdecken Sie Ihr Potenzial bei einem Unternehmen, das mit Lösungen in den Bereichen Automobilbau, Luftfahrt und Healthcare-Robotik unsere gemeinsame Zukunft aktiv mitgestaltet.",
     careers_hero_badge: "Karriere bei Zebrold",
     careers_search_placeholder: "Stellentitel oder Stichwort suchen...",
     careers_all_departments: "Alle Abteilungen",
@@ -104,12 +102,13 @@ export const translations = {
     footer_terms: "Nutzungsbedingungen",
     footer_hq: "Hauptsitz",
     footer_address: "Bockenheimer Landstrasse 17-19, 60325 Frankfurt am Main, Germany",
+    footer_get_in_touch: "Kontakt aufnehmen",
   },
 
   en: {
     // Navigation
-    nav_business: "Sectors",
-    nav_portfolio: "Portfolio",
+    nav_products: "Products",
+    nav_investors: "Investors",
     nav_about: "About Us",
     nav_news: "Newsroom",
     nav_offices: "Offices",
@@ -122,11 +121,9 @@ export const translations = {
     contact_us: "Contact Us",
 
     // Hero
-    hero_title: "WE BUILD INDUSTRIES THAT DEFINE THE FUTURE OF GLOBAL INFRASTRUCTURE.",
-    hero_desc: "Zebrold International Holdings Limited (Zebrold IHL) unites twenty-six market-leading companies across twelve strategic sectors, accelerating industrial transformation through precision engineering and sustainable innovation.",
-    hero_badge_1: "German Conglomerate",
-    hero_badge_2: "for Global Infrastructure",
-    hero_cta: "Explore Portfolio",
+    hero_title: "Designing the Future. Engineering Autonomous Brands.",
+    hero_desc: "Zebrold IHL combines engineering excellence, intelligent technologies, and precision manufacturing to shape the future of Automotive, Aerospace, and Healthcare Robotics.",
+    hero_cta: "Explore Products",
 
     // Expertise
     exp_caption: "How We Create Value",
@@ -169,7 +166,7 @@ export const translations = {
     // CTA Bottom
     cta_bottom_caption: "Ready for the Next Step?",
     cta_bottom_h3: "Your Industry Deserves Infrastructure Built to Endure.",
-    cta_bottom_big: "Shall We Build?",
+    cta_bottom_big: "Let's Make Something Great.",
     cta_bottom_desc: "An open conversation to understand your needs, constraints, and goals — no pressure, just honesty.",
     cta_bottom_btn: "Contact",
     cta_bottom_fine: "Free initial consultation, zero obligation",
@@ -182,8 +179,8 @@ export const translations = {
     faq_cta_btn: "Contact Us",
 
     // Careers Page
-    careers_hero_title: "BUILD THE FUTURE OF GLOBAL INFRASTRUCTURE",
-    careers_hero_subtitle: "Join Zebrold Group. We combine German engineering precision, strategic capital, and exceptional talent across 26 portfolio companies.",
+    careers_hero_title: "Careers at Zebrold — Engineer the future with us",
+    careers_hero_subtitle: "Discover your potential at a company leading the way in Automotive, Aerospace & Healthcare Robotics engineering solutions that make our shared future better.",
     careers_hero_badge: "Careers at Zebrold",
     careers_search_placeholder: "Search position title or keyword...",
     careers_all_departments: "All Departments",
@@ -209,5 +206,6 @@ export const translations = {
     footer_terms: "Terms of Use",
     footer_hq: "Global Headquarters",
     footer_address: "Bockenheimer Landstrasse 17-19, 60325 Frankfurt am Main, Germany",
+    footer_get_in_touch: "Get in Touch",
   }
 };

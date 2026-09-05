@@ -23,67 +23,35 @@
 }
 
 .arrodz-navbar.is-transparent .arrodz-nav-container {
-  background: rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(22px) saturate(140%);
+  -webkit-backdrop-filter: blur(22px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.22);
   border-radius: 100px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.12),
-    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
   min-height: 60px;
   padding: 0.5rem clamp(1rem, 2.5vw, 2rem);
 }
 
-/* White text on glass */
+/* Black text on glass */
 .arrodz-navbar.is-transparent .arrodz-nav-link {
-  color: rgba(255, 255, 255, 0.75);
+  color: #000000;
 }
 
 .arrodz-navbar.is-transparent .arrodz-nav-link:hover,
 .arrodz-navbar.is-transparent .arrodz-nav-link.is-active {
-  color: #ffffff;
+  color: #000000;
 }
 
 .arrodz-navbar.is-transparent .nav-chevron {
-  color: rgba(255, 255, 255, 0.45);
+  color: #000000;
 }
 
 /* White hamburger lines */
 .arrodz-navbar.is-transparent .hamburger-line {
   background-color: #ffffff;
 }
-
-/* Language switcher glass variant */
-.arrodz-navbar.is-transparent .nav-lang-switcher {
-  background-color: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.15);
-}
-
-.arrodz-navbar.is-transparent .nav-lang-switcher .lang-btn {
-  color: rgba(255, 255, 255, 0.55);
-}
-
-.arrodz-navbar.is-transparent .nav-lang-switcher .lang-btn.is-active {
-  color: #ffffff;
-  background-color: rgba(255, 255, 255, 0.18);
-}
-
-.arrodz-navbar.is-transparent .nav-lang-switcher .lang-divider {
-  color: rgba(255, 255, 255, 0.25);
-}
-
-/* Contact button — glass ghost variant */
-.arrodz-navbar.is-transparent .arrodz-contact-btn {
-  background-color: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  color: #ffffff;
-}
-
-.arrodz-navbar.is-transparent .arrodz-contact-btn:hover {
-  background-color: rgba(255, 255, 255, 0.18);
-  border-color: rgba(255, 255, 255, 0.3);
-}
-
 
 /* ─── STATE 2: Scrolled (warm cream floating island) ─── */
 .arrodz-navbar.is-scrolled {
@@ -119,39 +87,6 @@
 /* Dark hamburger lines */
 .arrodz-navbar.is-scrolled .hamburger-line {
   background-color: var(--color-gray-950, #111111);
-}
-
-/* Language switcher on cream */
-.arrodz-navbar.is-scrolled .nav-lang-switcher {
-  background-color: rgba(34, 37, 35, 0.05);
-  border-color: rgba(34, 37, 35, 0.12);
-}
-
-.arrodz-navbar.is-scrolled .nav-lang-switcher .lang-btn {
-  color: rgba(34, 37, 35, 0.55);
-}
-
-.arrodz-navbar.is-scrolled .nav-lang-switcher .lang-btn.is-active {
-  color: #ffffff;
-  background-color: var(--color-gray-950, #111111);
-}
-
-.arrodz-navbar.is-scrolled .nav-lang-switcher .lang-divider {
-  color: rgba(34, 37, 35, 0.2);
-}
-
-/* Contact button — solid wine on cream */
-.arrodz-navbar.is-scrolled .arrodz-contact-btn {
-  background-color: var(--color-wine, #6E2A2A);
-  border: 1px solid var(--color-wine, #6E2A2A);
-  color: #ffffff;
-  box-shadow: 0 2px 12px rgba(110, 42, 42, 0.2);
-}
-
-.arrodz-navbar.is-scrolled .arrodz-contact-btn:hover {
-  background-color: var(--color-wine-dark, #4A1C1C);
-  border-color: var(--color-wine-dark, #4A1C1C);
-  box-shadow: 0 4px 18px rgba(110, 42, 42, 0.3);
 }
 
 
@@ -263,53 +198,199 @@
   transform: translateY(2px);
 }
 
-/* ─── Right: Actions area ─── */
-.arrodz-nav-actions {
+.nav-chevron.is-open {
+  transform: rotate(180deg);
+}
+
+/* Products trigger is a <button>, styled to look identical to the <Link> items */
+.arrodz-nav-link-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+}
+
+/* ═══════════════════════════════════════
+   PRODUCTS MEGA-MENU
+   ═══════════════════════════════════════ */
+
+.mega-menu-wrap {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(980px, 92vw);
+  margin-top: 0.75rem;
+  pointer-events: auto;
+  z-index: 999;
+}
+
+.mega-menu {
+  width: 100%;
+}
+
+/* Scoped to this exact component only — the Commercial Aircrafts / Passenger
+   category-selector panel. No rule here reaches outside .commercial-aircraft-selector. */
+.commercial-aircraft-selector {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(16px) saturate(115%);
+  -webkit-backdrop-filter: blur(16px) saturate(115%);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 31px;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+.commercial-aircraft-selector .mega-menu-categories {
+  list-style: none;
+  margin: 0;
+  padding: 1.25rem;
+  background: transparent;
+  border-right: 1px solid rgba(255, 255, 255, 0.35);
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.commercial-aircraft-selector .mega-menu-cat-btn {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.1rem;
+  background: transparent;
+  border: none;
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+  text-align: left;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--color-text-primary, #222523);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.commercial-aircraft-selector .mega-menu-cat-btn small {
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--color-text-muted, #888888);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.commercial-aircraft-selector .mega-menu-cat-btn:hover {
+  background-color: rgba(110, 42, 42, 0.1);
+}
+
+.commercial-aircraft-selector .mega-menu-cat-btn.is-active {
+  background-color: rgba(100, 35, 35, 0.86);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  color: #ffffff;
+}
+
+.commercial-aircraft-selector .mega-menu-cat-btn.is-active:hover {
+  background-color: rgba(100, 35, 35, 0.86);
+}
+
+.commercial-aircraft-selector .mega-menu-cat-btn.is-active small {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.commercial-aircraft-selector .mega-menu-items {
+  padding: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  align-content: start;
+}
+
+.commercial-aircraft-selector .mega-menu-item-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 1.25rem 1.35rem;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  text-decoration: none;
+  color: inherit;
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.commercial-aircraft-selector .mega-menu-item-card:hover {
+  background: rgba(255, 255, 255, 0.36);
+  border-color: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.07);
+  transform: translateY(-2px);
+}
+
+.commercial-aircraft-selector .mega-menu-item-maker {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-wine, #6E2A2A);
+}
+
+.commercial-aircraft-selector .mega-menu-item-name {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-text-primary, #222523);
+}
+
+.commercial-aircraft-selector .mega-menu-item-tagline {
+  font-size: 0.82rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--color-text-secondary, #555555);
+}
+
+.commercial-aircraft-selector .mega-menu-item-arrow {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  color: var(--color-wine, #6E2A2A);
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.commercial-aircraft-selector .mega-menu-item-card:hover .mega-menu-item-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.commercial-aircraft-selector .mega-menu-empty {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  flex-shrink: 0;
+  justify-content: center;
+  grid-column: 1 / -1;
+  min-height: 200px;
+  color: var(--color-text-muted, #888888);
+  font-size: 0.95rem;
+  text-align: center;
 }
 
-@media screen and (max-width: 899px) {
-  .arrodz-nav-actions {
-    display: none;
+@media screen and (max-width: 1100px) {
+  .mega-menu-wrap {
+    width: min(720px, 94vw);
+  }
+
+  .commercial-aircraft-selector {
+    grid-template-columns: 210px 1fr;
   }
 }
-
-/* ─── Contact Button (shared structure) ─── */
-.arrodz-contact-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  font-family: var(--font-body);
-  font-size: 0.8rem;
-  font-weight: 600;
-  padding: 0.55rem 1.25rem;
-  border-radius: 100px;
-  text-decoration: none;
-  letter-spacing: 0.02em;
-  transition: all 0.4s cubic-bezier(0.32, 0.72, 0, 1);
-}
-
-.arrodz-contact-btn:hover {
-  transform: scale(0.97);
-}
-
-.arrodz-contact-btn:active {
-  transform: scale(0.95);
-}
-
-.contact-btn-arrow {
-  font-size: 0.75rem;
-  transition: transform 0.35s cubic-bezier(0.32, 0.72, 0, 1);
-}
-
-.arrodz-contact-btn:hover .contact-btn-arrow {
-  transform: translateX(3px);
-}
-
 
 /* ═══════════════════════════════════════
    HAMBURGER → X MORPH
@@ -454,12 +535,81 @@
   letter-spacing: -0.01em;
 }
 
+/* ─── Mobile Products accordion ─── */
+.mobile-accordion-trigger {
+  width: 100%;
+  background: none;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  cursor: pointer;
+  font: inherit;
+  letter-spacing: inherit;
+}
+
+.mobile-accordion:first-child .mobile-accordion-trigger {
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.mobile-accordion-chevron {
+  margin-left: auto;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.4);
+  transition: transform 0.3s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.mobile-accordion-chevron.is-open {
+  transform: rotate(180deg);
+}
+
+.mobile-accordion-panel {
+  overflow: hidden;
+}
+
+.mobile-accordion-category {
+  padding: 0 0 0 3.25rem;
+}
+
+.mobile-accordion-cat-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.65);
+  padding: 0.9rem 0;
+  text-align: left;
+}
+
+.mobile-accordion-sub-list {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 0.5rem;
+}
+
+.mobile-accordion-sub-link {
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: none;
+  padding: 0.55rem 0 0.55rem 1rem;
+  border-left: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.mobile-accordion-sub-link:hover {
+  color: #ffffff;
+}
+
 /* ─── Mobile overlay footer ─── */
 .mobile-overlay-footer {
   margin-top: 3rem;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   gap: 1rem;
 }
 
@@ -492,21 +642,3 @@
   transform: translateX(3px);
 }
 
-/* Mobile language switcher override */
-.mobile-lang {
-  background-color: rgba(255, 255, 255, 0.08) !important;
-  border-color: rgba(255, 255, 255, 0.12) !important;
-}
-
-.mobile-lang .lang-btn {
-  color: rgba(255, 255, 255, 0.5) !important;
-}
-
-.mobile-lang .lang-btn.is-active {
-  color: #ffffff !important;
-  background-color: rgba(255, 255, 255, 0.18) !important;
-}
-
-.mobile-lang .lang-divider {
-  color: rgba(255, 255, 255, 0.2) !important;
-}

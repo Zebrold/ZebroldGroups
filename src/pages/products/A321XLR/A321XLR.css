@@ -1,0 +1,253 @@
+/* ════════════════════════════════════════════════════════════
+   A321XLR — page-scoped design system.
+   Everything below is scoped under .a321xlr-page so it can raise this one
+   page to the A350F page's editorial/typographic standard and normalize its
+   spacing without touching ProductSections.css or any other product page.
+
+   ONE spacing system, four tiers, used everywhere on this page — no section
+   below reaches for a bespoke padding/margin value of its own:
+     sm      — internal spacing between closely related elements
+     md      — spacing between a heading and the content under it
+     section — the normal top/bottom padding of every content section
+     chapter — reserved for a deliberately larger break (max 120px) —
+               unused by default; content sections should never need it.
+   ════════════════════════════════════════════════════════════ */
+
+.a321xlr-page {
+  --a321-sm: clamp(24px, 3vw, 40px);
+  --a321-md: clamp(40px, 5vw, 60px);
+  --a321-section: clamp(70px, 8vw, 100px);
+  --a321-chapter: clamp(90px, 10vw, 120px);
+}
+
+@media screen and (max-width: 640px) {
+  .a321xlr-page {
+    --a321-sm: clamp(18px, 4vw, 28px);
+    --a321-md: clamp(30px, 6vw, 45px);
+    --a321-section: clamp(50px, 8vw, 70px);
+    --a321-chapter: clamp(70px, 9vw, 85px);
+  }
+}
+
+/* ── Section padding: the single source of "gap between sections" ── */
+.a321xlr-page .product-section,
+.a321xlr-page .product-section--alt {
+  padding: var(--a321-section) 0;
+}
+
+.a321xlr-page .product-section-header {
+  margin-bottom: var(--a321-md);
+}
+
+/* Mid-page cinematic break — tightened to the same tier the A350F page
+   uses for its own cinematic break, instead of the taller 78vh default.
+   The final "tall" cinematic close keeps its own larger, deliberate height. */
+.a321xlr-page .product-parallax:not(.product-parallax--tall) {
+  height: clamp(50vh, 55vw, 70vh);
+}
+
+/* ── Typography — A350F identity: body sans at a light weight carries the
+   editorial statements; the bold display face is reserved for numbers. ── */
+.a321xlr-page .product-hero-title {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: clamp(4rem, 7vw, 7rem);
+  line-height: 0.96;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+}
+
+.a321xlr-page .product-hero-tagline {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: clamp(1.05rem, 1.3vw, 1.25rem);
+  line-height: 1.6;
+}
+
+.a321xlr-page .product-caption {
+  font-weight: 600;
+  letter-spacing: 0.16em;
+}
+
+.a321xlr-page .product-section-h2 {
+  font-family: var(--font-body);
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  font-size: clamp(2.5rem, 4.5vw, 4.5rem);
+  line-height: 1.08;
+}
+
+.a321xlr-page .product-section-lede {
+  font-size: clamp(1rem, 1.1vw, 1.1875rem);
+  line-height: 1.75;
+}
+
+.a321xlr-page .product-timeline-title {
+  font-family: var(--font-body);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  font-size: 1.05rem;
+}
+
+.a321xlr-page .product-accordion-trigger {
+  font-family: var(--font-body);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  font-size: 1rem;
+}
+
+.a321xlr-page .product-parallax-title {
+  font-family: var(--font-body);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: -0.005em;
+  font-size: clamp(1.8rem, 3vw, 3rem);
+}
+
+.a321xlr-page .product-parallax-subtitle {
+  font-family: var(--font-body);
+  font-weight: 400;
+}
+
+/* ── Subtle reveal, page-wide — overrides the sitewide .reveal 40px/blur
+   treatment for every .reveal instance on this page (TechSpecStrip figures,
+   Timeline items, the program image grid) with the calmer motion this page
+   calls for, in one place, instead of a per-section animation override. ── */
+.a321xlr-page .reveal {
+  transform: translateY(24px);
+  filter: none;
+  transition-duration: 0.7s;
+  transition-property: opacity, transform;
+}
+
+.a321xlr-page .reveal.visible {
+  transform: translateY(0);
+}
+
+.a321xlr-page .a321-program-figure.reveal {
+  transform: translateY(24px) scale(0.98);
+}
+
+.a321xlr-page .a321-program-figure.reveal.visible {
+  transform: translateY(0) scale(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .a321xlr-page .reveal {
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
+
+/* ── Thin divider utility — same idiom as the A350F page's section divider,
+   used to fold the key-numbers strip into the intro section instead of
+   giving it a second full section-padding pass of its own. ── */
+.a321-divider {
+  height: 1px;
+  background-color: var(--color-border, rgba(34, 37, 35, 0.14));
+  margin: var(--a321-md) 0;
+}
+
+/* ── Centered caption block under the long-range image story ── */
+.a321-centered-block {
+  max-width: 640px;
+  margin: var(--a321-md) auto 0;
+  text-align: center;
+}
+
+/* ── Controlled image heights (audit: no editorial image on this page runs
+   past ~450px tall) ── */
+.a321xlr-page .product-image-story {
+  width: min(1100px, 88vw);
+}
+
+.a321xlr-page .product-image-story img {
+  height: clamp(300px, 32vw, 450px);
+  aspect-ratio: auto;
+}
+
+.a321-cabin-image {
+  display: block;
+  width: 100%;
+  max-width: 1100px;
+  height: clamp(280px, 30vw, 420px);
+  object-fit: cover;
+  object-position: center;
+  margin: 0 auto var(--a321-md);
+}
+
+.a321-tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+}
+
+.a321-tag-row .product-caption {
+  margin-bottom: 0;
+}
+
+/* ── "Behind the Program" — compact editorial image grid ── */
+.a321-program-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--a321-sm);
+}
+
+.a321-program-figure {
+  margin: 0;
+  overflow: hidden;
+}
+
+.a321-program-figure img {
+  display: block;
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  object-position: center;
+}
+
+@media screen and (max-width: 900px) {
+  .a321-program-figure img {
+    height: 250px;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .a321-program-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .a321-program-figure img {
+    height: 220px;
+  }
+}
+
+/* Global reach map styling lives in ProductSections.css (.product-global-map*)
+   so it's shared, byte-for-byte identical, with the 777X page's own map. */
+
+/* ═══════ RESPONSIVE ═══════ */
+@media screen and (max-width: 900px) {
+  .a321xlr-page .product-parallax:not(.product-parallax--tall) {
+    height: 55vh;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .a321xlr-page .product-hero-title {
+    font-size: clamp(2.75rem, 11vw, 4rem);
+  }
+
+  .a321xlr-page .product-section-h2 {
+    font-size: clamp(2rem, 8vw, 2.75rem);
+  }
+
+  .a321-cabin-image,
+  .a321xlr-page .product-image-story img {
+    height: clamp(200px, 55vw, 300px);
+  }
+}

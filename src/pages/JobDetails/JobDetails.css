@@ -1,5 +1,5 @@
 .job-details-page {
-  background-color: var(--color-surface);
+  background-color: var(--color-white);
   min-height: 100vh;
   padding-bottom: 6rem;
   color: var(--color-gray-900);
@@ -9,7 +9,7 @@
 .job-details-page.not-found {
   padding-top: calc(var(--navbar-h) + 4rem);
   text-align: center;
-  background-color: var(--color-surface);
+  background-color: var(--color-white);
   color: var(--color-gray-900);
   min-height: 100vh;
 }

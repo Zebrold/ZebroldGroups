@@ -1,6 +1,6 @@
-.subs-page { background-color: var(--color-surface); }
+.subs-page { background-color: var(--color-white); }
 .subs-hero { background: linear-gradient(135deg, var(--color-wine-dark) 0%, var(--color-black) 60%); }
-.subs-main { background-color: var(--color-surface); }
+.subs-main { background-color: var(--color-white); }
 
 .subs-filters {
   display: flex;

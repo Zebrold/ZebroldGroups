@@ -1,0 +1,706 @@
+/* ════════════════════════════════════════════════════════════
+   A350F — page-scoped design system.
+   Palette: white / off-white / deep brown / dark charcoal / soft warm gray.
+   No gradients anywhere on this page. Every shared-component overlay that
+   normally fades is flattened here to a single flat, solid fill, scoped to
+   .a350f-page only so the other three product pages are untouched.
+
+   Typography identity (deliberately distinct from the other product pages):
+   large editorial statements run in the body sans at a light weight,
+   uppercase, generously spaced — reserving the bold display face for
+   numbers only, so figures read as the moments of emphasis on the page.
+
+   Spacing rhythm: four section-padding tiers (major / technical / support /
+   cinematic) are applied per-section below to avoid a single repeated
+   padding value up and down the page.
+   ════════════════════════════════════════════════════════════ */
+
+.a350f-page {
+  --a350f-major: clamp(90px, 11vw, 180px);
+  --a350f-technical: clamp(80px, 9vw, 160px);
+  --a350f-support: clamp(70px, 7vw, 110px);
+  --a350f-cinematic-top: clamp(60px, 7vw, 120px);
+  --a350f-cinematic-bottom: clamp(80px, 9vw, 160px);
+}
+
+.a350f-page .product-banner-overlay {
+  background-color: var(--color-wine-dark, #4A1C1C);
+  opacity: 0.72;
+}
+
+.a350f-page .product-parallax-overlay {
+  background-color: var(--color-wine-dark, #4A1C1C);
+  opacity: 0.4;
+}
+
+.a350f-page .product-route-map {
+  background-image: none;
+  border-color: var(--color-border, rgba(34, 37, 35, 0.14));
+}
+
+.a350f-page .product-parallax-title,
+.a350f-page .product-parallax-subtitle {
+  font-family: var(--font-body);
+}
+
+.a350f-page .product-parallax-title {
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+}
+
+/* ── Section padding tiers ── */
+.a350f-major { padding: var(--a350f-major) 0; }
+.a350f-technical { padding: var(--a350f-technical) 0; }
+.a350f-support { padding: var(--a350f-support) 0; }
+
+/* ── Shared type overrides — thin, large, editorial ── */
+.a350f-eyebrow {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-wine, #6E2A2A);
+}
+
+.a350f-heading {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: clamp(2.5rem, 5vw, 5rem);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: var(--color-text-primary, #222523);
+}
+
+.a350f-body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: clamp(1.0625rem, 1.2vw, 1.25rem);
+  line-height: 1.75;
+  color: var(--color-text-secondary, #555555);
+}
+
+/* ═══════ HERO — image-dominant, no overlay, thin editorial type below ═══════ */
+.a350f-hero-media {
+  position: relative;
+  height: clamp(60vh, 62vw, 78vh);
+  overflow: hidden;
+  background-color: var(--color-off-white, #F5F2E8);
+}
+
+.a350f-hero-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.a350f-hero-tag {
+  position: absolute;
+  left: clamp(1.25rem, 3vw, 3rem);
+  bottom: 1.5rem;
+  background-color: var(--color-white, #F9F9F7);
+  color: var(--color-wine, #6E2A2A);
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+}
+
+.a350f-hero-body {
+  padding: clamp(2.5rem, 6vw, 4.5rem) clamp(1.5rem, 7vw, 6.5rem) clamp(3rem, 9vh, 5.5rem);
+  max-width: 1100px;
+}
+
+.a350f-hero-title {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: clamp(3.8rem, 7vw, 8rem);
+  line-height: 0.96;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: var(--color-wine, #6E2A2A);
+  margin: 0.75rem 0 1.5rem;
+}
+
+.a350f-hero-title span {
+  display: block;
+}
+
+.a350f-hero-lede {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: clamp(1.0625rem, 1.4vw, 1.25rem);
+  line-height: 1.65;
+  color: var(--color-text-secondary, #555555);
+  max-width: 34rem;
+}
+
+.a350f-scroll-cue {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin-top: clamp(2.5rem, 5vw, 3.5rem);
+}
+
+.a350f-scroll-cue-line {
+  width: 40px;
+  height: 1px;
+  background-color: var(--color-wine, #6E2A2A);
+}
+
+.a350f-scroll-cue-label {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-text-muted, #888888);
+}
+
+.a350f-scroll-cue-arrow {
+  color: var(--color-wine, #6E2A2A);
+  font-size: 0.85rem;
+}
+
+/* ═══════ INTRO — narrow label column / large statement column ═══════ */
+.a350f-intro-grid {
+  display: grid;
+  grid-template-columns: 0.7fr 2.3fr;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: start;
+  margin-bottom: clamp(3.5rem, 6vw, 5.5rem);
+}
+
+.a350f-intro-copy {
+  margin-top: clamp(1.5rem, 2.5vw, 2rem);
+  max-width: 46rem;
+}
+
+.a350f-divider {
+  height: 1px;
+  background-color: var(--color-border, rgba(34, 37, 35, 0.14));
+  margin-bottom: clamp(3rem, 5vw, 4.5rem);
+}
+
+/* ── Statistics — generous internal spacing, thin single-hairline rule ── */
+.a350f-page .product-stat-row {
+  gap: clamp(2.5rem, 5vw, 4.5rem) clamp(2rem, 4vw, 3.5rem);
+}
+
+.a350f-page .product-stat {
+  border-left-width: 1px;
+  padding-left: 1.25rem;
+}
+
+/* ═══════ FULL-WIDTH CINEMATIC BREAK ═══════ */
+.a350f-cinematic {
+  margin: var(--a350f-cinematic-top) 0 var(--a350f-cinematic-bottom);
+}
+
+.a350f-cinematic-frame {
+  position: relative;
+  width: 100%;
+  height: clamp(50vh, 55vw, 70vh);
+  overflow: hidden;
+}
+
+.a350f-cinematic-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.a350f-cinematic-caption {
+  position: absolute;
+  left: clamp(1.25rem, 4vw, 3rem);
+  bottom: 1.25rem;
+  color: var(--color-white, #F9F9F7);
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  background: rgba(34, 27, 24, 0.55);
+  padding: 0.5rem 0.9rem;
+}
+
+/* ═══════ INNOVATION — 40 / 60 split ═══════ */
+.a350f-split-40-60 .product-split {
+  grid-template-columns: 0.8fr 1.2fr;
+}
+
+/* ═══════ XL CARGO DOOR — dominant figure + dimension-line graphic ═══════ */
+.a350f-door-figure-block {
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+  padding-top: clamp(2rem, 4vw, 3rem);
+  border-top: 1px solid var(--color-border, rgba(34, 37, 35, 0.14));
+}
+
+.a350f-door-number {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(5rem, 12vw, 11rem);
+  line-height: 0.85;
+  letter-spacing: -0.02em;
+  color: var(--color-wine, #6E2A2A);
+}
+
+.a350f-door-number-label {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-text-muted, #888888);
+  margin-top: 0.75rem;
+}
+
+.a350f-door-secondary {
+  margin-top: clamp(1.5rem, 3vw, 2.25rem);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--color-text-secondary, #555555);
+}
+
+.a350f-door-secondary strong {
+  color: var(--color-text-primary, #222523);
+  font-weight: 700;
+}
+
+.a350f-door-graphic {
+  margin-top: clamp(3rem, 6vw, 4.5rem);
+}
+
+.a350f-door-svg {
+  width: 100%;
+  height: auto;
+  color: var(--color-wine, #6E2A2A);
+  overflow: visible;
+}
+
+.a350f-door-svg text {
+  font-family: var(--font-body);
+  fill: var(--color-text-secondary, #555555);
+}
+
+.a350f-door-svg .a350f-door-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.a350f-door-svg .a350f-door-svg-figure {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 600;
+  fill: var(--color-text-primary, #222523);
+}
+
+/* ═══════ CARGO CAPABILITY — editorial hover list + shared image panel ═══════ */
+.a350f-cargo-list-wrap {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: clamp(2.5rem, 5vw, 4.5rem);
+  align-items: start;
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+}
+
+.a350f-cargo-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.a350f-cargo-row {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  text-align: left;
+  padding: clamp(1.35rem, 2.5vw, 1.85rem) 0;
+  border-bottom: 1px solid var(--color-border, rgba(34, 37, 35, 0.14));
+  transition: padding-left 0.35s var(--ease-out-expo, ease);
+}
+
+.a350f-cargo-row:first-child {
+  border-top: 1px solid var(--color-border, rgba(34, 37, 35, 0.14));
+}
+
+.a350f-cargo-row.is-active {
+  padding-left: 1rem;
+}
+
+.a350f-cargo-row-title {
+  display: block;
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: clamp(1.5rem, 2.6vw, 2.25rem);
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  color: var(--color-text-primary, #222523);
+  transition: color 0.3s ease;
+}
+
+.a350f-cargo-row.is-active .a350f-cargo-row-title {
+  color: var(--color-wine, #6E2A2A);
+}
+
+.a350f-cargo-row-desc {
+  display: block;
+  margin-top: 0.4rem;
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  color: var(--color-text-secondary, #555555);
+}
+
+.a350f-cargo-image {
+  position: sticky;
+  top: calc(var(--navbar-h, 72px) + 2rem);
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background-color: var(--color-off-white, #F5F2E8);
+}
+
+.a350f-cargo-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s var(--ease-out-expo, ease);
+}
+
+.a350f-cargo-image.is-hovered img {
+  transform: scale(1.03);
+}
+
+/* ═══════ ENGINE / COCKPIT split panes — thin vertical divider ═══════ */
+.a350f-split-divider .product-split {
+  position: relative;
+}
+
+.a350f-split-divider .product-split::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background-color: var(--color-border, rgba(34, 37, 35, 0.16));
+}
+
+.a350f-engine-label {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.5rem;
+  letter-spacing: 0.02em;
+  color: var(--color-wine, #6E2A2A);
+  margin-bottom: 0.5rem;
+}
+
+/* ═══════ COCKPIT — numbered horizontal rows ═══════ */
+.a350f-numbered-rows {
+  display: flex;
+  flex-direction: column;
+}
+
+.a350f-numbered-row {
+  display: flex;
+  align-items: baseline;
+  gap: clamp(1.25rem, 3vw, 2.5rem);
+  padding: clamp(1.25rem, 2.5vw, 1.75rem) 0;
+  border-top: 1px solid var(--color-border, rgba(34, 37, 35, 0.14));
+}
+
+.a350f-numbered-rows > .a350f-numbered-row:last-child {
+  border-bottom: 1px solid var(--color-border, rgba(34, 37, 35, 0.14));
+}
+
+.a350f-numbered-row-index {
+  flex-shrink: 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--color-text-muted, #888888);
+  width: 2ch;
+}
+
+.a350f-numbered-row-body {
+  flex: 1;
+}
+
+.a350f-numbered-row-title {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 1.05rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--color-text-primary, #222523);
+  margin-bottom: 0.35rem;
+}
+
+.a350f-numbered-row-desc {
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary, #555555);
+  max-width: 34rem;
+}
+
+/* ═══════ RANGE ═══════ */
+.a350f-range-headline {
+  margin-bottom: clamp(3rem, 6vw, 4.5rem);
+}
+
+.a350f-range-main {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(4rem, 9vw, 8rem);
+  line-height: 0.92;
+  letter-spacing: -0.01em;
+  color: var(--color-wine, #6E2A2A);
+}
+
+.a350f-range-sub {
+  display: block;
+  margin-top: 0.75rem;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-muted, #888888);
+}
+
+/* Refined destination selector — text + thin underline, no filled pill */
+.a350f-page .product-route-tab-btn {
+  border-radius: 0;
+  padding: 0.7rem 0.25rem;
+  border-bottom: 1px solid transparent;
+  transition: color 0.25s ease, transform 0.25s var(--ease-out-expo, ease), border-color 0.25s ease;
+}
+
+.a350f-page .product-route-tab-btn:hover {
+  background: none;
+  color: var(--color-text-primary, #222523);
+  transform: translateX(4px);
+}
+
+.a350f-page .product-route-tab-btn.is-active {
+  background: none;
+  color: var(--color-wine-dark, #4A1C1C);
+  font-weight: 700;
+  border-bottom-color: var(--color-wine, #6E2A2A);
+}
+
+/* ═══════ COMMONALITY ═══════ */
+.a350f-page .product-section--alt .product-stat {
+  border-left-width: 1px;
+}
+
+/* ═══════ KEY FIGURES — editorial spec table, no cards ═══════ */
+.a350f-spec-table {
+  border-top: 1px solid var(--color-border, rgba(34, 37, 35, 0.14));
+}
+
+.a350f-spec-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: clamp(1.5rem, 2.5vw, 2rem) 0;
+  border-bottom: 1px solid var(--color-border, rgba(34, 37, 35, 0.14));
+}
+
+.a350f-spec-label {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-muted, #888888);
+}
+
+.a350f-spec-value {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.5rem, 2.8vw, 2.25rem);
+  color: var(--color-text-primary, #222523);
+  text-align: right;
+}
+
+/* ═══════ FINAL TECHNICAL CTA ═══════ */
+.a350f-final-cta {
+  border-top: 1px solid var(--color-border, rgba(34, 37, 35, 0.14));
+}
+
+.a350f-final-cta-eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-wine, #6E2A2A);
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+.a350f-final-cta-title {
+  font-family: var(--font-body);
+  font-weight: 300;
+  text-transform: uppercase;
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: var(--color-text-primary, #222523);
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+.a350f-final-cta-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem 3.5rem;
+  padding: clamp(1.75rem, 3vw, 2.25rem) 0;
+  border-top: 1px solid var(--color-border, rgba(34, 37, 35, 0.14));
+  border-bottom: 1px solid var(--color-border, rgba(34, 37, 35, 0.14));
+  margin-bottom: clamp(2rem, 3vw, 2.5rem);
+}
+
+.a350f-final-cta-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.a350f-final-cta-stat-value {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(1.5rem, 2.6vw, 2rem);
+  color: var(--color-wine, #6E2A2A);
+}
+
+.a350f-final-cta-stat-label {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted, #888888);
+}
+
+.a350f-final-cta-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--color-wine, #6E2A2A);
+  text-decoration: none;
+  padding-bottom: 0.3rem;
+}
+
+.a350f-final-cta-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background-color: var(--color-wine, #6E2A2A);
+  transform: scaleX(1);
+  transform-origin: left;
+  transition: transform 0.4s var(--ease-out-expo, ease);
+}
+
+.a350f-final-cta-link:hover::after {
+  transform: scaleX(0.35);
+}
+
+.a350f-final-cta-link:hover .a350f-final-cta-arrow {
+  transform: translateX(6px);
+}
+
+.a350f-final-cta-arrow {
+  display: inline-block;
+  transition: transform 0.35s var(--ease-out-expo, ease);
+}
+
+/* ═══════ RESPONSIVE ═══════ */
+@media (max-width: 1100px) {
+  .a350f-cargo-list-wrap {
+    grid-template-columns: 1fr;
+  }
+
+  .a350f-cargo-image {
+    position: static;
+    aspect-ratio: 16 / 9;
+    order: -1;
+  }
+}
+
+@media (max-width: 900px) {
+  .a350f-intro-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .a350f-intro-copy {
+    margin-top: 0.5rem;
+  }
+
+  .a350f-split-40-60 .product-split {
+    grid-template-columns: 1fr;
+  }
+
+  .a350f-split-divider .product-split::before {
+    display: none;
+  }
+
+  .a350f-numbered-row {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .a350f-page {
+    --a350f-major: clamp(80px, 20vw, 110px);
+    --a350f-technical: clamp(70px, 18vw, 100px);
+    --a350f-support: clamp(60px, 16vw, 90px);
+    --a350f-cinematic-top: clamp(60px, 15vw, 90px);
+    --a350f-cinematic-bottom: clamp(60px, 15vw, 90px);
+  }
+
+  .a350f-hero-media {
+    height: 78vh;
+  }
+
+  .a350f-hero-body {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .a350f-door-number {
+    font-size: clamp(4rem, 22vw, 6rem);
+  }
+
+  .a350f-spec-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
+  }
+
+  .a350f-spec-value {
+    text-align: left;
+  }
+
+  .a350f-final-cta-stats {
+    gap: 1.5rem 2rem;
+  }
+}
