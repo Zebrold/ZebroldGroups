@@ -15,12 +15,12 @@ export default function ProposalHeader({ lang, progress }) {
           {lang === 'en' ? 'QUOTE' : 'ANGEBOT'}
         </span>
         <h2 className="sp-heading">
-          {lang === 'en' ? 'Smart Sales Proposals' : 'Intelligente Verkaufsangebote'}
+          {lang === 'en' ? 'Engines Power the Sky' : 'Motoren beherrschen den Himmel'}
         </h2>
         <p className="sp-description">
           {lang === 'en'
-            ? "We offer the most sophisticated proposal builder on the market. With ZEBROLD you can create stunning sales proposals in record time, with the ability to predict the customer's true intent to buy."
-            : 'Wir bieten den anspruchsvollsten Angebots-Builder auf dem Markt. Mit ZEBROLD erstellen Sie beeindruckende Verkaufsangebote in Rekordzeit und erkennen die wahre Kaufabsicht Ihrer Kunden.'}
+            ? 'Aircraft are built around one fundamental element, the engine. It is the heart of every aircraft, driving performance, efficiency and the possibility to go further.'
+            : 'Flugzeuge werden um ein fundamentales Element gebaut: den Motor. Er ist das Herz jedes Flugzeugs und treibt Leistung, Effizienz und die Möglichkeit, weiter zu kommen, an.'}
         </p>
       </div>
     </div>

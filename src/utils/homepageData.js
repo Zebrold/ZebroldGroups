@@ -169,8 +169,8 @@ export { NEWS_SECTION_DEFAULTS };
    ABOUT SCROLL SECTION
    ══════════════════════════════════════════════════════ */
 const ABOUT_SCROLL_DEFAULTS = {
-  text_de: 'GEBAUT FÜR DAS KOMPLEXE. BEREIT FÜR DAS, WAS KOMMT.',
-  text_en: "BUILT FOR THE COMPLEX. READY FOR WHAT'S NEXT.",
+  text_de: 'N444XC Refurbishment Program',
+  text_en: 'N444XC Refurbishment Program',
   imagePreview: null, // base64 or null for default asset
 };
 

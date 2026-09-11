@@ -3,16 +3,17 @@ import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { geoGraticule, geoInterpolate, geoNaturalEarth1, geoPath } from 'd3-geo';
+import { feature } from 'topojson-client';
+import worldTopology from 'world-atlas/countries-110m.json';
 import { useLanguage } from '../../context/LanguageContext';
 import { getExpertise, getStats, getDomains, getNewsSection, getAboutScroll, getCta, getSectionOrder, getTicker } from '../../utils/homepageData';
 import { sendContactEmail } from '../../services/emailService';
 import SEO from '../../components/SEO/SEO';
 import SalesProposalExperience from '../../components/SalesProposalExperience/SalesProposalExperience';
 import IndustryProposals from '../../components/IndustryProposals/IndustryProposals';
-import ManufacturingSection from '../../components/ManufacturingSection/ManufacturingSection';
 import './Home.css';
 
-import companiesManufacturedForImg from '../../assets/companies_manufactured_for.jpg';
 import heroBg1 from '../../assets/hero_bg_meridian.png';
 import heroSection1Img from '../../assets/hero_section1_vr.jpg';
 import heroBg2 from '../../assets/hero_bg_northvolt.png';
@@ -32,6 +33,8 @@ import mediaSectorImg from '../../assets/media_sector.png';
 import countryHealthLogo from '../../assets/country_health_logo.png';
 import instructisLogo from '../../assets/instructis_logo.png';
 import leadershipTeamImg from '../../assets/leadership_team_zebrold.jpg';
+import aircraftShowcaseImg from '../../assets/products-a321xlr/a321xlr_hero_climb.png';
+import flieganWing400fImg from '../../assets/ChatGPT Image Sep 11, 2026 at 05_23_54 PM.png';
 gsap.registerPlugin(ScrollTrigger);
 /* ── Data ── */
 const COMPANY_TICKER_ITEMS = [
@@ -276,6 +279,61 @@ const STATS = [
   { value: 22, prefix: '', suffix: '', label: 'Unternehmen in unserem Portfolio' },
   { value: 40, prefix: '+', suffix: '%', label: 'Wachstum gegenüber dem Vorjahr in Schlüsselsektoren' },
 ];
+
+const MAIDEN_FLIGHT_AT = new Date('2027-11-05T00:00:00Z').getTime();
+const WORLD_MAP_WIDTH = 1000;
+const WORLD_MAP_HEIGHT = 520;
+const worldFeature = feature(worldTopology, worldTopology.objects.countries);
+const worldProjection = geoNaturalEarth1().fitSize([WORLD_MAP_WIDTH, WORLD_MAP_HEIGHT], worldFeature);
+const worldPath = geoPath(worldProjection);
+const worldGraticule = geoGraticule().step([30, 30]);
+const routeCities = {
+  frankfurt: [8.657, 50.1155],
+  bangalore: [77.607, 12.975],
+  sydney: [151.2093, -33.8688],
+};
+
+function getCountdown(targetTime) {
+  const remaining = Math.max(0, targetTime - Date.now());
+  const totalSeconds = Math.floor(remaining / 1000);
+  return {
+    days: Math.floor(totalSeconds / 86400),
+    hours: Math.floor((totalSeconds % 86400) / 3600),
+    minutes: Math.floor((totalSeconds % 3600) / 60),
+    seconds: totalSeconds % 60,
+  };
+}
+
+function N444WorldMap({ destination }) {
+  const origin = routeCities.frankfurt;
+  const target = routeCities[destination];
+  const interpolate = geoInterpolate(origin, target);
+  const routeCoordinates = Array.from({ length: 61 }, (_, index) => interpolate(index / 60));
+  const routePath = worldPath({
+    type: 'Feature',
+    geometry: { type: 'LineString', coordinates: routeCoordinates },
+  });
+  const originPoint = worldProjection(origin);
+  const targetPoint = worldProjection(target);
+
+  return (
+    <div className="n444xc-map" aria-label={`World map showing the Frankfurt to ${destination} flight route`}>
+      <svg viewBox={`0 0 ${WORLD_MAP_WIDTH} ${WORLD_MAP_HEIGHT}`} role="img" aria-hidden="true">
+        <rect className="n444xc-map-ocean" width={WORLD_MAP_WIDTH} height={WORLD_MAP_HEIGHT} />
+        <path className="n444xc-map-graticule" d={worldPath(worldGraticule)} />
+        <path className="n444xc-map-land" d={worldPath(worldFeature)} />
+        <path className="n444xc-route-line" d={routePath} />
+        <circle className="n444xc-map-marker-halo" cx={originPoint[0]} cy={originPoint[1]} r="12" />
+        <circle className="n444xc-map-marker" cx={originPoint[0]} cy={originPoint[1]} r="5" />
+        <circle className="n444xc-map-marker-halo" cx={targetPoint[0]} cy={targetPoint[1]} r="12" />
+        <circle className="n444xc-map-marker" cx={targetPoint[0]} cy={targetPoint[1]} r="5" />
+        <text className="n444xc-map-label" x={originPoint[0] + 14} y={originPoint[1] - 12}>Frankfurt</text>
+        <text className="n444xc-map-label" x={targetPoint[0] + 14} y={targetPoint[1] - 12}>{destination === 'sydney' ? 'Sydney' : 'Bangalore'}</text>
+      </svg>
+      <span className="n444xc-map-distance">{destination === 'sydney' ? '16,601 KM' : '6,990 KM'}</span>
+    </div>
+  );
+}
 /* ═══════════════════════════════════════════
    ANIMATED COUNTER COMPONENT
    ═══════════════════════════════════════════ */
@@ -335,6 +393,14 @@ export default function Home() {
   const [chatEmail, setChatEmail] = useState('');
   const [chatMsg, setChatMsg] = useState('');
   const [chatSent, setChatSent] = useState(false);
+  const [activeRoute, setActiveRoute] = useState('sydney');
+  const [countdown, setCountdown] = useState(() => getCountdown(MAIDEN_FLIGHT_AT));
+
+  useEffect(() => {
+    const updateCountdown = () => setCountdown(getCountdown(MAIDEN_FLIGHT_AT));
+    const countdownTimer = window.setInterval(updateCountdown, 1000);
+    return () => window.clearInterval(countdownTimer);
+  }, []);
 
   /* Hero Movement Parallax Removed */
 
@@ -609,35 +675,155 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ═══════ COMPANIES WE COLLABORATED WITH ═══════ */}
-      <section className="trusted-companies-section">
-        <img
-          src={companiesManufacturedForImg}
-          alt={lang === 'en' ? 'Companies We Manufactured For' : 'Unternehmen, für die wir gefertigt haben'}
-          className="companies-manufactured-img"
-          loading="lazy"
-          width="1808"
-          height="870"
-        />
+      {/* ═══════ SECTION 2: ABOUT US ═══════ */}
+      <section className="home-about-intro" aria-labelledby="home-about-intro-title">
+        <div className="home-about-intro-heading">
+          <p className="home-about-intro-kicker">ABOUT US</p>
+          <h2 id="home-about-intro-title">Engineered for a<br />Bolder Tomorrow</h2>
+        </div>
+        <div className="home-about-intro-copy">
+          <p>
+            Zebrold IHL is manufacturing one of the fastest and smartest aircrafts, with the N444XC and 400F currently in production. We are building the best things through advanced engineering, intelligent design and a relentless drive for innovation, shaping the future of global mobility and cargo.
+          </p>
+          <p>
+            Beyond aviation, CYPRELIA V1 represents our vision in high-performance mobility - a sports car backed by one of the best engines in making, designed to deliver unmatched power, precision and an extraordinary driving experience.
+          </p>
+        </div>
+        <span className="home-about-intro-rule" aria-hidden="true" />
       </section>
 
-      {/* ═══════ SECTION 7: DATA / STATS ═══════ */}
-      <section id="about" className="data-section">
-        <div className="padding-global padding-section-small">
-          <div className="container-medium">
-            <div className="data-component">
-              <div className="data-title-wrap">
-                <h2 className="heading-style-h4">
-                  {lang === 'en' ? 'Building Across Industries' : 'Branchenübergreifend Aufbauen'}
-                </h2>
-                <p className="data-subtitle-text">
-                  {lang === 'en'
-                    ? "Zebrold integrates engineering, advanced manufacturing, software, robotics, and multidisciplinary talent across Aerospace and Automotive, enabling teams to move from concept and design through development, prototyping, and production. By bringing specialized people and technologies together, Zebrold continues to strengthen its industrial capabilities and accelerate high-performance manufacturing across both sectors. Its expansion into Healthcare Robotics further strengthened this ecosystem through the acquisition of Halvex Robotics, adding robotics and intelligent healthcare technologies to the group's growing portfolio."
-                    : 'Zebrold vereint Engineering, fortschrittliche Fertigung, Software, Robotik und interdisziplinäres Talent in den Bereichen Luftfahrt und Automobilbau und ermöglicht es Teams, von Konzept und Design über Entwicklung und Prototyping bis zur Produktion zu gelangen. Durch die Zusammenführung spezialisierter Fachkräfte und Technologien stärkt Zebrold kontinuierlich seine industriellen Fähigkeiten und beschleunigt die Hochleistungsfertigung in beiden Sektoren. Die Erweiterung in den Bereich Healthcare-Robotik stärkte dieses Ökosystem zusätzlich durch die Übernahme von Halvex Robotics, wodurch Robotik- und intelligente Gesundheitstechnologien in das wachsende Portfolio der Gruppe aufgenommen wurden.'}
-                </p>
+      {/* ═══════ SECTION 2: WORDMARK FEATURE ═══════ */}
+      <section className="home-editable-section" aria-label="Made in Germany, perfected in South Korea">
+        <div className="home-editable-text home-wordmark-wrap">
+          <div className="home-quote-intro" aria-label="Aerospace quote">
+            <blockquote>
+              "Aircrafts are the modern test of human ambition. We are building one of the fastest pilotless aircraft in the world. The N444XC represents our vision to refurbish and redefine the future of flight."
+            </blockquote>
+            <cite>Hemendrah Kumar Sadamsetty — Chairman, Zebrold IHL</cite>
+          </div>
+          <div className="home-wordmark-lines" aria-label="Made in Germany Perfected in South Korea">
+            <span className="home-wordmark-line line-one">Made in Germany</span>
+            <span className="home-wordmark-line line-two">Perfected in Australia</span>
+          </div>
+
+          <section className="home-aircraft-image-section" aria-label="FlieganWing aircraft showcase">
+            <img
+              src={flieganWing400fImg}
+              alt="FlieganWing 400F aircraft in flight"
+              className="home-aircraft-image"
+              loading="lazy"
+            />
+          </section>
+
+          <section className="freighter-expertise-section" aria-labelledby="freighter-expertise-title">
+            <div className="freighter-expertise-copy">
+              <p className="freighter-expertise-kicker">FREIGHTERS</p>
+              <h2 id="freighter-expertise-title">Elevate your cargo with FlieganWing expertise</h2>
+              <span className="freighter-expertise-rule" aria-hidden="true" />
+            </div>
+            <div className="freighter-expertise-body">
+              <p>
+                Benefit from FlieganWing's extensive expertise in the freighter industry spanning decades, our diverse fleet caters to various cargo markets and meets the needs of cargo operators with a comprehensive selection of freighter aircraft and passenger-to-freighter (P2F) conversion options.
+              </p>
+              <p>
+                Whether you specialise in pure cargo transportation or conduct mixed operations, FlieganWing offers the perfect freighter aircraft for your requirements, regardless of the size of goods you intend to ship.
+              </p>
+            </div>
+          </section>
+
+          <div className="home-showcase-panel" aria-label="Top products by Zebrold IHL">
+            <div className="home-showcase-image-wrap">
+              <img src={aircraftShowcaseImg} alt="Aircraft on runway" className="home-showcase-image" loading="lazy" />
+            </div>
+
+            <div className="home-showcase-products">
+              <p className="home-showcase-label">TOP PRODUCTS BY ZEBROLD IHL</p>
+
+              <div className="home-showcase-list">
+                <div className="home-showcase-item is-active">
+                  <div className="home-showcase-name">N444XC</div>
+                  <div className="home-showcase-meta">FLIEGANWING</div>
+                </div>
+
+                <div className="home-showcase-item">
+                  <div className="home-showcase-name">699RS</div>
+                  <div className="home-showcase-meta">PERFORMANCE</div>
+                </div>
+
+                <div className="home-showcase-item">
+                  <div className="home-showcase-name">400F</div>
+                  <div className="home-showcase-meta">FREIGHT</div>
+                </div>
+
+                <div className="home-showcase-item">
+                  <div className="home-showcase-name">CYPRELIA V1</div>
+                  <div className="home-showcase-meta">NEXT GENERATION</div>
+                </div>
               </div>
+
+              <button type="button" className="home-showcase-button">View model specs</button>
             </div>
           </div>
+
+          <section className="n444xc-range" aria-labelledby="n444xc-range-title">
+            <div className="n444xc-range-header">
+              <div className="n444xc-range-copy">
+                <p className="n444xc-kicker">FLIEGANWING&nbsp;&nbsp; 400F</p>
+                <h2 id="n444xc-range-title">Explore the 400F range</h2>
+                <span className="n444xc-title-rule" aria-hidden="true" />
+                <p className="n444xc-intro">The 400F is engineered for a more connected world. Discover what its exceptional range enables, bringing people and opportunities closer across continents.</p>
+              </div>
+
+              <div className="n444xc-summary">
+                <div className="n444xc-range-stat">
+                  <div>
+                    <strong>20,450 KM</strong>
+                    <span>WIDE RANGE</span>
+                  </div>
+                  <div className="n444xc-speed-stat">
+                    <strong>730 KM/H</strong>
+                    <span>PROJECTED CRUISE SPEED</span>
+                  </div>
+                </div>
+                <button type="button" className="n444xc-explore-button">Explore more <span aria-hidden="true">↗</span></button>
+                <div className="n444xc-flight-card">
+                  <div>
+                    <small>MAIDEN FLIGHT</small>
+                    <strong>November 5, 2027</strong>
+                  </div>
+                  <span className="n444xc-flight-note">A new era<br />begins.</span>
+                </div>
+                <div className="n444xc-countdown-card" aria-live="polite">
+                  <span>COUNTDOWN TO MAIDEN FLIGHT · LIVE</span>
+                  <div className="n444xc-countdown-values">
+                    <strong>{countdown.days}<small>DAYS</small></strong>
+                    <strong>{String(countdown.hours).padStart(2, '0')}<small>HOURS</small></strong>
+                    <strong>{String(countdown.minutes).padStart(2, '0')}<small>MINUTES</small></strong>
+                    <strong>{String(countdown.seconds).padStart(2, '0')}<small>SECONDS</small></strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="n444xc-route-tabs" role="tablist" aria-label="N444XC routes">
+              <button type="button" role="tab" aria-selected={activeRoute === 'bangalore'} className={activeRoute === 'bangalore' ? 'is-active' : ''} onClick={() => setActiveRoute('bangalore')}>Frankfurt – Bangalore</button>
+              <button type="button" role="tab" aria-selected={activeRoute === 'sydney'} className={activeRoute === 'sydney' ? 'is-active' : ''} onClick={() => setActiveRoute('sydney')}>Frankfurt – Sydney</button>
+            </div>
+
+            <div className="n444xc-route-layout">
+              <N444WorldMap destination={activeRoute} />
+
+              <aside className="n444xc-route-details">
+                <p>FRANKFURT&nbsp; → &nbsp;{activeRoute === 'sydney' ? 'SYDNEY' : 'BANGALORE'}</p>
+                <strong>{activeRoute === 'sydney' ? '16,601 KM' : '6,990 KM'}</strong>
+                <span className="n444xc-detail-label">DISTANCE</span>
+                <div className="n444xc-detail-divider" />
+                <div className="n444xc-detail-row"><span className="n444xc-detail-symbol">◷</span><strong>{activeRoute === 'sydney' ? '~ 19 h 30 min' : '~ 8 h 45 min'}<small>ESTIMATED FLIGHT TIME</small></strong></div>
+                <div className="n444xc-detail-row"><span className="n444xc-detail-symbol">⌖</span><strong>FRA<small>FRANKFURT, GERMANY</small></strong></div>
+                <div className="n444xc-detail-row"><span className="n444xc-detail-symbol">⌖</span><strong>{activeRoute === 'sydney' ? 'SYD' : 'BLR'}<small>{activeRoute === 'sydney' ? 'SYDNEY, AUSTRALIA' : 'BANGALORE, INDIA'}</small></strong></div>
+              </aside>
+            </div>
+          </section>
         </div>
       </section>
 
@@ -650,30 +836,22 @@ export default function Home() {
         <div className="about-scroll-section">
           <div className="about-scroll-sticky">
             <h2 className="about-scroll-text">
-              {lang === 'en' ? (getAboutScroll().text_en || "BUILT FOR THE COMPLEX. READY FOR WHAT'S NEXT.") : (getAboutScroll().text_de || 'GEBAUT FÜR DAS KOMPLEXE. BEREIT FÜR DAS, WAS KOMMT.')}
+              Adidas joins the N444XC team, bringing a new jersey culture to Zebrold
             </h2>
 
             <div className="about-split-overlay">
               <div className="about-split-content">
                 <h3 className="about-split-headline">
-                  {lang === 'en'
-                    ? 'Building Businesses. Connecting Markets. Creating Long-Term Value.'
-                    : 'Unternehmen aufbauen. Märkte verbinden. Langfristigen Wert schaffen.'}
+                  Our dedicated team is working extensively on the N444XC, the first aircraft in our refurbishment program.
                 </h3>
                 <p>
-                  {lang === 'en'
-                    ? "Zebrold connects industrial thinking with real-world execution, bringing together specialist teams, production capabilities, and emerging technologies across Aerospace, Automotive, and Healthcare Robotics."
-                    : "Zebrold verbindet industrielles Denken mit realer Umsetzung und bringt spezialisierte Teams, Produktionskapazitäten und neue Technologien in den Bereichen Luft- und Raumfahrt, Automobilbau und Healthcare-Robotik zusammen."}
+                  From structural restoration to modern upgrades, every stage is focused on bringing the aircraft back to exceptional operational standards.
                 </p>
                 <p>
-                  {lang === 'en'
-                    ? "We step into complex development challenges where precision matters, ideas need to become tangible, and production has to keep pace with ambition."
-                    : "Wir stellen uns komplexen Entwicklungsherausforderungen, bei denen Präzision entscheidend ist, Ideen greifbar werden müssen und die Produktion mit dem Tempo der Ambition Schritt halten muss."}
+                  The project brings together engineering, aviation, and brand partners, with Adidas supporting the team through its brand presence. Together, we are building a new standard for aircraft refurbishment, performance, and future-ready aviation.
                 </p>
                 <p>
-                  {lang === 'en'
-                    ? "From our European manufacturing network to our international technical teams, we create the environment where advanced products can move from development to deployment—and from today's requirements to tomorrow's possibilities."
-                    : "Von unserem europäischen Fertigungsnetzwerk bis zu unseren internationalen technischen Teams schaffen wir das Umfeld, in dem hochentwickelte Produkte von der Entwicklung bis zur Markteinführung gelangen können — und von den Anforderungen von heute zu den Möglichkeiten von morgen."}
+                  N444XC — Restored. Refined. Ready for the Future.
                 </p>
               </div>
             </div>
@@ -686,9 +864,6 @@ export default function Home() {
 
       {/* ═══════ PROPOSALS BY INDUSTRY — AUTOMOTIVE ═══════ */}
       <IndustryProposals />
-
-      {/* ═══════ SECTION 8: MANUFACTURING — MILAN, ITALY ═══════ */}
-      <ManufacturingSection />
 
       {/* ═══════ IN THE NEWS ═══════ */}
       <section className="home-news-section">
