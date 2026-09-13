@@ -10,8 +10,6 @@ import { useLanguage } from '../../context/LanguageContext';
 import { getExpertise, getStats, getDomains, getNewsSection, getAboutScroll, getCta, getSectionOrder, getTicker } from '../../utils/homepageData';
 import { sendContactEmail } from '../../services/emailService';
 import SEO from '../../components/SEO/SEO';
-import SalesProposalExperience from '../../components/SalesProposalExperience/SalesProposalExperience';
-import IndustryProposals from '../../components/IndustryProposals/IndustryProposals';
 import './Home.css';
 
 import heroBg1 from '../../assets/hero_bg_meridian.png';
@@ -32,11 +30,18 @@ import industrialSectorImg from '../../assets/industrial_sector.png';
 import mediaSectorImg from '../../assets/media_sector.png';
 import countryHealthLogo from '../../assets/country_health_logo.png';
 import instructisLogo from '../../assets/instructis_logo.png';
-import leadershipTeamImg from '../../assets/leadership_team_zebrold.jpg';
 import aircraftShowcaseImg from '../../assets/products-a321xlr/a321xlr_hero_climb.png';
 import flieganWing400fImg from '../../assets/ChatGPT Image Sep 11, 2026 at 05_23_54 PM.png';
+import performanceAircraftImg from '../../assets/products-777x/777x_flight_cruise.png';
+import freightAircraftImg from '../../assets/products-a350f/a350f_hero_flight.png';
 gsap.registerPlugin(ScrollTrigger);
 /* ── Data ── */
+const SHOWCASE_PRODUCTS = [
+  { id: 'n444xc', name: 'N444XC', meta: 'FLIEGANWING', image: aircraftShowcaseImg, path: '/products/a321xlr' },
+  { id: '699rs', name: '699RS', meta: 'PERFORMANCE', image: performanceAircraftImg, path: '/products/777x' },
+  { id: '400f', name: '400F', meta: 'FREIGHT', image: freightAircraftImg, path: '/products/a350f' },
+  { id: 'cyprelia', name: 'CYPRELIA V1', meta: 'NEXT GENERATION', image: heroBg3, path: '/products/a321xlr' },
+];
 const COMPANY_TICKER_ITEMS = [
   { name: 'Country Health', logo: countryHealthLogo, country: 'Düsseldorf, Deutschland', sector: 'Gesundheitswesen & Pharma' },
   { name: 'Instructis', logo: instructisLogo, country: 'Hyderabad, Indien', sector: 'Bildung & Karriere' },
@@ -309,10 +314,7 @@ function N444WorldMap({ destination }) {
   const target = routeCities[destination];
   const interpolate = geoInterpolate(origin, target);
   const routeCoordinates = Array.from({ length: 61 }, (_, index) => interpolate(index / 60));
-  const routePath = worldPath({
-    type: 'Feature',
-    geometry: { type: 'LineString', coordinates: routeCoordinates },
-  });
+  const routePath = worldPath({ type: 'Feature', geometry: { type: 'LineString', coordinates: routeCoordinates } });
   const originPoint = worldProjection(origin);
   const targetPoint = worldProjection(target);
 
@@ -334,6 +336,7 @@ function N444WorldMap({ destination }) {
     </div>
   );
 }
+
 /* ═══════════════════════════════════════════
    ANIMATED COUNTER COMPONENT
    ═══════════════════════════════════════════ */
@@ -393,8 +396,11 @@ export default function Home() {
   const [chatEmail, setChatEmail] = useState('');
   const [chatMsg, setChatMsg] = useState('');
   const [chatSent, setChatSent] = useState(false);
+  const [activeProductId, setActiveProductId] = useState('n444xc');
   const [activeRoute, setActiveRoute] = useState('sydney');
   const [countdown, setCountdown] = useState(() => getCountdown(MAIDEN_FLIGHT_AT));
+
+  const activeProduct = SHOWCASE_PRODUCTS.find((product) => product.id === activeProductId) || SHOWCASE_PRODUCTS[0];
 
   useEffect(() => {
     const updateCountdown = () => setCountdown(getCountdown(MAIDEN_FLIGHT_AT));
@@ -733,137 +739,56 @@ export default function Home() {
 
           <div className="home-showcase-panel" aria-label="Top products by Zebrold IHL">
             <div className="home-showcase-image-wrap">
-              <img src={aircraftShowcaseImg} alt="Aircraft on runway" className="home-showcase-image" loading="lazy" />
+              <img src={activeProduct.image} alt={`${activeProduct.name} aircraft`} className="home-showcase-image" loading="lazy" />
             </div>
 
             <div className="home-showcase-products">
               <p className="home-showcase-label">TOP PRODUCTS BY ZEBROLD IHL</p>
 
-              <div className="home-showcase-list">
-                <div className="home-showcase-item is-active">
-                  <div className="home-showcase-name">N444XC</div>
-                  <div className="home-showcase-meta">FLIEGANWING</div>
-                </div>
-
-                <div className="home-showcase-item">
-                  <div className="home-showcase-name">699RS</div>
-                  <div className="home-showcase-meta">PERFORMANCE</div>
-                </div>
-
-                <div className="home-showcase-item">
-                  <div className="home-showcase-name">400F</div>
-                  <div className="home-showcase-meta">FREIGHT</div>
-                </div>
-
-                <div className="home-showcase-item">
-                  <div className="home-showcase-name">CYPRELIA V1</div>
-                  <div className="home-showcase-meta">NEXT GENERATION</div>
-                </div>
+              <div className="home-showcase-list" role="tablist" aria-label="Zebrold products">
+                {SHOWCASE_PRODUCTS.map((product) => (
+                  <button
+                    type="button"
+                    role="tab"
+                    aria-selected={product.id === activeProduct.id}
+                    className={`home-showcase-item ${product.id === activeProduct.id ? 'is-active' : ''}`}
+                    key={product.id}
+                    onClick={() => setActiveProductId(product.id)}
+                  >
+                    <span className="home-showcase-name">{product.name}</span>
+                    <span className="home-showcase-meta">{product.meta}</span>
+                  </button>
+                ))}
               </div>
 
-              <button type="button" className="home-showcase-button">View model specs</button>
+              <Link to={activeProduct.path} className="home-showcase-button">View model specs</Link>
             </div>
           </div>
 
-          <section className="n444xc-range" aria-labelledby="n444xc-range-title">
-            <div className="n444xc-range-header">
-              <div className="n444xc-range-copy">
-                <p className="n444xc-kicker">FLIEGANWING&nbsp;&nbsp; 400F</p>
-                <h2 id="n444xc-range-title">Explore the 400F range</h2>
-                <span className="n444xc-title-rule" aria-hidden="true" />
-                <p className="n444xc-intro">The 400F is engineered for a more connected world. Discover what its exceptional range enables, bringing people and opportunities closer across continents.</p>
-              </div>
-
-              <div className="n444xc-summary">
-                <div className="n444xc-range-stat">
-                  <div>
-                    <strong>20,450 KM</strong>
-                    <span>WIDE RANGE</span>
-                  </div>
-                  <div className="n444xc-speed-stat">
-                    <strong>730 KM/H</strong>
-                    <span>PROJECTED CRUISE SPEED</span>
-                  </div>
-                </div>
-                <button type="button" className="n444xc-explore-button">Explore more <span aria-hidden="true">↗</span></button>
-                <div className="n444xc-flight-card">
-                  <div>
-                    <small>MAIDEN FLIGHT</small>
-                    <strong>November 5, 2027</strong>
-                  </div>
-                  <span className="n444xc-flight-note">A new era<br />begins.</span>
-                </div>
-                <div className="n444xc-countdown-card" aria-live="polite">
-                  <span>COUNTDOWN TO MAIDEN FLIGHT · LIVE</span>
-                  <div className="n444xc-countdown-values">
-                    <strong>{countdown.days}<small>DAYS</small></strong>
-                    <strong>{String(countdown.hours).padStart(2, '0')}<small>HOURS</small></strong>
-                    <strong>{String(countdown.minutes).padStart(2, '0')}<small>MINUTES</small></strong>
-                    <strong>{String(countdown.seconds).padStart(2, '0')}<small>SECONDS</small></strong>
-                  </div>
-                </div>
+          <section className="n444xc-flight-network" aria-labelledby="n444xc-flight-network-title">
+            <div className="n444xc-flight-network-header">
+              <p className="n444xc-kicker">FLIEGANWING / N444XC</p>
+              <h2 id="n444xc-flight-network-title">Flight network</h2>
+              <p>Track the route vision and countdown to the N444XC maiden flight.</p>
+            </div>
+            <div className="n444xc-countdown-card" aria-live="polite">
+              <span>COUNTDOWN TO MAIDEN FLIGHT · LIVE</span>
+              <div className="n444xc-countdown-values">
+                <strong>{countdown.days}<small>DAYS</small></strong>
+                <strong>{String(countdown.hours).padStart(2, '0')}<small>HOURS</small></strong>
+                <strong>{String(countdown.minutes).padStart(2, '0')}<small>MINUTES</small></strong>
+                <strong>{String(countdown.seconds).padStart(2, '0')}<small>SECONDS</small></strong>
               </div>
             </div>
-
             <div className="n444xc-route-tabs" role="tablist" aria-label="N444XC routes">
               <button type="button" role="tab" aria-selected={activeRoute === 'bangalore'} className={activeRoute === 'bangalore' ? 'is-active' : ''} onClick={() => setActiveRoute('bangalore')}>Frankfurt – Bangalore</button>
               <button type="button" role="tab" aria-selected={activeRoute === 'sydney'} className={activeRoute === 'sydney' ? 'is-active' : ''} onClick={() => setActiveRoute('sydney')}>Frankfurt – Sydney</button>
             </div>
-
-            <div className="n444xc-route-layout">
-              <N444WorldMap destination={activeRoute} />
-
-              <aside className="n444xc-route-details">
-                <p>FRANKFURT&nbsp; → &nbsp;{activeRoute === 'sydney' ? 'SYDNEY' : 'BANGALORE'}</p>
-                <strong>{activeRoute === 'sydney' ? '16,601 KM' : '6,990 KM'}</strong>
-                <span className="n444xc-detail-label">DISTANCE</span>
-                <div className="n444xc-detail-divider" />
-                <div className="n444xc-detail-row"><span className="n444xc-detail-symbol">◷</span><strong>{activeRoute === 'sydney' ? '~ 19 h 30 min' : '~ 8 h 45 min'}<small>ESTIMATED FLIGHT TIME</small></strong></div>
-                <div className="n444xc-detail-row"><span className="n444xc-detail-symbol">⌖</span><strong>FRA<small>FRANKFURT, GERMANY</small></strong></div>
-                <div className="n444xc-detail-row"><span className="n444xc-detail-symbol">⌖</span><strong>{activeRoute === 'sydney' ? 'SYD' : 'BLR'}<small>{activeRoute === 'sydney' ? 'SYDNEY, AUSTRALIA' : 'BANGALORE, INDIA'}</small></strong></div>
-              </aside>
-            </div>
+            <N444WorldMap destination={activeRoute} />
           </section>
+
         </div>
       </section>
-
-      {/* ═══════ SECTION 9: ABOUT HORIZONTAL SCROLL + SPLIT OVERLAY ═══════ */}
-      <section className="about-home-section">
-        <div className="about-bg-image">
-          <img src={leadershipTeamImg} alt="Zebrold Leadership Team" className="about-bg-img-inner" loading="lazy" width="1920" height="1080" />
-          <div className="about-image-overlay"></div>
-        </div>
-        <div className="about-scroll-section">
-          <div className="about-scroll-sticky">
-            <h2 className="about-scroll-text">
-              Adidas joins the N444XC team, bringing a new jersey culture to Zebrold
-            </h2>
-
-            <div className="about-split-overlay">
-              <div className="about-split-content">
-                <h3 className="about-split-headline">
-                  Our dedicated team is working extensively on the N444XC, the first aircraft in our refurbishment program.
-                </h3>
-                <p>
-                  From structural restoration to modern upgrades, every stage is focused on bringing the aircraft back to exceptional operational standards.
-                </p>
-                <p>
-                  The project brings together engineering, aviation, and brand partners, with Adidas supporting the team through its brand presence. Together, we are building a new standard for aircraft refurbishment, performance, and future-ready aviation.
-                </p>
-                <p>
-                  N444XC — Restored. Refined. Ready for the Future.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════ SMART SALES PROPOSALS 3D EXPERIENCE ═══════ */}
-      <SalesProposalExperience />
-
-      {/* ═══════ PROPOSALS BY INDUSTRY — AUTOMOTIVE ═══════ */}
-      <IndustryProposals />
 
       {/* ═══════ IN THE NEWS ═══════ */}
       <section className="home-news-section">

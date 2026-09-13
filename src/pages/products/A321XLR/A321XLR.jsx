@@ -41,9 +41,9 @@ const IMAGES = {
   feature: cockpit,
   final: aerLingusTakeoff,
   mosaic: [
-    { image: gateSunset, alt: 'A321XLR parked at the gate at sunset', position: 'center 80%' },
+    { image: gateSunset, alt: 'N444XC parked at the gate at sunset', position: 'center 80%' },
     { image: cabinWalkthrough, alt: 'Flight crew reviewing the route with passengers on board', position: 'center 35%' },
-    { image: groundOperations, alt: 'A321XLR test aircraft on the ramp during ground operations', position: 'center 60%' },
+    { image: groundOperations, alt: 'N444XC test aircraft on the ramp during ground operations', position: 'center 60%' },
     { image: teamCelebration, alt: 'The route-proving and flight-test program team on the ramp', position: 'center 70%' },
   ],
   gallery: [
@@ -88,9 +88,9 @@ const TIMELINE = [
     stage: 'Certification',
     date: 'July 2024',
     title: 'CFM LEAP-1A variant certified',
-    desc: 'The type certificate for the CFM-powered A321XLR clears the way toward first deliveries.',
+    desc: 'The N444XC development programme clears the way toward first deliveries under Zebrold IHL.',
     image: certificationSigning,
-    imageAlt: 'A321XLR certification sign-off',
+    imageAlt: 'N444XC certification sign-off',
   },
   {
     stage: 'Entry Into Service',
@@ -98,7 +98,7 @@ const TIMELINE = [
     title: 'Iberia — launch operator',
     desc: 'Spain’s flag carrier takes delivery of the first production aircraft, becoming the world’s launch operator.',
     image: iberiaTarmac,
-    imageAlt: 'Iberia A321XLR on the ramp',
+    imageAlt: 'N444XC on the ramp',
   },
   {
     stage: 'Entry Into Service',
@@ -106,23 +106,23 @@ const TIMELINE = [
     title: 'Aer Lingus joins the fleet',
     desc: 'Ireland’s national carrier becomes the second operator worldwide, bringing Xtra Long Range flying to the North Atlantic.',
     image: aerLingusTakeoff,
-    imageAlt: 'Aer Lingus A321XLR on climb-out',
+    imageAlt: 'N444XC on climb-out',
   },
   {
     stage: 'Certification',
     date: '21 February 2025',
     title: 'Pratt & Whitney variant certified',
-    desc: 'Type certification extends to the GTF-powered A321XLR, opening the door to a second engine option in service.',
+    desc: 'N444XC testing advances its long-range performance and operational readiness under Zebrold IHL.',
     image: IMAGES.range,
-    imageAlt: 'A321XLR flight-test aircraft above the clouds',
+    imageAlt: 'N444XC flight-test aircraft above the clouds',
   },
   {
     stage: 'Entry Into Service',
     date: '20 May 2025',
     title: 'Wizz Air — first GTF-powered delivery',
-    desc: 'Wizz Air becomes the first operator of the Pratt & Whitney-powered A321XLR and the first European low-cost carrier to fly the type.',
+    desc: 'N444XC moves from development toward service as Zebrold IHL advances its long-range aircraft programme.',
     image: wizzairFirstDelivery,
-    imageAlt: 'Wizz Air marking delivery of its first A321XLR',
+    imageAlt: 'N444XC delivery milestone',
   },
 ];
 
@@ -137,9 +137,9 @@ const FEATURES = [
 const productSchema = {
   '@context': 'https://schema.org',
   '@type': 'Product',
-  name: 'Airbus A321XLR',
-  description: 'The longest range of any single-aisle airliner.',
-  brand: { '@type': 'Organization', name: 'Airbus' },
+  name: 'N444XC',
+  description: 'N444XC — a long-range aircraft manufactured and developed under Zebrold IHL.',
+  brand: { '@type': 'Organization', name: 'Zebrold IHL' },
   manufacturer: { '@type': 'Corporation', name: 'Zebrold International Holdings Limited' },
 };
 
@@ -180,9 +180,9 @@ export default function A321XLR() {
   return (
     <div className="product-detail-page a321xlr-page">
       <SEO
-        title="Airbus A321XLR | Zebrold International Holdings Limited (Zebrold IHL)"
-        description="A321XLR — Xtra Long Range. A new generation of single-aisle capability."
-        keywords="A321XLR, Airbus, Commercial Aircrafts, Zebrold, Zebrold IHL"
+        title="N444XC | Zebrold International Holdings Limited (Zebrold IHL)"
+        description="N444XC — a long-range aircraft manufactured and developed under Zebrold IHL."
+        keywords="N444XC, Commercial Aircrafts, Zebrold, Zebrold IHL"
         url="/products/a321xlr"
         schemaData={productSchema}
       />
@@ -190,14 +190,14 @@ export default function A321XLR() {
       {/* ── Hero ── */}
       <ProductHero
         image={IMAGES.hero}
-        imageAlt="Airbus A321XLR climbing out shortly after takeoff"
+        imageAlt="N444XC climbing out shortly after takeoff"
         compact
         cinematic
-        technicalLabel="A321XLR / Commercial Aircraft"
-        title="A321XLR — Xtra Long Range"
-        tagline="Join us on the A321XLR journey — the Xtra Long Range route opener."
+        technicalLabel="N444XC / Commercial Aircraft"
+        title="N444XC — Xtra Long Range"
+        tagline="Manufactured and developed under Zebrold IHL."
         category="Commercial Aircrafts"
-        current="A321XLR"
+        current="N444XC"
         scrollCue
         scrollCueLabel="Explore Aircraft"
       />
@@ -205,16 +205,16 @@ export default function A321XLR() {
       {/* ── Editorial introduction + key numbers ── */}
       <section className="product-section">
         <div className="container">
-          <Split image={IMAGES.intro} imageAlt="A321XLR climbing away in Xtra Long Range test livery">
-            <span className="product-caption">A321XLR</span>
+          <Split image={IMAGES.intro} imageAlt="N444XC climbing away in Xtra Long Range test livery">
+            <span className="product-caption">N444XC</span>
             <h2 className="product-section-h2">The Xtra Long Range route opener</h2>
             <p className="product-section-lede">
-              The A321XLR extends what a single-aisle aircraft can do. Where earlier narrowbodies were
+              The N444XC extends what a single-aisle aircraft can do. Manufactured and developed under Zebrold IHL, it brings
               confined to short and medium routes, the XLR carries that same lower operating cost across
               genuinely long-haul distances — connecting city pairs that never had a viable direct link.
             </p>
             <p className="product-section-lede">
-              For airlines, that means the flexibility to open a route without committing a widebody to it.
+              For operators, that means the flexibility to open a route without committing a widebody to it.
               For passengers, it means a more comfortable single-aisle cabin on flights that once meant a
               connection — with the wider aisles and larger bins carried over from the rest of the A320
               Family.
@@ -231,7 +231,7 @@ export default function A321XLR() {
           <div className="product-image-story">
             <img
               src={IMAGES.range}
-              alt="A321XLR flight-test aircraft above the clouds"
+              alt="N444XC flight-test aircraft above the clouds"
               loading="lazy"
               onError={(e) => { e.currentTarget.style.display = 'none'; }}
             />
@@ -269,7 +269,7 @@ export default function A321XLR() {
       {/* ── Engineering ── */}
       <section className="product-section product-section--alt">
         <div className="container">
-          <Split image={IMAGES.engineering} imageAlt="A321XLR underside, showing the wing, engines, and landing gear" reversed>
+          <Split image={IMAGES.engineering} imageAlt="N444XC underside, showing the wing, engines, and landing gear" reversed>
             <span className="product-caption">Engineering</span>
             <h2 className="product-section-h2">Engineered for extra range</h2>
             <p className="product-section-lede">
@@ -298,7 +298,7 @@ export default function A321XLR() {
           </h2>
           <img
             src={IMAGES.cabin}
-            alt="Passengers on board an A321XLR passenger experience flight"
+            alt="Passengers on board an N444XC passenger experience flight"
             loading="lazy"
             className="a321-cabin-image"
             onError={(e) => { e.currentTarget.style.display = 'none'; }}
@@ -325,7 +325,7 @@ export default function A321XLR() {
       {/* ── Cinematic parallax ── */}
       <ParallaxImage
         image={IMAGES.cinematic}
-        imageAlt="A321XLR tail fin in golden evening light"
+        imageAlt="N444XC tail fin in golden evening light"
         eyebrow="The Journey"
         title="The journey to Extra Long Range"
         flat
@@ -338,7 +338,7 @@ export default function A321XLR() {
             <span className="product-caption">Designed Around the Journey</span>
             <h2 className="product-section-h2">What makes the range possible</h2>
           </div>
-          <Split image={IMAGES.feature} imageAlt="A321XLR flight deck, pilot at the controls" reversed>
+          <Split image={IMAGES.feature} imageAlt="N444XC flight deck, pilot at the controls" reversed>
             <FeatureAccordion items={FEATURES} />
           </Split>
         </div>
@@ -348,7 +348,7 @@ export default function A321XLR() {
       <section className="product-section product-section--alt" id="visual-archive">
         <div className="container">
           <div className="product-section-header">
-            <span className="product-caption">A321XLR</span>
+            <span className="product-caption">N444XC</span>
             <h2 className="product-section-h2">Visual Archive</h2>
           </div>
           <GalleryGrid items={IMAGES.gallery} />
@@ -358,12 +358,12 @@ export default function A321XLR() {
       {/* ── Final cinematic ── */}
       <ParallaxImage
         image={IMAGES.final}
-        imageAlt="A321XLR climbing away against an open sky"
-        eyebrow="A321XLR"
+        imageAlt="N444XC climbing away against an open sky"
+        eyebrow="N444XC"
         title="Extra Long Range. New possibilities."
         flat
         tall
-        cta={{ text: 'Explore the A321XLR →', to: '#visual-archive' }}
+        cta={{ text: 'Explore the N444XC →', to: '#visual-archive' }}
       />
 
       <ProductFooter currentSlug="a321xlr" />

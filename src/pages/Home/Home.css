@@ -1105,9 +1105,18 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  width: 100%;
   min-height: 130px;
   border-bottom: 1px solid rgba(10, 10, 10, 0.22);
+  border-top: 0;
+  border-right: 0;
+  border-left: 0;
   padding: 0.85rem 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
 }
 
 .home-showcase-item.is-active {
@@ -1159,6 +1168,49 @@
 .home-showcase-button:hover {
   transform: translateY(-1px);
   opacity: 0.95;
+}
+
+.n444xc-flight-network {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.8fr);
+  gap: 2rem;
+  width: min(1280px, 100%);
+  margin: clamp(5rem, 9vw, 9rem) auto 0;
+  padding-top: clamp(2rem, 4vw, 4rem);
+  border-top: 1px solid rgba(10, 10, 10, 0.2);
+}
+
+.n444xc-flight-network-header h2 {
+  margin: 0.5rem 0 1rem;
+  font-family: var(--font-body);
+  font-size: clamp(2.5rem, 5vw, 5rem);
+  font-weight: 500;
+  letter-spacing: -0.07em;
+  line-height: 0.95;
+}
+
+.n444xc-flight-network-header > p:last-child {
+  max-width: 32rem;
+  margin: 0;
+  color: rgba(10, 10, 10, 0.62);
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+.n444xc-flight-network > .n444xc-countdown-card {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: end;
+  background: #f0f0ee;
+}
+
+.n444xc-flight-network > .n444xc-route-tabs,
+.n444xc-flight-network > .n444xc-map {
+  grid-column: 1 / -1;
+}
+
+.n444xc-flight-network > .n444xc-map {
+  min-height: 360px;
 }
 
 .n444xc-range {
@@ -1227,6 +1279,11 @@
   font-family: var(--font-body);
   font-size: clamp(0.95rem, 1vw, 1.15rem);
   line-height: 1.5;
+}
+
+.n444xc-range-copy > .n444xc-range-stat {
+  width: min(100%, 34rem);
+  margin-top: 2.5rem;
 }
 
 .n444xc-summary {
@@ -1607,6 +1664,19 @@
   .home-wordmark-line {
     font-size: clamp(2.5rem, 15vw, 7rem);
     letter-spacing: -0.06em;
+  }
+
+  .n444xc-flight-network {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-top: 4rem;
+  }
+
+  .n444xc-flight-network > .n444xc-countdown-card,
+  .n444xc-flight-network > .n444xc-route-tabs,
+  .n444xc-flight-network > .n444xc-map {
+    grid-column: 1;
+    grid-row: auto;
   }
 
   .n444xc-range {

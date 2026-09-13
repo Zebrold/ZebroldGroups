@@ -362,3 +362,224 @@
     font-size: 1.35rem;
   }
 }
+
+/* Editorial aircraft proposal treatment */
+.ip-section {
+  --ip-bg: #f5f5f3;
+  --ip-bg-panel: #fbfbfa;
+  --ip-text: #1c1c1b;
+  --ip-text-secondary: #5f625f;
+  --ip-text-tertiary: #737875;
+  --ip-border: rgba(28, 28, 27, 0.16);
+  --ip-accent: #6e2a2a;
+  min-height: auto;
+  padding: clamp(4rem, 8vw, 7rem) 0;
+  background: var(--ip-bg);
+  color: var(--ip-text);
+}
+
+.ip-grid {
+  grid-template-columns: minmax(220px, 280px) minmax(0, 1fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: stretch;
+}
+
+.ip-left {
+  min-height: 100%;
+  justify-content: flex-start;
+  gap: 0;
+  padding: 0 clamp(1rem, 2vw, 2rem) 0 0;
+  border-right: 1px solid var(--ip-border);
+  opacity: 1;
+  transform: none;
+}
+
+.ip-section.is-in-view .ip-left,
+.ip-section.is-in-view .ip-right {
+  opacity: 1;
+  transform: none;
+}
+
+.ip-eyebrow {
+  width: 100%;
+  padding: 1.35rem 1.5rem;
+  border: 1px solid rgba(110, 42, 42, 0.22);
+  border-radius: 1rem;
+  background: #6e2a2a;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.ip-eyebrow::after {
+  display: block;
+  margin-top: 0.35rem;
+  content: 'PASSENGER';
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+}
+
+.ip-eyebrow-triangle,
+.ip-heading,
+.ip-desc,
+.ip-watch-video,
+.ip-dots {
+  display: none;
+}
+
+.ip-left::after {
+  content: 'Freighter Aircraft\A\A Aircraft Operations\A\A Motorsport\A\A Health Robotics';
+  white-space: pre;
+  padding: 1.8rem 1.5rem;
+  color: #252625;
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  line-height: 2.7;
+}
+
+.ip-right {
+  opacity: 1;
+  transform: none;
+  transition: none;
+}
+
+.ip-preview {
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  overflow: visible;
+}
+
+.ip-preview-stage {
+  height: 500px;
+  overflow: hidden;
+}
+
+.ip-slide-track {
+  gap: 1rem;
+  height: 100%;
+  padding: 0;
+}
+
+.ip-slide {
+  flex-basis: calc(50% - 0.5rem);
+  min-width: 0;
+  border: 1px solid rgba(28, 28, 27, 0.15);
+  border-radius: 1.6rem;
+  padding: 3rem 2.5rem;
+  background-image: none !important;
+  background-color: var(--ip-bg-panel) !important;
+  color: var(--ip-text);
+}
+
+.ip-slide::before {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  content: '';
+  background: radial-gradient(circle at 80% 30%, rgba(110, 42, 42, 0.1), transparent 42%);
+  pointer-events: none;
+}
+
+.ip-slide-heading {
+  z-index: 1;
+  align-self: flex-start;
+  padding: 0;
+  color: #222321;
+  font-size: clamp(1.7rem, 2.4vw, 2.6rem);
+  font-weight: 700;
+  text-align: left;
+}
+
+.ip-slide-heading::before {
+  display: block;
+  margin-bottom: 1rem;
+  color: #6e2a2a;
+  content: 'AIRBUS';
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+}
+
+.ip-slide-tone-1 .ip-slide-heading::before { content: 'BOEING'; }
+.ip-slide-tone-2 .ip-slide-heading::before { content: 'FLIEGANWING'; }
+
+.ip-slide-art,
+.ip-slide-play {
+  display: none;
+}
+
+.ip-slide-card {
+  left: 2.5rem;
+  right: 2.5rem;
+  bottom: 2.5rem;
+  z-index: 1;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  backdrop-filter: none;
+}
+
+.ip-slide-card-title {
+  color: #262725;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.ip-slide-card-body {
+  margin-top: 0.8rem;
+  color: #666966;
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.ip-nav-btn {
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid var(--ip-border);
+  background: rgba(255, 255, 255, 0.9);
+  color: #272827;
+}
+
+@media (max-width: 1024px) {
+  .ip-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ip-left {
+    min-height: auto;
+    border-right: 0;
+    border-bottom: 1px solid var(--ip-border);
+    padding: 0 0 1.5rem;
+  }
+
+  .ip-left::after {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .ip-section {
+    padding: 3.5rem 0;
+  }
+
+  .ip-preview-stage {
+    height: 390px;
+  }
+
+  .ip-slide {
+    flex-basis: 100%;
+    padding: 2rem 1.5rem;
+  }
+
+  .ip-slide-card {
+    left: 1.5rem;
+    right: 1.5rem;
+    bottom: 1.5rem;
+  }
+}
