@@ -30,17 +30,169 @@ import industrialSectorImg from '../../assets/industrial_sector.png';
 import mediaSectorImg from '../../assets/media_sector.png';
 import countryHealthLogo from '../../assets/country_health_logo.png';
 import instructisLogo from '../../assets/instructis_logo.png';
-import aircraftShowcaseImg from '../../assets/products-a321xlr/a321xlr_hero_climb.png';
 import flieganWing400fImg from '../../assets/ChatGPT Image Sep 11, 2026 at 05_23_54 PM.png';
-import performanceAircraftImg from '../../assets/products-777x/777x_flight_cruise.png';
-import freightAircraftImg from '../../assets/products-a350f/a350f_hero_flight.png';
+
+// Aerospace Fleet Showcase Multi-Angle Assets
+import n444TakeoffImg from '../../assets/products-a321xlr/a321xlr_xtra_long_range_takeoff.png';
+import n444FlightImg from '../../assets/products-a321xlr/a321xlr_flight_test_clouds.png';
+import n444CockpitImg from '../../assets/products-a321xlr/a321xlr_cockpit.png';
+import n444CabinImg from '../../assets/products-a321xlr/a321xlr_cabin_walkthrough.png';
+
+import rs777CruiseImg from '../../assets/products-777x/777x_flight_cruise.png';
+import rs777CockpitImg from '../../assets/products-777x/777x_flight_deck.png';
+import rs777CabinImg from '../../assets/products-777x/777x_cabin_wide_boeing.png';
+import rs777WingImg from '../../assets/products-777x/777x_climb_engines_wing.png';
+
+import f400HeroImg from '../../assets/products-a350f/a350f_hero_flight.png';
+import f400CargoHoldImg from '../../assets/products-a350f/a350f_cargo_hold_interior.png';
+import f400CargoDoorImg from '../../assets/products-a350f/a350f_xl_cargo_door.png';
+import f400WireframeImg from '../../assets/products-a350f/a350f_engineering_wireframe.png';
+
+import cypreliaConceptImg from '../../assets/products-atm/atm_future_concept_aircraft.png';
+import cypreliaFormationImg from '../../assets/products-atm/atm_wake_energy_formation.png';
+import cypreliaMissionImg from '../../assets/products-atm/atm_hero_control_room.png';
+import cypreliaClimbImg from '../../assets/products-atm/atm_climb_departure.png';
+
 gsap.registerPlugin(ScrollTrigger);
-/* ── Data ── */
+
+/* ── Aerospace Fleet Showcase Data ── */
 const SHOWCASE_PRODUCTS = [
-  { id: 'n444xc', name: 'N444XC', meta: 'FLIEGANWING', image: aircraftShowcaseImg, path: '/products/a321xlr' },
-  { id: '699rs', name: '699RS', meta: 'PERFORMANCE', image: performanceAircraftImg, path: '/products/777x' },
-  { id: '400f', name: '400F', meta: 'FREIGHT', image: freightAircraftImg, path: '/products/a350f' },
-  { id: 'cyprelia', name: 'CYPRELIA V1', meta: 'NEXT GENERATION', image: heroBg3, path: '/products/a321xlr' },
+  {
+    id: 'n444xc',
+    name: 'N444XC',
+    meta: 'FLIEGANWING',
+    category: 'Commercial Passenger & Refurbishment',
+    badge: 'REFURBISHMENT PROGRAM',
+    status: 'Flight Testing',
+    reg: 'D-AZBC · N444XC',
+    callsign: 'ZEB-444',
+    desc: 'The Xtra Long Range single-aisle route opener refurbished under Zebrold IHL. Connecting distant city pairs with single-aisle economics and widebody passenger comfort.',
+    path: '/products/a321xlr',
+    specs: {
+      range: '8,700 KM',
+      rangeNm: '4,700 NM',
+      speed: 'Mach 0.78',
+      speedKmh: '876 KM/H',
+      capacity: '180 – 244 PAX',
+      payload: '13.5 T Cargo',
+      mtow: '101.0 T',
+      wingspan: '35.80 M',
+      length: '44.51 M',
+      height: '11.76 M',
+      engines: 'CFM LEAP-1A / GTF',
+      thrust: '32,160 LBF',
+      ceiling: '41,000 FT',
+      fuelCapacity: '32,940 L (With RCT)',
+    },
+    views: [
+      { id: 'takeoff', label: 'Takeoff Climb', image: n444TakeoffImg, alt: 'N444XC Xtra Long Range climbing shortly after takeoff' },
+      { id: 'cruise', label: 'Cruise Flight', image: n444FlightImg, alt: 'N444XC cruising above the clouds in flight test' },
+      { id: 'cockpit', label: 'Flight Deck', image: n444CockpitImg, alt: 'N444XC glass cockpit and dual sidestick controls' },
+      { id: 'cabin', label: 'Airspace Cabin', image: n444CabinImg, alt: 'N444XC Airspace passenger cabin with wide seats and ambient lighting' },
+    ],
+  },
+  {
+    id: '699rs',
+    name: '699RS',
+    meta: 'PERFORMANCE',
+    category: 'Ultra-Long Range Widebody Flagship',
+    badge: 'FLAGSHIP COMMERCIAL',
+    status: 'Commercial Fleet',
+    reg: 'D-AZRS · 699RS',
+    callsign: 'ZEB-699',
+    desc: 'The world’s largest and most efficient twin-engine widebody airliner. Engineered with folding carbon-fiber wingtips, GE9X turbofans, and intercontinental range.',
+    path: '/products/777x',
+    specs: {
+      range: '16,170 KM',
+      rangeNm: '8,730 NM',
+      speed: 'Mach 0.84',
+      speedKmh: '905 KM/H',
+      capacity: '426 PAX (2-Class)',
+      payload: '73.5 T Cargo',
+      mtow: '351.5 T',
+      wingspan: '71.8 M (Folded: 64.8 M)',
+      length: '76.7 M',
+      height: '19.7 M',
+      engines: 'GE9X-105B1A Turbofans',
+      thrust: '105,000 LBF each',
+      ceiling: '43,100 FT',
+      fuelCapacity: '197,360 L',
+    },
+    views: [
+      { id: 'cruise', label: 'Cruise Flight', image: rs777CruiseImg, alt: '699RS ultra-long range widebody in cruising flight' },
+      { id: 'cockpit', label: 'Flight Deck', image: rs777CockpitImg, alt: '699RS touchscreen flight deck and HUDs' },
+      { id: 'cabin', label: 'Widebody Cabin', image: rs777CabinImg, alt: '699RS wide passenger interior with panoramic windows' },
+      { id: 'engines', label: 'GE9X Wing & Engines', image: rs777WingImg, alt: '699RS massive GE9X turbofan and advanced composite wing' },
+    ],
+  },
+  {
+    id: '400f',
+    name: '400F',
+    meta: 'FREIGHT',
+    category: 'Main-Deck Heavy Cargo Transporter',
+    badge: 'HEAVY FREIGHT PROGRAM',
+    status: 'Cargo Operations',
+    reg: 'D-AZFW · 400F',
+    callsign: 'ZEB-400',
+    desc: 'Next-generation clean-sheet main-deck widebody freighter. 70% advanced materials, 111-tonne payload capability, and an oversized 4.4-meter main-deck cargo door.',
+    path: '/products/a350f',
+    specs: {
+      range: '8,700 KM',
+      rangeNm: '4,700 NM',
+      speed: 'Mach 0.85',
+      speedKmh: '910 KM/H',
+      capacity: '111 Tonnes Payload',
+      payload: '30 Maindeck Pallets',
+      mtow: '319.0 T',
+      wingspan: '64.75 M',
+      length: '70.80 M',
+      height: '17.10 M',
+      engines: 'Rolls-Royce Trent XWB-97',
+      thrust: '97,000 LBF each',
+      ceiling: '43,000 FT',
+      fuelCapacity: '165,500 L',
+    },
+    views: [
+      { id: 'flight', label: 'In Flight', image: f400HeroImg, alt: '400F main-deck cargo freighter banking in flight' },
+      { id: 'cargohold', label: 'Maindeck Hold', image: f400CargoHoldImg, alt: '400F cargo deck interior with automated cargo loading system' },
+      { id: 'cargodoor', label: 'XL Cargo Door', image: f400CargoDoorImg, alt: '400F extra-large 4.4-meter cargo door during pallet loading' },
+      { id: 'wireframe', label: 'Engineering Spec', image: f400WireframeImg, alt: '400F structural engineering and composite airframe model' },
+    ],
+  },
+  {
+    id: 'cyprelia',
+    name: 'CYPRELIA V1',
+    meta: 'NEXT GENERATION',
+    category: 'Autonomous Air Traffic & Next-Gen Flight',
+    badge: 'ADVANCED R&D CONCEPT',
+    status: 'Advanced Concept',
+    reg: 'CONCEPT · CYP-V1',
+    callsign: 'ZEB-CYP',
+    desc: 'Autonomous aerodynamic architecture engineered for high-efficiency formation corridors, wake-energy harvesting, and automated air traffic management.',
+    path: '/products/air-traffic-management',
+    specs: {
+      range: 'Global Corridors',
+      rangeNm: 'Intercontinental',
+      speed: 'Mach 0.90+',
+      speedKmh: 'Super-Cruise Capable',
+      capacity: 'Modular Automated Bay',
+      payload: 'Autonomous ATM Integration',
+      mtow: 'Optimized Carbon Shell',
+      wingspan: 'Adaptive Geometry',
+      length: '52.4 M',
+      height: '12.8 M',
+      engines: 'Hybrid Propulsion Core',
+      thrust: 'Distributed Electric / Core',
+      ceiling: '50,000 FT',
+      fuelCapacity: 'SAF / Hydrogen Ready',
+    },
+    views: [
+      { id: 'concept', label: 'Concept Aircraft', image: cypreliaConceptImg, alt: 'CYPRELIA V1 futuristic aerodynamic concept aircraft' },
+      { id: 'formation', label: 'Formation Flight', image: cypreliaFormationImg, alt: 'CYPRELIA V1 flying in wake-energy harvesting formation' },
+      { id: 'mission', label: 'Autonomous Hub', image: cypreliaMissionImg, alt: 'Autonomous air traffic operations command and control facility' },
+      { id: 'climb', label: 'High-Altitude Climb', image: cypreliaClimbImg, alt: 'CYPRELIA V1 climbing toward stratospheric corridor' },
+    ],
+  },
 ];
 const COMPANY_TICKER_ITEMS = [
   { name: 'Country Health', logo: countryHealthLogo, country: 'Düsseldorf, Deutschland', sector: 'Gesundheitswesen & Pharma' },
@@ -397,10 +549,40 @@ export default function Home() {
   const [chatMsg, setChatMsg] = useState('');
   const [chatSent, setChatSent] = useState(false);
   const [activeProductId, setActiveProductId] = useState('n444xc');
+  const [activeViewIndex, setActiveViewIndex] = useState(0);
+  const [isSpecsModalOpen, setIsSpecsModalOpen] = useState(false);
   const [activeRoute, setActiveRoute] = useState('sydney');
   const [countdown, setCountdown] = useState(() => getCountdown(MAIDEN_FLIGHT_AT));
 
   const activeProduct = SHOWCASE_PRODUCTS.find((product) => product.id === activeProductId) || SHOWCASE_PRODUCTS[0];
+  const activeProductIndex = SHOWCASE_PRODUCTS.findIndex((p) => p.id === activeProduct.id);
+  const activeView = activeProduct.views?.[activeViewIndex] || activeProduct.views?.[0];
+
+  const handleSelectProduct = (productId) => {
+    setActiveProductId(productId);
+    setActiveViewIndex(0);
+  };
+
+  const handlePrevProduct = () => {
+    const prevIndex = (activeProductIndex - 1 + SHOWCASE_PRODUCTS.length) % SHOWCASE_PRODUCTS.length;
+    setActiveProductId(SHOWCASE_PRODUCTS[prevIndex].id);
+    setActiveViewIndex(0);
+  };
+
+  const handleNextProduct = () => {
+    const nextIndex = (activeProductIndex + 1) % SHOWCASE_PRODUCTS.length;
+    setActiveProductId(SHOWCASE_PRODUCTS[nextIndex].id);
+    setActiveViewIndex(0);
+  };
+
+  useEffect(() => {
+    if (!isSpecsModalOpen) return;
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') setIsSpecsModalOpen(false);
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isSpecsModalOpen]);
 
   useEffect(() => {
     const updateCountdown = () => setCountdown(getCountdown(MAIDEN_FLIGHT_AT));
@@ -738,32 +920,343 @@ export default function Home() {
           </section>
 
           <div className="home-showcase-panel" aria-label="Top products by Zebrold IHL">
-            <div className="home-showcase-image-wrap">
-              <img src={activeProduct.image} alt={`${activeProduct.name} aircraft`} className="home-showcase-image" loading="lazy" />
-            </div>
-
-            <div className="home-showcase-products">
-              <p className="home-showcase-label">TOP PRODUCTS BY ZEBROLD IHL</p>
-
-              <div className="home-showcase-list" role="tablist" aria-label="Zebrold products">
-                {SHOWCASE_PRODUCTS.map((product) => (
-                  <button
-                    type="button"
-                    role="tab"
-                    aria-selected={product.id === activeProduct.id}
-                    className={`home-showcase-item ${product.id === activeProduct.id ? 'is-active' : ''}`}
-                    key={product.id}
-                    onClick={() => setActiveProductId(product.id)}
-                  >
-                    <span className="home-showcase-name">{product.name}</span>
-                    <span className="home-showcase-meta">{product.meta}</span>
-                  </button>
-                ))}
+            {/* Top Showcase Header */}
+            <div className="home-showcase-header">
+              <div className="home-showcase-header-left">
+                <span className="home-showcase-kicker">
+                  <span className="home-showcase-dot" aria-hidden="true" />
+                  ZEBROLD AEROSPACE &bull; FLEET PORTFOLIO
+                </span>
+                <h3 className="home-showcase-title">High-Performance Aircraft Fleet</h3>
+                <p className="home-showcase-subtitle">
+                  Engineered for intercontinental range, main-deck heavy freight, and autonomous flight corridors.
+                </p>
               </div>
 
-              <Link to={activeProduct.path} className="home-showcase-button">View model specs</Link>
+              <div className="home-showcase-header-controls">
+                <span className="home-showcase-counter">
+                  <strong>0{activeProductIndex + 1}</strong>
+                  <span> / 0{SHOWCASE_PRODUCTS.length}</span>
+                </span>
+                <div className="home-showcase-cycle-btns">
+                  <button
+                    type="button"
+                    className="home-showcase-cycle-btn"
+                    onClick={handlePrevProduct}
+                    aria-label="Previous aircraft model"
+                    title="Previous model"
+                  >
+                    &larr;
+                  </button>
+                  <button
+                    type="button"
+                    className="home-showcase-cycle-btn"
+                    onClick={handleNextProduct}
+                    aria-label="Next aircraft model"
+                    title="Next model"
+                  >
+                    &rarr;
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className="home-showcase-stage">
+              {/* Left: The Interactive Aerospace Viewport */}
+              <div className="home-showcase-viewport-chassis">
+                <div className="home-showcase-viewport-inner">
+                  {/* HUD Top Bar */}
+                  <div className="home-showcase-hud-top">
+                    <div className="home-showcase-hud-badge">
+                      <span className="home-showcase-hud-pulse" aria-hidden="true" />
+                      <span>{activeProduct.badge}</span>
+                    </div>
+                    <div className="home-showcase-hud-telemetry">
+                      <span className="home-showcase-hud-reg">{activeProduct.reg}</span>
+                      <button
+                        type="button"
+                        className="home-showcase-hud-action-btn"
+                        onClick={() => setIsSpecsModalOpen(true)}
+                        aria-label="Open technical specifications"
+                        title="Open Technical Dossier"
+                      >
+                        <span>SPECS</span>
+                        <span className="hud-action-icon" aria-hidden="true">&#9679;</span>
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Aircraft Image Viewport */}
+                  <div className="home-showcase-image-viewport">
+                    <img
+                      key={`${activeProduct.id}-${activeView?.id}`}
+                      src={activeView?.image}
+                      alt={activeView?.alt || `${activeProduct.name} aircraft`}
+                      className="home-showcase-image"
+                      loading="lazy"
+                    />
+                    <div className="home-showcase-viewport-overlay" />
+                  </div>
+
+                  {/* HUD Bottom Bar with Interactive View Angle Buttons */}
+                  <div className="home-showcase-hud-bottom">
+                    <div className="home-showcase-view-label">
+                      <small>PERSPECTIVE</small>
+                      <strong>{activeView?.label}</strong>
+                    </div>
+
+                    <div className="home-showcase-angle-switcher" role="tablist" aria-label="Perspective angles">
+                      {activeProduct.views?.map((view, vIdx) => (
+                        <button
+                          type="button"
+                          key={view.id}
+                          role="tab"
+                          aria-selected={vIdx === activeViewIndex}
+                          className={`home-showcase-angle-btn ${vIdx === activeViewIndex ? 'is-active' : ''}`}
+                          onClick={() => setActiveViewIndex(vIdx)}
+                        >
+                          <span>{view.label}</span>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Quick Specs Ribbon */}
+                <div className="home-showcase-quick-specs" aria-label="Aircraft performance highlights">
+                  <div className="home-quick-spec-item">
+                    <span className="home-quick-spec-label">MAX RANGE</span>
+                    <strong className="home-quick-spec-value">{activeProduct.specs.range}</strong>
+                    <small className="home-quick-spec-sub">{activeProduct.specs.rangeNm}</small>
+                  </div>
+                  <div className="home-quick-spec-item">
+                    <span className="home-quick-spec-label">CRUISE SPEED</span>
+                    <strong className="home-quick-spec-value">{activeProduct.specs.speed}</strong>
+                    <small className="home-quick-spec-sub">{activeProduct.specs.speedKmh}</small>
+                  </div>
+                  <div className="home-quick-spec-item">
+                    <span className="home-quick-spec-label">CAPACITY</span>
+                    <strong className="home-quick-spec-value">{activeProduct.specs.capacity}</strong>
+                    <small className="home-quick-spec-sub">{activeProduct.specs.payload}</small>
+                  </div>
+                  <div className="home-quick-spec-item">
+                    <span className="home-quick-spec-label">MTOW</span>
+                    <strong className="home-quick-spec-value">{activeProduct.specs.mtow}</strong>
+                    <small className="home-quick-spec-sub">{activeProduct.specs.wingspan}</small>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right: Fleet Selection Tabs & CTAs */}
+              <div className="home-showcase-products">
+                <div className="home-showcase-list-header">
+                  <p className="home-showcase-label">TOP PRODUCTS BY ZEBROLD IHL</p>
+                  <span className="home-showcase-list-tag">SELECT AIRCRAFT</span>
+                </div>
+
+                <div className="home-showcase-list" role="tablist" aria-label="Zebrold products">
+                  {SHOWCASE_PRODUCTS.map((product) => {
+                    const isActive = product.id === activeProduct.id;
+                    return (
+                      <button
+                        type="button"
+                        role="tab"
+                        aria-selected={isActive}
+                        className={`home-showcase-item ${isActive ? 'is-active' : ''}`}
+                        key={product.id}
+                        onClick={() => handleSelectProduct(product.id)}
+                      >
+                        <div className="home-showcase-item-top">
+                          <span className="home-showcase-meta">{product.meta}</span>
+                          <span className="home-showcase-status-badge">{product.status}</span>
+                        </div>
+                        <div className="home-showcase-item-main">
+                          <span className="home-showcase-name">{product.name}</span>
+                          <span className="home-showcase-item-arrow" aria-hidden="true">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                              <line x1="5" y1="12" x2="19" y2="12" />
+                              <polyline points="12 5 19 12 12 19" />
+                            </svg>
+                          </span>
+                        </div>
+                        {isActive && (
+                          <div className="home-showcase-item-desc-wrap">
+                            <p className="home-showcase-item-desc">{product.desc}</p>
+                          </div>
+                        )}
+                      </button>
+                    );
+                  })}
+                </div>
+
+                {/* Action Buttons Bar */}
+                <div className="home-showcase-actions">
+                  <Link to={activeProduct.path} className="home-showcase-button home-showcase-button--primary">
+                    <span>View model specs</span>
+                    <span className="home-btn-icon-wrapper" aria-hidden="true">
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <line x1="7" y1="17" x2="17" y2="7" />
+                        <polyline points="7 7 17 7 17 17" />
+                      </svg>
+                    </span>
+                  </Link>
+
+                  <button
+                    type="button"
+                    className="home-showcase-button home-showcase-button--secondary"
+                    onClick={() => setIsSpecsModalOpen(true)}
+                  >
+                    <span>Technical Dossier</span>
+                    <span className="home-btn-icon-wrapper" aria-hidden="true">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                        <rect x="3" y="3" width="18" height="18" rx="2" />
+                        <path d="M3 9h18" />
+                        <path d="M9 21V9" />
+                      </svg>
+                    </span>
+                  </button>
+
+                  <Link
+                    to={`/contact?subject=${encodeURIComponent(`Aircraft Inquiry: ${activeProduct.name}`)}`}
+                    className="home-showcase-inquire-link"
+                  >
+                    <span>Request Commercial Consultation</span>
+                    <span aria-hidden="true">&rarr;</span>
+                  </Link>
+                </div>
+              </div>
             </div>
           </div>
+
+          {/* Technical Dossier Modal */}
+          {isSpecsModalOpen && (
+            <div
+              className="showcase-modal-backdrop"
+              onClick={() => setIsSpecsModalOpen(false)}
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="dossier-title"
+            >
+              <div className="showcase-modal-card" onClick={(e) => e.stopPropagation()}>
+                <div className="showcase-modal-header">
+                  <div className="showcase-modal-header-text">
+                    <span className="showcase-modal-badge">{activeProduct.badge}</span>
+                    <h3 id="dossier-title">{activeProduct.name} — Technical Dossier</h3>
+                    <p>{activeProduct.category} &bull; Registration: {activeProduct.reg}</p>
+                  </div>
+                  <button
+                    type="button"
+                    className="showcase-modal-close"
+                    onClick={() => setIsSpecsModalOpen(false)}
+                    aria-label="Close specifications dossier"
+                  >
+                    &times;
+                  </button>
+                </div>
+
+                <div className="showcase-modal-body">
+                  <div className="showcase-modal-grid">
+                    <div className="showcase-modal-section">
+                      <h4>Performance &amp; Range</h4>
+                      <dl className="showcase-modal-dl">
+                        <div>
+                          <dt>Maximum Range</dt>
+                          <dd>{activeProduct.specs.range} ({activeProduct.specs.rangeNm})</dd>
+                        </div>
+                        <div>
+                          <dt>Normal Cruise Speed</dt>
+                          <dd>{activeProduct.specs.speed} ({activeProduct.specs.speedKmh})</dd>
+                        </div>
+                        <div>
+                          <dt>Service Ceiling</dt>
+                          <dd>{activeProduct.specs.ceiling}</dd>
+                        </div>
+                        <div>
+                          <dt>Takeoff Thrust</dt>
+                          <dd>{activeProduct.specs.thrust}</dd>
+                        </div>
+                      </dl>
+                    </div>
+
+                    <div className="showcase-modal-section">
+                      <h4>Weights &amp; Capacities</h4>
+                      <dl className="showcase-modal-dl">
+                        <div>
+                          <dt>Max Takeoff Weight (MTOW)</dt>
+                          <dd>{activeProduct.specs.mtow}</dd>
+                        </div>
+                        <div>
+                          <dt>Seating / Payload Capacity</dt>
+                          <dd>{activeProduct.specs.capacity}</dd>
+                        </div>
+                        <div>
+                          <dt>Max Cargo Payload</dt>
+                          <dd>{activeProduct.specs.payload}</dd>
+                        </div>
+                        <div>
+                          <dt>Fuel Capacity</dt>
+                          <dd>{activeProduct.specs.fuelCapacity}</dd>
+                        </div>
+                      </dl>
+                    </div>
+
+                    <div className="showcase-modal-section">
+                      <h4>Geometry &amp; Systems</h4>
+                      <dl className="showcase-modal-dl">
+                        <div>
+                          <dt>Wingspan</dt>
+                          <dd>{activeProduct.specs.wingspan}</dd>
+                        </div>
+                        <div>
+                          <dt>Overall Length</dt>
+                          <dd>{activeProduct.specs.length}</dd>
+                        </div>
+                        <div>
+                          <dt>Tail Height</dt>
+                          <dd>{activeProduct.specs.height}</dd>
+                        </div>
+                        <div>
+                          <dt>Powerplant</dt>
+                          <dd>{activeProduct.specs.engines}</dd>
+                        </div>
+                      </dl>
+                    </div>
+                  </div>
+
+                  <div className="showcase-modal-overview">
+                    <h4>Program Overview</h4>
+                    <p>{activeProduct.desc}</p>
+                  </div>
+                </div>
+
+                <div className="showcase-modal-footer">
+                  <Link
+                    to={activeProduct.path}
+                    className="showcase-modal-btn showcase-modal-btn--primary"
+                    onClick={() => setIsSpecsModalOpen(false)}
+                  >
+                    <span>Explore Full Aircraft Page</span>
+                    <span className="showcase-btn-icon" aria-hidden="true">&nearr;</span>
+                  </Link>
+                  <Link
+                    to={`/contact?subject=${encodeURIComponent(`Aircraft Inquiry: ${activeProduct.name}`)}`}
+                    className="showcase-modal-btn showcase-modal-btn--secondary"
+                    onClick={() => setIsSpecsModalOpen(false)}
+                  >
+                    <span>Inquire About This Aircraft</span>
+                    <span className="showcase-btn-icon" aria-hidden="true">&#9993;</span>
+                  </Link>
+                  <button
+                    type="button"
+                    className="showcase-modal-btn showcase-modal-btn--ghost"
+                    onClick={() => setIsSpecsModalOpen(false)}
+                  >
+                    Close Dossier
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
 
           <section className="n444xc-flight-network" aria-labelledby="n444xc-flight-network-title">
             <div className="n444xc-flight-network-header">
