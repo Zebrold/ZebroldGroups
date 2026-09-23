@@ -31,6 +31,7 @@ export default function Footer() {
       heading: t('footer_company'),
       links: [
         { label: t('nav_about'), to: '/about' },
+        { label: t('nav_products'), to: '/products' },
         { label: t('nav_newsroom'), to: '/newsroom' },
         { label: t('nav_careers'), to: '/careers' },
         { label: t('footer_contact'), to: '/contact' },

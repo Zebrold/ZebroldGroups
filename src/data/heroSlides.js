@@ -11,6 +11,24 @@ import heroCockpit from '../assets/train_cockpit_digital.jpg';
 export const heroSlides = [
   {
     image:
+      heroInService,
+    tone: 'amber',
+    alt: {
+      en: 'Red high-speed trainset running at speed through wooded countryside',
+      de: 'Roter Hochgeschwindigkeitszug in voller Fahrt durch bewaldete Landschaft',
+    },
+    badge: { en: 'TRACTION EXCELLENCE', de: 'TRAKTIONSEXZELLENZ' },
+    title: {
+      en: 'Precision High Speed Engineering',
+      de: 'Präzise Hochgeschwindigkeitstechnik',
+    },
+    body: {
+      en: 'Aerodynamic engineering and SiC traction inverters achieving 360+ km/h with zero emissions.',
+      de: 'Aerodynamik und SiC-Traktionsumrichter erreichen über 360 km/h mit null Emissionen.',
+    },
+  },
+  {
+    image:
       heroBrandTrain,
     tone: 'coral',
     alt: {
@@ -25,24 +43,6 @@ export const heroSlides = [
     body: {
       en: 'Precision-engineered aerodynamic rolling stock designed for sustainable high-capacity rail transport across continents.',
       de: 'Präzisionsgefertigte aerodynamische Schienenfahrzeuge für nachhaltigen Hochkapazitätsverkehr über Kontinente hinweg.',
-    },
-  },
-  {
-    image:
-      heroInService,
-    tone: 'amber',
-    alt: {
-      en: 'Red high-speed trainset running at speed through wooded countryside',
-      de: 'Roter Hochgeschwindigkeitszug in voller Fahrt durch bewaldete Landschaft',
-    },
-    badge: { en: 'TRACTION EXCELLENCE', de: 'TRAKTIONSEXZELLENZ' },
-    title: {
-      en: 'Precision High-Speed Engineering',
-      de: 'Präzise Hochgeschwindigkeitstechnik',
-    },
-    body: {
-      en: 'Aerodynamic engineering and SiC traction inverters achieving 360+ km/h with zero emissions.',
-      de: 'Aerodynamik und SiC-Traktionsumrichter erreichen über 360 km/h mit null Emissionen.',
     },
   },
   {

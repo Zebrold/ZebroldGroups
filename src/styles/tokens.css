@@ -63,7 +63,7 @@
   --gutter: clamp(1.25rem, 4vw, 3rem);
   --section-py: clamp(4rem, 7vw, 7rem);
   --section-py-sm: clamp(2.75rem, 4.5vw, 4.5rem);
-  --navbar-h: 58px;
+  --navbar-h: 68px;
 
   /* ══ Radii & shadow ══ */
   --radius-sm: 4px;

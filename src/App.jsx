@@ -7,6 +7,7 @@ import Footer from './components/Footer/Footer';
 
 import Home from './pages/Home/Home';
 import About from './pages/About/About';
+import Products from './pages/Products/Products';
 import Newsroom from './pages/Newsroom/Newsroom';
 import Careers from './pages/Careers/Careers';
 import ApplyDossier from './pages/ApplyDossier/ApplyDossier';
@@ -43,6 +44,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
+            <Route path="/products" element={<Products />} />
             <Route path="/newsroom" element={<Newsroom />} />
             <Route path="/careers" element={<Careers />} />
             <Route path="/careers/apply" element={<ApplyDossier />} />

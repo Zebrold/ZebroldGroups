@@ -8,6 +8,7 @@ export const translations = {
   en: {
     /* ── Navigation ── */
     nav_about: 'About Us',
+    nav_products: 'Products',
     nav_newsroom: 'Newsroom',
     nav_careers: 'Careers',
     nav_menu: 'Menu',
@@ -23,6 +24,7 @@ export const translations = {
     footer_hq: 'Global Headquarters',
     footer_follow: 'Follow Us',
     footer_contact: 'Contact',
+    footer_products: 'Products',
     footer_rolling_stock: 'Rolling Stock',
     footer_signalling: 'Signalling',
     footer_components: 'Components',
@@ -141,6 +143,7 @@ export const translations = {
   de: {
     /* ── Navigation ── */
     nav_about: 'Über uns',
+    nav_products: 'Produkte',
     nav_newsroom: 'Newsroom',
     nav_careers: 'Karriere',
     nav_menu: 'Menü',
@@ -156,6 +159,7 @@ export const translations = {
     footer_hq: 'Globaler Hauptsitz',
     footer_follow: 'Folgen Sie uns',
     footer_contact: 'Kontakt',
+    footer_products: 'Produkte',
     footer_rolling_stock: 'Schienenfahrzeuge',
     footer_signalling: 'Signaltechnik',
     footer_components: 'Komponenten',

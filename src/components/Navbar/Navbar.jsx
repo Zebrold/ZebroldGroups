@@ -10,8 +10,8 @@ export default function Navbar() {
   const location = useLocation();
   const { t } = useLanguage();
 
-  /* The three links from the reference nav — nothing else belongs here. */
   const navLinks = [
+    { label: t('nav_products'), path: '/products' },
     { label: t('nav_about'), path: '/about' },
     { label: t('nav_newsroom'), path: '/newsroom' },
     { label: t('nav_careers'), path: '/careers' },
@@ -56,8 +56,12 @@ export default function Navbar() {
       </a>
 
       <div className="nav__capsule">
-        <Link to="/" className="nav__brand" aria-label="Zebrold Scolome — home">
-          <img src={zebroldLogoMark} alt="Zebrold Scolome" width="84" height="28" loading="eager" />
+        <Link to="/" className="nav__brand" aria-label="Zebrold IHL — home">
+          <img src={zebroldLogoMark} alt="Zebrold IHL" width="84" height="28" loading="eager" />
+          <span className="nav__brandText">
+            <span className="nav__brandName">Zebrold</span>{' '}
+            <span className="nav__brandTag">IHL</span>
+          </span>
         </Link>
 
         <nav className="nav__links" aria-label="Main">

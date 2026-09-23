@@ -28,16 +28,16 @@
   z-index: 10;
 }
 
-/* ══ The floating capsule — sized & radiused like Image 2 with middle nav ══ */
+/* ══ The floating capsule — brand on left, navigation on right ══ */
 .nav__capsule {
   pointer-events: auto;
   width: 100%;
-  max-width: min(94%, 1240px);
+  max-width: min(94%, 1260px);
   margin-inline: auto;
   height: var(--navbar-h);
   padding-inline: clamp(1.4rem, 2.8vw, 2.4rem);
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
   gap: 1.5rem;
   border-radius: var(--radius-pill);
@@ -65,39 +65,69 @@
 
 /* ══ Brand (Left Column) ══ */
 .nav__brand {
-  justify-self: start;
   display: inline-flex;
   align-items: center;
+  gap: clamp(0.6rem, 1.1vw, 0.85rem);
   flex-shrink: 0;
+  text-decoration: none;
+  transition: opacity var(--dur-fast) var(--ease-out);
+}
+
+.nav__brand:hover {
+  opacity: 0.92;
 }
 
 .nav__brand img {
-  height: clamp(24px, 2.2vw, 28px);
+  height: clamp(26px, 2.4vw, 32px);
   width: auto;
   object-fit: contain;
+  display: block;
 }
 
-/* ══ Desktop links (Middle Column — centered) ══ */
+.nav__brandText {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.32rem;
+  font-family: var(--font-sans);
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+.nav__brandName {
+  font-size: clamp(1.05rem, 1.35vw, 1.25rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: #ffffff;
+  line-height: 1;
+}
+
+.nav__brandTag {
+  font-size: clamp(0.9rem, 1.15vw, 1.05rem);
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1;
+}
+
+/* ══ Desktop links (Right side) ══ */
 .nav__links {
-  justify-self: center;
+  margin-left: auto;
 }
 
 .nav__links ul {
   display: flex;
   align-items: center;
-  gap: clamp(1.5rem, 2.8vw, 2.75rem);
+  gap: clamp(1.5rem, 2.6vw, 2.75rem);
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-/* ══ End Column (Right Column — balances brand to keep links dead-center) ══ */
+/* ══ End Column (Mobile burger wrapper) ══ */
 .nav__end {
-  justify-self: end;
-  display: inline-flex;
+  display: none;
   align-items: center;
   justify-content: flex-end;
-  min-width: clamp(24px, 2.2vw, 84px);
 }
 
 .nav__link {
@@ -255,6 +285,10 @@
     display: none;
   }
 
+  .nav__end {
+    display: flex;
+  }
+
   .nav__burger {
     display: flex;
   }
@@ -262,7 +296,23 @@
 
 @media (max-width: 480px) {
   :root {
-    --navbar-h: 50px;
+    --navbar-h: 56px;
+  }
+
+  .nav__capsule {
+    padding-inline: 1rem;
+  }
+
+  .nav__brand {
+    gap: 0.5rem;
+  }
+
+  .nav__brandName {
+    font-size: 0.95rem;
+  }
+
+  .nav__brandTag {
+    font-size: 0.82rem;
   }
 }
 
