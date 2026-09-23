@@ -1,23 +1,30 @@
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
-import { motion, useScroll, useSpring } from 'framer-motion';
 import { LanguageProvider } from './context/LanguageContext';
 
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
+
 import Home from './pages/Home/Home';
 import About from './pages/About/About';
-import Sectors from './pages/Sectors/Sectors';
-import Subsidiaries from './pages/Subsidiaries/Subsidiaries';
-import Offices from './pages/Offices/Offices';
-import News from './pages/News/News';
-import Contact from './pages/Contact/Contact';
+import Newsroom from './pages/Newsroom/Newsroom';
 import Careers from './pages/Careers/Careers';
-import JobDetails from './pages/JobDetails/JobDetails';
-import SectorDetail from './pages/SectorDetail/SectorDetail';
-import Admin from './pages/Admin/Admin';
+import ApplyDossier from './pages/ApplyDossier/ApplyDossier';
+import Contact from './pages/Contact/Contact';
+import RollingStock from './pages/RollingStock/RollingStock';
+import Signalling from './pages/Signalling/Signalling';
+import Components from './pages/Components/Components';
+import Infrastructure from './pages/Infrastructure/Infrastructure';
+import DigitalRail from './pages/DigitalRail/DigitalRail';
+import Services from './pages/Services/Services';
+import Aerospace from './pages/Aerospace/Aerospace';
+import Automotive from './pages/Automotive/Automotive';
+import Insights from './pages/Insights/Insights';
+import Faqs from './pages/Faqs/Faqs';
+import LegalNotice from './pages/LegalNotice/LegalNotice';
+import PrivacyPolicy from './pages/PrivacyPolicy/PrivacyPolicy';
+import NotFound from './pages/NotFound/NotFound';
 
-/* Scroll to top on route change */
 function ScrollToTop() {
   const { pathname } = useLocation();
   useEffect(() => {
@@ -26,41 +33,39 @@ function ScrollToTop() {
   return null;
 }
 
-/* Layout wrapper — Navbar + content + Footer */
-function SiteLayout({ children }) {
-  return (
-    <>
-
-      <Navbar />
-      <main>
-        {children}
-      </main>
-      <Footer />
-    </>
-  );
-}
-
 export default function App() {
   return (
     <LanguageProvider>
       <BrowserRouter>
         <ScrollToTop />
-        <Routes>
-          {/* Admin has its own full-screen layout */}
-          <Route path="/admin" element={<Admin />} />
-
-          {/* All public pages share the site layout */}
-          <Route path="/" element={<SiteLayout><Home /></SiteLayout>} />
-          <Route path="/about" element={<SiteLayout><About /></SiteLayout>} />
-          <Route path="/sectors" element={<SiteLayout><Sectors /></SiteLayout>} />
-          <Route path="/sectors/:sectorSlug" element={<SiteLayout><SectorDetail /></SiteLayout>} />
-          <Route path="/subsidiaries" element={<SiteLayout><Subsidiaries /></SiteLayout>} />
-          <Route path="/offices" element={<SiteLayout><Offices /></SiteLayout>} />
-          <Route path="/news" element={<SiteLayout><News /></SiteLayout>} />
-          <Route path="/careers" element={<SiteLayout><Careers /></SiteLayout>} />
-          <Route path="/careers/:jobId" element={<SiteLayout><JobDetails /></SiteLayout>} />
-          <Route path="/contact" element={<SiteLayout><Contact /></SiteLayout>} />
-        </Routes>
+        <Navbar />
+        <main id="main">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/newsroom" element={<Newsroom />} />
+            <Route path="/careers" element={<Careers />} />
+            <Route path="/careers/apply" element={<ApplyDossier />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/rolling-stock" element={<RollingStock />} />
+            <Route path="/rollingstock" element={<RollingStock />} />
+            <Route path="/signalling" element={<Signalling />} />
+            <Route path="/signaling" element={<Signalling />} />
+            <Route path="/components" element={<Components />} />
+            <Route path="/infrastructure" element={<Infrastructure />} />
+            <Route path="/digital-rail" element={<DigitalRail />} />
+            <Route path="/digitalrail" element={<DigitalRail />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/aerospace" element={<Aerospace />} />
+            <Route path="/automotive" element={<Automotive />} />
+            <Route path="/insights" element={<Insights />} />
+            <Route path="/faqs" element={<Faqs />} />
+            <Route path="/legal-notice" element={<LegalNotice />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </main>
+        <Footer />
       </BrowserRouter>
     </LanguageProvider>
   );

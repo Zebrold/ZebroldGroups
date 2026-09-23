@@ -587,7 +587,7 @@ export function clearSentEmailLogs() {
 }
 
 /**
- * Core send implementation via FormSubmit.co or EmailJS
+ * Core send implementation via Resend (/api/send-email), EmailJS, or FormSubmit.co
  */
 async function sendPayloadViaEndpoints({ fromAddress, fromName, toEmail, toName, subject, htmlContent, plainText, extraData = {} }) {
   let deliveryResult = { success: false, provider: 'Simulated', message: '' };
@@ -597,8 +597,37 @@ async function sendPayloadViaEndpoints({ fromAddress, fromName, toEmail, toName,
   const templateId = mailbox.emailJsTemplateId;
   const publicKey = mailbox.emailJsPublicKey;
 
-  // 1. Try EmailJS if keys are available
-  if (serviceId && publicKey) {
+  // 1. Try Resend via local Vite proxy or Vercel serverless function (/api/send-email)
+  try {
+    const resendRes = await fetch('/api/send-email', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        to: toEmail,
+        from: `${fromName} <onboarding@resend.dev>`,
+        subject: subject,
+        html: htmlContent,
+        text: plainText || subject,
+        replyTo: fromAddress,
+      }),
+    });
+
+    if (resendRes.ok) {
+      const resendData = await resendRes.json();
+      if (resendData.id || resendData.success) {
+        deliveryResult = { success: true, provider: 'Resend', id: resendData.id };
+      }
+    } else {
+      const errData = await resendRes.json().catch(() => ({}));
+      console.warn('[EmailService] Resend dispatch notice:', errData.error || errData.message);
+    }
+  } catch (e) {
+    // Expected fallback if running on a static host without /api serverless functions
+    console.warn('[EmailService] /api/send-email unavailable, trying secondary providers:', e.message);
+  }
+
+  // 2. Try EmailJS if keys are available
+  if (!deliveryResult.success && serviceId && publicKey) {
     try {
       const res = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
         method: 'POST',
@@ -628,6 +657,7 @@ async function sendPayloadViaEndpoints({ fromAddress, fromName, toEmail, toName,
       console.warn('[EmailService] EmailJS dispatch fallback:', e);
     }
   }
+
 
   // 2. Try FormSubmit AJAX endpoint
   if (!deliveryResult.success) {
@@ -884,12 +914,64 @@ export async function sendContactEmail({ name, email, company, subject, message 
 }
 
 export async function sendApplicationEmail({ candidateName, email, phone, jobTitle, department, coverNote, cvFileName }) {
-  return await sendTalentEmail({
+  const roleName = jobTitle || 'General Application';
+  const roleDept = department || 'Engineering & Operations';
+
+  // 1. Dispatch confirmation email to Candidate
+  const candidatePromise = sendTalentEmail({
     candidateName,
     candidateEmail: email,
-    jobTitle: jobTitle || 'General Application',
-    department: department || 'General',
+    jobTitle: roleName,
+    department: roleDept,
     status: 'APPLICATION RECEIVED',
-    customMessage: `Thank you for applying for the position of ${jobTitle || 'Role'} at Zebrold Group. We have received your documents (${cvFileName || 'CV Uploaded'}) and cover note. Our talent team is actively evaluating your application.`
+    customMessage: `Thank you for submitting your application for ${roleName} at Zebrold Group. Our talent acquisition committee has received your dossier (${cvFileName ? `Attachment: ${cvFileName}` : 'Candidate Profile'}) and cover note. Your qualifications will be reviewed against our technical benchmarks.`
   });
+
+  // 2. Dispatch internal alert to Talent Acquisition Desk / Recruiter inbox
+  const recruiterInbox = import.meta.env.VITE_TALENT_NOTIFICATION_EMAIL || 'talent.acquisition@zebrold.de';
+  const formattedCoverNote = (coverNote || '').replace(/\n/g, '<br/>');
+
+  const recruiterHtml = `<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8"><title>New Application Dossier</title></head>
+<body style="margin:0; padding:30px; background-color:#F4F5F7; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color:#111827;">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0" style="max-width:620px; margin:0 auto; background:#FFFFFF; border-radius:8px; border:1px solid #E5E7EB; overflow:hidden;">
+    <tr>
+      <td style="padding:24px 32px; background-color:#792D32; color:#FFFFFF;">
+        <div style="font-size:11px; text-transform:uppercase; letter-spacing:1px; opacity:0.85;">Zebrold Group &bull; Recruitment Desk Alert</div>
+        <h2 style="margin:6px 0 0 0; font-size:20px; font-weight:700;">New Dossier: ${roleName}</h2>
+      </td>
+    </tr>
+    <tr>
+      <td style="padding:28px 32px;">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" style="font-size:14px; margin-bottom:20px;">
+          <tr><td style="padding:6px 0; color:#6B7280; width:130px;"><strong>Candidate Name:</strong></td><td style="padding:6px 0; color:#111827; font-weight:600;">${candidateName}</td></tr>
+          <tr><td style="padding:6px 0; color:#6B7280;"><strong>Email:</strong></td><td style="padding:6px 0;"><a href="mailto:${email}" style="color:#792D32;">${email}</a></td></tr>
+          <tr><td style="padding:6px 0; color:#6B7280;"><strong>Phone:</strong></td><td style="padding:6px 0; color:#111827;">${phone || '—'}</td></tr>
+          <tr><td style="padding:6px 0; color:#6B7280;"><strong>Department:</strong></td><td style="padding:6px 0; color:#111827;">${roleDept}</td></tr>
+          <tr><td style="padding:6px 0; color:#6B7280;"><strong>CV / Portfolio:</strong></td><td style="padding:6px 0; color:#111827; font-weight:600;">${cvFileName || 'Submitted via portal'}</td></tr>
+        </table>
+        <div style="background-color:#F9FAFB; border:1px solid #E5E7EB; border-left:4px solid #792D32; padding:16px; border-radius:4px; font-size:13.5px; line-height:1.6; color:#374151;">
+          <div style="font-weight:700; margin-bottom:8px; color:#111827;">Application Dossier Details & Cover Note:</div>
+          ${formattedCoverNote}
+        </div>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>`.trim();
+
+  const recruiterPromise = sendCustomAdminEmail({
+    fromMailbox: 'talent.acquisition@zebrold.de',
+    toEmail: recruiterInbox,
+    toName: 'Zebrold Talent Desk',
+    subject: `[NEW APPLICANT] ${candidateName} — ${roleName}`,
+    htmlContent: recruiterHtml,
+    plainText: `New Application Received:\nName: ${candidateName}\nEmail: ${email}\nPhone: ${phone}\nPosition: ${roleName}\nDepartment: ${roleDept}\nCV: ${cvFileName}\n\nDetails:\n${coverNote}`,
+    extraData: { candidateName, candidateEmail: email, jobTitle: roleName }
+  });
+
+  const [candidateResult] = await Promise.allSettled([candidatePromise, recruiterPromise]);
+  return candidateResult.status === 'fulfilled' ? candidateResult.value : { success: true, provider: 'Simulated' };
 }
+

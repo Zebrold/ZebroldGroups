@@ -1,97 +1,153 @@
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../../context/LanguageContext';
+import LanguageSwitcher from '../LanguageSwitcher/LanguageSwitcher';
 import zebroldLogoMark from '../../assets/zebrold_logo_mark.png';
 import './Footer.css';
 
-const BRAND_LETTERS = ['Z', 'E', 'B', 'R', 'O', 'L', 'D'];
+function PinIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
+      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" strokeLinecap="round" strokeLinejoin="round" />
+      <circle cx="12" cy="10" r="3" />
+    </svg>
+  );
+}
+
+function MailIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
+      <rect x="2.5" y="4.5" width="19" height="15" rx="2" />
+      <path d="m3 6.5 9 6.5 9-6.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
 
 export default function Footer() {
-  const { t, lang } = useLanguage();
+  const { t } = useLanguage();
+  const year = new Date().getFullYear();
+
+  const columns = [
+    {
+      heading: t('footer_company'),
+      links: [
+        { label: t('nav_about'), to: '/about' },
+        { label: t('nav_newsroom'), to: '/newsroom' },
+        { label: t('nav_careers'), to: '/careers' },
+        { label: t('footer_contact'), to: '/contact' },
+      ],
+    },
+    {
+      heading: t('footer_sectors'),
+      links: [
+        { label: t('footer_rolling_stock'), to: '/rolling-stock' },
+        { label: t('footer_signalling'), to: '/signalling' },
+        { label: t('footer_components'), to: '/components' },
+        { label: t('footer_infrastructure'), to: '/infrastructure' },
+        { label: t('footer_digital_rail'), to: '/digital-rail' },
+        { label: t('footer_services'), to: '/services' },
+        { label: t('footer_aerospace'), to: '/aerospace' },
+        { label: t('footer_automotive'), to: '/automotive' },
+      ],
+    },
+    {
+      heading: t('footer_resources'),
+      links: [
+        { label: t('footer_insights'), to: '/insights' },
+        { label: t('footer_faqs'), to: '/faqs' },
+        { label: t('nav_careers'), to: '/careers' },
+      ],
+    },
+  ];
 
   return (
-    <footer className="footer" role="contentinfo">
-      <div className="footer-main">
-        <div className="padding-global footer-pad">
-          <div className="container-large">
-            <div className="footer-grid-layout">
-              {/* Left Column: Big Bold Tagline & Logo Mark */}
-              <div className="footer-col-left">
-                <img src={zebroldLogoMark} alt="Zebrold Group Logo" className="footer-logo-mark-img" loading="lazy" width="80" height="80" />
-                <h2 className="footer-giant-tagline">
-                  {lang === 'en' ? 'WE BUILD WHAT DEFINES YOU' : 'WIR BAUEN, WAS SIE AUSZEICHNET'}
-                </h2>
-              </div>
+    <footer className="ftr" role="contentinfo">
+      <div className="ftr__inner shell-wide">
+        <div className="ftr__grid">
+          {/* Brand block */}
+          <div className="ftr__brandCol">
+            <img
+              src={zebroldLogoMark}
+              alt="Zebrold Scolome"
+              className="ftr__mark"
+              width="120"
+              height="44"
+              loading="lazy"
+            />
+            <p className="ftr__tagline">{t('footer_tagline')}</p>
 
-              {/* Right Column: Links, CTA, Socials, and Partners */}
-              <div className="footer-col-right-container">
-                {/* Top Row: Nav Links & CTA */}
-                <div className="footer-top-row">
-                  <nav className="footer-nav-list" aria-label="Footer Navigation">
-                    <Link to="/sectors" className="footer-nav-item">{t('nav_business')}</Link>
-                    <Link to="/subsidiaries" className="footer-nav-item">{t('nav_portfolio')}</Link>
-                    <Link to="/about" className="footer-nav-item">{t('nav_about')}</Link>
-                    <Link to="/news" className="footer-nav-item">{t('nav_news')}</Link>
-                    <Link to="/careers" className="footer-nav-item">{t('nav_careers')}</Link>
-                  </nav>
-
-                  <div className="footer-cta-wrapper">
-                    <p className="footer-cta-heading">{lang === 'en' ? 'Would you like to discuss your project?' : 'Möchten Sie Ihr Projekt besprechen?'}</p>
-                    <Link to="/contact" className="footer-cta-button">
-                      {lang === 'en' ? 'Request Project' : 'Projekt anfragen'}
-                    </Link>
-
-                    <div className="footer-address-block">
-                      <div className="footer-address-label">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                          <circle cx="12" cy="10" r="3" />
-                        </svg>
-                        <span>{t('footer_hq')}</span>
-                      </div>
-                      <address className="footer-address-text">
-                        Bockenheimer Landstrasse 17-19<br />
-                        60325 Frankfurt am Main, Germany
-                      </address>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Social Links Row */}
-                <div className="footer-social-row" aria-label="Social Media Links">
-                  <a href="https://www.linkedin.com/company/zebrold" target="_blank" rel="noopener noreferrer" className="footer-social-pill" aria-label="LinkedIn">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                      <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
-                    </svg>
-                    <span>LinkedIn</span>
-                  </a>
-                </div>
-              </div>
+            <div className="ftr__social">
+              <h2 className="ftr__heading">{t('footer_follow')}</h2>
+              <a
+                href="https://www.linkedin.com/company/zebrold"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="ftr__socialBtn"
+                aria-label="Zebrold Scolome on LinkedIn"
+              >
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M6.94 5.5a1.94 1.94 0 1 1-3.88 0 1.94 1.94 0 0 1 3.88 0ZM3.2 8.93h3.6V21H3.2V8.93Zm5.86 0h3.45v1.65h.05c.48-.87 1.65-1.79 3.4-1.79 3.64 0 4.31 2.32 4.31 5.34V21h-3.6v-5.94c0-1.42-.03-3.24-2-3.24-2 0-2.31 1.54-2.31 3.14V21h-3.6V8.93Z" />
+                </svg>
+              </a>
             </div>
+          </div>
+
+          {/* Link columns */}
+          {columns.map((col) => (
+            <nav key={col.heading} className="ftr__col" aria-label={col.heading}>
+              <h2 className="ftr__heading">{col.heading}</h2>
+              <ul role="list">
+                {col.links.map((link) => (
+                  <li key={`${col.heading}-${link.to}`}>
+                    <Link to={link.to} className="ftr__link">
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          ))}
+
+          {/* Headquarters */}
+          <div className="ftr__col ftr__hqCol">
+            <h2 className="ftr__heading">{t('footer_hq')}</h2>
+            <p className="ftr__hqItem">
+              <span className="ftr__hqIcon">
+                <PinIcon />
+              </span>
+              <span>
+                Bockenheimer Landstrasse 17-19,
+                <br />
+                60325 Frankfurt am Main,
+                <br />
+                Germany
+              </span>
+            </p>
+            <p className="ftr__hqItem">
+              <span className="ftr__hqIcon">
+                <MailIcon />
+              </span>
+              <a href="mailto:info@zebrold.de" className="ftr__link">
+                info@zebrold.de
+              </a>
+            </p>
           </div>
         </div>
       </div>
 
-      {/* Giant Cream Letters ZEBROLD */}
-      <div className="footer-giant-brand-banner">
-        <div className="footer-giant-letters-wrap">
-          {BRAND_LETTERS.map((letter, i) => (
-            <span key={i} className="footer-giant-letter-item">{letter}</span>
-          ))}
-        </div>
-      </div>
-
-      {/* Cream Bottom Bar */}
-      <div className="footer-cream-bar">
-        <div className="padding-global">
-          <div className="container-large footer-cream-inner">
-            <div className="footer-cream-left">
-              <span>© {new Date().getFullYear()} ZEBROLD INTERNATIONAL HOLDINGS LIMITED (ZEBROLD IHL) — {t('footer_rights')}</span>
-              <Link to="/terms" className="footer-legal-link">{t('footer_imprint')}</Link>
-              <Link to="/privacy" className="footer-legal-link">{t('footer_privacy')}</Link>
-            </div>
-            <div className="footer-cream-right">
-              <span>{lang === 'en' ? 'An excellence initiative of' : 'Eine Exzellenz-Initiative der'} <strong>Zebrold International Holdings Limited (Zebrold IHL)</strong></span>
-            </div>
+      {/* Bottom bar */}
+      <div className="ftr__bottom">
+        <div className="ftr__bottomInner shell-wide">
+          <p className="ftr__copy">
+            © {year} ZEBROLD INTERNATIONAL HOLDINGS LIMITED (ZEBROLD IHL) — {t('footer_rights')}
+          </p>
+          <div className="ftr__bottomRight">
+            <Link to="/legal-notice" className="ftr__legalLink">
+              {t('footer_legal')}
+            </Link>
+            <Link to="/privacy-policy" className="ftr__legalLink">
+              {t('footer_privacy')}
+            </Link>
+            <LanguageSwitcher variant="light" />
           </div>
         </div>
       </div>

@@ -1,0 +1,27 @@
+.legal {
+  max-width: 72ch;
+}
+
+.legal__updated {
+  font-size: var(--text-2xs);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--muted-light);
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.legal h2:first-of-type {
+  margin-top: 2rem;
+}
+
+/* Marks the fields that must be completed with real register data
+   before this site goes live. */
+.legal__todo {
+  padding: 0.9rem 1.1rem;
+  border-left: 2px solid var(--coral-500);
+  background-color: #fdf5f4;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: var(--text-sm);
+  color: var(--ink-soft);
+}

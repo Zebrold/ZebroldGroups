@@ -1,0 +1,251 @@
+/* Services-only additions layered on top of the shared RailShowcase system. */
+
+.sv-kicker {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: #8a1b24;
+  margin-bottom: 1.25rem;
+}
+
+.sv-eyebrow {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.625rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: #8a1b24;
+  margin-bottom: 0.6rem;
+}
+
+.sv-h2 {
+  font-family: 'Newsreader', Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(1.75rem, 3.4vw, 2.75rem);
+  line-height: 1.18;
+  letter-spacing: -0.015em;
+  color: #0c0d0e;
+}
+
+.sv-lede {
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: #45474b;
+  margin-top: 0.75rem;
+  max-width: 62ch;
+}
+
+/* ══ Section 2: three-column bilateral framework (white band) ══ */
+.sv-framework {
+  padding-block: clamp(3rem, 6vw, 5rem);
+  border-top: 1px solid #e6e7eb;
+}
+
+.sv-framework-head {
+  max-width: 54rem;
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+.sv-pillars {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid #e6e7eb;
+}
+
+.sv-pillar {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #e6e7eb;
+}
+
+.sv-pillar:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.sv-pillar-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid #e6e7eb;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.625rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: #71747a;
+}
+
+.sv-pillar-site {
+  color: #2d080e;
+  font-weight: 600;
+}
+
+.sv-pillar-title {
+  font-family: 'Newsreader', Georgia, serif;
+  font-weight: 400;
+  font-size: 1.5rem;
+  line-height: 1.25;
+  color: #0c0d0e;
+}
+
+.sv-pillar-text {
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: #45474b;
+}
+
+/* key / value rows inside each pillar */
+.sv-kv {
+  margin-top: 0.4rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6875rem;
+}
+
+.sv-kv > div {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: 0.45rem;
+  border-bottom: 1px dashed #e6e7eb;
+}
+
+.sv-kv > div:last-child {
+  border-bottom: none;
+}
+
+.sv-kv dt {
+  color: #71747a;
+}
+
+.sv-kv dd {
+  margin: 0;
+  text-align: right;
+  font-weight: 500;
+  color: #0c0d0e;
+}
+
+.sv-kv dd.is-accent {
+  color: #8a1b24;
+}
+
+/* ══ Caption chip on corridor imagery ══ */
+.sv-caption {
+  position: absolute;
+  bottom: 0.75rem;
+  padding: 0.3rem 0.7rem;
+  background-color: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid #e6e7eb;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.625rem;
+  color: #0c0d0e;
+  max-width: calc(100% - 1.5rem);
+}
+
+.sv-caption.at-left {
+  left: 0.75rem;
+}
+
+.sv-caption.at-right {
+  right: 0.75rem;
+}
+
+/* ══ Section 4: large unboxed lifecycle metrics ══ */
+.sv-lifecycle {
+  padding-block: clamp(3rem, 6vw, 5rem);
+  border-top: 1px solid #e6e7eb;
+}
+
+.sv-metrics {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid #e6e7eb;
+}
+
+.sv-metric-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: #71747a;
+}
+
+.sv-metric-val {
+  font-family: 'Newsreader', Georgia, serif;
+  font-weight: 300;
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: #2d080e;
+  margin-block: 0.35rem 0.5rem;
+}
+
+.sv-metric-sub {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: #45474b;
+}
+
+.sv-metric-note {
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  line-height: 1.6;
+  color: #71747a;
+}
+
+/* ══ Four-up spec strip on corridor articles ══ */
+.rail-article-specs.is-four {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media (min-width: 640px) {
+  .rail-article-specs.is-four {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .sv-metrics {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .sv-pillars {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+  }
+
+  .sv-pillar {
+    padding: 0 2rem;
+    border-bottom: none;
+    border-right: 1px solid #e6e7eb;
+  }
+
+  .sv-pillar:first-child {
+    padding-left: 0;
+  }
+
+  .sv-pillar:last-child {
+    padding-right: 0;
+    border-right: none;
+  }
+
+  .sv-metrics {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

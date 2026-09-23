@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 
 const DEFAULT_KEYWORDS =
-  'Zebrold, Zebrold IHL, Zebrold International Holdings Limited, Zebrold Group, Zebrold Holdings, ZIHL, Frankfurt conglomerate, German conglomerate, EV charging, semiconductors, finance, healthcare, industrial engineering, global investments';
+  'Zebrold, Zebrold Scolome, Zebrold IHL, Zebrold International Holdings Limited, rolling stock, high-speed rail, EMU, bogie, traction, ETCS, signalling, digital rail, Frankfurt, Kassel, rail manufacturer';
 
 const DEFAULT_IMAGE = 'https://www.zebrold.de/favicon.png';
 const BASE_URL = 'https://www.zebrold.de';
@@ -61,10 +61,10 @@ function setStructuredData(schemaData) {
 }
 
 export default function SEO({
-  title = 'Zebrold International Holdings Limited (Zebrold IHL)',
-  description = 'Official portal of Zebrold International Holdings Limited (Zebrold IHL) — A globally diversified German conglomerate headquartered in Frankfurt am Main.',
+  title = 'Zebrold Scolome | Ultra Speed Intelligent Rolling Stocks',
+  description = 'Zebrold Scolome designs and builds ultra high-speed intelligent rolling stock, signalling and digital rail systems. Made in Deutschland, designed in India.',
   keywords = DEFAULT_KEYWORDS,
-  name = 'Zebrold International Holdings Limited (Zebrold IHL)',
+  name = 'Zebrold Scolome',
   type = 'website',
   image = DEFAULT_IMAGE,
   url = '',

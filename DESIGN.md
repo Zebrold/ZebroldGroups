@@ -1,42 +1,75 @@
-# Design System: ZG Interactive Constellation Hub
+# Design system — Zebrold Scolome
 
-## 1. Visual Theme & Atmosphere
-A clean, premium, investor-grade interactive showcase inspired by Stripe, Apple, and Instructure. The section features a central animated "ZG" brand core sphere surrounded symmetrically by the 26 company cards. Hovering over any card dynamically connects it to the center, morphing the core from the brand monogram to the company's specific data readout.
+Dark-burgundy rail portal. Editorial rather than corporate: serif headlines, generous white
+space, and technical detail set in mono so specifications read as evidence rather than
+decoration. Tokens live in `src/styles/tokens.css`; shared primitives in `src/styles/base.css`.
 
-- **Density:** Gallery Airy (3/10) - Generous vertical separation (160px top & bottom padding).
-- **Variance:** Symmetric Constellation (2/10) - Perfectly centered core flanked by equal left/right card lists.
-- **Motion:** Interactive Spring & Orbits (8/10) - Rotating orbital rings, background pulse, and spring-driven card highlights.
+## 1. Atmosphere
 
-## 2. Color Palette & Roles
-- **Substrate Background:** `#F9FAFB` (Canvas off-white)
-- **Core Hub Border/Tension:** `#111111` (Carbon Black)
-- **Primary Ink Text:** `#0A0A0A` (Charcoal Black)
-- **Secondary Muted Text:** `#6B7280` (Muted Steel Gray)
-- **Accent Highlight:** `#2563EB` (Primary Royal Blue)
+White page, burgundy punctuation. Full-bleed dark bands (hero, mandate, commitments, footer)
+break a predominantly white document, so colour marks structure instead of filling space.
+Photography is dark, industrial and close-up — machinery mid-process, not staged product shots.
 
-## 3. Typography Rules
-- **Display Headings:** Inter / Geist / SF Pro Display. Casing: Title casing. Centered alignment.
-- **Core Sphere Monogram:** Inter Bold. Casing: Uppercase (`ZG`). Size: 48px.
-- **Core Sphere Company Info:** Inter. Bold/Medium weights, relaxed leading. Company name: 20px, Sector: 12px, Tagline: 14px.
+- **Density:** editorial (4/10) — `--section-py` of `clamp(4rem, 7vw, 7rem)`
+- **Motion:** restrained (3/10) — fades and 24px rises only; no parallax, no scroll-jacking
+- **Contrast:** high — near-black burgundy against white, coral used sparingly for emphasis
 
-## 4. Component Stylings
-* **The ZG Core Sphere (`.zg-core-sphere`):**
-  - **Dimensions:** 260px width & height (circular).
-  - **Borders:** `1px solid #E5E7EB` with slow-rotating SVG orbital rings (`.zg-orbital-ring` rotating at `20s` and `-15s` loops).
-  - **Pulsing Background:** Breathing radial glow transition.
-  - **Content States:**
-    - *Default:* Centered bold `ZG` monogram.
-    - *Active:* Faded monogram, transitioning in the active company's name, sector badge, and tagline.
+## 2. Palette
 
-* **Constellation Company Cards:**
-  - **Border:** None by default (borderless text logo layout).
-  - **Hover:** Translate up `-4px`, background turns `#FFFFFF` with soft whisper border (`#E5E7EB`).
-  - **Tactile Underline:** Underline slide-in reveals in accent blue on hover.
+| Token | Value | Role |
+|---|---|---|
+| `--burgundy-950` | `#1a0507` | Footer, overlay base |
+| `--burgundy-900` | `#24070a` | Hero and page-hero ground |
+| `--burgundy-850` | `#28090d` | Buttons, mandate band, primary ink on light |
+| `--burgundy-800` | `#300a0e` | Event arch, raised dark cards |
+| `--coral-500` | `#f24838` | Accent: rules, focus ring, active marks |
+| `--coral-400/300/200` | `#fe7c74` / `#ffb3ad` / `#ffdad7` | Eyebrows and body text on dark |
+| `--paper` / `--stone` | `#ffffff` / `#f9f8f6` | Page and inset surfaces |
+| `--ink` / `--ink-soft` / `--muted` | `#1c1c1e` / `#3a3a3c` / `#636366` | Text on light |
+| `--rule` / `--rule-dark` | `#e5e5ea` / `rgba(255,255,255,.16)` | Hairlines |
 
-## 5. Layout Principles
-- Symmetrical split: Left Column (13 cards) | Center Column (260px Core Sphere) | Right Column (13 cards).
-- Below `1024px` width, the ZG Core Sphere locks at the top of the section, with the company cards scrolling below.
+Coral is an accent, never a background. On dark surfaces body text is
+`rgba(255,255,255,.78–.86)` rather than pure white.
 
-## 6. Motion & Interaction
-- Crossfading of sphere contents: Framer Motion `<AnimatePresence>` handles smooth layout fades.
-- Card spring highlights: `type: "spring", stiffness: 100, damping: 20`.
+## 3. Typography
+
+Three faces, three jobs — never interchange them.
+
+- **Newsreader** `--font-serif` — headlines, lede, editorial body. Weight 300–400. Italic
+  (`<em>`) marks the second clause of a sector headline.
+- **Inter** `--font-sans` — navigation, buttons, labels, card titles, long UI text.
+- **JetBrains Mono** `--font-mono` — eyebrows, spec values, dates, division markers.
+  Uppercase, `letter-spacing: 0.14–0.22em`.
+
+Display sizes are fluid (`--text-hero` through `--text-2xl`); headlines carry
+`letter-spacing: -0.02em` and `text-wrap: balance`.
+
+## 4. Components
+
+- **Navbar** — floating pill, `border-radius: 9999px`, translucent burgundy with
+  `backdrop-filter: blur(14px)`, solidifying past 24px of scroll. Exactly three links; a
+  coral underline slides in on hover and active. Collapses to a full-screen overlay at 860px.
+- **HeroCarousel** — cross-fading slides on an 6s timer, paused on hover/focus and under
+  reduced motion. Active slide's image creeps to `scale(1.07)` over 7s. Dual scrim (bottom-up
+  plus left-in) keeps the text column legible. Inactive slides carry `inert`.
+- **PageHero** — the masthead every route but the homepage uses. Clears the fixed navbar via
+  `padding-top: calc(var(--navbar-h) + …)`. Optional photographic backdrop with scrim.
+- **SectorPage** — the editorial template: masthead with a mono spec bar, full-bleed showcase
+  with overlaid stats, burgundy mandate band, then alternating platform rows. Media keeps the
+  wider grid column on both sides of the alternation.
+- **Event arch** — `border-radius: 0 220px 220px 0`, bled off the left viewport edge by a
+  negative margin, topped with the coral gradient capsule (`.coral-pill`).
+- **Society capsule** — near-pill container, circular portrait, oversized serif statement.
+
+## 5. Layout
+
+`.shell` (1280px), `.shell-wide` (1440px) and `.shell-narrow` (840px) set width; `--gutter`
+is `clamp(1.25rem, 4vw, 3rem)`. Editorial grids run `5fr 7fr` so the text column sits near
+60–70 characters. Breakpoints collapse to one column at 960px, cards at 720px.
+
+## 6. Motion
+
+`.reveal` + `data-delay="1..8"` inside a `useScrollReveal()` container fades and lifts an
+element 24px on entry, once. `.card-lift` raises 4px on hover; `.zoom-frame` scales a
+contained image to 1.04. Every rule has a `prefers-reduced-motion` escape, and the carousel
+stops auto-advancing entirely under it.

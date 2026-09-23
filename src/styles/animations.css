@@ -1,122 +1,60 @@
-/* ── Marquee (Top Bar Ticker) ── */
-@keyframes marquee {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
-/* ── Premium Scroll Reveal (Fade, Scale, Blur) ── */
+/* ══ Scroll reveal — driven by useScrollReveal() ══ */
 .reveal {
   opacity: 0;
-  transform: translateY(40px) scale(0.98);
-  filter: blur(8px);
+  transform: translateY(24px);
   transition:
-    opacity var(--duration-slow) var(--ease-out-expo),
-    transform var(--duration-slow) var(--ease-out-expo),
-    filter var(--duration-slow) var(--ease-out-expo);
-  will-change: opacity, transform, filter;
+    opacity 0.7s var(--ease-out-expo),
+    transform 0.7s var(--ease-out-expo);
+  will-change: opacity, transform;
 }
 
 .reveal.visible {
   opacity: 1;
-  transform: translateY(0) scale(1);
-  filter: blur(0);
+  transform: translateY(0);
 }
 
-/* ── Stagger delays ── */
-.reveal[data-delay="1"] { transition-delay: 0.08s; }
-.reveal[data-delay="2"] { transition-delay: 0.16s; }
-.reveal[data-delay="3"] { transition-delay: 0.24s; }
-.reveal[data-delay="4"] { transition-delay: 0.32s; }
-.reveal[data-delay="5"] { transition-delay: 0.40s; }
-.reveal[data-delay="6"] { transition-delay: 0.48s; }
-.reveal[data-delay="7"] { transition-delay: 0.56s; }
-.reveal[data-delay="8"] { transition-delay: 0.64s; }
-.reveal[data-delay="9"] { transition-delay: 0.72s; }
-.reveal[data-delay="10"] { transition-delay: 0.80s; }
-.reveal[data-delay="11"] { transition-delay: 0.88s; }
-.reveal[data-delay="12"] { transition-delay: 0.96s; }
+.reveal[data-delay='1'] { transition-delay: 0.07s; }
+.reveal[data-delay='2'] { transition-delay: 0.14s; }
+.reveal[data-delay='3'] { transition-delay: 0.21s; }
+.reveal[data-delay='4'] { transition-delay: 0.28s; }
+.reveal[data-delay='5'] { transition-delay: 0.35s; }
+.reveal[data-delay='6'] { transition-delay: 0.42s; }
+.reveal[data-delay='7'] { transition-delay: 0.49s; }
+.reveal[data-delay='8'] { transition-delay: 0.56s; }
 
-/* ── Pulsing map dot ── */
-@keyframes pulse-ring {
-  0%   { transform: scale(1);   opacity: 0.6; }
-  100% { transform: scale(2.5); opacity: 0; }
-}
-
-@keyframes pulse-core {
-  0%, 100% { transform: scale(1); }
-  50%       { transform: scale(1.15); }
-}
-
-/* ── Hero clip-path word reveal ── */
-@keyframes wordReveal {
-  from { clip-path: inset(0 100% 0 0); }
-  to   { clip-path: inset(0 0% 0 0); }
-}
-
-.word-reveal {
-  display: inline-block;
-  clip-path: inset(0 100% 0 0);
-  animation: wordReveal var(--duration-slow) var(--ease-out-expo) forwards;
-}
-
-/* ── Page Transition Overlay ── */
-@keyframes slideIn {
-  from { transform: translateX(-100%); }
-  to   { transform: translateX(0); }
-}
-
-@keyframes slideOut {
-  from { transform: translateX(0); }
-  to   { transform: translateX(100%); }
-}
-
-.page-transition-overlay {
-  position: fixed;
-  inset: 0;
-  background: #0A0A0A;
-  z-index: 9999;
-  pointer-events: none;
-  border-right: 3px solid var(--color-gold);
-}
-
-.page-transition-overlay.enter {
-  animation: slideIn 0.45s var(--ease-out-expo) forwards;
-}
-
-.page-transition-overlay.exit {
-  animation: slideOut 0.45s var(--ease-out-expo) forwards;
-}
-
-/* ── Reduced motion ── */
-@media (prefers-reduced-motion: reduce) {
-  .reveal,
-  .word-reveal,
-  .page-transition-overlay {
-    animation: none !important;
-    transition: none !important;
-    clip-path: none !important;
-    opacity: 1 !important;
-    transform: none !important;
-  }
-
-  @keyframes marquee {
-    0%, 100% { transform: translateX(0); }
-  }
-}
-
-/* ── Card hover lift ── */
+/* ══ Card hover lift ══ */
 .card-lift {
   transition:
-    transform var(--duration-fast) var(--ease-out-expo),
-    box-shadow var(--duration-fast) var(--ease-out-expo),
-    border-color var(--duration-fast) var(--ease-out-expo);
-  will-change: transform;
+    transform var(--dur-base) var(--ease-out),
+    box-shadow var(--dur-base) var(--ease-out);
 }
 
 .card-lift:hover {
-  transform: translateY(-6px) scale(1.015);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
 }
 
-.card-lift:active {
-  transform: translateY(-1px) scale(0.985);
+/* ══ Slow image zoom inside a clipping frame ══ */
+.zoom-frame {
+  overflow: hidden;
+}
+
+.zoom-frame img {
+  transition: transform 0.9s var(--ease-out-expo);
+}
+
+.zoom-frame:hover img {
+  transform: scale(1.04);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+
+  .card-lift:hover,
+  .zoom-frame:hover img {
+    transform: none;
+  }
 }

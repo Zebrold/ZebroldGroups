@@ -7,7 +7,7 @@ export function LanguageProvider({ children }) {
   // Default language is 'de' (German)
   const [lang, setLangState] = useState(() => {
     const saved = localStorage.getItem('zebrold_lang');
-    return saved === 'en' ? 'en' : 'de';
+    return saved === 'de' ? 'de' : 'en';
   });
 
   useEffect(() => {
@@ -26,7 +26,7 @@ export function LanguageProvider({ children }) {
   };
 
   const t = (key) => {
-    return translations[lang]?.[key] || translations['de']?.[key] || key;
+    return translations[lang]?.[key] || translations['en']?.[key] || key;
   };
 
   return (

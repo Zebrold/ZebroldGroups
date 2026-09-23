@@ -1,74 +1,78 @@
-.lang-switcher {
+.lang-switch {
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
-  background-color: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 999px;
-  padding: 0.2rem 0.6rem;
-  font-family: var(--font-body);
-  font-size: 0.75rem;
-  font-weight: 600;
+  gap: 0;
+  padding: 0.28rem 0.4rem;
+  border-radius: var(--radius-pill);
   user-select: none;
-  transition: all 0.3s ease;
 }
 
-.lang-switcher:hover {
-  border-color: rgba(255, 255, 255, 0.3);
-  background-color: rgba(255, 255, 255, 0.12);
+.lang-switch__slot {
+  display: inline-flex;
+  align-items: center;
 }
 
-.lang-icon {
-  font-size: 0.8rem;
-  opacity: 0.8;
+.lang-switch__sep {
+  width: 1px;
+  height: 13px;
+  margin-inline: 0.15rem;
+}
+
+.lang-switch__btn {
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.09em;
   line-height: 1;
+  padding: 0.34rem 0.6rem;
+  border-radius: var(--radius-pill);
+  transition:
+    background-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out);
 }
 
-.lang-btn {
-  background: none;
-  border: none;
-  color: rgba(255, 255, 255, 0.6);
-  cursor: pointer;
-  padding: 0.1rem 0.25rem;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  transition: color 0.2s ease, transform 0.2s ease;
-  border-radius: 4px;
+/* ── Light variant: sits on the dark footer / dark nav ── */
+.lang-switch--light {
+  background-color: rgba(255, 255, 255, 0.92);
 }
 
-.lang-btn:hover {
-  color: rgba(255, 255, 255, 0.9);
+.lang-switch--light .lang-switch__sep {
+  background-color: rgba(28, 28, 30, 0.28);
 }
 
-.lang-btn.is-active {
-  color: #FFFFFF;
-  background-color: #111111;
-  padding-inline: 0.4rem;
-  border-radius: 999px;
+.lang-switch--light .lang-switch__btn {
+  color: rgba(28, 28, 30, 0.62);
 }
 
-.lang-divider {
-  color: rgba(255, 255, 255, 0.25);
-  font-size: 0.7rem;
-  margin-inline: -0.1rem;
+.lang-switch--light .lang-switch__btn:hover {
+  color: var(--ink);
 }
 
-/* Light background theme variant (e.g. for light navbar or footer) */
-.lang-switcher.is-light {
-  background-color: rgba(34, 37, 35, 0.05);
-  border-color: rgba(34, 37, 35, 0.15);
+.lang-switch--light .lang-switch__btn.is-active {
+  background-color: #fff;
+  color: var(--burgundy-900);
+  box-shadow: 0 1px 3px rgba(26, 5, 7, 0.18);
 }
 
-.lang-switcher.is-light .lang-btn {
-  color: rgba(34, 37, 35, 0.6);
+/* ── Dark variant: sits on white page surfaces ── */
+.lang-switch--dark {
+  background-color: var(--stone);
+  border: 1px solid var(--rule);
 }
 
-.lang-switcher.is-light .lang-btn.is-active {
-  color: #FFFFFF;
-  background-color: #111111;
+.lang-switch--dark .lang-switch__sep {
+  background-color: var(--rule);
 }
 
-.lang-switcher.is-light .lang-divider {
-  color: rgba(34, 37, 35, 0.2);
+.lang-switch--dark .lang-switch__btn {
+  color: var(--muted);
+}
+
+.lang-switch--dark .lang-switch__btn:hover {
+  color: var(--ink);
+}
+
+.lang-switch--dark .lang-switch__btn.is-active {
+  background-color: var(--burgundy-850);
+  color: #fff;
 }

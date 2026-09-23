@@ -1,511 +1,245 @@
-import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useState, useMemo } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { useLanguage } from '../../context/LanguageContext';
-import { getStoredJobs, addApplication } from '../../data/careersData';
-import Toast from '../../components/Toast/Toast';
+import { useScrollReveal } from '../../hooks/useScrollReveal';
 import SEO from '../../components/SEO/SEO';
+import HeroCarousel from '../../components/HeroCarousel/HeroCarousel';
+import { jobs, careersSlides, JOB_CATEGORIES } from '../../data/careersData';
 import './Careers.css';
+
+const CULTURE = [
+  {
+    heading: { en: 'Dual-corridor innovation', de: 'Innovation im Doppelkorridor' },
+    title: { en: 'Frankfurt & Bengaluru exchange', de: 'Austausch Frankfurt & Bengaluru' },
+    body: {
+      en: 'Engineers rotate between German precision test centres and India’s fastest-growing deep-tech hub, working hands-on across cross-border manufacturing and software architecture.',
+      de: 'Ingenieurinnen und Ingenieure rotieren zwischen deutschen Präzisionsprüfzentren und Indiens am schnellsten wachsendem Deep-Tech-Standort — praxisnah über Fertigung und Softwarearchitektur hinweg.',
+    },
+  },
+  {
+    heading: { en: 'Concrete decarbonisation', de: 'Konkrete Dekarbonisierung' },
+    title: { en: 'Replacing diesel locomotives', de: 'Dieselloks werden ersetzt' },
+    body: {
+      en: 'Every trainset we commission displaces heavy diesel operation on non-electrified regional lines, delivering measurable carbon abatement from the first day in service.',
+      de: 'Jeder Triebzug, den wir in Betrieb nehmen, verdrängt schweren Dieselbetrieb auf nicht elektrifizierten Regionalstrecken — mit messbarer CO₂-Minderung ab dem ersten Betriebstag.',
+    },
+  },
+  {
+    heading: { en: '40-year product horizon', de: '40 Jahre Produkthorizont' },
+    title: { en: 'Enduring engineering legacy', de: 'Technik, die Bestand hat' },
+    body: {
+      en: 'Unlike fleeting digital products, our rolling stock platforms are designed for four decades of rigorous mainline duty — which instils a different kind of structural rigour.',
+      de: 'Anders als kurzlebige digitale Produkte sind unsere Plattformen für vier Jahrzehnte harten Streckendienst ausgelegt — das erzwingt eine andere Art von konstruktiver Strenge.',
+    },
+  },
+];
 
 export default function Careers() {
   const { t, lang } = useLanguage();
-  const [jobs, setJobs] = useState([]);
-  const [searchTerm, setSearchTerm] = useState('');
-  const [selectedDept, setSelectedDept] = useState('All');
-  const [selectedLoc, setSelectedLoc] = useState('All');
-  const [expandedJobId, setExpandedJobId] = useState(null);
-  
-  // Application modal state
-  const [activeJobForApp, setActiveJobForApp] = useState(null);
-  const [form, setForm] = useState({
-    candidateName: '',
-    email: '',
-    phone: '',
-    linkedin: '',
-    coverNote: ''
-  });
-  const [cvFile, setCvFile] = useState(null);
-  const [dragOver, setDragOver] = useState(false);
-  const [submitting, setSubmitting] = useState(false);
-  const [toast, setToast] = useState(null);
+  const revealRef = useScrollReveal();
+  const navigate = useNavigate();
+  const [filter, setFilter] = useState('all');
 
-  useEffect(() => {
-    setJobs(getStoredJobs().filter(j => j.status === 'Active' || !j.status));
-  }, []);
+  const visible = useMemo(
+    () => (filter === 'all' ? jobs : jobs.filter((job) => job.category === filter)),
+    [filter]
+  );
 
-  // Filter options
-  const departments = ['All', ...new Set(jobs.map(j => j.department))];
-  const locations = ['All', ...new Set(jobs.map(j => j.location))];
-
-  const filteredJobs = jobs.filter(job => {
-    const matchSearch =
-      job.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      job.department.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      job.location.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      job.description.toLowerCase().includes(searchTerm.toLowerCase());
-    
-    const matchDept = selectedDept === 'All' || job.department === selectedDept;
-    const matchLoc = selectedLoc === 'All' || job.location === selectedLoc;
-
-    return matchSearch && matchDept && matchLoc;
-  });
-
-  // Handle File Upload & Base64 conversion
-  const handleFile = (file) => {
-    if (!file) return;
-    const allowed = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
-    if (!allowed.includes(file.type) && !file.name.endsWith('.pdf') && !file.name.endsWith('.docx') && !file.name.endsWith('.doc')) {
-      alert(lang === 'en' ? 'Please upload a PDF or DOC/DOCX file.' : 'Bitte laden Sie eine PDF- oder DOC/DOCX-Datei hoch.');
-      return;
-    }
-    if (file.size > 10 * 1024 * 1024) {
-      alert(lang === 'en' ? 'File exceeds 10MB limit.' : 'Datei überschreitet das Limit von 10 MB.');
-      return;
-    }
-
-    const reader = new FileReader();
-    reader.onload = (ev) => {
-      setCvFile({
-        name: file.name,
-        size: file.size,
-        type: file.type || 'application/pdf',
-        dataUrl: ev.target.result
-      });
-    };
-    reader.readAsDataURL(file);
-  };
-
-  const handleDrop = (e) => {
-    e.preventDefault();
-    setDragOver(false);
-    if (e.dataTransfer.files && e.dataTransfer.files[0]) {
-      handleFile(e.dataTransfer.files[0]);
-    }
-  };
-
-  const handleSubmitApplication = (e) => {
-    e.preventDefault();
-    if (!form.candidateName || !form.email || !form.phone) {
-      alert(lang === 'en' ? 'Please fill in all required fields.' : 'Bitte füllen Sie alle Pflichtfelder aus.');
-      return;
-    }
-    if (!cvFile) {
-      alert(lang === 'en' ? 'Please attach your CV / Resume before submitting.' : 'Bitte fügen Sie Ihren Lebenslauf (CV) an.');
-      return;
-    }
-
-    setSubmitting(true);
-
-    setTimeout(() => {
-      const jobTitle = activeJobForApp?.title || (lang === 'en' ? 'Spontaneous Application' : 'Initiativbewerbung');
-      const department = activeJobForApp?.department || 'General';
-
-      addApplication({
-        jobId: activeJobForApp?.id || 'spontaneous',
-        jobTitle: jobTitle,
-        candidateName: form.candidateName,
-        email: form.email,
-        phone: form.phone,
-        linkedin: form.linkedin,
-        coverNote: form.coverNote,
-        cvFile: cvFile
-      });
-
-      sendApplicationEmail({
-        candidateName: form.candidateName,
-        email: form.email,
-        phone: form.phone,
-        jobTitle: jobTitle,
-        department: department,
-        coverNote: form.coverNote,
-        cvFileName: cvFile?.name,
-      });
-
-      setSubmitting(false);
-      setActiveJobForApp(null);
-      setForm({ candidateName: '', email: '', phone: '', linkedin: '', coverNote: '' });
-      setCvFile(null);
-      setToast({
-        message: t('careers_success_msg'),
-        type: 'success'
-      });
-    }, 600);
-  };
-
-  const careersSchema = {
-    "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    "name": "Careers at Zebrold International Holdings Limited (Zebrold IHL)",
-    "description": "Global career opportunities at Zebrold International Holdings Limited (Zebrold IHL).",
-    "url": "https://www.zebrold.de/careers",
-    "mainEntity": {
-      "@type": "ItemList",
-      "itemListElement": jobs.map((job, idx) => ({
-        "@type": "ListItem",
-        "position": idx + 1,
-        "item": {
-          "@type": "JobPosting",
-          "title": job.title,
-          "description": job.description,
-          "jobLocation": {
-            "@type": "Place",
-            "address": {
-              "@type": "PostalAddress",
-              "addressLocality": job.location
-            }
-          },
-          "hiringOrganization": {
-            "@type": "Corporation",
-            "name": "Zebrold International Holdings Limited",
-            "alternateName": ["Zebrold IHL", "Zebrold Group"]
-          },
-          "employmentType": job.type || "FULL_TIME"
-        }
-      }))
-    }
-  };
+  const categoryLabel = (id) => JOB_CATEGORIES.find((c) => c.id === id)?.label[lang] ?? id;
+  const openDossier = (job) => navigate(`/careers/apply?ref=${encodeURIComponent(job.ref)}`);
 
   return (
-    <div className="careers-page">
-      <SEO 
-        title="Careers & Opportunities | Zebrold International Holdings Limited (Zebrold IHL)"
-        description="Explore global career opportunities at Zebrold International Holdings Limited (Zebrold IHL). Join our team across Frankfurt, London, Sydney, Hyderabad, and 26 subsidiaries."
-        keywords="Zebrold careers, jobs at Zebrold, Zebrold IHL jobs, Zebrold International Holdings Limited careers, Frankfurt jobs, engineering careers"
+    <div ref={revealRef} className="cr">
+      <SEO
+        title="Careers | Zebrold Scolome"
+        description="Engineering, software, manufacturing and internship roles at Zebrold Scolome across Frankfurt, Kassel, Bengaluru and Hyderabad."
+        keywords="Zebrold careers, rail engineering jobs, rolling stock jobs, SIL-4 firmware, silicon carbide traction, bogie manufacturing, engineering internship"
         url="/careers"
-        schemaData={careersSchema}
       />
-      {/* Hero Banner — Home Theme */}
-      <section className="careers-hero">
-        <div className="padding-global">
-          <div className="container-large">
-            <motion.div
-              className="careers-hero-inner"
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
+
+      <div className="cr__shell shell-wide">
+        <HeroCarousel slides={careersSlides} variant="inset" ctaHref="#openings" />
+
+        {/* ══ Category filter ══ */}
+        <div className="cr__filters">
+          <button
+            type="button"
+            className={`cr__filter ${filter === 'all' ? 'is-active' : ''}`}
+            onClick={() => setFilter('all')}
+            aria-pressed={filter === 'all'}
+          >
+            {lang === 'de' ? 'Alle Stellen' : 'All opportunities'} ({jobs.length})
+          </button>
+          {JOB_CATEGORIES.map((cat) => (
+            <button
+              key={cat.id}
+              type="button"
+              className={`cr__filter ${filter === cat.id ? 'is-active' : ''}`}
+              onClick={() => setFilter(cat.id)}
+              aria-pressed={filter === cat.id}
             >
-              <div className="careers-badge">
-                <span className="badge-dot" />
-                {t('careers_hero_badge')}
-              </div>
-              <h1 className="careers-hero-title">{t('careers_hero_title')}</h1>
-              <p className="careers-hero-sub">{t('careers_hero_subtitle')}</p>
-
-              {/* General Spontaneous Application CTA */}
-              <div className="careers-spontaneous-bar">
-                <div className="spontaneous-info">
-                  <span className="spontaneous-tag">{lang === 'en' ? 'OPEN TALENT NETWORK' : 'TALENT NETWORK'}</span>
-                  <p>{lang === 'en' ? 'Don’t see your exact role? Submit a spontaneous CV application to our executive team.' : 'Keine passende Stelle gefunden? Reichen Sie eine Initiativbewerbung ein.'}</p>
-                </div>
-                <button
-                  className="btn-wine-pill"
-                  onClick={() => setActiveJobForApp({ id: 'spontaneous', title: lang === 'en' ? 'Spontaneous Application' : 'Initiativbewerbung' })}
-                >
-                  {lang === 'en' ? 'Upload CV directly →' : 'CV direkt hochladen →'}
-                </button>
-              </div>
-            </motion.div>
-          </div>
+              {cat.label[lang]}
+            </button>
+          ))}
         </div>
-      </section>
 
-      {/* Job Search & Listings Section */}
-      <section className="careers-listings-section" id="open-positions">
-        <div className="padding-global">
-          <div className="container-large">
-            <div className="careers-section-header">
-              <div>
-                <span className="careers-section-caption">
-                  {lang === 'en' ? 'Current Opportunities' : 'Aktuelle Stellenangebote'}
+        {/* ══ Life at Zebrold ══ */}
+        <section className="cr__editorial" aria-labelledby="cr-life-title">
+          <div className="cr__editorialLead">
+            <h2 className="cr__h2" id="cr-life-title">
+              {lang === 'de' ? 'Arbeiten bei Zebrold IHL' : 'Life at Zebrold IHL'}
+            </h2>
+            <p className="cr__editorialIntro">
+              {lang === 'de'
+                ? 'Wo deutsches Präzisionsingenieurwesen auf indische Deep-Tech-Kompetenz trifft. Wir geben Ingenieurinnen, Werkstoffwissenschaftlern und Softwarearchitekten den Raum, das nächste Jahrhundert nachhaltiger Hochgeschwindigkeitsmobilität zu gestalten.'
+                : 'Where German precision engineering heritage meets Indian deep-tech ingenuity. We give engineers, material scientists and software architects the room to shape the next century of high-speed sustainable rail mobility.'}
+            </p>
+          </div>
+
+          <div className="cr__editorialBody">
+            <p>
+              {lang === 'de'
+                ? 'Unsere technische Grundlage verbindet die metallurgische, strukturelle und mechanische Handwerkskunst aus Frankfurt am Main und Kassel mit der Software-Intelligenz aus Bengaluru und Hyderabad. Fahrzeugsubsysteme werden gemeinsam entworfen — vom Silizium-Layout bis zum geschweißten Drehgestell — sodass Beschaffungssilos entfallen und Triebzüge mit engeren Toleranzen und höherer Effizienz entstehen.'
+                : 'Our technical foundation unifies the metallurgical, structural and mechanical craftsmanship developed in Frankfurt am Main and Kassel with the software intelligence engineered in Bengaluru and Hyderabad. Vehicle subsystems are co-designed from initial silicon layout through to welded bogie fabrication, which removes procurement siloing and delivers trainsets built to tighter tolerances and better efficiencies.'}
+            </p>
+            <p>
+              {lang === 'de'
+                ? 'Mehrstufige Hierarchien lehnen wir ab. Stattdessen arbeiten eng abgestimmte, eigenverantwortliche Teams: Spezialistinnen für aerodynamische Strömungssimulation, 3,3-kV-Siliziumkarbid-Umrichter und ETCS-Level-3-Odometriefusion besitzen echte Verantwortung für ihre Domäne — sie nehmen Prototypen in Betrieb, werten Telemetrie mit dem Streckenpersonal aus und bringen kritische Änderungen ohne administrative Hürden auf den Testzug.'
+                : 'Multi-tiered corporate bureaucracy is rejected in favour of tightly aligned, autonomous squads. Specialists across aerodynamic computational fluid dynamics, 3.3 kV silicon-carbide traction inverters and real-time ETCS Level 3 odometry fusion hold genuine ownership of their domains — commissioning prototypes, reviewing telemetry with track marshals and pushing critical revisions to test trains without administrative gatekeeping.'}
+            </p>
+            <p>
+              {lang === 'de'
+                ? 'Diese Zusammenarbeit bleibt physisch und kontinuierlich: Teams wechseln zwischen Hochgeschwindigkeits-Teststrecken in Niedersachsen, der Schwerfertigung in Hessen und den Firmware-Laboren in Bengaluru und Hyderabad. Jede Plattform ist auf vier Jahrzehnte Streckendienst ausgelegt, und bis zu 20 % der Arbeitszeit stehen für spekulative Simulation, Patentanmeldungen mit Beteiligung und Versuche auf unserem eigenen Testring zur Verfügung.'
+                : 'That collaboration stays physical and continuous: teams rotate between high-speed test circuits in Lower Saxony, heavy manufacturing lines in Hessen and firmware proving labs in Bengaluru and Hyderabad. Every platform is designed for four decades of mainline duty, and up to 20% of engineering time is protected for speculative simulation, patent filings with royalty sharing, and live experimentation on our own test ring.'}
+            </p>
+          </div>
+        </section>
+
+        {/* ══ Open roles ══ */}
+        <section className="cr__openings" id="openings" aria-labelledby="cr-openings-title">
+          <div className="cr__openingsHead">
+            <div>
+              <h2 className="cr__h2" id="cr-openings-title">
+                {lang === 'de'
+                  ? 'Aktuelle Stellen & Fachbereiche'
+                  : 'Current open roles & engineering disciplines'}
+              </h2>
+              <p className="cr__openingsSub">
+                {lang === 'de'
+                  ? 'Wählen Sie eine Position, um Anforderungen zu sehen und das vollständige Bewerbungsdossier zu öffnen.'
+                  : 'Select any position to view its requirements and open the full candidate dossier.'}
+              </p>
+            </div>
+            <p className="cr__count mono">
+              {lang === 'de' ? 'Angezeigt' : 'Showing'} <strong>{visible.length}</strong>{' '}
+              {lang === 'de' ? `von ${jobs.length} Ausschreibungen` : `of ${jobs.length} postings`}
+            </p>
+          </div>
+
+          <ul className="cr__list" role="list">
+            {visible.map((job, i) => (
+              <li key={job.id}>
+                <article
+                  className="jobRow reveal"
+                  data-delay={Math.min(i + 1, 6)}
+                  onClick={() => openDossier(job)}
+                >
+                  <div className="jobRow__main">
+                    <p className="jobRow__meta">
+                      <span className="jobRow__cat">{categoryLabel(job.category)}</span>
+                      <span aria-hidden="true">•</span>
+                      <span>{job.location[lang]}</span>
+                    </p>
+
+                    <h3 className="jobRow__title">{job.title[lang]}</h3>
+                    <p className="jobRow__summary">{job.summary[lang]}</p>
+
+                    <ul className="jobRow__reqs" role="list">
+                      {job.requirements[lang].slice(0, 3).map((req) => (
+                        <li key={req}>{req}</li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="jobRow__side">
+                    <div className="jobRow__pay">
+                      <span className="jobRow__salary">{job.salary}</span>
+                      <span className="jobRow__terms">{job.terms[lang]}</span>
+                    </div>
+                    <Link
+                      to={`/careers/apply?ref=${encodeURIComponent(job.ref)}`}
+                      className="jobRow__apply"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      {t('careers_apply')}
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                        <path d="m9 5 7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </Link>
+                  </div>
+                </article>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        {/* ══ Culture ══ */}
+        <section className="cr__culture" aria-labelledby="cr-culture-title">
+          <div className="cr__cultureLead">
+            <h2 className="cr__h2" id="cr-culture-title">
+              {lang === 'de'
+                ? 'Warum Ingenieure sich für Scolome entscheiden'
+                : 'Why engineers choose the Scolome initiative'}
+            </h2>
+            <p className="cr__cultureIntro">
+              {lang === 'de'
+                ? 'Wir arbeiten ohne bürokratische Zwischenebenen. Teams in Deutschland und Indien agieren als eine Einheit und gestalten unmittelbar Fahrzeuge, die täglich Millionen Fahrgäste emissionsfrei befördern.'
+                : 'We operate without bureaucratic layers. Engineering squads in Germany and India work as a single directorate, directly shaping rolling stock that carries millions of passengers a day with zero tailpipe emissions.'}
+            </p>
+          </div>
+
+          <div className="cr__cultureGrid">
+            {CULTURE.map((item, i) => (
+              <article key={item.title.en} className="cultureItem reveal" data-delay={i + 1}>
+                <span className="cultureItem__num mono">
+                  {String(i + 1).padStart(2, '0')}. {item.heading[lang]}
                 </span>
-                <h2 className="careers-section-h2">
-                  {lang === 'en' ? 'Explore Open Positions' : 'Offene Positionen erkunden'}
-                </h2>
-              </div>
-              <div className="careers-count-badge">
-                {filteredJobs.length} {filteredJobs.length === 1 ? (lang === 'en' ? 'Position' : 'Stelle') : (lang === 'en' ? 'Positions' : 'Stellen')}
-              </div>
-            </div>
-
-            {/* Controls Bar */}
-            <div className="careers-filter-bar">
-              <div className="careers-search-box">
-                <span className="search-icon">🔍</span>
-                <input
-                  type="text"
-                  placeholder={t('careers_search_placeholder')}
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  className="careers-search-input"
-                />
-                {searchTerm && (
-                  <button className="search-clear-btn" onClick={() => setSearchTerm('')}>✕</button>
-                )}
-              </div>
-
-              <div className="careers-select-row">
-                <div className="careers-select-wrap">
-                  <label htmlFor="dept-filter" className="sr-only">Department</label>
-                  <select
-                    id="dept-filter"
-                    className="careers-select"
-                    value={selectedDept}
-                    onChange={(e) => setSelectedDept(e.target.value)}
-                  >
-                    <option value="All">{t('careers_all_departments')}</option>
-                    {departments.filter(d => d !== 'All').map(d => (
-                      <option key={d} value={d}>{d}</option>
-                    ))}
-                  </select>
-                </div>
-
-                <div className="careers-select-wrap">
-                  <label htmlFor="loc-filter" className="sr-only">Location</label>
-                  <select
-                    id="loc-filter"
-                    className="careers-select"
-                    value={selectedLoc}
-                    onChange={(e) => setSelectedLoc(e.target.value)}
-                  >
-                    <option value="All">{t('careers_all_locations')}</option>
-                    {locations.filter(l => l !== 'All').map(l => (
-                      <option key={l} value={l}>{l}</option>
-                    ))}
-                  </select>
-                </div>
-              </div>
-            </div>
-
-            {/* Jobs List Grid */}
-            {filteredJobs.length === 0 ? (
-              <div className="careers-empty-state">
-                <p>{lang === 'en' ? 'No job openings match your filter criteria.' : 'Keine Stellenangebote entsprechen Ihren Kriterien.'}</p>
-                <button
-                  className="btn-wine-pill"
-                  onClick={() => { setSearchTerm(''); setSelectedDept('All'); setSelectedLoc('All'); }}
-                >
-                  {lang === 'en' ? 'Reset Filters' : 'Filter zurücksetzen'}
-                </button>
-              </div>
-            ) : (
-              <div className="careers-job-grid">
-                {filteredJobs.map((job) => {
-                  const isExpanded = expandedJobId === job.id;
-                  return (
-                    <motion.div
-                      key={job.id}
-                      className={`careers-job-card ${isExpanded ? 'is-expanded' : ''}`}
-                      layout
-                    >
-                      <div className="job-card-top">
-                        <div className="job-card-meta">
-                          <span className="job-dept-pill">{job.department}</span>
-                          <span className="job-type-pill">{job.type}</span>
-                          <span className="job-exp-pill">{job.experience}</span>
-                        </div>
-                        <span className="job-location-text">{job.location}</span>
-                      </div>
-
-                      <h3 className="job-card-title">{job.title}</h3>
-                      <p className="job-card-desc">{job.description}</p>
-
-                      <AnimatePresence>
-                        {isExpanded && (
-                          <motion.div
-                            className="job-card-expanded-body"
-                            initial={{ opacity: 0, height: 0 }}
-                            animate={{ opacity: 1, height: 'auto' }}
-                            exit={{ opacity: 0, height: 0 }}
-                            transition={{ duration: 0.3 }}
-                          >
-                            <h4 className="expanded-heading">{lang === 'en' ? 'Requirements & Qualifications:' : 'Anforderungen & Qualifikationen:'}</h4>
-                            <ul className="expanded-req-list">
-                              {job.requirements.map((req, idx) => (
-                                <li key={idx}>✓ {req}</li>
-                              ))}
-                            </ul>
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
-
-                      <div className="job-card-actions">
-                        <button
-                          className="btn-link-details"
-                          onClick={() => setExpandedJobId(isExpanded ? null : job.id)}
-                        >
-                          {isExpanded ? (lang === 'en' ? 'Hide Details ▲' : 'Details verbergen ▲') : (lang === 'en' ? 'View Requirements ▼' : 'Anforderungen anzeigen ▼')}
-                        </button>
-                        <Link
-                          className="btn-wine-pill"
-                          to={`/careers/${job.id}`}
-                        >
-                          {t('careers_apply_now')} →
-                        </Link>
-                      </div>
-                    </motion.div>
-                  );
-                })}
-              </div>
-            )}
+                <h3 className="cultureItem__title">{item.title[lang]}</h3>
+                <p className="cultureItem__body">{item.body[lang]}</p>
+              </article>
+            ))}
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Application & CV Upload Modal */}
-      <AnimatePresence>
-        {activeJobForApp && (
-          <div className="careers-modal-backdrop" onClick={() => setActiveJobForApp(null)}>
-            <motion.div
-              className="careers-modal-card"
-              onClick={(e) => e.stopPropagation()}
-              initial={{ opacity: 0, scale: 0.95, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              transition={{ duration: 0.25 }}
-            >
-              <div className="modal-header">
-                <div>
-                  <span className="modal-badge">{lang === 'en' ? 'APPLICATION FORM' : 'BEWERBUNGSFORMULAR'}</span>
-                  <h3 className="modal-title">{activeJobForApp.title}</h3>
-                  {activeJobForApp.location && <p className="modal-sub">{activeJobForApp.location} • {activeJobForApp.department}</p>}
-                </div>
-                <button className="modal-close-btn" onClick={() => setActiveJobForApp(null)}>✕</button>
-              </div>
+        {/* ══ Quote ══ */}
+        <section className="cr__quote">
+          <blockquote>{t('home_quote')}</blockquote>
+        </section>
 
-              <form onSubmit={handleSubmitApplication} className="modal-form">
-                <div className="form-row">
-                  <div className="form-group">
-                    <label htmlFor="app-name" className="form-label">{t('careers_full_name')} *</label>
-                    <input
-                      id="app-name"
-                      type="text"
-                      required
-                      placeholder="e.g. Dr. Julia Hoffmann"
-                      className="form-input"
-                      value={form.candidateName}
-                      onChange={(e) => setForm(p => ({ ...p, candidateName: e.target.value }))}
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="app-email" className="form-label">{t('careers_email')} *</label>
-                    <input
-                      id="app-email"
-                      type="email"
-                      required
-                      placeholder="j.hoffmann@example.com"
-                      className="form-input"
-                      value={form.email}
-                      onChange={(e) => setForm(p => ({ ...p, email: e.target.value }))}
-                    />
-                  </div>
-                </div>
-
-                <div className="form-row">
-                  <div className="form-group">
-                    <label htmlFor="app-phone" className="form-label">{t('careers_phone')} *</label>
-                    <input
-                      id="app-phone"
-                      type="tel"
-                      required
-                      placeholder="+49 170 1234567"
-                      className="form-input"
-                      value={form.phone}
-                      onChange={(e) => setForm(p => ({ ...p, phone: e.target.value }))}
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="app-linkedin" className="form-label">{t('careers_linkedin')}</label>
-                    <input
-                      id="app-linkedin"
-                      type="url"
-                      placeholder="https://linkedin.com/in/username"
-                      className="form-input"
-                      value={form.linkedin}
-                      onChange={(e) => setForm(p => ({ ...p, linkedin: e.target.value }))}
-                    />
-                  </div>
-                </div>
-
-                <div className="form-group">
-                  <label htmlFor="app-cover" className="form-label">{t('careers_cover_note')}</label>
-                  <textarea
-                    id="app-cover"
-                    rows={3}
-                    placeholder={lang === 'en' ? 'Briefly describe your relevant achievements or experience...' : 'Beschreiben Sie kurz Ihre relevanten Qualifikationen...'}
-                    className="form-textarea"
-                    value={form.coverNote}
-                    onChange={(e) => setForm(p => ({ ...p, coverNote: e.target.value }))}
-                  />
-                </div>
-
-                {/* CV Upload Box */}
-                <div className="form-group">
-                  <label className="form-label">{t('careers_upload_cv')} *</label>
-                  {!cvFile ? (
-                    <div
-                      className={`cv-dropzone ${dragOver ? 'is-dragover' : ''}`}
-                      onDragOver={(e) => { e.preventDefault(); setDragOver(true); }}
-                      onDragLeave={() => setDragOver(false)}
-                      onDrop={handleDrop}
-                      onClick={() => document.getElementById('cv-file-input').click()}
-                    >
-                      <div className="dropzone-icon">📄</div>
-                      <p className="dropzone-text">{t('careers_upload_hint')}</p>
-                      <span className="dropzone-sub">PDF, DOC, DOCX — Max 10MB</span>
-                    </div>
-                  ) : (
-                    <div className="cv-file-attached">
-                      <div className="cv-file-info">
-                        <span className="cv-file-icon">📑</span>
-                        <div>
-                          <p className="cv-file-name">{cvFile.name}</p>
-                          <p className="cv-file-size">{(cvFile.size / 1024).toFixed(1)} KB • {lang === 'en' ? 'Ready to upload' : 'Bereit zum Hochladen'}</p>
-                        </div>
-                      </div>
-                      <button
-                        type="button"
-                        className="cv-file-remove"
-                        onClick={() => setCvFile(null)}
-                        title="Remove file"
-                      >
-                        ✕
-                      </button>
-                    </div>
-                  )}
-                  <input
-                    id="cv-file-input"
-                    type="file"
-                    accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-                    className="sr-only"
-                    onChange={(e) => e.target.files && handleFile(e.target.files[0])}
-                  />
-                </div>
-
-                <div className="modal-footer">
-                  <button
-                    type="button"
-                    className="btn-cancel"
-                    onClick={() => setActiveJobForApp(null)}
-                  >
-                    {t('careers_close')}
-                  </button>
-                  <button
-                    type="submit"
-                    className="btn-wine-pill"
-                    disabled={submitting}
-                  >
-                    {submitting ? (lang === 'en' ? 'Submitting...' : 'Wird gesendet...') : t('careers_submit_app')}
-                  </button>
-                </div>
-              </form>
-            </motion.div>
+        {/* ══ Speculative dossier ══ */}
+        <section className="cr__desk" aria-labelledby="cr-desk-title">
+          <div>
+            <h2 className="cr__deskTitle" id="cr-desk-title">
+              {lang === 'de'
+                ? 'Ihre Fachrichtung ist nicht dabei?'
+                : 'Can’t find your exact technical specialisation?'}
+            </h2>
+            <p className="cr__deskBody">
+              {lang === 'de'
+                ? 'Wir suchen laufend herausragende Fachleute in Stromabnehmer-Aerodynamik, funktionaler Sicherheit, Traktionsmotoren und schlüsselfertigem Bahn-EPC. Senden Sie Ihr Dossier direkt an unsere Personalgewinnung.'
+                : 'We are continuously seeking exceptional talent across pantograph aerodynamics, functional safety compliance, traction motors and turnkey rail EPC. Send your dossier directly to our talent acquisition team.'}
+            </p>
+            <p className="cr__deskMail">
+              {lang === 'de' ? 'Allgemeine Anfragen' : 'General enquiries'}:{' '}
+              <a href="mailto:talent.acquisition@zebrold.de">talent.acquisition@zebrold.de</a>
+            </p>
           </div>
-        )}
-      </AnimatePresence>
 
-      {toast && (
-        <Toast message={toast.message} type={toast.type} onDismiss={() => setToast(null)} />
-      )}
+          <Link to="/careers/apply" className="btn cr__deskBtn">
+            {lang === 'de' ? 'Initiativdossier einreichen' : 'Submit speculative dossier'}
+          </Link>
+        </section>
+      </div>
     </div>
   );
 }

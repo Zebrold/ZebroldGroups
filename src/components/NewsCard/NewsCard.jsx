@@ -2,9 +2,9 @@ import { Link } from 'react-router-dom';
 import './NewsCard.css';
 
 // Importing premium assets to use as dynamic editorial photography
-import heroBg1 from '../../assets/hero_bg.png';
-import heroBg2 from '../../assets/hero_bg_2.png';
-import heroBg3 from '../../assets/hero_bg_3.png';
+import heroBg1 from '../../assets/rail_catenary_corridor.jpg';
+import heroBg2 from '../../assets/high_speed_bogie.jpg';
+import heroBg3 from '../../assets/carbody_laser_welding.jpg';
 
 const bgImages = [heroBg1, heroBg2, heroBg3];
 

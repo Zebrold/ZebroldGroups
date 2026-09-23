@@ -1,92 +1,101 @@
-# Zebrold International Holdings Limited (Zebrold IHL)
+# Zebrold Scolome — corporate site
 
-## About the Company
-Zebrold International Holdings Limited (Zebrold IHL) is a globally diversified German conglomerate headquartered in Frankfurt am Main, Germany. With an annual revenue of EUR 2.1B, the conglomerate manages 26 market-leading subsidiaries across 12 strategic sectors, embodying a vision of building industries and defining futures.
+Marketing site for **Zebrold Scolome**, the rolling stock business of Zebrold International
+Holdings Limited (Zebrold IHL), Frankfurt am Main. Vite + React 19, plain CSS, no UI framework.
 
-## Sectors & Subsidiaries (Specialities)
+## Getting started
 
-Zebrold IHL operates across 12 key sectors, driving innovation and excellence in each domain:
+```bash
+npm install
+npm run dev      # http://localhost:5173
+npm run build    # -> dist/
+npm run preview  # serve the production build
+npm run lint
+```
 
-### 1. EV Charging & Battery
-- **Everstone Energy**: Leading developer of ultra-fast EV charging infrastructure across Central and Northern Europe, with proprietary battery management software.
-- **Northvolt Power**: Scandinavian battery cell manufacturer specialising in sustainable lithium-ion technology for automotive and grid-scale storage applications.
+## Pages
 
-### 2. Semiconductors
-- **Meridian Microelectronics**: Advanced semiconductor design house focused on power management ICs and automotive-grade chips for next-generation electric vehicles.
-- **Silicon Crest Technologies**: Cutting-edge wafer fabrication and MEMS sensor technology provider, supplying precision components to global automotive and industrial OEMs.
+The site is deliberately small — eleven routes, and the header carries only three links.
 
-### 3. Car Manufacturing
-- **Redford Automotive**: Premium electric vehicle manufacturer producing the iconic Redford Series, combining German engineering precision with zero-emission performance.
-- **Westbridge Motors**: Commercial EV fleet manufacturer specialising in light trucks and urban delivery vehicles for last-mile logistics operators across Europe.
+| Route | Page | Notes |
+|---|---|---|
+| `/` | Home | Five-slide hero carousel, solutions rail, highlights, events |
+| `/about` | About Us | Narrative, animated stats, the two engineering sites, commitments |
+| `/newsroom` | Newsroom | Filterable releases, bodies expand inline (no detail route) |
+| `/careers` | Careers | Search + filters, application dialog |
+| `/contact` | Contact | Contact form and the three mailboxes |
+| `/aerospace` | Aerospace | Editorial sector page |
+| `/automotive` | Automotive | Editorial sector page |
+| `/insights` | Insights | Long-form technical pieces |
+| `/faqs` | FAQs | Grouped accordion + `FAQPage` JSON-LD |
+| `/legal-notice` | Legal Notice | **Contains placeholders — see below** |
+| `/privacy-policy` | Privacy Policy | **Contains placeholders — see below** |
 
-### 4. Retail & Consumer
-- **PrimeMart Retail**: Omnichannel retail chain offering premium consumer goods across 85 locations in the DACH region, with a fast-growing e-commerce platform.
-- **UrbanBasket Stores**: Technology-first grocery and essentials retail brand serving urban consumers in Asia and the Middle East via app-based rapid delivery.
+Anything else renders the 404 page. `vercel.json` rewrites all paths to `index.html`, so
+deep links work on direct load.
 
-### 5. Education
-- **Brighton Education Group**: International higher education institution delivering accredited degree programmes in engineering, business, and digital disciplines across three continents.
-- **Clearpath Learning**: Corporate upskilling and professional certification platform partnering with Fortune 500 companies to deliver workforce transformation at scale.
-- **Instructis Career**: India's fastest-growing career accelerator providing placement-linked training in technology, data science, and finance for emerging talent.
+> **Before going live:** `/legal-notice` and `/privacy-policy` contain blocks marked with
+> `.legal__todo` (a coral-bordered callout) listing the register data, managing directors,
+> VAT ID and named processors that German law requires. These must be filled in with real
+> values — they are intentionally not invented.
 
-### 6. Technology & IT
-- **Skybridge Technologies**: Enterprise cloud infrastructure and cybersecurity solutions provider serving critical government and financial sector clients across 18 countries.
-- **Arden Digital Solutions**: Digital transformation consultancy and software engineering firm specialising in AI-powered enterprise applications and industrial IoT platforms.
+## Layout
 
-### 7. Finance & Investment
-- **Sterling Financial Services**: Pan-European asset management and private equity firm managing EUR 8B+ AUM across infrastructure, real estate, and technology growth funds.
-- **Harrington Capital Group**: Alternative investment manager focused on distressed assets, structured credit, and special situations with a 15-year track record of top-quartile returns.
+```
+src/
+  components/     Navbar, Footer, HeroCarousel, PageHero, SectorPage, ArrowLink, SEO, Toast, LanguageSwitcher
+  pages/          one folder per route, each with its own .css
+  data/           all content lives here as { en, de } pairs
+  context/        LanguageContext + translations (UI chrome only)
+  hooks/          useScrollReveal, useCountUp
+  services/       emailService (contact + application submission)
+  styles/         tokens.css, base.css, animations.css, legal.css
+  utils/          formatDate
+```
 
-### 8. Healthcare & Pharma
-- **Oakwell Healthcare**: Integrated healthcare group operating 12 multi-specialty hospitals and 80 diagnostic centres across Germany, the UK, and South India.
-- **Greenford Pharmaceuticals**: Generic and specialty pharmaceutical manufacturer with FDA, EMA, and WHO-GMP certified production facilities, supplying 45 markets globally.
+**Content vs. chrome.** `src/context/translations.js` holds navigation, footer, form labels
+and page headings. Everything long-form — news, insights, FAQs, jobs, sector copy — lives in
+`src/data/*` as `{ en, de }` objects, so the file stays readable. Both languages are required;
+the footer exposes a DE/EN switch and the choice persists in `localStorage`.
 
-### 9. Logistics & Supply Chain
-- **PrimeRoute Logistics**: Integrated freight and third-party logistics provider operating 22 distribution centres across Europe, with dedicated cold-chain and last-mile capabilities.
-- **GlobalLink Supply Chain**: Digital-first supply chain visibility and orchestration platform connecting manufacturers, freight carriers, and retailers across 30 countries.
+## Design system
 
-### 10. Agriculture & Food
-- **Greenfield Agri**: Precision agriculture company leveraging satellite imagery, AI crop analytics, and sustainable inputs to maximise yield for 850,000+ hectares under management.
-- **Harvest Hill Foods**: Organic food processing and consumer brand portfolio spanning specialty grains, plant-based proteins, and premium packaged foods for European retail.
+Tokens are in `src/styles/tokens.css`. The palette is burgundy (`--burgundy-900` `#24070a`)
+with a coral accent (`--coral-500` `#f24838`) on white. Three typefaces do distinct jobs:
 
-### 11. Industrial & Engineering
-- **Ironclad Engineering**: Heavy engineering and precision manufacturing group producing structural steel, industrial machinery, and custom fabrication for energy and construction sectors.
-- **Stonebridge Industries**: Specialised process engineering and modular plant construction firm serving oil & gas, chemical, and renewable energy infrastructure globally.
-- **Stonecraft Interiors**: Premium commercial interiors and fit-out company delivering award-winning workplace, hospitality, and retail environments across three continents.
+- **Newsreader** (`--font-serif`) — headlines and editorial body copy
+- **Inter** (`--font-sans`) — UI, navigation, labels
+- **JetBrains Mono** (`--font-mono`) — technical specs, eyebrows, dates
 
-### 12. Media & Entertainment
-- **Northstar Entertainment**: Pan-European content production and distribution studio specialising in premium drama, documentary, and live event programming across OTT platforms.
-- **Silverline Studios**: Multilingual digital content studio producing high-volume entertainment, branded content, and gaming experiences for South Asian and global audiences.
+Shared primitives live in `base.css`: `.shell` / `.shell-wide` / `.shell-narrow` for width,
+`.eyebrow`, `.display`, `.title`, `.lede` for type, and `.btn`, `.chip`, `.arrow-link`,
+`.section-head` for components. Prefer these over new one-off rules.
 
+Scroll reveals are opt-in: add `.reveal` (plus `data-delay="1..8"`) to an element inside a
+component that calls `useScrollReveal()`. All motion is disabled under
+`prefers-reduced-motion`.
 
-## Global Presence & Locations
+## Email
 
-Zebrold IHL has a vast global footprint, with strategic hubs and operations spread across key regions:
+`src/services/emailService.js` posts the contact and application forms through EmailJS and
+falls back to a local log when unconfigured. Set these to enable real delivery:
 
-**Europe**
-- **Germany**: Frankfurt (Global Headquarters), Berlin (Technology & Innovation), Munich (Industry & Engineering), Hamburg (Logistics Hub), Düsseldorf (Healthcare Division), Dortmund (Industrial Operations), Essen (Heavy Engineering), Leipzig (Agriculture & Agri-tech), Dresden (Semiconductor Manufacturing), Stuttgart (Automotive HQ)
-- **United Kingdom**: London (EMEA Operations)
-- **France**: Paris (Western Europe Office)
-- **Netherlands**: Amsterdam (EV Charging Operations)
-- **Ireland**: Dublin (Finance & Tax Office)
-- **Belgium**: Brussels (EU Regulatory Affairs)
-- **Switzerland**: Zurich (Asset Management)
-- **Austria**: Vienna (DACH Operations)
-- **Poland**: Warsaw (Eastern Europe Office)
-- **Czech Republic**: Prague (Industrial Manufacturing)
-- **Sweden**: Stockholm (Nordics Battery Division)
-- **Denmark**: Copenhagen (Clean Energy Hub)
-- **UAE**: Dubai (Middle East & Africa HQ)
+```
+VITE_EMAILJS_SERVICE_ID
+VITE_EMAILJS_TEMPLATE_CONTACT
+VITE_EMAILJS_PUBLIC_KEY
+```
 
-**India**
-- **Hyderabad**: Tech Park & R&D
+Per-mailbox overrides (`..._NOREPLY`, `..._TALENT`, `..._INFO`) are supported — see
+`MAILBOX_CONFIG` in that file.
 
-**Australia**
-- **Sydney**: Australia Pacific HQ
-- **Melbourne**: Finance & Education
-- **Brisbane**: Agriculture & Logistics
+## Images
 
-## Contact Information
-- **Headquarters**: Bockenheimer Landstrasse 17-19, 60325 Frankfurt am Main, Germany
-- **Phone**: +49 69 2100 4800
-- **Email**: info@zebrold.de
-- **Website**: [www.zebrold.de](https://www.zebrold.de/)
+All imagery is imported from `src/assets/` so Vite fingerprints it; nothing is hotlinked.
+Several PNGs are around 1 MB and would benefit from being converted to WebP/AVIF and
+resized to their display dimensions. Unused assets from the previous site remain in
+`src/assets/` but are not imported, so they are not bundled.
+
+## Contact
+
+Bockenheimer Landstrasse 17-19, 60325 Frankfurt am Main, Germany · info@zebrold.de

@@ -1,213 +1,274 @@
+/**
+ * UI chrome strings (navigation, footer, shared controls, page heroes).
+ *
+ * Long-form editorial copy lives in `src/data/*` as { en, de } pairs so this
+ * file stays readable — see data/solutions.js, data/news.js, data/sectorPages.js.
+ */
 export const translations = {
-  de: {
-    // Navigation
-    nav_business: "Sektoren",
-    nav_portfolio: "Portfolio",
-    nav_about: "Über uns",
-    nav_news: "Aktuelles",
-    nav_offices: "Büros",
-    nav_contact: "Kontakt",
+  en: {
+    /* ── Navigation ── */
+    nav_about: 'About Us',
+    nav_newsroom: 'Newsroom',
+    nav_careers: 'Careers',
+    nav_menu: 'Menu',
+    nav_close: 'Close',
+    skip_to_content: 'Skip to content',
 
-    // TopBar
-    investor_portal: "Investorenportal",
-    fraud_alert: "Sicherheitshinweis",
-    contact_us: "Kontaktieren Sie uns",
+    /* ── Footer ── */
+    footer_tagline:
+      'We partner with forward-thinking organisations to build value that inspires, performs, and endures.',
+    footer_company: 'Company',
+    footer_sectors: 'Sectors',
+    footer_resources: 'Resources',
+    footer_hq: 'Global Headquarters',
+    footer_follow: 'Follow Us',
+    footer_contact: 'Contact',
+    footer_rolling_stock: 'Rolling Stock',
+    footer_signalling: 'Signalling',
+    footer_components: 'Components',
+    footer_infrastructure: 'Infrastructure',
+    footer_digital_rail: 'Digital rail',
+    footer_services: 'Services',
+    footer_aerospace: 'Aerospace',
+    footer_automotive: 'Automotive',
+    footer_insights: 'Insights',
+    footer_faqs: 'FAQs',
+    footer_rights: 'All rights reserved.',
+    footer_legal: 'Legal Notice',
+    footer_privacy: 'Privacy Policy',
+    lang_switch_label: 'Change language',
 
-    // Hero
-    hero_title: "WIR BAUEN INDUSTRIEN, DIE DIE ZUKUNFT DER GLOBALEN INFRASTRUKTUR DEFINIEREN.",
-    hero_desc: "Zebrold International Holdings Limited (Zebrold IHL) verbindet sechsundzwanzig marktführende Unternehmen in zwölf Sektoren und beschleunigt den industriellen Wandel durch deutsche Ingenieurspräzision und nachhaltige Innovation.",
-    hero_badge_1: "Deutsches Konglomerat",
-    hero_badge_2: "für globale Infrastruktur",
-    hero_cta: "Portfolio erkunden",
+    /* ── Home ── */
+    home_made_in: 'MΛDE IN DEUTSCHLΛND',
+    home_designed_in: 'DESIGNED IN INDIΛ',
+    home_future_title: 'Engineering the Future of Rail Mobility',
+    home_future_lead:
+      'Zebrold International Holdings Limited (Zebrold IHL) is a German rolling stock engineering and technology company headquartered in Frankfurt am Main, Germany, dedicated to advancing the future of rail transportation through innovation, engineering excellence, and intelligent railway solutions.',
+    home_future_p1:
+      'The company began its root operations in 2024 in Bangalore, India, establishing the foundation for its railway technology vision and engineering development. From these early beginnings, Zebrold IHL has continued to shape its ambitions around the design, development, and manufacturing of advanced rolling stock and the technologies that support modern rail transportation.',
+    home_future_p2:
+      'Today, Scolome represents our dedicated railway initiative, bringing together a comprehensive vision for rolling stock engineering, railway signalling, electrification, digital rail, infrastructure, components, services, and turnkey solutions. Our manufacturing vision is centred in Germany, bringing together German engineering standards, precision manufacturing, and an international approach to railway technology development.',
+    home_pioneering_title: 'Pioneering Ultra Speed Intelligent Rolling Stocks',
+    home_pioneering_p1:
+      "Scolome's journey is rooted in Bangalore, India, where Zebrold IHL began its initial operations in 2024. This foundation represents the beginning of our engineering and technology journey, connecting India's growing technical talent and innovation ecosystem with our long-term ambition to develop internationally focused railway solutions.",
+    home_pioneering_p2:
+      'With Germany as our headquarters and manufacturing base, we are building a cross-border engineering vision that brings together design, technical development, manufacturing, and railway system capabilities. Our approach is centred on developing railway technologies that combine thoughtful engineering, precision, quality, and a forward-looking understanding of the transportation industry.',
+    home_pioneering_p3:
+      'Our development journey reflects a commitment to building railway capabilities across multiple interconnected disciplines. From the design of railway coaches and rolling stock components to intelligent signalling and electrification systems, Scolome aims to create a foundation for a broader railway technology ecosystem.',
+    home_quote:
+      '“Rolling stock is the future of transportation, and Scolome is redefining the future of mobility through innovation and engineering excellence.”',
+    home_solutions_title: 'A complete range of mobility solutions',
+    home_highlights_title: 'Highlights',
+    home_all_news: 'All news and press releases',
+    home_events_title: 'Upcoming events',
+    home_all_events: 'See all events',
+    home_society_title: 'Fostering a connected, resilient, and inclusive society',
+    home_commitments: 'Our commitments',
+    home_read_more: 'Read more',
+    home_discover: 'Discover',
 
-    // Expertise
-    exp_caption: "Wie wir Werte schaffen",
-    exp_title: "Architekten der industriellen Transformation.",
-    exp_sub: "Unsere Arbeit stützt sich auf drei Säulen: industrielle Exzellenz, strategischer Kapitaleinsatz und globale operative Präsenz. Zusammen sorgen sie für dauerhafte Wettbewerbsvorteile.",
-    exp_1_caption: "Industrielle Exzellenz",
-    exp_1_title: "Ingenieurspräzision auf institutioneller Ebene",
-    exp_1_body: "Wir entwerfen, bauen und betreiben Infrastruktur in zwölf Sektoren — von der Halbleiterfertigung bis zu sauberen Energienetzen. Unsere Tochtergesellschaften liefern industrielle Lösungen mit deutscher Ingenieurspräzision und verbinden fortschrittliche Fertigungskapazitäten mit nachhaltigen Praktiken auf globalen Märkten.",
-    exp_1_cta: "Sektoren erkunden",
-    exp_2_caption: "Gesundheitswesen & Bildung",
-    exp_2_title: "Innovation im Gesundheitswesen und in der Bildung",
-    exp_2_body: "Wir investieren in die Zukunft menschlichen Wohlergehens und Wissensaufbaus. Durch spezialisierte Tochtergesellschaften verbinden wir lebensrettende Medizintechnik mit moderner Bildungs- und Plattformtechnologie für globale Märkte.",
-    exp_2_cta: "Initiativen entdecken",
-    exp_3_caption: "Globale Präsenz",
-    exp_3_title: "Lokale Expertise, globale Infrastruktur",
-    exp_3_body: "Mit Produktionsstätten in München und Dresden, Vertriebszentren in 22 europäischen Märkten und Standorten auf drei Kontinenten kombinieren wir tiefes lokales Wissen mit Ausführung im institutionellen Maßstab.",
-    exp_3_cta: "Unsere Büros",
+    /* ── Carousel controls ── */
+    carousel_prev: 'Previous slide',
+    carousel_next: 'Next slide',
+    carousel_slide: 'Slide',
 
-    // Katalysator & Domains
-    kat_caption: "Unser Portfolio & Sektoren",
-    kat_title: "Wenn Ingenieurskunst zum Katalysator wird, und nicht nur zum Prozess",
-    kat_desc: "Leuchtturmprojekte, die zeigen, wie Präzisionstechnik und strategisches Kapital eine dauerhafte industrielle Transformation bewirken.",
-    kat_explore_all: "Alle 12 Sektoren im Detail erkunden",
+    /* ── About ── */
+    about_title: 'About Us',
+    about_lede:
+      'Zebrold Scolome builds the rolling stock that moves continents — engineered in Germany, intelligent by design in India.',
 
-    // Stats
-    stats_title: "Die Zahlen sprechen für uns",
-    stat_1_label: "Umsatz der Tochtergesellschaften",
-    stat_2_label: "Unternehmen in unserem Portfolio",
-    stat_3_label: "Wachstum gegenüber dem Vorjahr in Schlüsselsektoren",
-    stat_cta_title: "Erzählen Sie uns von Ihrem Projekt",
-    stat_cta_btn: "Kontakt",
+    /* ── Newsroom ── */
+    news_title: 'Newsroom',
+    news_lede: 'Press releases, programme milestones and technical bulletins from across the Scolome fleet.',
+    news_all: 'All',
+    news_empty: 'No releases match this filter.',
+    news_read: 'Read release',
 
-    // News Section
-    news_tab: "Aktuelles",
-    news_tag_press: "PRESSEMITTEILUNG",
-    news_title_1: "Northvolt Power bringt Netzspeicherbatterie der nächsten Generation auf den Markt",
-    news_desc_1: "Bereitstellung nachhaltiger Lithium-Ionen-Lösungen für Versorgungs- und Netzspeicher",
-    news_all: "Alle Neuigkeiten & Ankündigungen ansehen →",
+    /* ── Careers ── */
+    careers_title: 'Careers',
+    careers_lede:
+      'Build trains that carry a million people a day. Engineering, software and operations roles across Kassel, Frankfurt, Bengaluru and Hyderabad.',
+    careers_search: 'Search roles by title or keyword…',
+    careers_all_depts: 'All disciplines',
+    careers_all_locs: 'All locations',
+    careers_open_roles: 'open roles',
+    careers_apply: 'Apply now',
+    careers_no_match: 'No roles match your filters. Try broadening the search.',
+    careers_form_title: 'Submit your application',
+    careers_name: 'Full name',
+    careers_email: 'Email address',
+    careers_phone: 'Phone number',
+    careers_link: 'LinkedIn / portfolio URL',
+    careers_note: 'Cover note',
+    careers_submit: 'Send application',
+    careers_success: 'Thank you — your application has been received.',
 
-    // CTA Bottom
-    cta_bottom_caption: "Bereit für den nächsten Schritt?",
-    cta_bottom_h3: "Ihre Branche verdient eine Infrastruktur, die für die Ewigkeit gebaut ist.",
-    cta_bottom_big: "Lassen Sie uns bauen?",
-    cta_bottom_desc: "Ein offenes Gespräch, um Ihre Bedürfnisse, Einschränkungen und Ziele zu verstehen — kein Druck, nur Ehrlichkeit.",
-    cta_bottom_btn: "Kontakt",
-    cta_bottom_fine: "Kostenlose Erstberatung, keine Verpflichtung",
+    /* ── Contact ── */
+    contact_title: 'Contact',
+    contact_lede: 'Programme enquiries, procurement, media and general correspondence.',
+    contact_name: 'Full name',
+    contact_email: 'Email address',
+    contact_company: 'Organisation',
+    contact_subject: 'Subject',
+    contact_message: 'Message',
+    contact_send: 'Send message',
+    contact_sending: 'Sending…',
+    contact_success: 'Thank you — your message has been sent.',
+    contact_error: 'Something went wrong. Please email info@zebrold.de directly.',
+    contact_required: 'Please complete all required fields.',
 
-    // FAQ
-    faq_caption: "Häufig gestellte Fragen",
-    faq_h2: "Ihre Fragen, unsere Antworten, ohne Umwege",
-    faq_desc: "Wir haben die Fragen gesammelt, die Partner, Investoren und Mitarbeiter am häufigsten stellen — mit direkten, ehrlichen Antworten.",
-    faq_cta_text: "Haben Sie die Antwort auf Ihre Frage nicht gefunden oder möchten Sie Kontakt aufnehmen?",
-    faq_cta_btn: "Kontaktieren Sie uns",
+    /* ── Insights ── */
+    insights_title: 'Insights',
+    insights_lede:
+      'Engineering papers, standards commentary and long-form analysis from the Scolome technical office.',
 
-    // Footer
-    nav_careers: "Karriere",
+    /* ── FAQs ── */
+    faqs_title: 'Frequently asked questions',
+    faqs_lede: 'Procurement, certification, supply chain and careers — answered directly.',
+    faqs_cta: 'Still need an answer?',
+    faqs_cta_btn: 'Contact us',
 
-    // Careers Page
-    careers_hero_title: "GESTALTEN SIE DIE ZUKUNFT DER GLOBALEN INFRASTRUKTUR",
-    careers_hero_subtitle: "Werden Sie Teil der Zebrold Group. Wir verbinden Ingenieurskunst, strategisches Kapital und erstklassige Talente in 26 Konzernunternehmen.",
-    careers_hero_badge: "Karriere bei Zebrold",
-    careers_search_placeholder: "Stellentitel oder Stichwort suchen...",
-    careers_all_departments: "Alle Abteilungen",
-    careers_all_locations: "Alle Standorte",
-    careers_apply_now: "Jetzt bewerben",
-    careers_view_details: "Details anzeigen",
-    careers_close: "Schließen",
-    careers_modal_title: "Bewerbung einreichen",
-    careers_full_name: "Vollständiger Name",
-    careers_email: "E-Mail-Adresse",
-    careers_phone: "Telefonnummer",
-    careers_linkedin: "LinkedIn / Portfolio URL",
-    careers_cover_note: "Anschreiben / Kurze Vorstellung",
-    careers_upload_cv: "Lebenslauf (CV) hochladen",
-    careers_upload_hint: "PDF, DOC, DOCX bis zu 10MB per Drag & Drop ziehen oder klicken",
-    careers_submit_app: "Bewerbung absenden",
-    careers_success_msg: "Vielen Dank! Ihre Bewerbung wurde erfolgreich übermittelt.",
+    /* ── Legal ── */
+    legal_title: 'Legal Notice',
+    privacy_title: 'Privacy Policy',
+    legal_updated: 'Last updated',
 
-    // Footer
-    footer_rights: "Alle Rechte vorbehalten.",
-    footer_privacy: "Datenschutz",
-    footer_imprint: "Impressum",
-    footer_terms: "Nutzungsbedingungen",
-    footer_hq: "Hauptsitz",
-    footer_address: "Bockenheimer Landstrasse 17-19, 60325 Frankfurt am Main, Germany",
+    /* ── Misc ── */
+    back_home: 'Back to home',
+    explore: 'Explore',
   },
 
-  en: {
-    // Navigation
-    nav_business: "Sectors",
-    nav_portfolio: "Portfolio",
-    nav_about: "About Us",
-    nav_news: "Newsroom",
-    nav_offices: "Offices",
-    nav_careers: "Careers",
-    nav_contact: "Contact",
+  de: {
+    /* ── Navigation ── */
+    nav_about: 'Über uns',
+    nav_newsroom: 'Newsroom',
+    nav_careers: 'Karriere',
+    nav_menu: 'Menü',
+    nav_close: 'Schließen',
+    skip_to_content: 'Zum Inhalt springen',
 
-    // TopBar
-    investor_portal: "Investor Portal",
-    fraud_alert: "Fraud Alert",
-    contact_us: "Contact Us",
+    /* ── Footer ── */
+    footer_tagline:
+      'Wir arbeiten mit zukunftsorientierten Organisationen zusammen, um Werte zu schaffen, die inspirieren, leisten und Bestand haben.',
+    footer_company: 'Unternehmen',
+    footer_sectors: 'Sektoren',
+    footer_resources: 'Ressourcen',
+    footer_hq: 'Globaler Hauptsitz',
+    footer_follow: 'Folgen Sie uns',
+    footer_contact: 'Kontakt',
+    footer_rolling_stock: 'Schienenfahrzeuge',
+    footer_signalling: 'Signaltechnik',
+    footer_components: 'Komponenten',
+    footer_infrastructure: 'Infrastruktur',
+    footer_digital_rail: 'Digitale Schiene',
+    footer_services: 'Service',
+    footer_aerospace: 'Luft- und Raumfahrt',
+    footer_automotive: 'Automobil',
+    footer_insights: 'Einblicke',
+    footer_faqs: 'FAQ',
+    footer_rights: 'Alle Rechte vorbehalten.',
+    footer_legal: 'Impressum',
+    footer_privacy: 'Datenschutz',
+    lang_switch_label: 'Sprache wechseln',
 
-    // Hero
-    hero_title: "WE BUILD INDUSTRIES THAT DEFINE THE FUTURE OF GLOBAL INFRASTRUCTURE.",
-    hero_desc: "Zebrold International Holdings Limited (Zebrold IHL) unites twenty-six market-leading companies across twelve strategic sectors, accelerating industrial transformation through precision engineering and sustainable innovation.",
-    hero_badge_1: "German Conglomerate",
-    hero_badge_2: "for Global Infrastructure",
-    hero_cta: "Explore Portfolio",
+    /* ── Home ── */
+    home_made_in: 'MΛDE IN DEUTSCHLΛND',
+    home_designed_in: 'DESIGNED IN INDIΛ',
+    home_future_title: 'Die Zukunft der Schienenmobilität gestalten',
+    home_future_lead:
+      'Zebrold International Holdings Limited (Zebrold IHL) ist ein deutsches Schienenfahrzeug- und Technologieunternehmen mit Hauptsitz in Frankfurt am Main, das sich der Weiterentwicklung des Schienenverkehrs durch Innovation, ingenieurtechnische Exzellenz und intelligente Bahntechnik widmet.',
+    home_future_p1:
+      'Das Unternehmen nahm seine Wurzeln 2024 in Bangalore, Indien, auf und legte damit das Fundament für seine Vision der Bahntechnologie und Ingenieurentwicklung. Aus diesen ersten Anfängen heraus hat Zebrold IHL seine Ambitionen rund um Design, Entwicklung und Fertigung moderner Schienenfahrzeuge und deren unterstützende Technologien kontinuierlich geformt.',
+    home_future_p2:
+      'Heute repräsentiert Scolome unsere dedizierte Eisenbahninitiative, die eine umfassende Vision für Schienenfahrzeugtechnik, Signaltechnik, Elektrifizierung, digitale Schiene, Infrastruktur, Komponenten, Services und schlüsselfertige Lösungen vereint. Unsere Produktionsvision ist in Deutschland verankert und vereint deutsche Ingenieurstandards, Präzisionsfertigung und einen internationalen Entwicklungsansatz.',
+    home_pioneering_title: 'Wegweisende intelligente Hochgeschwindigkeits-Schienenfahrzeuge',
+    home_pioneering_p1:
+      'Die Reise von Scolome hat ihre Wurzeln in Bangalore, Indien, wo Zebrold IHL 2024 seine ersten Aktivitäten aufnahm. Dieses Fundament markiert den Beginn unserer Ingenieur- und Technologiereise, die Indiens wachsendes Technikpotenzial und Innovationsökosystem mit unserer langfristigen Vision internationaler Bahntechnologie verbindet.',
+    home_pioneering_p2:
+      'Mit Deutschland als Hauptsitz und Produktionsbasis bauen wir eine grenzüberschreitende Ingenieurvision auf, die Design, technische Entwicklung, Fertigung und Eisenbahnsystemkompetenz bündelt. Unser Ansatz basiert auf der Entwicklung von Bahntechnologien, die durchdachtes Engineering, Präzision, Qualität und ein zukunftsorientiertes Verständnis der Transportbranche vereinen.',
+    home_pioneering_p3:
+      'Unsere Entwicklungsreise spiegelt das Engagement wider, Eisenbahnfähigkeiten über mehrere vernetzte Disziplinen hinweg aufzubauen. Von der Konstruktion von Waggons und Komponenten bis hin zu intelligenten Signal- und Elektrifizierungssystemen schafft Scolome die Basis für ein umfassendes Ökosystem der Bahntechnologie.',
+    home_quote:
+      '„Schienenfahrzeuge sind die Zukunft des Transports, und Scolome definiert die Zukunft der Mobilität durch Innovation und ingenieurtechnische Exzellenz neu.“',
+    home_solutions_title: 'Ein komplettes Spektrum an Mobilitätslösungen',
+    home_highlights_title: 'Highlights',
+    home_all_news: 'Alle Nachrichten und Pressemitteilungen',
+    home_events_title: 'Kommende Veranstaltungen',
+    home_all_events: 'Alle Veranstaltungen',
+    home_society_title: 'Für eine vernetzte, widerstandsfähige und inklusive Gesellschaft',
+    home_commitments: 'Unsere Verpflichtungen',
+    home_read_more: 'Mehr erfahren',
+    home_discover: 'Entdecken',
 
-    // Expertise
-    exp_caption: "How We Create Value",
-    exp_title: "Architects of Industrial Transformation.",
-    exp_sub: "Our work rests on three pillars: industrial excellence, strategic capital deployment, and global operational presence. Together, they create enduring competitive advantage.",
-    exp_1_caption: "Industrial Excellence",
-    exp_1_title: "Institutional-Grade Precision Engineering",
-    exp_1_body: "We design, build, and operate infrastructure across twelve sectors — from semiconductor manufacturing to clean energy grids. Our portfolio companies deliver industrial solutions with German precision.",
-    exp_1_cta: "Explore Sectors",
-    exp_2_caption: "Healthcare & Education",
-    exp_2_title: "Innovation in Healthcare & Education",
-    exp_2_body: "We invest in the future of human well-being and knowledge creation. Through specialized subsidiaries, we bridge life-saving medical technology with modern educational platforms.",
-    exp_2_cta: "Discover Initiatives",
-    exp_3_caption: "Global Presence",
-    exp_3_title: "Local Expertise, Global Infrastructure",
-    exp_3_body: "With production facilities in Munich and Dresden, distribution centers across 22 European markets, and offices on three continents, we combine deep local knowledge with institutional execution.",
-    exp_3_cta: "Our Offices",
+    /* ── Carousel controls ── */
+    carousel_prev: 'Vorheriges Bild',
+    carousel_next: 'Nächstes Bild',
+    carousel_slide: 'Folie',
 
-    // Katalysator & Domains
-    kat_caption: "Our Portfolio & Sectors",
-    kat_title: "When Engineering Science Becomes a Catalyst, Not Just a Process",
-    kat_desc: "Lighthouse projects showing how precision engineering and strategic capital drive lasting industrial transformation.",
-    kat_explore_all: "Explore All 12 Sectors in Detail",
+    /* ── About ── */
+    about_title: 'Über uns',
+    about_lede:
+      'Zebrold Scolome baut die Schienenfahrzeuge, die Kontinente bewegen — konstruiert in Deutschland, intelligent gestaltet in Indien.',
 
-    // Stats
-    stats_title: "The Numbers Speak for Us",
-    stat_1_label: "Subsidiary Revenue",
-    stat_2_label: "Companies in Our Portfolio",
-    stat_3_label: "Year-over-Year Growth in Key Sectors",
-    stat_cta_title: "Tell Us About Your Project",
-    stat_cta_btn: "Contact",
+    /* ── Newsroom ── */
+    news_title: 'Newsroom',
+    news_lede:
+      'Pressemitteilungen, Programm-Meilensteine und technische Bulletins aus der gesamten Scolome-Flotte.',
+    news_all: 'Alle',
+    news_empty: 'Keine Meldungen entsprechen diesem Filter.',
+    news_read: 'Meldung lesen',
 
-    // News Section
-    news_tab: "Latest News",
-    news_tag_press: "PRESS RELEASE",
-    news_title_1: "Northvolt Power Launches Next-Generation Grid Storage Battery",
-    news_desc_1: "Delivering sustainable lithium-ion solutions for utility and grid storage applications",
-    news_all: "View All News & Announcements →",
+    /* ── Careers ── */
+    careers_title: 'Karriere',
+    careers_lede:
+      'Bauen Sie Züge, die täglich eine Million Menschen befördern. Positionen in Technik, Software und Betrieb in Kassel, Frankfurt, Bengaluru und Hyderabad.',
+    careers_search: 'Stellen nach Titel oder Stichwort suchen…',
+    careers_all_depts: 'Alle Fachbereiche',
+    careers_all_locs: 'Alle Standorte',
+    careers_open_roles: 'offene Stellen',
+    careers_apply: 'Jetzt bewerben',
+    careers_no_match: 'Keine Stellen entsprechen Ihren Filtern. Erweitern Sie die Suche.',
+    careers_form_title: 'Bewerbung einreichen',
+    careers_name: 'Vollständiger Name',
+    careers_email: 'E-Mail-Adresse',
+    careers_phone: 'Telefonnummer',
+    careers_link: 'LinkedIn / Portfolio-URL',
+    careers_note: 'Anschreiben',
+    careers_submit: 'Bewerbung senden',
+    careers_success: 'Vielen Dank — Ihre Bewerbung ist eingegangen.',
 
-    // CTA Bottom
-    cta_bottom_caption: "Ready for the Next Step?",
-    cta_bottom_h3: "Your Industry Deserves Infrastructure Built to Endure.",
-    cta_bottom_big: "Shall We Build?",
-    cta_bottom_desc: "An open conversation to understand your needs, constraints, and goals — no pressure, just honesty.",
-    cta_bottom_btn: "Contact",
-    cta_bottom_fine: "Free initial consultation, zero obligation",
+    /* ── Contact ── */
+    contact_title: 'Kontakt',
+    contact_lede: 'Programmanfragen, Beschaffung, Presse und allgemeine Korrespondenz.',
+    contact_name: 'Vollständiger Name',
+    contact_email: 'E-Mail-Adresse',
+    contact_company: 'Organisation',
+    contact_subject: 'Betreff',
+    contact_message: 'Nachricht',
+    contact_send: 'Nachricht senden',
+    contact_sending: 'Wird gesendet…',
+    contact_success: 'Vielen Dank — Ihre Nachricht wurde gesendet.',
+    contact_error: 'Es ist ein Fehler aufgetreten. Bitte schreiben Sie direkt an info@zebrold.de.',
+    contact_required: 'Bitte füllen Sie alle Pflichtfelder aus.',
 
-    // FAQ
-    faq_caption: "Frequently Asked Questions",
-    faq_h2: "Your Questions, Our Answers, Directly",
-    faq_desc: "We gathered the questions partners, investors, and talent ask most often — with straightforward answers.",
-    faq_cta_text: "Didn't find the answer to your question or want to get in touch?",
-    faq_cta_btn: "Contact Us",
+    /* ── Insights ── */
+    insights_title: 'Einblicke',
+    insights_lede:
+      'Fachbeiträge, Normenkommentare und ausführliche Analysen aus dem technischen Büro von Scolome.',
 
-    // Careers Page
-    careers_hero_title: "BUILD THE FUTURE OF GLOBAL INFRASTRUCTURE",
-    careers_hero_subtitle: "Join Zebrold Group. We combine German engineering precision, strategic capital, and exceptional talent across 26 portfolio companies.",
-    careers_hero_badge: "Careers at Zebrold",
-    careers_search_placeholder: "Search position title or keyword...",
-    careers_all_departments: "All Departments",
-    careers_all_locations: "All Locations",
-    careers_apply_now: "Apply Now",
-    careers_view_details: "View Details",
-    careers_close: "Close",
-    careers_modal_title: "Submit Your Application",
-    careers_full_name: "Full Name",
-    careers_email: "Email Address",
-    careers_phone: "Phone Number",
-    careers_linkedin: "LinkedIn / Portfolio URL",
-    careers_cover_note: "Cover Note / Introduction",
-    careers_upload_cv: "Upload CV / Resume",
-    careers_upload_hint: "Drag & drop or click to upload PDF, DOC, DOCX up to 10MB",
-    careers_submit_app: "Submit Application",
-    careers_success_msg: "Thank you! Your application has been successfully submitted.",
+    /* ── FAQs ── */
+    faqs_title: 'Häufig gestellte Fragen',
+    faqs_lede: 'Beschaffung, Zertifizierung, Lieferkette und Karriere — direkt beantwortet.',
+    faqs_cta: 'Noch Fragen offen?',
+    faqs_cta_btn: 'Kontaktieren Sie uns',
 
-    // Footer
-    footer_rights: "All rights reserved.",
-    footer_privacy: "Privacy Policy",
-    footer_imprint: "Legal Notice",
-    footer_terms: "Terms of Use",
-    footer_hq: "Global Headquarters",
-    footer_address: "Bockenheimer Landstrasse 17-19, 60325 Frankfurt am Main, Germany",
-  }
+    /* ── Legal ── */
+    legal_title: 'Impressum',
+    privacy_title: 'Datenschutzerklärung',
+    legal_updated: 'Zuletzt aktualisiert',
+
+    /* ── Misc ── */
+    back_home: 'Zurück zur Startseite',
+    explore: 'Entdecken',
+  },
 };

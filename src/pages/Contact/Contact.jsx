@@ -1,211 +1,153 @@
 import { useState } from 'react';
+import { useLanguage } from '../../context/LanguageContext';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
+import SEO from '../../components/SEO/SEO';
+import PageHero from '../../components/PageHero/PageHero';
 import Toast from '../../components/Toast/Toast';
 import { sendContactEmail } from '../../services/emailService';
-import SEO from '../../components/SEO/SEO';
+import hqImg from '../../assets/company_hq.jpg';
 import './Contact.css';
 
-const subjects = [
-  'Investor Relations',
-  'Partnership Enquiry',
-  'Media & Press',
-  'Career Opportunity',
-  'General Enquiry',
-];
+const EMPTY = { name: '', email: '', company: '', subject: '', message: '' };
 
-const offices = [
-  { city: 'Frankfurt', country: 'Germany', role: 'Global Headquarters', phone: '+49 69 2100 4800', email: 'info@zebrold.de' },
-  { city: 'London', country: 'United Kingdom', role: 'EMEA Operations', phone: '+44 20 3892 4400', email: 'emea@zebrold.de' },
-  { city: 'Dubai', country: 'UAE', role: 'Middle East & Africa HQ', phone: '+971 4 305 8800', email: 'mea@zebrold.de' },
-  { city: 'Hyderabad', country: 'India', role: 'Tech Park & R&D', phone: '+91 40 6671 0000', email: 'india@zebrold.de' },
-  { city: 'Sydney', country: 'Australia', role: 'Australia Pacific HQ', phone: '+61 2 8214 7700', email: 'apac@zebrold.de' },
+const CHANNELS = [
+  {
+    key: 'general',
+    title: { en: 'General enquiries', de: 'Allgemeine Anfragen' },
+    email: 'info@zebrold.de',
+    body: {
+      en: 'Corporate correspondence, partnerships and press.',
+      de: 'Unternehmenskorrespondenz, Partnerschaften und Presse.',
+    },
+  },
+  {
+    key: 'talent',
+    title: { en: 'Talent acquisition', de: 'Personalgewinnung' },
+    email: 'talent.acquisition@zebrold.de',
+    body: {
+      en: 'Applications, interview scheduling and candidate questions.',
+      de: 'Bewerbungen, Terminplanung für Gespräche und Fragen von Kandidatinnen und Kandidaten.',
+    },
+  },
 ];
 
 export default function Contact() {
-  const pageRef = useScrollReveal();
+  const { t, lang } = useLanguage();
+  const revealRef = useScrollReveal();
+  const [form, setForm] = useState(EMPTY);
+  const [sending, setSending] = useState(false);
   const [toast, setToast] = useState(null);
-  const [form, setForm] = useState({ name: '', company: '', email: '', subject: '', message: '' });
 
-  const handleSubmit = async (e) => {
+  const update = (field) => (e) => setForm({ ...form, [field]: e.target.value });
+
+  const submit = async (e) => {
     e.preventDefault();
-    setToast({ message: 'Your enquiry has been sent. We will respond within 2 business days.', type: 'success' });
-    sendContactEmail(form);
-    setForm({ name: '', company: '', email: '', subject: '', message: '' });
-  };
+    if (!form.name.trim() || !form.email.trim() || !form.message.trim()) {
+      setToast({ type: 'error', message: t('contact_required') });
+      return;
+    }
 
-  const handleChange = (e) => setForm(p => ({ ...p, [e.target.name]: e.target.value }));
-
-  const schemaData = {
-    "@context": "https://schema.org",
-    "@type": "ContactPage",
-    "name": "Contact Zebrold International Holdings Limited (Zebrold IHL)",
-    "url": "https://www.zebrold.de/contact",
-    "mainEntity": {
-      "@type": "Corporation",
-      "name": "Zebrold International Holdings Limited",
-      "alternateName": ["Zebrold IHL", "Zebrold Group"],
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Bockenheimer Landstrasse 17-19",
-        "addressLocality": "Frankfurt am Main",
-        "postalCode": "60325",
-        "addressCountry": "DE"
-      },
-      "telephone": "+49 69 2100 4800",
-      "email": "info@zebrold.de"
+    setSending(true);
+    try {
+      await sendContactEmail(form);
+      setToast({ type: 'success', message: t('contact_success') });
+      setForm(EMPTY);
+    } catch {
+      setToast({ type: 'error', message: t('contact_error') });
+    } finally {
+      setSending(false);
     }
   };
 
   return (
-    <div ref={pageRef} className="contact-page">
-      <SEO 
-        title="Contact Us | Zebrold International Holdings Limited (Zebrold IHL)"
-        description="Contact Zebrold International Holdings Limited (Zebrold IHL). Global Headquarters at Bockenheimer Landstrasse 17-19, Frankfurt am Main, Germany."
-        keywords="Contact Zebrold, Zebrold IHL contact, Zebrold International Holdings Limited phone, Frankfurt headquarters email, investor relations"
+    <div ref={revealRef}>
+      <SEO
+        title="Contact | Zebrold Scolome"
+        description="Contact Zebrold Scolome — programme enquiries, procurement, media and general correspondence. Headquarters in Frankfurt am Main."
+        keywords="Zebrold contact, Scolome enquiries, Frankfurt headquarters, rail procurement"
         url="/contact"
-        schemaData={schemaData}
       />
-      {/* Hero */}
-      <section className="page-hero contact-hero" aria-label="Contact hero">
-        <div className="container page-hero-inner">
-          <nav className="breadcrumb" aria-label="Breadcrumb">
-            <a href="/" className="breadcrumb-link">Home</a>
-            <span> / </span>
-            <span aria-current="page">Contact</span>
-          </nav>
-          <h1 className="page-hero-title reveal">Get in Touch</h1>
-          <p className="page-hero-sub reveal" data-delay="1">
-            For investor relations, partnerships, media enquiries, and general matters.
-          </p>
-        </div>
-      </section>
 
-      {/* Form + Info */}
-      <section className="section contact-main" aria-labelledby="contact-form-heading">
-        <div className="container">
-          <div className="contact-grid">
-            {/* Form */}
-            <div className="contact-form-col">
-              <h2 id="contact-form-heading" className="section-title reveal">Send an Enquiry</h2>
-              <div className="divider" />
-              <form className="contact-form reveal" data-delay="1" onSubmit={handleSubmit} noValidate>
-                <div className="form-row">
-                  <div className="form-group">
-                    <label htmlFor="contact-name" className="form-label">Full Name *</label>
-                    <input
-                      id="contact-name"
-                      type="text"
-                      name="name"
-                      className="form-input"
-                      placeholder="Your full name"
-                      value={form.name}
-                      onChange={handleChange}
-                      required
-                      autoComplete="name"
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="contact-company" className="form-label">Company</label>
-                    <input
-                      id="contact-company"
-                      type="text"
-                      name="company"
-                      className="form-input"
-                      placeholder="Your organisation"
-                      value={form.company}
-                      onChange={handleChange}
-                      autoComplete="organization"
-                    />
-                  </div>
-                </div>
-                <div className="form-group">
-                  <label htmlFor="contact-email" className="form-label">Email Address *</label>
-                  <input
-                    id="contact-email"
-                    type="email"
-                    name="email"
-                    className="form-input"
-                    placeholder="your@email.com"
-                    value={form.email}
-                    onChange={handleChange}
-                    required
-                    autoComplete="email"
-                  />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="contact-subject" className="form-label">Subject *</label>
-                  <select
-                    id="contact-subject"
-                    name="subject"
-                    className="form-select"
-                    value={form.subject}
-                    onChange={handleChange}
-                    required
-                  >
-                    <option value="">Select a topic…</option>
-                    {subjects.map(s => <option key={s} value={s}>{s}</option>)}
-                  </select>
-                </div>
-                <div className="form-group">
-                  <label htmlFor="contact-message" className="form-label">Message *</label>
-                  <textarea
-                    id="contact-message"
-                    name="message"
-                    className="form-textarea"
-                    placeholder="How can we help you?"
-                    rows={6}
-                    value={form.message}
-                    onChange={handleChange}
-                    required
-                  />
-                </div>
-                <button type="submit" className="btn btn-primary" id="contact-submit-btn" style={{ alignSelf: 'flex-start' }}>
-                  Send Enquiry →
-                </button>
-              </form>
+      <PageHero eyebrow={t('contact_title')} title={t('contact_title')} lede={t('contact_lede')} />
+
+      <div className="pageBody">
+        <div className="shell ct__layout">
+          {/* ══ Form ══ */}
+          <form className="ct__form" onSubmit={submit}>
+            <div className="ct__row">
+              <label>
+                <span>{t('contact_name')} *</span>
+                <input type="text" required value={form.name} onChange={update('name')} />
+              </label>
+              <label>
+                <span>{t('contact_email')} *</span>
+                <input type="email" required value={form.email} onChange={update('email')} />
+              </label>
             </div>
 
-            {/* Contact info */}
-            <div className="contact-info-col reveal" data-delay="2">
-              <h3 className="contact-info-title">Quick Contacts</h3>
-              <div className="contact-offices">
-                {offices.map(o => (
-                  <div key={o.city} className="contact-office-card">
-                    <div className="contact-office-header">
-                      <span className="contact-office-city">{o.city}</span>
-                      <span className="contact-office-country">{o.country}</span>
-                    </div>
-                    <p className="contact-office-role">{o.role}</p>
-                    <div className="contact-office-links">
-                      <a href={`tel:${o.phone.replace(/\s/g, '')}`} className="contact-office-link">
-                        {o.phone}
-                      </a>
-                      <a href={`mailto:${o.email}`} className="contact-office-link">
-                        {o.email}
-                      </a>
-                    </div>
-                  </div>
-                ))}
+            <div className="ct__row">
+              <label>
+                <span>{t('contact_company')}</span>
+                <input type="text" value={form.company} onChange={update('company')} />
+              </label>
+              <label>
+                <span>{t('contact_subject')}</span>
+                <input type="text" value={form.subject} onChange={update('subject')} />
+              </label>
+            </div>
+
+            <label>
+              <span>{t('contact_message')} *</span>
+              <textarea rows="7" required value={form.message} onChange={update('message')} />
+            </label>
+
+            <button type="submit" className="btn ct__submit" disabled={sending}>
+              {sending ? t('contact_sending') : t('contact_send')}
+            </button>
+          </form>
+
+          {/* ══ Aside ══ */}
+          <aside className="ct__aside">
+            <div className="ct__media zoom-frame">
+              <img
+                src={hqImg}
+                alt={
+                  lang === 'de'
+                    ? 'Hauptsitz von Zebrold in Frankfurt am Main'
+                    : 'Zebrold headquarters in Frankfurt am Main'
+                }
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+
+            <div className="ct__block">
+              <h2 className="ct__blockTitle">{t('footer_hq')}</h2>
+              <address className="ct__address">
+                Zebrold International Holdings Limited
+                <br />
+                Bockenheimer Landstrasse 17-19
+                <br />
+                60325 Frankfurt am Main
+                <br />
+                {lang === 'de' ? 'Deutschland' : 'Germany'}
+              </address>
+            </div>
+
+            {CHANNELS.map((channel) => (
+              <div className="ct__block" key={channel.key}>
+                <h2 className="ct__blockTitle">{channel.title[lang]}</h2>
+                <p className="ct__blockBody">{channel.body[lang]}</p>
+                <a href={`mailto:${channel.email}`} className="ct__mail">
+                  {channel.email}
+                </a>
               </div>
-            </div>
-          </div>
+            ))}
+          </aside>
         </div>
-      </section>
+      </div>
 
-      {/* Map placeholder */}
-      <section className="contact-map-section" aria-label="Location map">
-        <div className="contact-map-placeholder">
-          <div className="contact-map-overlay">
-            <p className="contact-map-label">
-              📍 Bockenheimer Landstrasse 17-19, 60325 Frankfurt am Main, Germany
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {toast && (
-        <Toast message={toast.message} type={toast.type} onDismiss={() => setToast(null)} />
-      )}
+      {toast && <Toast message={toast.message} type={toast.type} onDismiss={() => setToast(null)} />}
     </div>
   );
 }
