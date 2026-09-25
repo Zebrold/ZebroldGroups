@@ -75,8 +75,8 @@
       "id": "ai-on-track",
       "day": "22",
       "month": {
-        "en": "Sep 2026",
-        "de": "Sep 2026"
+        "en": "Oct 2026",
+        "de": "Oct 2026"
       },
       "duration": {
         "en": "4 days",
@@ -95,7 +95,8 @@
           "Bengaluru, Indien",
           "Hackathon"
         ]
-      }
+      },
+      "highlight": true
     }
   ],
   "news": [
