@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 
 const DEFAULT_KEYWORDS =
-  'Zebrold, Zebrold Scolome, Zebrold IHL, Zebrold International Holdings Limited, rolling stock, high-speed rail, EMU, bogie, traction, ETCS, signalling, digital rail, Frankfurt, Kassel, rail manufacturer';
+  'Zebrold, Zebrold IHL, Zebrold International Holdings Limited, Scolome, rolling stock, high-speed rail, EMU, bogie, traction, ETCS, signalling, digital rail, Frankfurt, Kassel, rail manufacturer';
 
-const DEFAULT_IMAGE = 'https://www.zebrold.de/favicon.png';
+const DEFAULT_IMAGE = 'https://www.zebrold.de/og-image.jpg';
 const BASE_URL = 'https://www.zebrold.de';
 
 /**
@@ -61,10 +61,10 @@ function setStructuredData(schemaData) {
 }
 
 export default function SEO({
-  title = 'Zebrold Scolome | Ultra Speed Intelligent Rolling Stocks',
-  description = 'Zebrold Scolome designs and builds ultra high-speed intelligent rolling stock, signalling and digital rail systems. Made in Deutschland, designed in India.',
+  title = 'Zebrold IHL | Ultra Speed Intelligent Rolling Stocks',
+  description = 'Zebrold IHL designs and builds ultra high-speed intelligent rolling stock, signalling and digital rail systems. Made in Deutschland, designed in India.',
   keywords = DEFAULT_KEYWORDS,
-  name = 'Zebrold Scolome',
+  name = 'Zebrold IHL',
   type = 'website',
   image = DEFAULT_IMAGE,
   url = '',

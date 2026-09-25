@@ -45,7 +45,7 @@ export const sectorPages = {
       ],
     },
     mandate: {
-      eyebrow: { en: 'Mandate · Section 01', de: 'Auftrag · Abschnitt 01' },
+      eyebrow: { en: 'Transnational Mandate', de: 'Transnationaler Auftrag' },
       title: {
         en: 'Where flight-grade discipline meets the railway',
         de: 'Wo Disziplin aus der Luftfahrt auf die Schiene trifft',
@@ -185,7 +185,7 @@ export const sectorPages = {
       ],
     },
     mandate: {
-      eyebrow: { en: 'Mandate · Section 02', de: 'Auftrag · Abschnitt 02' },
+      eyebrow: { en: 'Transnational Mandate', de: 'Transnationaler Auftrag' },
       title: {
         en: 'Series thinking for a bespoke industry',
         de: 'Seriendenken für eine Manufakturbranche',

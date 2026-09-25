@@ -218,7 +218,7 @@ export default function About() {
     <div className="aboutPage">
       <SEO
         title="About Us | Zebrold IHL • Scolome Railway Technologies"
-        description="Zebrold Scolome is a German rolling stock engineering company headquartered in Frankfurt am Main, dedicated to pioneering ultra high-speed intelligent rolling stocks."
+        description="Zebrold IHL is a German rolling stock engineering company headquartered in Frankfurt am Main, dedicated to pioneering ultra high-speed intelligent rolling stocks."
         keywords="Zebrold, Scolome, rolling stock, high-speed rail, German rail engineering, Bangalore, Frankfurt am Main, Kassel"
         url="/about"
       />

@@ -6,8 +6,11 @@ const LanguageContext = createContext();
 export function LanguageProvider({ children }) {
   // Default language is 'de' (German)
   const [lang, setLangState] = useState(() => {
-    const saved = localStorage.getItem('zebrold_lang');
-    return saved === 'de' ? 'de' : 'en';
+    const pref = localStorage.getItem('zebrold_lang_pref');
+    if (pref === 'en' || pref === 'de') {
+      return pref;
+    }
+    return 'de';
   });
 
   useEffect(() => {
@@ -17,16 +20,21 @@ export function LanguageProvider({ children }) {
 
   const setLang = (newLang) => {
     if (newLang === 'en' || newLang === 'de') {
+      localStorage.setItem('zebrold_lang_pref', newLang);
       setLangState(newLang);
     }
   };
 
   const toggleLang = () => {
-    setLangState((prev) => (prev === 'de' ? 'en' : 'de'));
+    setLangState((prev) => {
+      const next = prev === 'de' ? 'en' : 'de';
+      localStorage.setItem('zebrold_lang_pref', next);
+      return next;
+    });
   };
 
   const t = (key) => {
-    return translations[lang]?.[key] || translations['en']?.[key] || key;
+    return translations[lang]?.[key] || translations['de']?.[key] || translations['en']?.[key] || key;
   };
 
   return (

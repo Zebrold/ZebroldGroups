@@ -15,8 +15,8 @@ export default function Insights() {
   return (
     <div ref={revealRef}>
       <SEO
-        title="Insights | Zebrold Scolome"
-        description="Engineering papers, standards commentary and long-form analysis from the Zebrold Scolome technical office."
+        title="Insights | Zebrold IHL"
+        description="Engineering papers, standards commentary and long-form analysis from the Zebrold IHL technical office."
         keywords="rail engineering insights, axle load, silicon carbide traction, EN 45545, ETCS capacity, rolling stock analysis"
         url="/insights"
       />

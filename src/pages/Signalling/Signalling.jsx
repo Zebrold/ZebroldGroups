@@ -8,7 +8,7 @@ import sgControl from '../../assets/deeptech_software_lab.jpg';
 
 export default function Signalling() {
   const seoData = {
-    title: 'Zebrold Scolome | Mission-Critical Signalling & Autonomous Interlocking',
+    title: 'Zebrold IHL | Mission-Critical Signalling & Autonomous Interlocking',
     description:
       'Fail-Safe CBTC & ETCS Level 2/3 Transnational Deployments. Physical safety validation and CENELEC certification paired synchronously with formal mathematical logic engines.',
     keywords:
@@ -80,7 +80,7 @@ export default function Signalling() {
                 <div className="rail-mandate-badge">
                   <span className="rail-mandate-badge-dot" />
                   <span className="rail-mandate-badge-text">
-                    DIVISION ARCHITECTURE • SECTION 01
+                    DIVISION ARCHITECTURE
                   </span>
                 </div>
 
@@ -147,7 +147,7 @@ export default function Signalling() {
           <div className="rail-narrative-head">
             <div>
               <div className="rail-narrative-head-tag">
-                DEPLOYMENT PORTFOLIO • SECTION 02
+                DEPLOYMENT PORTFOLIO
               </div>
               <h2 className="rail-narrative-head-title">
                 Autonomous Signalling Systems
@@ -360,7 +360,7 @@ export default function Signalling() {
           <div className="rail-container">
             <div className="rail-manifesto-inner">
               <div className="rail-manifesto-tag">
-                OPERATIONAL ASSURANCE • SECTION 03
+                OPERATIONAL ASSURANCE
               </div>
 
               <h2 className="rail-manifesto-title">
@@ -405,7 +405,7 @@ export default function Signalling() {
           <div className="rail-table-head">
             <div className="rail-table-tag">
               <span className="rail-table-tag-sq" />
-              FIELD VALIDATION MATRIX • SECTION 04
+              FIELD VALIDATION MATRIX
             </div>
             <h2 className="rail-table-title">
               Comparative Corridor Architecture &amp; Certification Register

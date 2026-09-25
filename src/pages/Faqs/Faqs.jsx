@@ -28,8 +28,8 @@ export default function Faqs() {
   return (
     <div ref={revealRef}>
       <SEO
-        title="FAQs | Zebrold Scolome"
-        description="Procurement, certification, supply chain and careers questions answered by Zebrold Scolome."
+        title="FAQs | Zebrold IHL"
+        description="Procurement, certification, supply chain and careers questions answered by Zebrold IHL."
         keywords="Zebrold FAQ, rolling stock procurement, TSI certification, SIL-4, rail supply chain"
         url="/faqs"
         schemaData={FAQ_SCHEMA}

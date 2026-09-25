@@ -1,6 +1,25 @@
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
+
+  # Legacy conglomerate URLs still held in search indexes -> current pages
+  RewriteRule ^news/?$ /newsroom [R=301,L]
+  RewriteRule ^sectors/?$ / [R=301,L]
+  RewriteRule ^subsidiaries/?$ /about [R=301,L]
+  RewriteRule ^offices/?$ /contact [R=301,L]
+  RewriteRule ^sectors/ev-charging-battery/?$ /components [R=301,L]
+  RewriteRule ^sectors/semiconductors/?$ /components [R=301,L]
+  RewriteRule ^sectors/car-manufacturing/?$ /automotive [R=301,L]
+  RewriteRule ^sectors/retail-consumer/?$ / [R=301,L]
+  RewriteRule ^sectors/education/?$ /careers [R=301,L]
+  RewriteRule ^sectors/technology-it/?$ /digital-rail [R=301,L]
+  RewriteRule ^sectors/finance-investment/?$ /newsroom [R=301,L]
+  RewriteRule ^sectors/healthcare-pharma/?$ / [R=301,L]
+  RewriteRule ^sectors/logistics-supply-chain/?$ /infrastructure [R=301,L]
+  RewriteRule ^sectors/agriculture-food/?$ / [R=301,L]
+  RewriteRule ^sectors/industrial-engineering/?$ /components [R=301,L]
+  RewriteRule ^sectors/media-entertainment/?$ /newsroom [R=301,L]
+
   RewriteRule ^index\.html$ - [L]
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d

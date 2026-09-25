@@ -1,6 +1,6 @@
-# Zebrold Scolome — corporate site
+# Zebrold IHL — corporate site
 
-Marketing site for **Zebrold Scolome**, the rolling stock business of Zebrold International
+Marketing site for **Zebrold IHL**, the rolling stock business of Zebrold International
 Holdings Limited (Zebrold IHL), Frankfurt am Main. Vite + React 19, plain CSS, no UI framework.
 
 ## Getting started

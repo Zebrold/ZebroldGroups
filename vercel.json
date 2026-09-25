@@ -4,5 +4,87 @@
       "source": "/((?!api/).*)",
       "destination": "/index.html"
     }
+  ],
+  "redirects": [
+    {
+      "source": "/news",
+      "destination": "/newsroom",
+      "permanent": true
+    },
+    {
+      "source": "/sectors",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/subsidiaries",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/offices",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/sectors/ev-charging-battery",
+      "destination": "/components",
+      "permanent": true
+    },
+    {
+      "source": "/sectors/semiconductors",
+      "destination": "/components",
+      "permanent": true
+    },
+    {
+      "source": "/sectors/car-manufacturing",
+      "destination": "/automotive",
+      "permanent": true
+    },
+    {
+      "source": "/sectors/retail-consumer",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/sectors/education",
+      "destination": "/careers",
+      "permanent": true
+    },
+    {
+      "source": "/sectors/technology-it",
+      "destination": "/digital-rail",
+      "permanent": true
+    },
+    {
+      "source": "/sectors/finance-investment",
+      "destination": "/newsroom",
+      "permanent": true
+    },
+    {
+      "source": "/sectors/healthcare-pharma",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/sectors/logistics-supply-chain",
+      "destination": "/infrastructure",
+      "permanent": true
+    },
+    {
+      "source": "/sectors/agriculture-food",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/sectors/industrial-engineering",
+      "destination": "/components",
+      "permanent": true
+    },
+    {
+      "source": "/sectors/media-entertainment",
+      "destination": "/newsroom",
+      "permanent": true
+    }
   ]
 }

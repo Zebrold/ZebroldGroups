@@ -1,0 +1,1059 @@
+{
+  "events": [
+    {
+      "id": "innotrans-2026",
+      "featured": true,
+      "days": "22-25",
+      "month": {
+        "en": "Sep 2026",
+        "de": "Sep 2026"
+      },
+      "name": {
+        "en": "InnoTrans 2026",
+        "de": "InnoTrans 2026"
+      },
+      "location": {
+        "en": "Berlin,\nGermany",
+        "de": "Berlin,\nDeutschland"
+      },
+      "summary": {
+        "en": "The Scolome Apex 350 makes its public debut on the outdoor display track, alongside the 2.0 regional platform and the digital rail pavilion.",
+        "de": "Der Scolome Apex 350 feiert auf dem Freigelände seine Publikumspremiere — gemeinsam mit der Regionalplattform 2.0 und dem Pavillon Digitale Schiene."
+      }
+    },
+    {
+      "id": "infrastructure-partnerships",
+      "day": "11",
+      "month": {
+        "en": "Sep 2026",
+        "de": "Sep 2026"
+      },
+      "highlight": true,
+      "name": {
+        "en": "Zebrold keynote: Scolome high-speed architecture at Infrastructure Partnerships 2026",
+        "de": "Zebrold-Keynote: Scolome-Hochgeschwindigkeitsarchitektur bei Infrastructure Partnerships 2026"
+      },
+      "tags": {
+        "en": [
+          "Australia",
+          "Conference"
+        ],
+        "de": [
+          "Australien",
+          "Konferenz"
+        ]
+      }
+    },
+    {
+      "id": "monorailex",
+      "day": "17",
+      "month": {
+        "en": "Sep 2026",
+        "de": "Sep 2026"
+      },
+      "duration": {
+        "en": "4 days",
+        "de": "4 Tage"
+      },
+      "name": {
+        "en": "Scolome urban transit showcase — Monorailex 2026",
+        "de": "Scolome Urban-Transit-Showcase — Monorailex 2026"
+      },
+      "tags": {
+        "en": [
+          "Cairo, Egypt",
+          "Conference"
+        ],
+        "de": [
+          "Kairo, Ägypten",
+          "Konferenz"
+        ]
+      }
+    },
+    {
+      "id": "ai-on-track",
+      "day": "22",
+      "month": {
+        "en": "Sep 2026",
+        "de": "Sep 2026"
+      },
+      "duration": {
+        "en": "4 days",
+        "de": "4 Tage"
+      },
+      "name": {
+        "en": "AI on Track — Zebrold IHL mobility hackathon 2026",
+        "de": "AI on Track — Zebrold IHL Mobilitäts-Hackathon 2026"
+      },
+      "tags": {
+        "en": [
+          "Bengaluru, India",
+          "Hackathon"
+        ],
+        "de": [
+          "Bengaluru, Indien",
+          "Hackathon"
+        ]
+      }
+    }
+  ],
+  "news": [
+    {
+      "id": "transpennine-battery-fleet",
+      "date": "2026-09-11",
+      "category": "contract",
+      "region": {
+        "en": "United Kingdom",
+        "de": "Vereinigtes Königreich"
+      },
+      "source": {
+        "en": "Frankfurt & London bureau",
+        "de": "Büro Frankfurt & London"
+      },
+      "featured": true,
+      "image": "trainset_rollout.jpg",
+      "alt": {
+        "en": "Battery-electric trainset leaving the assembly hall",
+        "de": "Batterieelektrischer Triebzug verlässt die Montagehalle"
+      },
+      "title": {
+        "en": "Zebrold and TransPennine Express sign €1.2 billion contract for Scolome mainline battery-electric fleet",
+        "de": "Zebrold und TransPennine Express unterzeichnen Vertrag über 1,2 Mrd. € für die batterieelektrische Scolome-Hauptstreckenflotte"
+      },
+      "excerpt": {
+        "en": "The award covers 48 five-car battery-electric trainsets, a 20-year availability contract and depot electrification across the northern corridor.",
+        "de": "Der Auftrag umfasst 48 fünfteilige batterieelektrische Triebzüge, einen 20-jährigen Verfügbarkeitsvertrag und die Elektrifizierung der Depots im Nordkorridor."
+      },
+      "body": {
+        "en": "The award covers 48 five-car battery-electric trainsets for mainline service, together with a 20-year availability contract and depot electrification across the northern corridor. The fleet runs on battery power over un-electrified sections and recharges under existing catenary without route infrastructure changes.\n\nDelivery is phased against the operator timetable change. The availability regime is managed from the Kassel service hub, and driver training runs jointly with the operator.",
+        "de": "Der Auftrag umfasst 48 fünfteilige batterieelektrische Triebzüge für den Hauptstreckenverkehr, einen 20-jährigen Verfügbarkeitsvertrag sowie die Elektrifizierung der Depots im Nordkorridor. Die Flotte fährt auf nicht elektrifizierten Abschnitten im Batteriebetrieb und lädt unter vorhandener Oberleitung nach.\n\nDie Auslieferung erfolgt zum Fahrplanwechsel. Das Verfügbarkeitsregime steuert der Service-Hub Kassel, die Triebfahrzeugführerschulung läuft gemeinsam mit dem Betreiber."
+      }
+    },
+    {
+      "id": "sic-traction-architecture",
+      "date": "2026-10-28",
+      "category": "technology",
+      "region": {
+        "en": "Munich technology centre",
+        "de": "Technologiezentrum München"
+      },
+      "source": {
+        "en": "Propulsion & energy",
+        "de": "Antrieb & Energie"
+      },
+      "image": "traction_inverter.jpg",
+      "alt": {
+        "en": "Engineer testing a silicon-carbide traction inverter on a bench",
+        "de": "Ingenieur prüft einen Siliziumkarbid-Traktionsumrichter am Prüfstand"
+      },
+      "title": {
+        "en": "Zebrold IHL unveils next-generation silicon-carbide traction power architecture for trans-European freight corridors",
+        "de": "Zebrold IHL stellt Siliziumkarbid-Traktionsarchitektur der nächsten Generation für transeuropäische Güterkorridore vor"
+      },
+      "excerpt": {
+        "en": "Next-generation 3.3 kV MOSFET power modules delivering 98.2% electrical energy conversion efficiency.",
+        "de": "3,3-kV-MOSFET-Leistungsmodule der nächsten Generation mit 98,2 % elektrischem Wirkungsgrad."
+      },
+      "body": {
+        "en": "The next-generation traction package uses 3.3 kV silicon-carbide MOSFET power modules delivering 98.2% electrical energy conversion efficiency. Lower switching losses remove a cooling stage from the converter, cutting mass and one scheduled maintenance intervention from the lifecycle.\n\nThe architecture is common across the high-speed and regional platforms, so spares and diagnostic tooling are shared between fleets.",
+        "de": "Das Traktionspaket der nächsten Generation nutzt 3,3-kV-Siliziumkarbid-MOSFET-Module mit 98,2 % elektrischem Wirkungsgrad. Geringere Schaltverluste erlauben den Entfall einer Kühlstufe — das spart Masse und ein Wartungsintervall im Lebenszyklus.\n\nDie Architektur ist plattformübergreifend einheitlich, sodass Ersatzteile und Diagnosewerkzeuge zwischen den Flotten geteilt werden."
+      }
+    },
+    {
+      "id": "long-distance-fleet",
+      "date": "2026-09-03",
+      "category": "contract",
+      "region": {
+        "en": "Canada",
+        "de": "Kanada"
+      },
+      "source": {
+        "en": "Commercial directorate",
+        "de": "Vertriebsdirektion"
+      },
+      "image": "intercity_platform.webp",
+      "alt": {
+        "en": "Intercity trainset waiting at a station platform",
+        "de": "Fernverkehrszug am Bahnsteig"
+      },
+      "title": {
+        "en": "Zebrold wins landmark contract to deploy Scolome next-generation long-distance rail fleet",
+        "de": "Zebrold gewinnt Großauftrag für die Scolome-Fernverkehrsflotte der nächsten Generation"
+      },
+      "excerpt": {
+        "en": "Sixteen-car trainsets configured for 1,100-passenger capacity on transcontinental overnight services.",
+        "de": "Sechzehnteilige Triebzüge für 1.100 Fahrgäste im transkontinentalen Nachtverkehr."
+      },
+      "body": {
+        "en": "The contract covers sixteen-car trainsets configured for 1,100-passenger capacity across seated, couchette and sleeper accommodation on transcontinental overnight services. Carbody structures are fabricated in Germany; traction control and passenger information software is developed in India.\n\nEach set carries redundant SIL-4 train control computers and a distributed telemetry network feeding the predictive maintenance model.",
+        "de": "Der Auftrag umfasst sechzehnteilige Triebzüge für 1.100 Fahrgäste in Sitz-, Liege- und Schlafwagenkonfiguration im transkontinentalen Nachtverkehr. Die Wagenkastenstrukturen entstehen in Deutschland, die Traktions- und Fahrgastinformationssoftware in Indien.\n\nJeder Zug führt redundante SIL-4-Zugsteuerungsrechner sowie ein verteiltes Telemetrienetz für das prädiktive Wartungsmodell."
+      }
+    },
+    {
+      "id": "q1-progress",
+      "date": "2026-07-22",
+      "category": "results",
+      "region": {
+        "en": "Frankfurt am Main",
+        "de": "Frankfurt am Main"
+      },
+      "source": {
+        "en": "Investor relations",
+        "de": "Investor Relations"
+      },
+      "image": "assembly_line_robotics.webp",
+      "alt": {
+        "en": "Robotic assembly line building carbody sections",
+        "de": "Roboterfertigungslinie beim Bau von Wagenkastensektionen"
+      },
+      "title": {
+        "en": "Zebrold's Scolome Project: First quarter 2026/27 progress report",
+        "de": "Scolome-Projekt von Zebrold: Fortschrittsbericht für das erste Quartal 2026/27"
+      },
+      "excerpt": {
+        "en": "Order intake of €560 million, book-to-bill of 1.38 and 14 trainsets handed over in the quarter.",
+        "de": "Auftragseingang von 560 Mio. €, Book-to-Bill von 1,38 und 14 übergebene Triebzüge im Quartal."
+      },
+      "body": {
+        "en": "Order intake for the quarter reached €560 million against a book-to-bill ratio of 1.38, with 14 trainsets handed over to operators. The carbody shop held its target takt throughout the period.\n\nSoftware recertification of the traction control stack was completed within the quarter, clearing the path to the next authorisation milestone.",
+        "de": "Der Auftragseingang des Quartals erreichte 560 Mio. € bei einem Book-to-Bill-Verhältnis von 1,38; 14 Triebzüge wurden an Betreiber übergeben. Die Wagenkastenfertigung hielt ihren Zieltakt durchgehend.\n\nDie Rezertifizierung des Traktionssteuerungs-Stacks wurde im Quartal abgeschlossen und ebnet den Weg zum nächsten Zulassungsmeilenstein."
+      }
+    },
+    {
+      "id": "fy-milestones",
+      "date": "2026-05-13",
+      "category": "results",
+      "region": {
+        "en": "Frankfurt am Main",
+        "de": "Frankfurt am Main"
+      },
+      "source": {
+        "en": "Investor relations",
+        "de": "Investor Relations"
+      },
+      "image": "final_assembly_jacks.jpg",
+      "alt": {
+        "en": "Trainsets raised on jacks in the final assembly hall",
+        "de": "Triebzüge auf Hebeböcken in der Endmontagehalle"
+      },
+      "title": {
+        "en": "Zebrold IHL Fiscal Year 2025/26 milestone achievements",
+        "de": "Zebrold IHL: Meilensteine des Geschäftsjahres 2025/26"
+      },
+      "excerpt": {
+        "en": "Full-year revenue of €1.62 billion, 62 trainsets delivered and a €4.85 billion order backlog.",
+        "de": "Jahresumsatz von 1,62 Mrd. €, 62 ausgelieferte Triebzüge und ein Auftragsbestand von 4,85 Mrd. €."
+      },
+      "body": {
+        "en": "Full-year revenue reached €1.62 billion with 62 trainsets delivered across the programme. Order backlog closed the year at €4.85 billion, equivalent to roughly three years of current output.\n\nAdditive manufacturing moved from prototype to series for interior and bracketry parts, reducing part count on the latest platform.",
+        "de": "Der Jahresumsatz erreichte 1,62 Mrd. € bei 62 ausgelieferten Triebzügen. Der Auftragsbestand lag zum Jahresende bei 4,85 Mrd. € — rund drei Jahre der aktuellen Produktionsleistung.\n\nDie additive Fertigung ging bei Innenausbau- und Halterungsteilen in die Serie und reduzierte die Teilezahl der jüngsten Plattform."
+      }
+    },
+    {
+      "id": "scolome-2-order",
+      "date": "2026-08-03",
+      "category": "contract",
+      "region": {
+        "en": "Australia",
+        "de": "Australien"
+      },
+      "source": {
+        "en": "Regional transit directorate",
+        "de": "Direktion Regionalverkehr"
+      },
+      "image": "regional_fleet_platform.webp",
+      "alt": {
+        "en": "Regional trainsets standing at a station platform",
+        "de": "Regionaltriebzüge am Bahnsteig"
+      },
+      "title": {
+        "en": "Zebrold to provide 25 additional Scolome 2.0 high-efficiency trains for €270m",
+        "de": "Zebrold liefert 25 weitere Scolome-2.0-Hocheffizienzzüge für 270 Mio. €"
+      },
+      "excerpt": {
+        "en": "An options call-off under the existing framework, lifting the regional fleet to 91 trainsets.",
+        "de": "Ein Optionsabruf im bestehenden Rahmenvertrag erhöht die Regionalflotte auf 91 Triebzüge."
+      },
+      "body": {
+        "en": "The operator has exercised options for a further 25 trainsets under the existing framework agreement, lifting the regional fleet to 91 units. The platform reduces tare mass through a revised extruded-aluminium carbody and lattice-structure interior fittings.\n\nDeliveries run against the existing production slot allocation without additional tooling investment.",
+        "de": "Der Betreiber hat Optionen für weitere 25 Triebzüge aus dem bestehenden Rahmenvertrag gezogen und erhöht die Regionalflotte damit auf 91 Einheiten. Die Plattform senkt die Leermasse durch einen überarbeiteten Aluminium-Wagenkasten und Innenausbauten in Gitterstruktur.\n\nDie Auslieferung erfolgt im Rahmen der bestehenden Produktionsslots ohne zusätzliche Werkzeuginvestitionen."
+      }
+    },
+    {
+      "id": "corridor-consortium",
+      "date": "2026-06-18",
+      "category": "contract",
+      "region": {
+        "en": "Cairo, Egypt",
+        "de": "Kairo, Ägypten"
+      },
+      "source": {
+        "en": "Middle East directorate",
+        "de": "Direktion Naher Osten"
+      },
+      "tone": "dark",
+      "image": "rail_catenary_corridor.jpg",
+      "alt": {
+        "en": "Electrified rail corridor with overhead catenary",
+        "de": "Elektrifizierter Schienenkorridor mit Oberleitung"
+      },
+      "title": {
+        "en": "Zebrold-led consortium signs €690 million contract to modernise strategic rail corridors with Scolome systems",
+        "de": "Zebrold-geführtes Konsortium unterzeichnet Vertrag über 690 Mio. € zur Modernisierung strategischer Schienenkorridore"
+      },
+      "excerpt": {
+        "en": "ETCS Level 2 resignalling and traction power upgrades across 1,240 route kilometres.",
+        "de": "ETCS-Level-2-Resignalisierung und Fahrstromausbau auf 1.240 Streckenkilometern."
+      },
+      "body": {
+        "en": "The consortium will resignal 1,240 route kilometres to ETCS Level 2 and upgrade traction power provision across the corridors in scope. The programme raises line capacity without new alignment construction.\n\nInterlocking and traffic-management systems are supplied from the Hyderabad software centre, with trackside installation delivered by regional partners.",
+        "de": "Das Konsortium rüstet 1.240 Streckenkilometer auf ETCS Level 2 um und baut die Fahrstromversorgung der betroffenen Korridore aus. Das Programm erhöht die Streckenkapazität ohne Neubautrassen.\n\nStellwerks- und Verkehrsmanagementsysteme kommen aus dem Softwarezentrum Hyderabad; die streckenseitige Installation übernehmen regionale Partner."
+      }
+    },
+    {
+      "id": "ai-safety-trials",
+      "date": "2026-05-11",
+      "category": "technology",
+      "region": {
+        "en": "Field trials",
+        "de": "Felderprobung"
+      },
+      "source": {
+        "en": "Intelligent transit lab",
+        "de": "Labor für intelligenten Verkehr"
+      },
+      "image": "autonomous_rail_sensor.jpg",
+      "alt": {
+        "en": "Forward-facing sensor array mounted in a trainset nose",
+        "de": "Vorausschauendes Sensorarray in der Zugfront"
+      },
+      "title": {
+        "en": "Zebrold and Flox Intelligence deploy Scolome AI safety systems: launch of ground-breaking rail detection trials...",
+        "de": "Zebrold und Flox Intelligence starten Erprobung von Scolome-KI-Sicherheitssystemen..."
+      },
+      "excerpt": {
+        "en": "Forward-facing sensor fusion detecting track obstructions at 1,100 m in degraded visibility.",
+        "de": "Vorausschauende Sensorfusion erkennt Gleishindernisse auf 1.100 m bei eingeschränkter Sicht."
+      },
+      "body": {
+        "en": "Trials combine long-wave infrared, millimetre-wave radar and stereo vision into a single forward-facing perception stack, detecting track obstructions at up to 1,100 metres in fog, heavy rain and night conditions.\n\nThe system advises the driver rather than commanding the brake, leaving the certified SIL-4 braking chain unmodified while the evidence base for autonomous intervention is built.",
+        "de": "Die Erprobung kombiniert langwelliges Infrarot, Millimeterwellenradar und Stereokameras zu einem vorausschauenden Wahrnehmungssystem, das Gleishindernisse bei Nebel, Starkregen und Dunkelheit auf bis zu 1.100 Metern erkennt.\n\nDas System berät den Triebfahrzeugführer, statt die Bremse anzusteuern — die zertifizierte SIL-4-Bremskette bleibt unverändert, während die Nachweisbasis für autonome Eingriffe entsteht."
+      }
+    },
+    {
+      "id": "velocity-360-trials",
+      "date": "2026-04-24",
+      "category": "technology",
+      "region": {
+        "en": "Velim test ring, Czechia",
+        "de": "Versuchsring Velim, Tschechien"
+      },
+      "source": {
+        "en": "Rolling stock validation",
+        "de": "Fahrzeugvalidierung"
+      },
+      "image": "highspeed_in_service.jpg",
+      "alt": {
+        "en": "High-speed trainset on a dedicated test ring",
+        "de": "Hochgeschwindigkeitszug auf einem Versuchsring"
+      },
+      "title": {
+        "en": "Scolome Velocity 360 reaches milestone homologation speeds in dynamic trials",
+        "de": "Scolome Velocity 360 erreicht Zulassungsgeschwindigkeiten in dynamischen Versuchen"
+      },
+      "excerpt": {
+        "en": "Full-scale dynamic stability and regenerative braking runs confirm the drag coefficient and interior noise targets at sustained maximum velocity.",
+        "de": "Vollmaßstäbliche Fahrstabilitäts- und Rekuperationsversuche bestätigen Luftwiderstands- und Innengeräuschziele bei Dauerhöchstgeschwindigkeit."
+      },
+      "body": {
+        "en": "Dynamic trials on the Velim test ring completed the stability, ride-comfort and regenerative braking programme required for type authorisation. Measured aerodynamic drag held within 1.4% of the computational model, and interior noise stayed below 72 dBA at sustained maximum velocity.\n\nThe runs close the vehicle-level evidence package; trackside interoperability testing follows on the national network.",
+        "de": "Die dynamischen Versuche auf dem Versuchsring Velim schlossen das für die Typzulassung erforderliche Programm zu Fahrstabilität, Fahrkomfort und Rekuperation ab. Der gemessene Luftwiderstand lag innerhalb von 1,4 % des Rechenmodells, das Innengeräusch blieb bei Dauerhöchstgeschwindigkeit unter 72 dBA.\n\nDamit ist der fahrzeugseitige Nachweisteil abgeschlossen; die streckenseitige Interoperabilitätsprüfung folgt im nationalen Netz."
+      }
+    }
+  ],
+  "jobs": [
+    {
+      "id": "telemetry-engineer",
+      "ref": "ZEB-SW-201",
+      "category": "software",
+      "location": {
+        "en": "Bengaluru R&D bureau, India",
+        "de": "F&E-Büro Bengaluru, Indien"
+      },
+      "salary": "€65,000 – €92,000",
+      "terms": {
+        "en": "Full-time · Hybrid",
+        "de": "Vollzeit · Hybrid"
+      },
+      "title": {
+        "en": "Staff Distributed Systems & Telemetry Engineer",
+        "de": "Staff Engineer Verteilte Systeme & Telemetrie"
+      },
+      "summary": {
+        "en": "Architect ultra-low-latency event streaming pipelines, time-series storage and edge-to-cloud telemetry sync for cross-continental high-speed fleets.",
+        "de": "Konzipieren Sie Event-Streaming-Pipelines mit minimaler Latenz, Zeitreihenspeicher und Edge-zu-Cloud-Telemetriesynchronisation für kontinentübergreifende Hochgeschwindigkeitsflotten."
+      },
+      "requirements": {
+        "en": [
+          "Production experience with Kafka, Pulsar or an equivalent streaming backbone",
+          "Time-series storage at scale — ClickHouse, TimescaleDB or similar",
+          "Comfort reasoning about partial connectivity and out-of-order ingest",
+          "Go, Rust or modern Java in a distributed context"
+        ],
+        "de": [
+          "Produktionserfahrung mit Kafka, Pulsar oder vergleichbarem Streaming-Backbone",
+          "Zeitreihenspeicher im großen Maßstab — ClickHouse, TimescaleDB oder ähnlich",
+          "Sicherer Umgang mit unterbrochener Konnektivität und ungeordneter Datenaufnahme",
+          "Go, Rust oder modernes Java im verteilten Umfeld"
+        ]
+      }
+    },
+    {
+      "id": "firmware-architect",
+      "ref": "ZEB-SW-115",
+      "category": "software",
+      "location": {
+        "en": "Frankfurt am Main, Germany",
+        "de": "Frankfurt am Main, Deutschland"
+      },
+      "salary": "€115,000 – €135,000",
+      "terms": {
+        "en": "Full-time · Hybrid",
+        "de": "Vollzeit · Hybrid"
+      },
+      "title": {
+        "en": "Lead Embedded Software & Firmware Architect (RTOS / C++)",
+        "de": "Lead-Architekt/in Embedded Software & Firmware (RTOS / C++)"
+      },
+      "summary": {
+        "en": "Spearhead deterministic real-time firmware architecture for traction control units, braking supervision and SIL-4 railway safety protocols.",
+        "de": "Verantworten Sie die deterministische Echtzeit-Firmwarearchitektur für Traktionssteuergeräte, Bremsüberwachung und SIL-4-Sicherheitsprotokolle."
+      },
+      "requirements": {
+        "en": [
+          "Deep C++ and RTOS experience in a safety-critical context",
+          "EN 50128, IEC 61508 or DO-178C lifecycle practice",
+          "Understanding of deterministic scheduling and watchdog design",
+          "Written English suitable for certification evidence"
+        ],
+        "de": [
+          "Fundierte C++- und RTOS-Erfahrung im sicherheitskritischen Umfeld",
+          "Praxis mit Lebenszyklen nach EN 50128, IEC 61508 oder DO-178C",
+          "Verständnis für deterministisches Scheduling und Watchdog-Design",
+          "Englisch in Wort und Schrift für Zertifizierungsnachweise"
+        ]
+      }
+    },
+    {
+      "id": "perception-specialist",
+      "ref": "ZEB-SW-089",
+      "category": "software",
+      "location": {
+        "en": "Bengaluru / Hyderabad, India",
+        "de": "Bengaluru / Hyderabad, Indien"
+      },
+      "salary": "€58,000 – €80,000",
+      "terms": {
+        "en": "Full-time · R&D centre",
+        "de": "Vollzeit · F&E-Zentrum"
+      },
+      "title": {
+        "en": "Computer Vision & Autonomous Perception Specialist",
+        "de": "Spezialist/in Computer Vision & autonome Wahrnehmung"
+      },
+      "summary": {
+        "en": "Develop neural models and multi-spectral sensor fusion pipelines for real-time track obstacle detection and wayside infrastructure monitoring.",
+        "de": "Entwickeln Sie neuronale Modelle und multispektrale Sensorfusion für die Echtzeit-Hinderniserkennung und die Überwachung streckenseitiger Infrastruktur."
+      },
+      "requirements": {
+        "en": [
+          "Python and C++ with a computer-vision or sensor-fusion background",
+          "Experience validating models against field-collected data",
+          "Interest in the evidence standards that gate autonomous intervention"
+        ],
+        "de": [
+          "Python und C++ mit Hintergrund in Computer Vision oder Sensorfusion",
+          "Erfahrung in der Validierung von Modellen anhand von Felddaten",
+          "Interesse an Nachweisstandards für autonome Eingriffe"
+        ]
+      }
+    },
+    {
+      "id": "sic-inverter-lead",
+      "ref": "ZEB-HW-042",
+      "category": "hardware",
+      "location": {
+        "en": "Frankfurt am Main, Germany",
+        "de": "Frankfurt am Main, Deutschland"
+      },
+      "salary": "€118,000 – €138,000",
+      "terms": {
+        "en": "Full-time · Hybrid",
+        "de": "Vollzeit · Hybrid"
+      },
+      "title": {
+        "en": "Senior Silicon Carbide (SiC) Power Electronics & Inverter Lead",
+        "de": "Senior Lead Leistungselektronik & Siliziumkarbid-Umrichter"
+      },
+      "summary": {
+        "en": "Design high-efficiency 3.3 kV SiC traction converters, planar magnetics and advanced thermal cooling modules for high-speed EMU trainsets.",
+        "de": "Entwerfen Sie hocheffiziente 3,3-kV-SiC-Traktionsumrichter, planare Magnetik und fortschrittliche Kühlmodule für Hochgeschwindigkeits-Triebzüge."
+      },
+      "requirements": {
+        "en": [
+          "Wide-bandgap device experience in traction or EV powertrain",
+          "Familiarity with EN 50155 and EN 50124 insulation coordination",
+          "Comfortable in a lab with double-pulse and thermal-cycling rigs"
+        ],
+        "de": [
+          "Erfahrung mit Wide-Bandgap-Bauelementen in Traktion oder E-Antrieb",
+          "Kenntnisse in EN 50155 und Isolationskoordination nach EN 50124",
+          "Sicher im Labor mit Doppelpuls- und Thermowechsel-Prüfständen"
+        ]
+      }
+    },
+    {
+      "id": "pcb-design-engineer",
+      "ref": "ZEB-HW-077",
+      "category": "hardware",
+      "location": {
+        "en": "Hyderabad design facility, India",
+        "de": "Designzentrum Hyderabad, Indien"
+      },
+      "salary": "€60,000 – €84,000",
+      "terms": {
+        "en": "Full-time · Design hub",
+        "de": "Vollzeit · Designzentrum"
+      },
+      "title": {
+        "en": "Principal Hardware & High-Speed PCB Design Engineer",
+        "de": "Principal Engineer Hardware & High-Speed-Leiterplattendesign"
+      },
+      "summary": {
+        "en": "Lead multi-layer high-speed digital circuit design, signal integrity simulation, EMC/EMI hardening and ruggedised packaging for onboard rail compute.",
+        "de": "Verantworten Sie mehrlagiges High-Speed-Digitaldesign, Signalintegritätssimulation, EMV-Härtung und robuste Gehäuse für Bordrechner."
+      },
+      "requirements": {
+        "en": [
+          "Altium or Cadence at multi-layer, controlled-impedance level",
+          "Signal integrity and EMC simulation practice",
+          "Experience with rolling stock or automotive environmental qualification"
+        ],
+        "de": [
+          "Altium oder Cadence auf Mehrlagen- und Impedanzkontrollniveau",
+          "Praxis in Signalintegritäts- und EMV-Simulation",
+          "Erfahrung mit Umweltqualifikation im Schienen- oder Fahrzeugbau"
+        ]
+      }
+    },
+    {
+      "id": "bms-systems-engineer",
+      "ref": "ZEB-HW-103",
+      "category": "hardware",
+      "location": {
+        "en": "Frankfurt / Kassel, Germany",
+        "de": "Frankfurt / Kassel, Deutschland"
+      },
+      "salary": "€105,000 – €125,000",
+      "terms": {
+        "en": "Full-time · Hybrid",
+        "de": "Vollzeit · Hybrid"
+      },
+      "title": {
+        "en": "BMS & Battery Pack Hardware Systems Engineer",
+        "de": "Systemingenieur/in BMS & Batteriepaket-Hardware"
+      },
+      "summary": {
+        "en": "Develop modular lithium-titanate high-voltage enclosures, integrated cell monitoring circuitry and automated isolation fail-safes for zero-emission propulsion.",
+        "de": "Entwickeln Sie modulare Lithium-Titanat-Hochvoltgehäuse, integrierte Zellüberwachung und automatisierte Isolationsabschaltungen für emissionsfreien Antrieb."
+      },
+      "requirements": {
+        "en": [
+          "High-voltage battery system design experience",
+          "Cell monitoring IC and isolation monitoring practice",
+          "Working knowledge of EN 50155 and relevant fire standards"
+        ],
+        "de": [
+          "Erfahrung in der Auslegung von Hochvolt-Batteriesystemen",
+          "Praxis mit Zellüberwachungs-ICs und Isolationsüberwachung",
+          "Fundierte Kenntnisse der EN 50155 und einschlägiger Brandschutznormen"
+        ]
+      }
+    },
+    {
+      "id": "bogie-assembly-head",
+      "ref": "ZEB-MFG-031",
+      "category": "manufacturing",
+      "location": {
+        "en": "Kassel manufacturing facility, Germany",
+        "de": "Fertigungswerk Kassel, Deutschland"
+      },
+      "salary": "€125,000 – €145,000",
+      "terms": {
+        "en": "Full-time · On-site plant",
+        "de": "Vollzeit · Vor Ort im Werk"
+      },
+      "title": {
+        "en": "Head of High-Precision Bogie Assembly & Quality Assurance",
+        "de": "Leitung Präzisionsmontage Drehgestelle & Qualitätssicherung"
+      },
+      "summary": {
+        "en": "Direct plant lines for forged alloy wheelsets, air suspension dampers, axle press fitting and laser metrology inspection protocols.",
+        "de": "Leiten Sie Fertigungslinien für geschmiedete Radsätze, Luftfederdämpfer, Achspressverbände und Laser-Messprotokolle."
+      },
+      "requirements": {
+        "en": [
+          "Heavy manufacturing leadership in rail, automotive or aerospace",
+          "Practical grasp of GD&T and laser metrology",
+          "Track record closing out deviations at the causing station"
+        ],
+        "de": [
+          "Führungserfahrung in der Schwerfertigung (Schiene, Automobil oder Luftfahrt)",
+          "Praktisches Verständnis von Form- und Lagetoleranzen sowie Lasermesstechnik",
+          "Nachweisliche Abstellung von Abweichungen an der verursachenden Station"
+        ]
+      }
+    },
+    {
+      "id": "robotic-welding-lead",
+      "ref": "ZEB-MFG-064",
+      "category": "manufacturing",
+      "location": {
+        "en": "Kassel manufacturing plant, Germany",
+        "de": "Fertigungswerk Kassel, Deutschland"
+      },
+      "salary": "€95,000 – €115,000",
+      "terms": {
+        "en": "Full-time · Manufacturing unit",
+        "de": "Vollzeit · Fertigungseinheit"
+      },
+      "title": {
+        "en": "Robotic Welding & Precision Tooling Lead",
+        "de": "Leitung Roboterschweißen & Präzisionswerkzeugbau"
+      },
+      "summary": {
+        "en": "Supervise automated laser seam welding cells, custom jig fixturing and non-destructive ultrasonic testing for extruded aluminium car bodies.",
+        "de": "Verantworten Sie automatisierte Laserschweißzellen, Sondervorrichtungen und zerstörungsfreie Ultraschallprüfung für Aluminium-Wagenkästen."
+      },
+      "requirements": {
+        "en": [
+          "Robotic welding cell programming and process ownership",
+          "EN 15085 welding certification context",
+          "Phased-array ultrasonic testing familiarity"
+        ],
+        "de": [
+          "Programmierung und Prozessverantwortung für Roboterschweißzellen",
+          "Kontext der Schweißzertifizierung EN 15085",
+          "Vertrautheit mit Phased-Array-Ultraschallprüfung"
+        ]
+      }
+    },
+    {
+      "id": "production-director",
+      "ref": "ZEB-MFG-090",
+      "category": "manufacturing",
+      "location": {
+        "en": "Frankfurt / Kassel, Germany",
+        "de": "Frankfurt / Kassel, Deutschland"
+      },
+      "salary": "€145,000 – €175,000",
+      "terms": {
+        "en": "Full-time · Executive",
+        "de": "Vollzeit · Führungsebene"
+      },
+      "title": {
+        "en": "Director of Production Operations & Mainline Homologation",
+        "de": "Direktor/in Produktionsbetrieb & Streckenzulassung"
+      },
+      "summary": {
+        "en": "Coordinate end-to-end multi-facility trainset rollout, production takt times, supply chain vendor auditing and TSI factory acceptance certification.",
+        "de": "Koordinieren Sie den werksübergreifenden Serienanlauf, Produktionstaktzeiten, Lieferantenaudits und die TSI-Werksabnahme."
+      },
+      "requirements": {
+        "en": [
+          "Multi-site production leadership at programme scale",
+          "Direct experience with TSI or equivalent authorisation regimes",
+          "Supplier audit and escalation ownership"
+        ],
+        "de": [
+          "Standortübergreifende Produktionsleitung auf Programmebene",
+          "Direkte Erfahrung mit TSI oder vergleichbaren Zulassungsregimen",
+          "Verantwortung für Lieferantenaudits und Eskalationen"
+        ]
+      }
+    },
+    {
+      "id": "intern-embedded",
+      "ref": "ZEB-INT-001",
+      "category": "internships",
+      "location": {
+        "en": "Bengaluru / Hyderabad, India",
+        "de": "Bengaluru / Hyderabad, Indien"
+      },
+      "salary": "₹45,000 – ₹60,000 / mo",
+      "terms": {
+        "en": "6–12 months · Internship",
+        "de": "6–12 Monate · Praktikum"
+      },
+      "title": {
+        "en": "Graduate Trainee / Intern — Embedded Software & Edge Computing",
+        "de": "Trainee / Praktikum — Embedded Software & Edge Computing"
+      },
+      "summary": {
+        "en": "Hands-on rotation in Linux kernel driver debugging, CANopen bus telemetry drivers and automated software-in-the-loop test execution.",
+        "de": "Praxisrotation in Linux-Kerneltreiber-Debugging, CANopen-Telemetrietreibern und automatisierter Software-in-the-Loop-Testausführung."
+      },
+      "requirements": {
+        "en": [
+          "Final-year or recent graduate in CS, ECE or a related discipline",
+          "C and Linux fundamentals",
+          "Curiosity about hardware you can put your hands on"
+        ],
+        "de": [
+          "Abschlussjahr oder kürzlicher Abschluss in Informatik, ECE oder verwandtem Fach",
+          "Grundlagen in C und Linux",
+          "Neugier auf Hardware zum Anfassen"
+        ]
+      }
+    },
+    {
+      "id": "intern-hardware",
+      "ref": "ZEB-INT-002",
+      "category": "internships",
+      "location": {
+        "en": "Frankfurt am Main / Kassel, Germany",
+        "de": "Frankfurt am Main / Kassel, Deutschland"
+      },
+      "salary": "€2,100 – €2,500 / mo",
+      "terms": {
+        "en": "6 months · Internship",
+        "de": "6 Monate · Praktikum"
+      },
+      "title": {
+        "en": "Engineering Intern — Hardware Design & Power Electronics",
+        "de": "Praktikum Technik — Hardwaredesign & Leistungselektronik"
+      },
+      "summary": {
+        "en": "Support lab testing of silicon carbide switches, gate driver thermal performance, test bench harness wiring and oscilloscope waveform analysis.",
+        "de": "Unterstützen Sie Labortests von Siliziumkarbid-Schaltern, Gate-Treiber-Thermik, Prüfstandsverkabelung und Oszilloskop-Signalanalyse."
+      },
+      "requirements": {
+        "en": [
+          "Electrical engineering student in an advanced semester",
+          "Basic lab instrumentation confidence",
+          "German or English working proficiency"
+        ],
+        "de": [
+          "Studium der Elektrotechnik im fortgeschrittenen Semester",
+          "Grundsicherheit im Umgang mit Labormesstechnik",
+          "Deutsch- oder Englischkenntnisse auf Arbeitsniveau"
+        ]
+      }
+    },
+    {
+      "id": "intern-manufacturing",
+      "ref": "ZEB-INT-003",
+      "category": "internships",
+      "location": {
+        "en": "Kassel heavy production unit, Germany",
+        "de": "Schwerfertigung Kassel, Deutschland"
+      },
+      "salary": "€2,000 – €2,400 / mo",
+      "terms": {
+        "en": "6 months · Plant internship",
+        "de": "6 Monate · Werkspraktikum"
+      },
+      "title": {
+        "en": "Manufacturing & Mechatronics Intern",
+        "de": "Praktikum Fertigung & Mechatronik"
+      },
+      "summary": {
+        "en": "Assist bogie manufacturing supervisors with CMM calibration, precision torque validation and assembly floor digital workflows.",
+        "de": "Unterstützen Sie die Fertigungsleitung bei KMG-Kalibrierung, Drehmomentvalidierung und digitalen Montageabläufen."
+      },
+      "requirements": {
+        "en": [
+          "Mechanical or mechatronics student in an advanced semester",
+          "Interest in metrology and shop-floor process",
+          "German working proficiency preferred"
+        ],
+        "de": [
+          "Studium Maschinenbau oder Mechatronik im fortgeschrittenen Semester",
+          "Interesse an Messtechnik und Fertigungsprozessen",
+          "Deutschkenntnisse auf Arbeitsniveau bevorzugt"
+        ]
+      }
+    },
+    {
+      "id": "intern-navigation",
+      "ref": "ZEB-INT-004",
+      "category": "internships",
+      "location": {
+        "en": "Bengaluru / Hyderabad, India",
+        "de": "Bengaluru / Hyderabad, Indien"
+      },
+      "salary": "₹50,000 – ₹65,000 / mo",
+      "terms": {
+        "en": "6–12 months · Research",
+        "de": "6–12 Monate · Forschung"
+      },
+      "title": {
+        "en": "Autonomous Navigation & Telemetry Research Intern",
+        "de": "Forschungspraktikum Autonome Navigation & Telemetrie"
+      },
+      "summary": {
+        "en": "Collaborate with research scientists on synthetic sensor data generation, point cloud labelling pipelines and high-speed rail trajectory simulation.",
+        "de": "Arbeiten Sie mit Forschenden an synthetischer Sensordatengenerierung, Punktwolken-Labeling und Trajektoriensimulation für Hochgeschwindigkeitszüge."
+      },
+      "requirements": {
+        "en": [
+          "Python plus exposure to a deep-learning framework",
+          "Some background in robotics, SLAM or geometry",
+          "Willingness to work with messy real-world data"
+        ],
+        "de": [
+          "Python sowie Erfahrung mit einem Deep-Learning-Framework",
+          "Hintergrund in Robotik, SLAM oder Geometrie",
+          "Bereitschaft zur Arbeit mit unsauberen Realdaten"
+        ]
+      }
+    }
+  ],
+  "documents": [
+    {
+      "id": "q3-interim",
+      "title": {
+        "en": "Q3 2026 interim statement",
+        "de": "Zwischenbericht Q3 2026"
+      },
+      "meta": {
+        "en": "Published 12 Aug 2026 · PDF (2.4 MB)",
+        "de": "Veröffentlicht 12. Aug. 2026 · PDF (2,4 MB)"
+      },
+      "href": "/docs/Zebrold-Q3-2026-Interim-Statement.pdf",
+      "filename": "Zebrold-Q3-2026-Interim-Statement.pdf"
+    },
+    {
+      "id": "annual-report",
+      "title": {
+        "en": "Annual report & ESG impact review",
+        "de": "Geschäftsbericht & ESG-Bericht"
+      },
+      "meta": {
+        "en": "Full year 2025/26 · PDF (4.8 MB)",
+        "de": "Gesamtjahr 2025/26 · PDF (4,8 MB)"
+      },
+      "href": "/docs/Zebrold-Annual-Report-ESG-2025-26.pdf",
+      "filename": "Zebrold-Annual-Report-ESG-2025-26.pdf"
+    },
+    {
+      "id": "delivery-pipeline",
+      "title": {
+        "en": "Scolome fleet delivery pipeline 2026–32",
+        "de": "Scolome-Lieferplan 2026–32"
+      },
+      "meta": {
+        "en": "Programme release · PDF (3.1 MB)",
+        "de": "Programmveröffentlichung · PDF (3,1 MB)"
+      },
+      "href": "/docs/Scolome-Fleet-Delivery-Pipeline-2026-32.pdf",
+      "filename": "Scolome-Fleet-Delivery-Pipeline-2026-32.pdf"
+    }
+  ],
+  "calendar": [
+    {
+      "id": "cmd",
+      "month": {
+        "en": "Oct",
+        "de": "Okt"
+      },
+      "day": "28",
+      "title": {
+        "en": "Capital Markets Day 2026",
+        "de": "Kapitalmarkttag 2026"
+      },
+      "detail": {
+        "en": "Frankfurt am Main · in person & live webcast",
+        "de": "Frankfurt am Main · vor Ort & Live-Webcast"
+      }
+    },
+    {
+      "id": "q3-call",
+      "month": {
+        "en": "Nov",
+        "de": "Nov"
+      },
+      "day": "14",
+      "title": {
+        "en": "Q3 2026 earnings conference call",
+        "de": "Telefonkonferenz zu den Q3-Zahlen 2026"
+      },
+      "detail": {
+        "en": "Global webcast & analyst Q&A",
+        "de": "Weltweiter Webcast & Analysten-Q&A"
+      }
+    },
+    {
+      "id": "green-bond",
+      "month": {
+        "en": "Jan",
+        "de": "Jan"
+      },
+      "day": "12",
+      "title": {
+        "en": "Decarbonisation & green bond briefing",
+        "de": "Briefing zu Dekarbonisierung & Green Bond"
+      },
+      "detail": {
+        "en": "Scolome sustainable rail framework",
+        "de": "Scolome-Rahmenwerk für nachhaltige Schiene"
+      }
+    }
+  ],
+  "calendarPeriod": "2026 / 2027",
+  "metrics": [
+    {
+      "id": "backlog",
+      "label": {
+        "en": "Total order book backlog",
+        "de": "Gesamter Auftragsbestand"
+      },
+      "value": "€4.85bn",
+      "delta": {
+        "en": "+24% YoY",
+        "de": "+24 % ggü. Vj."
+      },
+      "note": {
+        "en": "Multi-year deliveries across European and APAC corridors through 2032.",
+        "de": "Mehrjährige Lieferungen auf europäischen und APAC-Korridoren bis 2032."
+      }
+    },
+    {
+      "id": "revenue",
+      "label": {
+        "en": "Annual rolling stock revenue",
+        "de": "Jahresumsatz Schienenfahrzeuge"
+      },
+      "value": "€1.62bn",
+      "period": {
+        "en": "FY 2025/26",
+        "de": "GJ 2025/26"
+      },
+      "note": {
+        "en": "Turnover from electric and battery-hybrid intercity trainsets.",
+        "de": "Umsatz aus elektrischen und batteriehybriden Fernverkehrszügen."
+      }
+    },
+    {
+      "id": "digital",
+      "label": {
+        "en": "Digital transit & AI systems",
+        "de": "Digitale Systeme & KI"
+      },
+      "value": "€580m",
+      "delta": {
+        "en": "+38% YoY",
+        "de": "+38 % ggü. Vj."
+      },
+      "note": {
+        "en": "Signalling, digital cockpits and trackside sensor arrays.",
+        "de": "Signaltechnik, digitale Führerstände und streckenseitige Sensorik."
+      }
+    },
+    {
+      "id": "margin",
+      "label": {
+        "en": "Operating margin (EBITDA)",
+        "de": "Operative Marge (EBITDA)"
+      },
+      "value": "18.4%",
+      "period": {
+        "en": "Group metric",
+        "de": "Konzernkennzahl"
+      },
+      "note": {
+        "en": "Cost engineering and a vertically integrated silicon-carbide chain.",
+        "de": "Kostenoptimierung und vertikal integrierte Siliziumkarbid-Kette."
+      }
+    }
+  ],
+  "segments": [
+    {
+      "id": "rolling-stock",
+      "label": {
+        "en": "High-speed & intercity rolling stock",
+        "de": "Hochgeschwindigkeits- und Fernverkehrsfahrzeuge"
+      },
+      "pct": 45,
+      "value": "€729m"
+    },
+    {
+      "id": "epc",
+      "label": {
+        "en": "Turnkey EPC, permanent way & electrification",
+        "de": "Schlüsselfertige EPC, Oberbau & Elektrifizierung"
+      },
+      "pct": 25,
+      "value": "€405m"
+    },
+    {
+      "id": "digital",
+      "label": {
+        "en": "Digital rail, signalling & AI telemetry",
+        "de": "Digitale Schiene, Signaltechnik & KI-Telemetrie"
+      },
+      "pct": 18,
+      "value": "€291m"
+    },
+    {
+      "id": "services",
+      "label": {
+        "en": "Lifecycle maintenance & depot services",
+        "de": "Instandhaltung über den Lebenszyklus & Depotservice"
+      },
+      "pct": 12,
+      "value": "€195m"
+    }
+  ],
+  "regions": [
+    {
+      "id": "europe",
+      "name": {
+        "en": "Europe corridor",
+        "de": "Korridor Europa"
+      },
+      "detail": {
+        "en": "Germany, UK, Scandinavia & France",
+        "de": "Deutschland, UK, Skandinavien & Frankreich"
+      },
+      "pct": "52%",
+      "value": "€842.4m"
+    },
+    {
+      "id": "apac",
+      "name": {
+        "en": "Asia-Pacific",
+        "de": "Asien-Pazifik"
+      },
+      "detail": {
+        "en": "India R&D centre, Australia & Middle East",
+        "de": "F&E-Zentrum Indien, Australien & Naher Osten"
+      },
+      "pct": "28%",
+      "value": "€453.6m"
+    },
+    {
+      "id": "americas",
+      "name": {
+        "en": "Americas",
+        "de": "Amerika"
+      },
+      "detail": {
+        "en": "Canadian corridors & US cross-border lines",
+        "de": "Kanadische Korridore & grenzüberschreitende US-Strecken"
+      },
+      "pct": "20%",
+      "value": "€324.0m"
+    }
+  ]
+}

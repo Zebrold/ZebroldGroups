@@ -6,9 +6,9 @@ export default function Automotive() {
     <SectorPage
       page={sectorPages.automotive}
       seo={{
-        title: 'Electrified Drivetrain & Series Automation | Zebrold Scolome',
+        title: 'Electrified Drivetrain & Series Automation | Zebrold IHL',
         description:
-          'Silicon-carbide traction packages and takted carbody assembly at Zebrold Scolome — high-volume automotive manufacturing discipline applied to rolling stock.',
+          'Silicon-carbide traction packages and takted carbody assembly at Zebrold IHL — high-volume automotive manufacturing discipline applied to rolling stock.',
         keywords:
           'Zebrold automotive, silicon carbide inverter, traction drive, EN 50155, carbody assembly, series manufacturing',
         url: '/automotive',

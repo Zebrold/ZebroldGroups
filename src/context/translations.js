@@ -9,6 +9,7 @@ export const translations = {
     /* ── Navigation ── */
     nav_about: 'About Us',
     nav_products: 'Products',
+    nav_products_label: 'Product & system lines',
     nav_newsroom: 'Newsroom',
     nav_careers: 'Careers',
     nav_menu: 'Menu',
@@ -21,6 +22,7 @@ export const translations = {
     footer_company: 'Company',
     footer_sectors: 'Sectors',
     footer_resources: 'Resources',
+    footer_locations: 'Global Locations',
     footer_hq: 'Global Headquarters',
     footer_follow: 'Follow Us',
     footer_contact: 'Contact',
@@ -77,7 +79,7 @@ export const translations = {
     /* ── About ── */
     about_title: 'About Us',
     about_lede:
-      'Zebrold Scolome builds the rolling stock that moves continents — engineered in Germany, intelligent by design in India.',
+      'Zebrold IHL builds the rolling stock that moves continents — engineered in Germany, intelligent by design in India.',
 
     /* ── Newsroom ── */
     news_title: 'Newsroom',
@@ -144,6 +146,7 @@ export const translations = {
     /* ── Navigation ── */
     nav_about: 'Über uns',
     nav_products: 'Produkte',
+    nav_products_label: 'Produkt- und Systemlinien',
     nav_newsroom: 'Newsroom',
     nav_careers: 'Karriere',
     nav_menu: 'Menü',
@@ -156,6 +159,7 @@ export const translations = {
     footer_company: 'Unternehmen',
     footer_sectors: 'Sektoren',
     footer_resources: 'Ressourcen',
+    footer_locations: 'Globale Standorte',
     footer_hq: 'Globaler Hauptsitz',
     footer_follow: 'Folgen Sie uns',
     footer_contact: 'Kontakt',
@@ -212,7 +216,7 @@ export const translations = {
     /* ── About ── */
     about_title: 'Über uns',
     about_lede:
-      'Zebrold Scolome baut die Schienenfahrzeuge, die Kontinente bewegen — konstruiert in Deutschland, intelligent gestaltet in Indien.',
+      'Zebrold IHL baut die Schienenfahrzeuge, die Kontinente bewegen — konstruiert in Deutschland, intelligent gestaltet in Indien.',
 
     /* ── Newsroom ── */
     news_title: 'Newsroom',

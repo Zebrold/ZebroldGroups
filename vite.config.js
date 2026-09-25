@@ -1,5 +1,45 @@
 import { defineConfig, loadEnv } from 'vite'
 import react from '@vitejs/plugin-react'
+import { handleLogin, handleGetContent, handleSaveContent, handleUpload, fsStorage, run } from './api/_lib/admin.js'
+
+/** Local stand-in for api/admin/* — edits are written straight to the working tree. */
+function adminDevApi(env) {
+  const storage = fsStorage(process.cwd());
+  const readBody = (req) =>
+    new Promise((resolve, reject) => {
+      let raw = '';
+      req.on('data', (chunk) => (raw += chunk));
+      req.on('end', () => {
+        try {
+          resolve(raw ? JSON.parse(raw) : {});
+        } catch (err) {
+          reject(err);
+        }
+      });
+      req.on('error', reject);
+    });
+
+  return {
+    name: 'admin-local-dev-api',
+    configureServer(server) {
+      server.middlewares.use('/api/admin', async (req, res) => {
+        const route = req.url.split('?')[0];
+        const out = await run(async () => {
+          if (route === '/login' && req.method === 'POST') return handleLogin(await readBody(req), env);
+          if (route === '/content' && req.method === 'GET') return handleGetContent(req.headers, env, storage);
+          if (route === '/content' && req.method === 'PUT')
+            return handleSaveContent(req.headers, await readBody(req), env, storage);
+          if (route === '/upload' && req.method === 'POST')
+            return handleUpload(req.headers, await readBody(req), env, storage);
+          return { status: 404, body: { error: 'Not found' } };
+        });
+        res.statusCode = out.status;
+        res.setHeader('Content-Type', 'application/json');
+        res.end(JSON.stringify(out.body));
+      });
+    },
+  };
+}
 
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => {
@@ -8,6 +48,7 @@ export default defineConfig(({ mode }) => {
   return {
     plugins: [
       react(),
+      adminDevApi({ ...process.env, ...env }),
       {
         name: 'resend-local-dev-api',
         configureServer(server) {

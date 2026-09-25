@@ -7,7 +7,7 @@ import rsVelox from '../../assets/intercity_platform.webp';
 
 export default function RollingStock() {
   const seoData = {
-    title: 'Zebrold Scolome | Ultra Speed Intelligent Rolling Stocks',
+    title: 'Zebrold IHL | Ultra Speed Intelligent Rolling Stocks',
     description:
       'Engineering high-speed aerodynamic coherence, zero-emission battery-electric architecture, and structurally optimized lightweight carbodies. Developed synchronously across Germany and India.',
     keywords:
@@ -73,7 +73,7 @@ export default function RollingStock() {
                 <div className="rail-mandate-badge">
                   <span className="rail-mandate-badge-dot" />
                   <span className="rail-mandate-badge-text">
-                    MANDATE &amp; MOBILITY CHARTER • SECTION 01
+                    MANDATE &amp; MOBILITY CHARTER
                   </span>
                 </div>
 
@@ -82,7 +82,7 @@ export default function RollingStock() {
                 </h2>
 
                 <p className="rail-mandate-body">
-                  Rolling stock is the sovereign foundation of continental transportation. Zebrold Scolome redefines heavy rail through relentless engineering rigor and bilateral innovation, combining the physical structural endurance forged across Kassel and Frankfurt with safety-critical software, traction algorithms, and real-time computing developed in Bengaluru and Hyderabad.
+                  Rolling stock is the sovereign foundation of continental transportation. Zebrold IHL redefines heavy rail through relentless engineering rigor and bilateral innovation, combining the physical structural endurance forged across Kassel and Frankfurt with safety-critical software, traction algorithms, and real-time computing developed in Bengaluru and Hyderabad.
                 </p>
 
                 <div className="rail-mandate-note">
@@ -305,7 +305,7 @@ export default function RollingStock() {
               </h2>
 
               <p className="rail-manifesto-body">
-                Over 42% of global mainline arterial rail remains un-electrified, bound to high-emission diesel traction. Zebrold Scolome systematically replaces legacy diesel locomotives through modular battery-electric hybridization and ultra-high-efficiency catenary trainsets. Our carbody structures incorporate 92% infinitely recyclable aluminum-lithium alloys and low-toxicity biosourced composite linings.
+                Over 42% of global mainline arterial rail remains un-electrified, bound to high-emission diesel traction. Zebrold IHL systematically replaces legacy diesel locomotives through modular battery-electric hybridization and ultra-high-efficiency catenary trainsets. Our carbody structures incorporate 92% infinitely recyclable aluminum-lithium alloys and low-toxicity biosourced composite linings.
               </p>
 
               <div className="rail-manifesto-grid">
@@ -342,7 +342,7 @@ export default function RollingStock() {
           <div className="rail-table-head">
             <div className="rail-table-tag">
               <span className="rail-table-tag-sq" />
-              TECHNICAL BENCHMARK REGISTRY • SECTION 04
+              TECHNICAL BENCHMARK REGISTRY
             </div>
             <h2 className="rail-table-title">
               Comparative Engineering Metrics

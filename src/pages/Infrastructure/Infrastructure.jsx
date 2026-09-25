@@ -8,7 +8,7 @@ import ifPortal from '../../assets/station_trainshed.jpg';
 
 export default function Infrastructure() {
   const seoData = {
-    title: 'Zebrold Scolome | Fixed Rail Infrastructure & Energy Systems',
+    title: 'Zebrold IHL | Fixed Rail Infrastructure & Energy Systems',
     description:
       'High-Velocity Fixed Rail Infrastructure. Monolithic Slab Track & Autonomous Power Systems. Uniting German geotechnical precision casting with Indian telemetric algorithmic processing.',
     keywords:
@@ -27,7 +27,7 @@ export default function Infrastructure() {
           <div className="rail-hero-grid">
             <div>
               <div className="rail-hero-subhead" style={{ marginBottom: '1rem', color: '#852221' }}>
-                SECTION 04 // FIXED RAIL INFRASTRUCTURE &amp; CORRIDOR ELECTRIFICATION
+                FIXED RAIL INFRASTRUCTURE &amp; CORRIDOR ELECTRIFICATION
               </div>
               <h1 className="rail-hero-title">
                 High-Velocity Fixed Rail Infrastructure <br />
@@ -93,7 +93,7 @@ export default function Infrastructure() {
                 </h2>
 
                 <p className="rail-mandate-body">
-                  Fixed rail infrastructure achieves true sovereign permanence only when civil rigidity is synchronized with continuous sensor observation. Zebrold Scolome unites German geotechnical casting rigor with Indian telemetric algorithmic processing to produce resilient, self-reporting railway corridors.
+                  Fixed rail infrastructure achieves true sovereign permanence only when civil rigidity is synchronized with continuous sensor observation. Zebrold IHL unites German geotechnical casting rigor with Indian telemetric algorithmic processing to produce resilient, self-reporting railway corridors.
                 </p>
 
                 <div className="rail-mandate-note">
@@ -372,7 +372,7 @@ export default function Infrastructure() {
               </h2>
 
               <p className="rail-manifesto-body">
-                Rather than transient maintenance intervals, Zebrold Scolome fixed infrastructure guarantees corridor performance through continuous material integrity, monolithic casting durability, and real-time algorithmic telemetry.
+                Rather than transient maintenance intervals, Zebrold IHL fixed infrastructure guarantees corridor performance through continuous material integrity, monolithic casting durability, and real-time algorithmic telemetry.
               </p>
 
               <div className="rail-manifesto-grid">
@@ -409,7 +409,7 @@ export default function Infrastructure() {
           <div className="rail-table-head">
             <div className="rail-table-tag">
               <span className="rail-table-tag-sq" />
-              TECHNICAL BENCHMARK REGISTRY • SECTION 05
+              TECHNICAL BENCHMARK REGISTRY
             </div>
             <h2 className="rail-table-title">
               Comparative Engineering Metrics

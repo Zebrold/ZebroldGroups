@@ -45,7 +45,7 @@ export default function HeroCarousel({ slides, variant = 'bleed', ctaHref }) {
     <section
       className={`hero hero--${variant}`}
       aria-roledescription="carousel"
-      aria-label="Zebrold Scolome mobility programmes"
+      aria-label="Zebrold IHL mobility programmes"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onFocusCapture={() => setPaused(true)}

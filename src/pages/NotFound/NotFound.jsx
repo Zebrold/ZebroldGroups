@@ -8,7 +8,7 @@ export default function NotFound() {
 
   return (
     <div>
-      <SEO title="Page not found | Zebrold Scolome" description="The page you requested could not be found." />
+      <SEO title="Page not found | Zebrold IHL" description="The page you requested could not be found." />
 
       <PageHero
         align="center"

@@ -1,1 +1,20 @@
-/*    /index.html   200
+# Legacy conglomerate URLs still held in search indexes -> current pages
+/news                                /newsroom          301
+/sectors                             /                  301
+/subsidiaries                        /about             301
+/offices                             /contact           301
+/sectors/ev-charging-battery         /components        301
+/sectors/semiconductors              /components        301
+/sectors/car-manufacturing           /automotive        301
+/sectors/retail-consumer             /                  301
+/sectors/education                   /careers           301
+/sectors/technology-it               /digital-rail      301
+/sectors/finance-investment          /newsroom          301
+/sectors/healthcare-pharma           /                  301
+/sectors/logistics-supply-chain      /infrastructure    301
+/sectors/agriculture-food            /                  301
+/sectors/industrial-engineering      /components        301
+/sectors/media-entertainment         /newsroom          301
+
+# SPA fallback
+/*                                   /index.html        200

@@ -51,8 +51,8 @@ export default function Careers() {
   return (
     <div ref={revealRef} className="cr">
       <SEO
-        title="Careers | Zebrold Scolome"
-        description="Engineering, software, manufacturing and internship roles at Zebrold Scolome across Frankfurt, Kassel, Bengaluru and Hyderabad."
+        title="Careers | Zebrold IHL"
+        description="Engineering, software, manufacturing and internship roles at Zebrold IHL across Frankfurt, Kassel, Bengaluru and Hyderabad."
         keywords="Zebrold careers, rail engineering jobs, rolling stock jobs, SIL-4 firmware, silicon carbide traction, bogie manufacturing, engineering internship"
         url="/careers"
       />
@@ -84,8 +84,11 @@ export default function Careers() {
         </div>
 
         {/* ══ Life at Zebrold ══ */}
-        <section className="cr__editorial" aria-labelledby="cr-life-title">
+        <section className="cr__editorial reveal" aria-labelledby="cr-life-title">
           <div className="cr__editorialLead">
+            <span className="cr__editorialEyebrow">
+              {lang === 'de' ? 'Ingenieurkultur & Autonomie' : 'Engineering Culture & Autonomy'}
+            </span>
             <h2 className="cr__h2" id="cr-life-title">
               {lang === 'de' ? 'Arbeiten bei Zebrold IHL' : 'Life at Zebrold IHL'}
             </h2>
@@ -94,10 +97,45 @@ export default function Careers() {
                 ? 'Wo deutsches Präzisionsingenieurwesen auf indische Deep-Tech-Kompetenz trifft. Wir geben Ingenieurinnen, Werkstoffwissenschaftlern und Softwarearchitekten den Raum, das nächste Jahrhundert nachhaltiger Hochgeschwindigkeitsmobilität zu gestalten.'
                 : 'Where German precision engineering heritage meets Indian deep-tech ingenuity. We give engineers, material scientists and software architects the room to shape the next century of high-speed sustainable rail mobility.'}
             </p>
+
+            <div className="cr__editorialPillars">
+              <div className="cr__pillarItem">
+                <span className="cr__pillarVal">04</span>
+                <span className="cr__pillarLabel">
+                  {lang === 'de'
+                    ? 'Technikstandorte: Frankfurt, Kassel, Bengaluru, Hyderabad'
+                    : 'Engineering hubs: Frankfurt, Kassel, Bengaluru, Hyderabad'}
+                </span>
+              </div>
+              <div className="cr__pillarItem">
+                <span className="cr__pillarVal">40y</span>
+                <span className="cr__pillarLabel">
+                  {lang === 'de'
+                    ? 'Plattform-Lebensdauer für den Streckendienst'
+                    : 'Mainline rolling stock platform duty cycle'}
+                </span>
+              </div>
+              <div className="cr__pillarItem">
+                <span className="cr__pillarVal">20%</span>
+                <span className="cr__pillarLabel">
+                  {lang === 'de'
+                    ? 'Geschützte Zeit für F&E, Patente & Testring'
+                    : 'Protected time for R&D, patents & test track'}
+                </span>
+              </div>
+              <div className="cr__pillarItem">
+                <span className="cr__pillarVal">0%</span>
+                <span className="cr__pillarLabel">
+                  {lang === 'de'
+                    ? 'Bürokratische Hürden: Direkte Squad-Verantwortung'
+                    : 'Administrative gatekeeping: Direct squad ownership'}
+                </span>
+              </div>
+            </div>
           </div>
 
           <div className="cr__editorialBody">
-            <p>
+            <p className="cr__editorialBodyLead">
               {lang === 'de'
                 ? 'Unsere technische Grundlage verbindet die metallurgische, strukturelle und mechanische Handwerkskunst aus Frankfurt am Main und Kassel mit der Software-Intelligenz aus Bengaluru und Hyderabad. Fahrzeugsubsysteme werden gemeinsam entworfen — vom Silizium-Layout bis zum geschweißten Drehgestell — sodass Beschaffungssilos entfallen und Triebzüge mit engeren Toleranzen und höherer Effizienz entstehen.'
                 : 'Our technical foundation unifies the metallurgical, structural and mechanical craftsmanship developed in Frankfurt am Main and Kassel with the software intelligence engineered in Bengaluru and Hyderabad. Vehicle subsystems are co-designed from initial silicon layout through to welded bogie fabrication, which removes procurement siloing and delivers trainsets built to tighter tolerances and better efficiencies.'}
@@ -112,6 +150,19 @@ export default function Careers() {
                 ? 'Diese Zusammenarbeit bleibt physisch und kontinuierlich: Teams wechseln zwischen Hochgeschwindigkeits-Teststrecken in Niedersachsen, der Schwerfertigung in Hessen und den Firmware-Laboren in Bengaluru und Hyderabad. Jede Plattform ist auf vier Jahrzehnte Streckendienst ausgelegt, und bis zu 20 % der Arbeitszeit stehen für spekulative Simulation, Patentanmeldungen mit Beteiligung und Versuche auf unserem eigenen Testring zur Verfügung.'
                 : 'That collaboration stays physical and continuous: teams rotate between high-speed test circuits in Lower Saxony, heavy manufacturing lines in Hessen and firmware proving labs in Bengaluru and Hyderabad. Every platform is designed for four decades of mainline duty, and up to 20% of engineering time is protected for speculative simulation, patent filings with royalty sharing, and live experimentation on our own test ring.'}
             </p>
+
+            <div className="cr__editorialCallout">
+              <div className="cr__editorialCalloutContent">
+                <span className="cr__editorialCalloutTag">
+                  {lang === 'de' ? 'Integrierte Schienendirektion' : 'Integrated Rail Directorate'}
+                </span>
+                <p className="cr__editorialCalloutText">
+                  {lang === 'de'
+                    ? 'Vom Silizium-Schaltplan bis zum fertigen EN 13749 Drehgestell — gemeinsam entwickelt und erprobt.'
+                    : 'From initial silicon layout to welded EN 13749 bogie fabrication — engineered as a unified cross-border team.'}
+                </p>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -130,7 +181,7 @@ export default function Careers() {
                   : 'Select any position to view its requirements and open the full candidate dossier.'}
               </p>
             </div>
-            <p className="cr__count mono">
+            <p className="cr__count">
               {lang === 'de' ? 'Angezeigt' : 'Showing'} <strong>{visible.length}</strong>{' '}
               {lang === 'de' ? `von ${jobs.length} Ausschreibungen` : `of ${jobs.length} postings`}
             </p>
@@ -148,14 +199,14 @@ export default function Careers() {
                     <p className="jobRow__meta">
                       <span className="jobRow__cat">{categoryLabel(job.category)}</span>
                       <span aria-hidden="true">•</span>
-                      <span>{job.location[lang]}</span>
+                      <span>{job.location?.[lang]}</span>
                     </p>
 
-                    <h3 className="jobRow__title">{job.title[lang]}</h3>
-                    <p className="jobRow__summary">{job.summary[lang]}</p>
+                    <h3 className="jobRow__title">{job.title?.[lang]}</h3>
+                    <p className="jobRow__summary">{job.summary?.[lang]}</p>
 
                     <ul className="jobRow__reqs" role="list">
-                      {job.requirements[lang].slice(0, 3).map((req) => (
+                      {(job.requirements?.[lang] || []).slice(0, 3).map((req) => (
                         <li key={req}>{req}</li>
                       ))}
                     </ul>
@@ -164,7 +215,7 @@ export default function Careers() {
                   <div className="jobRow__side">
                     <div className="jobRow__pay">
                       <span className="jobRow__salary">{job.salary}</span>
-                      <span className="jobRow__terms">{job.terms[lang]}</span>
+                      <span className="jobRow__terms">{job.terms?.[lang]}</span>
                     </div>
                     <Link
                       to={`/careers/apply?ref=${encodeURIComponent(job.ref)}`}
@@ -201,7 +252,7 @@ export default function Careers() {
           <div className="cr__cultureGrid">
             {CULTURE.map((item, i) => (
               <article key={item.title.en} className="cultureItem reveal" data-delay={i + 1}>
-                <span className="cultureItem__num mono">
+                <span className="cultureItem__num">
                   {String(i + 1).padStart(2, '0')}. {item.heading[lang]}
                 </span>
                 <h3 className="cultureItem__title">{item.title[lang]}</h3>

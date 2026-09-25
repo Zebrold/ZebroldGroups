@@ -716,19 +716,42 @@
 
 .docList__action {
   flex-shrink: 0;
-  padding: 0.35rem 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.42rem 0.95rem;
   border-radius: var(--radius-pill);
   border: 1px solid var(--rule);
   background-color: var(--paper);
   font-size: var(--text-2xs);
   font-weight: 600;
   color: var(--burgundy-850);
-  transition: background-color var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out);
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out);
+}
+
+.docList__action svg {
+  flex-shrink: 0;
+  stroke: currentColor;
+  transition: transform var(--dur-fast) var(--ease-out);
 }
 
 .docList__action:hover {
   background-color: var(--burgundy-850);
+  border-color: var(--burgundy-850);
   color: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(117, 30, 36, 0.16);
+}
+
+.docList__action:hover svg {
+  transform: translateY(1px);
+}
+
+.docList__action:active {
+  transform: translateY(0);
 }
 
 /* ── Calendar ── */

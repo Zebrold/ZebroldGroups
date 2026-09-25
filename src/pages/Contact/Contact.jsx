@@ -5,6 +5,7 @@ import SEO from '../../components/SEO/SEO';
 import PageHero from '../../components/PageHero/PageHero';
 import Toast from '../../components/Toast/Toast';
 import { sendContactEmail } from '../../services/emailService';
+import { LOCATIONS } from '../../data/locations';
 import hqImg from '../../assets/company_hq.jpg';
 import './Contact.css';
 
@@ -62,8 +63,8 @@ export default function Contact() {
   return (
     <div ref={revealRef}>
       <SEO
-        title="Contact | Zebrold Scolome"
-        description="Contact Zebrold Scolome — programme enquiries, procurement, media and general correspondence. Headquarters in Frankfurt am Main."
+        title="Contact | Zebrold IHL"
+        description="Contact Zebrold IHL — programme enquiries, procurement, media and general correspondence. Headquarters in Frankfurt am Main."
         keywords="Zebrold contact, Scolome enquiries, Frankfurt headquarters, rail procurement"
         url="/contact"
       />
@@ -122,16 +123,22 @@ export default function Contact() {
             </div>
 
             <div className="ct__block">
-              <h2 className="ct__blockTitle">{t('footer_hq')}</h2>
-              <address className="ct__address">
-                Zebrold International Holdings Limited
-                <br />
-                Bockenheimer Landstrasse 17-19
-                <br />
-                60325 Frankfurt am Main
-                <br />
-                {lang === 'de' ? 'Deutschland' : 'Germany'}
-              </address>
+              <h2 className="ct__blockTitle">{t('footer_locations') || t('footer_hq')}</h2>
+              <div className="ct__locations">
+                {LOCATIONS.map((loc) => (
+                  <div key={loc.id} className="ct__locItem">
+                    <div className="ct__locHead">
+                      <strong className="ct__locTitle">{loc.title[lang] || loc.title.en}</strong>
+                      {loc.isPrimary && (
+                        <span className="ct__locBadge">{loc.tag[lang] || 'Primary'}</span>
+                      )}
+                    </div>
+                    <address className="ct__address">
+                      {loc.fullAddress}
+                    </address>
+                  </div>
+                ))}
+              </div>
             </div>
 
             {CHANNELS.map((channel) => (

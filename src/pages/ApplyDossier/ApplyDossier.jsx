@@ -44,7 +44,7 @@ const COPY = {
       'Outline the problem, the root-cause methodology, the debugging or failure-mode analysis applied, the roadblocks overcome and the validated outcome.',
     s3: 'Statement of Purpose & Technical Rationale',
     s3meta: 'Architectural vision',
-    rationale: 'Why are you applying specifically to the Zebrold Scolome project?',
+    rationale: 'Why are you applying specifically to the Zebrold IHL project?',
     rationaleHint:
       'Address your perspective on decarbonised intercity transport, the German–Indian engineering corridor, and high-speed rail competing with short-haul aviation.',
     s4: 'Engineering Dossier & Credential Vault',
@@ -70,7 +70,7 @@ const COPY = {
     restoreDraft: 'Restore saved draft',
     draftSaved: 'Draft saved in this browser.',
     draftRestored: 'Draft restored from this browser.',
-    incomplete: 'Please complete the required fields in every section before submitting.',
+    incomplete: 'Please complete all required fields before submitting.',
     error: 'Transmission failed. Please email talent.acquisition@zebrold.de directly.',
     successTitle: 'Dossier received',
     successBody:
@@ -83,7 +83,7 @@ const COPY = {
     stepStatusPending: 'Not started',
     stepCounter: (filled, total) => `${filled}/${total} fields`,
     overallProgress: (done, total, pct) => `${done} of ${total} steps completed (${pct}%)`,
-    jumpToStep: 'Jump to section',
+    jumpToStep: 'Jump to step',
   },
   de: {
     title: 'Reichen Sie Ihr technisches Dossier ein',
@@ -121,7 +121,7 @@ const COPY = {
       'Skizzieren Sie das Problem, die Ursachenanalyse, die eingesetzte Fehleranalyse, überwundene Hürden und das validierte Ergebnis.',
     s3: 'Motivation & technische Begründung',
     s3meta: 'Architektonische Perspektive',
-    rationale: 'Warum bewerben Sie sich gezielt beim Zebrold-Scolome-Projekt?',
+    rationale: 'Warum bewerben Sie sich gezielt beim Zebrold-IHL-Projekt?',
     rationaleHint:
       'Gehen Sie auf dekarbonisierten Fernverkehr, den deutsch-indischen Ingenieurkorridor und den Wettbewerb der Hochgeschwindigkeitsbahn mit Kurzstreckenflügen ein.',
     s4: 'Technisches Dossier & Nachweise',
@@ -147,7 +147,7 @@ const COPY = {
     restoreDraft: 'Gespeicherten Entwurf laden',
     draftSaved: 'Entwurf in diesem Browser gespeichert.',
     draftRestored: 'Entwurf aus diesem Browser wiederhergestellt.',
-    incomplete: 'Bitte füllen Sie die Pflichtfelder in allen Abschnitten aus.',
+    incomplete: 'Bitte füllen Sie alle erforderlichen Pflichtfelder aus.',
     error: 'Übermittlung fehlgeschlagen. Bitte schreiben Sie an talent.acquisition@zebrold.de.',
     successTitle: 'Dossier eingegangen',
     successBody:
@@ -160,7 +160,7 @@ const COPY = {
     stepStatusPending: 'Ausstehend',
     stepCounter: (filled, total) => `${filled}/${total} Felder`,
     overallProgress: (done, total, pct) => `${done} von ${total} Schritten abgeschlossen (${pct}%)`,
-    jumpToStep: 'Zu diesem Abschnitt springen',
+    jumpToStep: 'Zu diesem Schritt springen',
   },
 };
 
@@ -362,12 +362,12 @@ export default function ApplyDossier() {
         candidateName: [form.firstName, form.middleName, form.lastName].filter(Boolean).join(' '),
         email: form.email,
         phone: `${form.dial} ${form.phone}`,
-        jobTitle: job ? job.title.en : COPY.en.speculative,
+        jobTitle: job ? job.title?.en : COPY.en.speculative,
         department: job
           ? JOB_CATEGORIES.find((k) => k.id === job.category)?.label.en ?? '—'
           : 'Talent acquisition',
         coverNote: [
-          `Role: ${job ? job.title.en : 'General Application'}`,
+          `Role: ${job ? job.title?.en : 'General Application'}`,
           `Residence: ${form.residence}`,
           `Employment: ${form.employment}`,
           `Notice: ${form.notice}`,
@@ -405,7 +405,7 @@ export default function ApplyDossier() {
   if (sent) {
     return (
       <div className="dossier">
-        <SEO title="Dossier received | Zebrold Scolome" url="/careers/apply" />
+        <SEO title="Dossier received | Zebrold IHL" url="/careers/apply" />
         <div className="shell dossier__done">
           <span className="dossier__doneMark" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -425,8 +425,8 @@ export default function ApplyDossier() {
   return (
     <div className="dossier">
       <SEO
-        title="Submit Your Engineering Dossier | Zebrold Scolome"
-        description="Submit a full technical dossier to the Zebrold Scolome joint talent acquisition directorate in Frankfurt and Bengaluru."
+        title="Submit Your Engineering Dossier | Zebrold IHL"
+        description="Submit a full technical dossier to the Zebrold IHL joint talent acquisition directorate in Frankfurt and Bengaluru."
         url="/careers/apply"
       />
 
@@ -441,15 +441,15 @@ export default function ApplyDossier() {
 
           {job ? (
             <p className="dossier__context">
-              <span className="dossier__contextLabel mono">{c.forRole}</span>
-              <strong>{job.title[lang]}</strong>
+              <span className="dossier__contextLabel">{c.forRole}</span>
+              <strong>{job.title?.[lang]}</strong>
               <span className="dossier__contextMeta">
-                {job.location[lang]} · {job.salary}
+                {job.location?.[lang]} · {job.salary}
               </span>
             </p>
           ) : (
             <p className="dossier__context">
-              <span className="dossier__contextLabel mono">{c.forRole}</span>
+              <span className="dossier__contextLabel">{c.forRole}</span>
               <strong>{c.speculative}</strong>
             </p>
           )}
@@ -457,8 +457,8 @@ export default function ApplyDossier() {
           {/* Progress Tracker & Stepper */}
           <div className="dossier__progressTracker">
             <div className="dossier__progressMeta">
-              <span className="dossier__progressLabel mono">{c.progress}</span>
-              <span className="dossier__progressCount mono">
+              <span className="dossier__progressLabel">{c.progress}</span>
+              <span className="dossier__progressCount">
                 {c.overallProgress(doneCount, 5, progressPercent)}
               </span>
             </div>
@@ -487,14 +487,14 @@ export default function ApplyDossier() {
                     title={`${c.jumpToStep}: ${label}`}
                   >
                     <div className="dossier__stepHeader">
-                      <span className="dossier__stepNum mono">
+                      <span className="dossier__stepNum">
                         {stat.isDone ? (
                           <span className="dossier__checkIcon" aria-hidden="true">✓</span>
                         ) : (
                           String(i + 1).padStart(2, '0')
                         )}
                       </span>
-                      <span className="dossier__stepTag mono">
+                      <span className="dossier__stepTag">
                         {stat.isDone
                           ? c.stepStatusDone
                           : stat.isStarted
@@ -515,13 +515,13 @@ export default function ApplyDossier() {
           <section className="dsec" id="dsec-1" aria-labelledby="dsec-heading-1">
             <div className="dsec__head">
               <h2 id="dsec-heading-1">
-                <span className={`dsec__num mono ${stepStats[0].isDone ? 'is-done' : ''}`}>
+                <span className={`dsec__num ${stepStats[0].isDone ? 'is-done' : ''}`}>
                   {stepStats[0].isDone ? '✓' : '01'}
                 </span>
                 {c.s1}
               </h2>
               <div className="dsec__headMeta">
-                <span className={`dsec__status mono ${stepStats[0].isDone ? 'is-done' : stepStats[0].isStarted ? 'is-active' : ''}`}>
+                <span className={`dsec__status ${stepStats[0].isDone ? 'is-done' : stepStats[0].isStarted ? 'is-active' : ''}`}>
                   {stepStats[0].isDone
                     ? `✓ ${c.stepStatusDone}`
                     : stepStats[0].isStarted
@@ -614,13 +614,13 @@ export default function ApplyDossier() {
           <section className="dsec" id="dsec-2" aria-labelledby="dsec-heading-2">
             <div className="dsec__head">
               <h2 id="dsec-heading-2">
-                <span className={`dsec__num mono ${stepStats[1].isDone ? 'is-done' : ''}`}>
+                <span className={`dsec__num ${stepStats[1].isDone ? 'is-done' : ''}`}>
                   {stepStats[1].isDone ? '✓' : '02'}
                 </span>
                 {c.s2}
               </h2>
               <div className="dsec__headMeta">
-                <span className={`dsec__status mono ${stepStats[1].isDone ? 'is-done' : stepStats[1].isStarted ? 'is-active' : ''}`}>
+                <span className={`dsec__status ${stepStats[1].isDone ? 'is-done' : stepStats[1].isStarted ? 'is-active' : ''}`}>
                   {stepStats[1].isDone
                     ? `✓ ${c.stepStatusDone}`
                     : stepStats[1].isStarted
@@ -689,13 +689,13 @@ export default function ApplyDossier() {
           <section className="dsec" id="dsec-3" aria-labelledby="dsec-heading-3">
             <div className="dsec__head">
               <h2 id="dsec-heading-3">
-                <span className={`dsec__num mono ${stepStats[2].isDone ? 'is-done' : ''}`}>
+                <span className={`dsec__num ${stepStats[2].isDone ? 'is-done' : ''}`}>
                   {stepStats[2].isDone ? '✓' : '03'}
                 </span>
                 {c.s3}
               </h2>
               <div className="dsec__headMeta">
-                <span className={`dsec__status mono ${stepStats[2].isDone ? 'is-done' : stepStats[2].isStarted ? 'is-active' : ''}`}>
+                <span className={`dsec__status ${stepStats[2].isDone ? 'is-done' : stepStats[2].isStarted ? 'is-active' : ''}`}>
                   {stepStats[2].isDone
                     ? `✓ ${c.stepStatusDone}`
                     : stepStats[2].isStarted
@@ -716,13 +716,13 @@ export default function ApplyDossier() {
           <section className="dsec" id="dsec-4" aria-labelledby="dsec-heading-4">
             <div className="dsec__head">
               <h2 id="dsec-heading-4">
-                <span className={`dsec__num mono ${stepStats[3].isDone ? 'is-done' : ''}`}>
+                <span className={`dsec__num ${stepStats[3].isDone ? 'is-done' : ''}`}>
                   {stepStats[3].isDone ? '✓' : '04'}
                 </span>
                 {c.s4}
               </h2>
               <div className="dsec__headMeta">
-                <span className={`dsec__status mono ${stepStats[3].isDone ? 'is-done' : stepStats[3].isStarted ? 'is-active' : ''}`}>
+                <span className={`dsec__status ${stepStats[3].isDone ? 'is-done' : stepStats[3].isStarted ? 'is-active' : ''}`}>
                   {stepStats[3].isDone
                     ? `✓ ${c.stepStatusDone}`
                     : stepStats[3].isStarted
@@ -754,7 +754,7 @@ export default function ApplyDossier() {
             {[cvFile, portfolioFile].filter(Boolean).map((file, i) => (
               <div className="dfile" key={`${file.name}-${i}`}>
                 <div className="dfile__info">
-                  <span className="dfile__name mono">{file.name}</span>
+                  <span className="dfile__name">{file.name}</span>
                   <span className="dfile__size">
                     {(file.size / 1024 / 1024).toFixed(2)} MB · {c.attached}
                   </span>
@@ -774,13 +774,13 @@ export default function ApplyDossier() {
           <section className="dsec" id="dsec-5" aria-labelledby="dsec-heading-5">
             <div className="dsec__head">
               <h2 id="dsec-heading-5">
-                <span className={`dsec__num mono ${stepStats[4].isDone ? 'is-done' : ''}`}>
+                <span className={`dsec__num ${stepStats[4].isDone ? 'is-done' : ''}`}>
                   {stepStats[4].isDone ? '✓' : '05'}
                 </span>
                 {c.s5}
               </h2>
               <div className="dsec__headMeta">
-                <span className={`dsec__status mono ${stepStats[4].isDone ? 'is-done' : stepStats[4].isStarted ? 'is-active' : ''}`}>
+                <span className={`dsec__status ${stepStats[4].isDone ? 'is-done' : stepStats[4].isStarted ? 'is-active' : ''}`}>
                   {stepStats[4].isDone
                     ? `✓ ${c.stepStatusDone}`
                     : stepStats[4].isStarted

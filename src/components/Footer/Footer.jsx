@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { useLanguage } from '../../context/LanguageContext';
 import LanguageSwitcher from '../LanguageSwitcher/LanguageSwitcher';
 import zebroldLogoMark from '../../assets/zebrold_logo_mark.png';
+import { LOCATIONS } from '../../data/locations';
 import './Footer.css';
 
 function PinIcon() {
@@ -23,7 +24,7 @@ function MailIcon() {
 }
 
 export default function Footer() {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
   const year = new Date().getFullYear();
 
   const columns = [
@@ -31,7 +32,6 @@ export default function Footer() {
       heading: t('footer_company'),
       links: [
         { label: t('nav_about'), to: '/about' },
-        { label: t('nav_products'), to: '/products' },
         { label: t('nav_newsroom'), to: '/newsroom' },
         { label: t('nav_careers'), to: '/careers' },
         { label: t('footer_contact'), to: '/contact' },
@@ -68,7 +68,7 @@ export default function Footer() {
           <div className="ftr__brandCol">
             <img
               src={zebroldLogoMark}
-              alt="Zebrold Scolome"
+              alt="Zebrold IHL"
               className="ftr__mark"
               width="120"
               height="44"
@@ -83,7 +83,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="ftr__socialBtn"
-                aria-label="Zebrold Scolome on LinkedIn"
+                aria-label="Zebrold IHL on LinkedIn"
               >
                 <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                   <path d="M6.94 5.5a1.94 1.94 0 1 1-3.88 0 1.94 1.94 0 0 1 3.88 0ZM3.2 8.93h3.6V21H3.2V8.93Zm5.86 0h3.45v1.65h.05c.48-.87 1.65-1.79 3.4-1.79 3.64 0 4.31 2.32 4.31 5.34V21h-3.6v-5.94c0-1.42-.03-3.24-2-3.24-2 0-2.31 1.54-2.31 3.14V21h-3.6V8.93Z" />
@@ -108,22 +108,25 @@ export default function Footer() {
             </nav>
           ))}
 
-          {/* Headquarters */}
+          {/* Global Locations & Facilities */}
           <div className="ftr__col ftr__hqCol">
-            <h2 className="ftr__heading">{t('footer_hq')}</h2>
-            <p className="ftr__hqItem">
-              <span className="ftr__hqIcon">
-                <PinIcon />
-              </span>
-              <span>
-                Bockenheimer Landstrasse 17-19,
-                <br />
-                60325 Frankfurt am Main,
-                <br />
-                Germany
-              </span>
-            </p>
-            <p className="ftr__hqItem">
+            <h2 className="ftr__heading">{t('footer_locations') || t('footer_hq')}</h2>
+            <div className="ftr__locationsList">
+              {LOCATIONS.map((loc) => (
+                <div key={loc.id} className="ftr__locCard">
+                  <div className="ftr__locHead">
+                    <span className="ftr__locTitle">{loc.title[lang] || loc.title.en}</span>
+                    {loc.isPrimary && (
+                      <span className="ftr__locBadge">{loc.tag[lang] || 'Primary'}</span>
+                    )}
+                  </div>
+                  <p className="ftr__locAddress">
+                    {loc.fullAddress}
+                  </p>
+                </div>
+              ))}
+            </div>
+            <p className="ftr__hqEmail">
               <span className="ftr__hqIcon">
                 <MailIcon />
               </span>

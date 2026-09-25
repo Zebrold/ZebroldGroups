@@ -12,7 +12,7 @@ export default function PrivacyPolicy() {
   return (
     <div>
       <SEO
-        title="Privacy Policy | Zebrold Scolome"
+        title="Privacy Policy | Zebrold IHL"
         description="How Zebrold International Holdings Limited (Zebrold IHL) collects, uses and protects personal data under the GDPR."
         url="/privacy-policy"
       />
@@ -35,7 +35,7 @@ export default function PrivacyPolicy() {
           <p>
             Zebrold International Holdings Limited (Zebrold IHL)
             <br />
-            Bockenheimer Landstrasse 17-19, 60325 Frankfurt am Main, {de ? 'Deutschland' : 'Germany'}
+            Bockenheimer Landstrasse 17-19, 60311 Frankfurt am Main, Hesse, {de ? 'Deutschland' : 'Germany'}
             <br />
             <a href="mailto:info@zebrold.de">info@zebrold.de</a>
           </p>

@@ -5,7 +5,15 @@ import { useScrollReveal } from '../../hooks/useScrollReveal';
 import SEO from '../../components/SEO/SEO';
 import HeroCarousel from '../../components/HeroCarousel/HeroCarousel';
 import { news, NEWS_CATEGORIES } from '../../data/news';
-import { newsroomSlides, metrics, segments, regions, documents, calendar } from '../../data/newsroom';
+import {
+  newsroomSlides,
+  metrics,
+  segments,
+  regions,
+  documents,
+  calendar,
+  calendarPeriod,
+} from '../../data/newsroom';
 import { formatDate, byDateDesc } from '../../utils/formatDate';
 import './Newsroom.css';
 
@@ -20,7 +28,7 @@ const COPY = {
     dispatchesSub: 'Direct from the Scolome engineering centres, commercial bureaus and testing corridors',
     readRelease: 'Read release',
     close: 'Close',
-    quoteAttrib: 'Zebrold Scolome project · Executive board',
+    quoteAttrib: 'Zebrold IHL project · Executive board',
     revenue: 'Revenue portfolio & commercial performance',
     revenueSub:
       'Indicative group distribution across rolling stock manufacturing, turnkey EPC, digital rail systems and lifecycle services.',
@@ -39,8 +47,7 @@ const COPY = {
     contactIr: 'Contact investor relations',
     reports: 'Financial reports & filings',
     reportsSub: 'Regulatory disclosures, interim figures and annual sustainability reporting.',
-    request: 'Request',
-    onRequest: 'On request',
+    downloadPdf: 'Download PDF',
     calendarTitle: 'Financial calendar',
     calendarSub: 'Shareholder dates, earnings presentations and industry summits.',
     empty: 'No dispatches match this filter.',
@@ -55,7 +62,7 @@ const COPY = {
     dispatchesSub: 'Direkt aus den Scolome-Entwicklungszentren, Vertriebsbüros und Erprobungskorridoren',
     readRelease: 'Meldung lesen',
     close: 'Schließen',
-    quoteAttrib: 'Zebrold Scolome Projekt · Vorstand',
+    quoteAttrib: 'Zebrold IHL Projekt · Vorstand',
     revenue: 'Umsatzportfolio & kommerzielle Entwicklung',
     revenueSub:
       'Indikative Konzernverteilung auf Fahrzeugbau, schlüsselfertige EPC, digitale Systeme und Lebenszyklusleistungen.',
@@ -74,8 +81,7 @@ const COPY = {
     contactIr: 'Investor Relations kontaktieren',
     reports: 'Finanzberichte & Meldungen',
     reportsSub: 'Regulatorische Offenlegungen, Zwischenzahlen und jährliche Nachhaltigkeitsberichte.',
-    request: 'Anfordern',
-    onRequest: 'Auf Anfrage',
+    downloadPdf: 'PDF herunterladen',
     calendarTitle: 'Finanzkalender',
     calendarSub: 'Aktionärstermine, Ergebnispräsentationen und Branchengipfel.',
     empty: 'Keine Meldungen entsprechen diesem Filter.',
@@ -88,7 +94,6 @@ export default function Newsroom() {
   const revealRef = useScrollReveal();
   const railRef = useRef(null);
   const [filter, setFilter] = useState('all');
-  const [openId, setOpenId] = useState(null);
 
   const sorted = useMemo(() => [...news].sort(byDateDesc), []);
   const lead = useMemo(() => sorted.find((n) => n.featured) ?? sorted[0], [sorted]);
@@ -104,8 +109,8 @@ export default function Newsroom() {
   return (
     <div className="nr" ref={revealRef}>
       <SEO
-        title="Newsroom | Zebrold Scolome"
-        description="Press releases, contract awards, engineering bulletins and investor disclosures from the Zebrold Scolome rail programme."
+        title="Newsroom | Zebrold IHL"
+        description="Press releases, contract awards, engineering bulletins and investor disclosures from the Zebrold IHL rail programme."
         keywords="Zebrold newsroom, Scolome press release, rail contracts, rolling stock news, investor relations"
         url="/newsroom"
       />
@@ -174,29 +179,16 @@ export default function Newsroom() {
                     </span>
                   </div>
 
-                  <button
-                    type="button"
-                    className="nrLead__cta"
-                    onClick={() => setOpenId(openId === lead.id ? null : lead.id)}
-                    aria-expanded={openId === lead.id}
-                    aria-controls={`release-${lead.id}`}
-                  >
-                    {openId === lead.id ? c.close : c.readFull}
+                  <Link to={`/newsroom/${lead.id}`} className="nrLead__cta">
+                    {c.readFull}
                     <span aria-hidden="true">
                       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                         <path d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" strokeLinecap="round" strokeLinejoin="round" />
                       </svg>
                     </span>
-                  </button>
+                  </Link>
                 </div>
 
-                {openId === lead.id && (
-                  <div className="nrLead__full prose" id={`release-${lead.id}`}>
-                    {lead.body[lang].split('\n\n').map((para) => (
-                      <p key={para.slice(0, 32)}>{para}</p>
-                    ))}
-                  </div>
-                )}
               </div>
             </article>
           </section>
@@ -219,7 +211,6 @@ export default function Newsroom() {
             <div className="nr__rail no-scrollbar" ref={railRef} tabIndex={0} aria-label={c.dispatches}>
               {dispatches.map((item) => {
                 const cat = categoryOf(item.category);
-                const open = openId === item.id;
                 return (
                   <article key={item.id} className="nrCard card-lift">
                     <div className="nrCard__media zoom-frame">
@@ -236,25 +227,12 @@ export default function Newsroom() {
                       <h3 className="nrCard__title">{item.title[lang]}</h3>
                       <p className="nrCard__excerpt">{item.excerpt[lang]}</p>
 
-                      {open && (
-                        <div className="nrCard__full prose" id={`release-${item.id}`}>
-                          {item.body[lang].split('\n\n').map((para) => (
-                            <p key={para.slice(0, 32)}>{para}</p>
-                          ))}
-                        </div>
-                      )}
 
                       <div className="nrCard__foot">
                         <span className="nrCard__source">{item.source[lang]}</span>
-                        <button
-                          type="button"
-                          className="nrCard__link"
-                          onClick={() => setOpenId(open ? null : item.id)}
-                          aria-expanded={open}
-                          aria-controls={`release-${item.id}`}
-                        >
-                          {open ? c.close : c.readRelease} <span aria-hidden="true">→</span>
-                        </button>
+                        <Link to={`/newsroom/${item.id}`} className="nrCard__link">
+                          {c.readRelease} <span aria-hidden="true">→</span>
+                        </Link>
                       </div>
                     </div>
                   </article>
@@ -293,7 +271,7 @@ export default function Newsroom() {
                   {m.delta ? (
                     <span className="metric__delta">{m.delta[lang]}</span>
                   ) : (
-                    <span className="metric__period">{m.period[lang]}</span>
+                    m.period && <span className="metric__period">{m.period[lang]}</span>
                   )}
                 </div>
                 <p className="metric__value">{m.value}</p>
@@ -390,23 +368,31 @@ export default function Newsroom() {
                     </span>
                     <span className="docList__text">
                       <strong>{doc.title[lang]}</strong>
-                      <em>
-                        {doc.meta[lang]} · {c.onRequest}
-                      </em>
+                      <em>{doc.meta[lang]}</em>
                     </span>
-                    {doc.href ? (
-                      <a href={doc.href} className="docList__action" download>
-                        {c.request}
-                      </a>
-                    ) : (
-                      <Link
-                        to="/contact"
-                        className="docList__action"
-                        aria-label={`${c.request}: ${doc.title[lang]}`}
+                    <a
+                      href={doc.href}
+                      download={doc.filename || true}
+                      className="docList__action"
+                      aria-label={`${c.downloadPdf}: ${doc.title[lang]}`}
+                    >
+                      <svg
+                        width="13"
+                        height="13"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2.2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        aria-hidden="true"
                       >
-                        {c.request}
-                      </Link>
-                    )}
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                        <polyline points="7 10 12 15 17 10" />
+                        <line x1="12" y1="15" x2="12" y2="3" />
+                      </svg>
+                      <span>{c.downloadPdf}</span>
+                    </a>
                   </li>
                 ))}
               </ul>
@@ -416,7 +402,7 @@ export default function Newsroom() {
             <div className="nrPanel">
               <div className="nrPanel__head">
                 <h3>{c.calendarTitle}</h3>
-                <span className="chip">2026 / 2027</span>
+                {calendarPeriod && <span className="chip">{calendarPeriod}</span>}
               </div>
               <p className="nrPanel__intro">{c.calendarSub}</p>
 

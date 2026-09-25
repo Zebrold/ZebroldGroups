@@ -8,7 +8,7 @@ import svAlpine from '../../assets/highspeed_in_service.jpg';
 
 export default function Services() {
   const seoData = {
-    title: 'Zebrold Scolome | Turnkey Rail Corridors & Sovereign Infrastructure',
+    title: 'Zebrold IHL | Turnkey Rail Corridors & Sovereign Infrastructure',
     description:
       'Single-source EPC delivery of turnkey rail corridors — civil works, electrification, signalling and 30-to-40-year availability contracts across Europe and India.',
     keywords:
@@ -85,7 +85,7 @@ export default function Services() {
             <span className="sv-eyebrow">Axis architecture • Frankfurt • Kassel • Bengaluru • Hyderabad</span>
             <h2 className="sv-h2">Diplomatic Accord Meets Heavy Industrial Execution</h2>
             <p className="sv-lede">
-              Zebrold Scolome acts as the sole sovereign EPC legal envelope, absorbing contractor interface liabilities
+              Zebrold IHL acts as the sole sovereign EPC legal envelope, absorbing contractor interface liabilities
               and coordinating bilateral industrial capability across continental Europe and the Indian subcontinent.
             </p>
           </div>
@@ -297,7 +297,7 @@ export default function Services() {
               <p className="rail-article-p1">
                 Engineered through deep mountainous terrain, the Nord-Süd Alpine Pass features 68 km of subterranean base
                 tunnels, 42 viaduct spans and continuous Rheda 2000 slab trackbed for passenger speeds up to 250 km/h.
-                Zebrold Scolome provided both the civil tunnel boring and the fire-hardened catenary electrification.
+                Zebrold IHL provided both the civil tunnel boring and the fire-hardened catenary electrification.
               </p>
 
               <div className="rail-article-specs is-four">

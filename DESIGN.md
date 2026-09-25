@@ -1,4 +1,4 @@
-# Design system — Zebrold Scolome
+# Design system — Zebrold IHL
 
 Dark-burgundy rail portal. Editorial rather than corporate: serif headlines, generous white
 space, and technical detail set in mono so specifications read as evidence rather than

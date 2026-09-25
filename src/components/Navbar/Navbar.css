@@ -316,3 +316,281 @@
   }
 }
 
+
+/* ══════════ Products menu ══════════ */
+.nav__item {
+  position: relative;
+}
+
+/* The trigger is a button, so it can open the panel without navigating. */
+.nav__trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+}
+
+.nav__chev {
+  width: 13px;
+  height: 13px;
+  transition: transform var(--dur-base) var(--ease-out);
+}
+
+.nav__trigger.is-open .nav__chev {
+  transform: rotate(180deg);
+}
+
+.nav__trigger.is-open {
+  color: #fff;
+}
+
+.nav__trigger.is-open::after {
+  transform: scaleX(1);
+}
+
+/* ── Panel ── */
+.nav__menu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  z-index: 10;
+  /* A transparent bridge lets the cursor cross the gap without a mouseleave. */
+  padding-top: 0.85rem;
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-50%, -6px);
+  transition:
+    opacity var(--dur-fast) var(--ease-out),
+    transform var(--dur-fast) var(--ease-out),
+    visibility 0s linear var(--dur-fast);
+}
+
+.nav__menu.is-open {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+  transition:
+    opacity var(--dur-fast) var(--ease-out),
+    transform var(--dur-fast) var(--ease-out),
+    visibility 0s linear 0s;
+}
+
+.nav__menuInner {
+  width: min(46rem, calc(100vw - 2rem));
+  padding: 1rem;
+  border-radius: var(--radius-lg);
+  background-color: var(--paper);
+  border: 1px solid var(--rule);
+  box-shadow: var(--shadow-xl);
+}
+
+.nav__menuLabel {
+  font-size: var(--text-2xs);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--muted-light);
+  padding: 0 0.5rem 0.65rem;
+  margin-bottom: 0.3rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.nav__menuInner .nav__menuGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 0.15rem 0.5rem;
+}
+
+/* ── Item ── */
+.navMenuItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.7rem;
+  border-radius: var(--radius-md);
+  transition: background-color var(--dur-fast) var(--ease-out);
+}
+
+.navMenuItem:hover,
+.navMenuItem:focus-visible {
+  background-color: var(--stone);
+}
+
+.navMenuItem__icon {
+  flex-shrink: 0;
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius-sm);
+  background-color: var(--stone);
+  border: 1px solid var(--rule);
+  color: var(--burgundy-850);
+  transition:
+    background-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out);
+}
+
+.navMenuItem__icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.navMenuItem:hover .navMenuItem__icon,
+.navMenuItem.is-active .navMenuItem__icon {
+  background-color: var(--burgundy-850);
+  border-color: var(--burgundy-850);
+  color: #fff;
+}
+
+.navMenuItem__text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+.navMenuItem__name {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.3;
+}
+
+.navMenuItem.is-active .navMenuItem__name {
+  color: var(--burgundy-850);
+}
+
+.navMenuItem__blurb {
+  font-size: var(--text-xs);
+  line-height: 1.45;
+  color: var(--muted);
+  max-width: 24ch;
+}
+
+/* ══════════ Mobile overlay products ══════════ */
+.nav__overlayHeading {
+  margin-top: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  font-size: var(--text-2xs);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--coral-400);
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 0.45s var(--ease-out-expo),
+    transform 0.45s var(--ease-out-expo);
+}
+
+.nav__overlayProducts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.35rem 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.nav__overlayProducts li {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 0.45s var(--ease-out-expo),
+    transform 0.45s var(--ease-out-expo);
+}
+
+.nav__overlay.is-open .nav__overlayHeading,
+.nav__overlay.is-open .nav__overlayProducts li {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: calc(0.09s + var(--i) * 0.05s);
+}
+
+.nav__overlayProduct {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.55rem 0;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.88);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.nav__overlayProduct .navMenuItem__icon {
+  width: 30px;
+  height: 30px;
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.18);
+  color: var(--coral-300);
+}
+
+.nav__overlayProduct:hover,
+.nav__overlayProduct.is-active {
+  color: var(--coral-300);
+}
+
+/* Hover menus do not exist on touch — the overlay carries products instead. */
+@media (max-width: 860px) {
+  .nav__menu {
+    display: none;
+  }
+}
+
+@media (max-width: 420px) {
+  .nav__overlayProducts {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav__overlayHeading,
+  .nav__overlayProducts li {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ══ Product thumbnail (desktop menu) ══ */
+.navMenuItem__thumb {
+  flex-shrink: 0;
+  width: 76px;
+  height: 52px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background-color: var(--stone);
+  border: 1px solid var(--rule);
+  transition: border-color var(--dur-fast) var(--ease-out);
+}
+
+.navMenuItem__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform var(--dur-base) var(--ease-out);
+}
+
+.navMenuItem:hover .navMenuItem__thumb img,
+.navMenuItem:focus-visible .navMenuItem__thumb img {
+  transform: scale(1.06);
+}
+
+.navMenuItem:hover .navMenuItem__thumb,
+.navMenuItem.is-active .navMenuItem__thumb {
+  border-color: var(--burgundy-850);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navMenuItem__thumb img {
+    transition: none;
+  }
+
+  .navMenuItem:hover .navMenuItem__thumb img {
+    transform: none;
+  }
+}

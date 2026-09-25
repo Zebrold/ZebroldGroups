@@ -8,7 +8,7 @@ import drCyber from '../../assets/autonomous_rail_sensor.jpg';
 
 export default function DigitalRail() {
   const seoData = {
-    title: 'Zebrold Scolome | Intelligent Digital Rail & Predictive TwinOS',
+    title: 'Zebrold IHL | Intelligent Digital Rail & Predictive TwinOS',
     description:
       'Digital twin telemetry, AI predictive maintenance, autonomous dispatch and cyber-secure rail architecture. Edge computing engineered in Frankfurt and Kassel, neural prognostics in Bengaluru and Hyderabad.',
     keywords:
@@ -74,13 +74,13 @@ export default function DigitalRail() {
               <div className="rail-mandate-lead">
                 <div className="rail-mandate-badge">
                   <span className="rail-mandate-badge-dot" />
-                  <span className="rail-mandate-badge-text">MANDATE &amp; TELEMETRY CHARTER • SECTION 01</span>
+                  <span className="rail-mandate-badge-text">MANDATE &amp; TELEMETRY CHARTER</span>
                 </div>
 
                 <h2 className="rail-mandate-heading">The Sovereign Digital Mandate &amp; Transnational Telemetry</h2>
 
                 <p className="rail-mandate-body">
-                  Mission-critical rail operation requires sovereign computational integrity. Zebrold Scolome bridges
+                  Mission-critical rail operation requires sovereign computational integrity. Zebrold IHL bridges
                   European functional safety standards with sub-continental software scale, synchronising real-time twin
                   telemetry between Kassel and Frankfurt safety computing and Bengaluru and Hyderabad neural
                   prognostics.
@@ -390,7 +390,7 @@ export default function DigitalRail() {
           <div className="rail-table-head">
             <div className="rail-table-tag">
               <span className="rail-table-tag-sq" />
-              TECHNICAL BENCHMARK REGISTRY • SECTION 04
+              TECHNICAL BENCHMARK REGISTRY
             </div>
             <h2 className="rail-table-title">Comparative Engineering &amp; Computing Metrics</h2>
           </div>

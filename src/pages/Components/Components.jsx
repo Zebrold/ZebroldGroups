@@ -8,7 +8,7 @@ import cpBrakes from '../../assets/carbody_shell_transfer.jpg';
 
 export default function Components() {
   const seoData = {
-    title: 'Zebrold Scolome | Precision Railway Components & Bogie Engineering',
+    title: 'Zebrold IHL | Precision Railway Components & Bogie Engineering',
     description:
       'High-stress mechanical and electrical assemblies engineered for extreme velocity and rigorous dynamic envelopes. Bogies, SiC traction packages, pantographs, and mechatronic brakes.',
     keywords:

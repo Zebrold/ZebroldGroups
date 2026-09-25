@@ -12,7 +12,7 @@ export default function LegalNotice() {
   return (
     <div>
       <SEO
-        title="Legal Notice | Zebrold Scolome"
+        title="Legal Notice | Zebrold IHL"
         description="Legal notice and provider identification for Zebrold International Holdings Limited (Zebrold IHL), Frankfurt am Main."
         url="/legal-notice"
       />
@@ -31,7 +31,7 @@ export default function LegalNotice() {
             <br />
             Bockenheimer Landstrasse 17-19
             <br />
-            60325 Frankfurt am Main
+            60311 Frankfurt am Main, Hesse
             <br />
             {de ? 'Deutschland' : 'Germany'}
           </p>

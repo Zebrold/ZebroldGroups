@@ -23,17 +23,18 @@ const SOCIETY_IMG =
 const HOME_SCHEMA = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
-  name: 'Zebrold Scolome',
+  name: 'Zebrold IHL',
   legalName: 'Zebrold International Holdings Limited',
   url: 'https://www.zebrold.de/',
-  logo: 'https://www.zebrold.de/favicon.png',
+  logo: 'https://www.zebrold.de/icon-512.png',
   description:
-    'Zebrold Scolome designs and builds ultra high-speed intelligent rolling stock, signalling and digital rail systems — engineered in Germany, designed in India.',
+    'Zebrold IHL designs and builds ultra high-speed intelligent rolling stock, signalling and digital rail systems — engineered in Germany, designed in India.',
   address: {
     '@type': 'PostalAddress',
     streetAddress: 'Bockenheimer Landstrasse 17-19',
     addressLocality: 'Frankfurt am Main',
-    postalCode: '60325',
+    addressRegion: 'Hesse',
+    postalCode: '60311',
     addressCountry: 'DE',
   },
   email: 'info@zebrold.de',
@@ -60,8 +61,8 @@ export default function Home() {
   return (
     <div ref={revealRef}>
       <SEO
-        title="Zebrold Scolome | Ultra Speed Intelligent Rolling Stocks"
-        description="Zebrold Scolome designs and builds ultra high-speed intelligent rolling stock, signalling and digital rail systems. Made in Deutschland, designed in India."
+        title="Zebrold IHL | Ultra Speed Intelligent Rolling Stocks"
+        description="Zebrold IHL designs and builds ultra high-speed intelligent rolling stock, signalling and digital rail systems. Made in Deutschland, designed in India."
         keywords="Zebrold, Scolome, rolling stock, high-speed rail, EMU, bogie, ETCS, signalling, digital rail, Frankfurt, rail manufacturer"
         url="/"
         schemaData={HOME_SCHEMA}
@@ -289,12 +290,12 @@ export default function Home() {
             <div className="events__featuredWrap reveal">
               <article className="eventArch">
                 <div className="coral-pill-glow" aria-hidden="true" />
-                <h3 className="eventArch__name">{featuredEvent.name[lang]}</h3>
+                <h3 className="eventArch__name">{featuredEvent.name?.[lang]}</h3>
                 <div className="eventArch__when">
                   <span className="eventArch__days">{featuredEvent.days}</span>
-                  <span className="eventArch__place">{featuredEvent.location[lang]}</span>
+                  <span className="eventArch__place">{featuredEvent.location?.[lang]}</span>
                 </div>
-                <span className="eventArch__month mono">{featuredEvent.month[lang].toUpperCase()}</span>
+                <span className="eventArch__month mono">{(featuredEvent.month?.[lang] || '').toUpperCase()}</span>
                 <div>
                   <Link to="/newsroom" className="eventArch__readMore">
                     {t('home_read_more')} →
@@ -311,14 +312,14 @@ export default function Home() {
                   <div className="eventCard__date">
                     <span className="eventCard__day">{ev.day}</span>
                     <span className={`eventCard__month mono ${ev.highlight ? 'is-highlight-month' : ''}`}>
-                      {ev.month[lang].toUpperCase()}
+                      {(ev.month?.[lang] || '').toUpperCase()}
                     </span>
-                    {ev.duration && <span className="eventCard__dur">{ev.duration[lang]}</span>}
+                    {ev.duration?.[lang] && <span className="eventCard__dur">{ev.duration[lang]}</span>}
                   </div>
                   <div className="eventCard__body">
-                    <h4 className="eventCard__name">{ev.name[lang]}</h4>
+                    <h4 className="eventCard__name">{ev.name?.[lang]}</h4>
                     <div className="eventCard__tags">
-                      {ev.tags[lang].map((tag) => (
+                      {(ev.tags?.[lang] || []).map((tag) => (
                         <span className="chip" key={tag}>
                           {tag}
                         </span>
