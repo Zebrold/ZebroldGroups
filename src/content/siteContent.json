@@ -1,16 +1,16 @@
 {
   "events": [
     {
-      "id": "innotrans-2026",
-      "featured": true,
+      "id": "zb",
+      "featured": false,
       "days": "22-25",
       "month": {
-        "en": "Sep 2026",
-        "de": "Sep 2026"
+        "en": "Oct 2026",
+        "de": "Oct 2026"
       },
       "name": {
-        "en": "InnoTrans 2026",
-        "de": "InnoTrans 2026"
+        "en": "Scolome Apex 2026",
+        "de": "Scolome Apex 2026"
       },
       "location": {
         "en": "Berlin,\nGermany",
@@ -19,7 +19,8 @@
       "summary": {
         "en": "The Scolome Apex 350 makes its public debut on the outdoor display track, alongside the 2.0 regional platform and the digital rail pavilion.",
         "de": "Der Scolome Apex 350 feiert auf dem Freigelände seine Publikumspremiere — gemeinsam mit der Regionalplattform 2.0 und dem Pavillon Digitale Schiene."
-      }
+      },
+      "highlight": true
     },
     {
       "id": "infrastructure-partnerships",
