@@ -46,30 +46,29 @@
       }
     },
     {
-      "id": "monorailex",
+      "id": "railx",
       "day": "17",
       "month": {
-        "en": "Sep 2026",
-        "de": "Sep 2026"
+        "en": "Oct 2026",
+        "de": "Oct 2026"
       },
       "duration": {
         "en": "4 days",
         "de": "4 Tage"
       },
       "name": {
-        "en": "Scolome urban transit showcase — Monorailex 2026",
-        "de": "Scolome Urban-Transit-Showcase — Monorailex 2026"
+        "en": "Scolome urban transit showcase — Rail X 2026",
+        "de": "Scolome Urban-Transit-Showcase — Rail X 2026"
       },
       "tags": {
         "en": [
-          "Cairo, Egypt",
-          "Conference"
+          "Berlin, Germany"
         ],
         "de": [
-          "Kairo, Ägypten",
-          "Konferenz"
+          "Berlin, Germany"
         ]
-      }
+      },
+      "highlight": true
     },
     {
       "id": "ai-on-track",
