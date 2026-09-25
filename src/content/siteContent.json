@@ -2,7 +2,7 @@
   "events": [
     {
       "id": "zb",
-      "featured": false,
+      "featured": true,
       "days": "22-25",
       "month": {
         "en": "Oct 2026",
@@ -43,7 +43,8 @@
           "Australien",
           "Konferenz"
         ]
-      }
+      },
+      "featured": false
     },
     {
       "id": "railx",
@@ -68,7 +69,8 @@
           "Berlin, Germany"
         ]
       },
-      "highlight": true
+      "highlight": true,
+      "featured": false
     },
     {
       "id": "ai-on-track",
@@ -95,7 +97,8 @@
           "Hackathon"
         ]
       },
-      "highlight": true
+      "highlight": true,
+      "featured": false
     }
   ],
   "news": [
@@ -374,42 +377,6 @@
   ],
   "jobs": [
     {
-      "id": "telemetry-engineer",
-      "ref": "ZEB-SW-201",
-      "category": "software",
-      "location": {
-        "en": "Bengaluru R&D bureau, India",
-        "de": "F&E-Büro Bengaluru, Indien"
-      },
-      "salary": "€65,000 – €92,000",
-      "terms": {
-        "en": "Full-time · Hybrid",
-        "de": "Vollzeit · Hybrid"
-      },
-      "title": {
-        "en": "Staff Distributed Systems & Telemetry Engineer",
-        "de": "Staff Engineer Verteilte Systeme & Telemetrie"
-      },
-      "summary": {
-        "en": "Architect ultra-low-latency event streaming pipelines, time-series storage and edge-to-cloud telemetry sync for cross-continental high-speed fleets.",
-        "de": "Konzipieren Sie Event-Streaming-Pipelines mit minimaler Latenz, Zeitreihenspeicher und Edge-zu-Cloud-Telemetriesynchronisation für kontinentübergreifende Hochgeschwindigkeitsflotten."
-      },
-      "requirements": {
-        "en": [
-          "Production experience with Kafka, Pulsar or an equivalent streaming backbone",
-          "Time-series storage at scale — ClickHouse, TimescaleDB or similar",
-          "Comfort reasoning about partial connectivity and out-of-order ingest",
-          "Go, Rust or modern Java in a distributed context"
-        ],
-        "de": [
-          "Produktionserfahrung mit Kafka, Pulsar oder vergleichbarem Streaming-Backbone",
-          "Zeitreihenspeicher im großen Maßstab — ClickHouse, TimescaleDB oder ähnlich",
-          "Sicherer Umgang mit unterbrochener Konnektivität und ungeordneter Datenaufnahme",
-          "Go, Rust oder modernes Java im verteilten Umfeld"
-        ]
-      }
-    },
-    {
       "id": "firmware-architect",
       "ref": "ZEB-SW-115",
       "category": "software",
@@ -442,6 +409,42 @@
           "Praxis mit Lebenszyklen nach EN 50128, IEC 61508 oder DO-178C",
           "Verständnis für deterministisches Scheduling und Watchdog-Design",
           "Englisch in Wort und Schrift für Zertifizierungsnachweise"
+        ]
+      }
+    },
+    {
+      "id": "telemetry-enginee",
+      "ref": "ZEB-SW-201",
+      "category": "internships",
+      "location": {
+        "en": "Bengaluru R&D bureau, India",
+        "de": "F&E-Büro Bengaluru, Indien"
+      },
+      "salary": "€65,000 – €92,000",
+      "terms": {
+        "en": "Full-time · Hybrid",
+        "de": "Vollzeit · Hybrid"
+      },
+      "title": {
+        "en": "Staff Distributed Systems & Telemetry Engineer",
+        "de": "Staff Engineer Verteilte Systeme & Telemetrie"
+      },
+      "summary": {
+        "en": "Architect ultra-low-latency event streaming pipelines, time-series storage and edge-to-cloud telemetry sync for cross-continental high-speed fleets.",
+        "de": "Konzipieren Sie Event-Streaming-Pipelines mit minimaler Latenz, Zeitreihenspeicher und Edge-zu-Cloud-Telemetriesynchronisation für kontinentübergreifende Hochgeschwindigkeitsflotten."
+      },
+      "requirements": {
+        "en": [
+          "Production experience with Kafka, Pulsar or an equivalent streaming backbone",
+          "Time-series storage at scale — ClickHouse, TimescaleDB or similar",
+          "Comfort reasoning about partial connectivity and out-of-order ingest",
+          "Go, Rust or modern Java in a distributed context"
+        ],
+        "de": [
+          "Produktionserfahrung mit Kafka, Pulsar oder vergleichbarem Streaming-Backbone",
+          "Zeitreihenspeicher im großen Maßstab — ClickHouse, TimescaleDB oder ähnlich",
+          "Sicherer Umgang mit unterbrochener Konnektivität und ungeordneter Datenaufnahme",
+          "Go, Rust oder modernes Java im verteilten Umfeld"
         ]
       }
     },
