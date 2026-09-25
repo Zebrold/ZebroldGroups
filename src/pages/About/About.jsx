@@ -1,6 +1,6 @@
 import { useLanguage } from '../../context/LanguageContext';
 import SEO from '../../components/SEO/SEO';
-import heroImg from '../../assets/scolome_hero.jpg';
+import heroImg from '../../assets/zebrold_manufacturing_plant.jpg';
 import trainNoseImg from '../../assets/highspeed_in_service.jpg';
 import cabinImg from '../../assets/intercity_platform.webp';
 import './About.css';
@@ -27,12 +27,20 @@ const SUB_SYSTEMS = [
       en: 'Technical Specifications & Standards',
       de: 'Technische Spezifikationen & Normen',
     },
-    specs: [
-      'ETCS L2/L3 Baseline 3',
-      'CENELEC SIL-4',
-      'CBTC Moving Block',
-      'AI Optical Trackside Vision',
-    ],
+    specs: {
+      en: [
+        'ETCS L2/L3 Baseline 3',
+        'CENELEC SIL-4',
+        'CBTC Moving Block',
+        'AI Optical Trackside Vision',
+      ],
+      de: [
+        'ETCS L2/L3 Baseline 3',
+        'CENELEC SIL-4',
+        'CBTC Moving Block',
+        'KI-gestützte optische Streckenüberwachung',
+      ],
+    },
     alignRight: false,
   },
   {
@@ -56,12 +64,20 @@ const SUB_SYSTEMS = [
       en: 'Technical Specifications & Standards',
       de: 'Technische Spezifikationen & Normen',
     },
-    specs: [
-      'EN 13749 Bogie Structural Life',
-      'EN 15227 Crashworthiness',
-      'Silicon Carbide (SiC) Inverters',
-      'Active Lateral Dampers',
-    ],
+    specs: {
+      en: [
+        'EN 13749 Bogie Structural Life',
+        'EN 15227 Crashworthiness',
+        'Silicon Carbide (SiC) Inverters',
+        'Active Lateral Dampers',
+      ],
+      de: [
+        'EN 13749 Drehgestell-Betriebsfestigkeit',
+        'EN 15227 Crashsicherheit',
+        'Siliziumkarbid-(SiC)-Umrichter',
+        'Aktive Querdämpfer',
+      ],
+    },
     alignRight: true,
   },
   {
@@ -85,12 +101,20 @@ const SUB_SYSTEMS = [
       en: 'Technical Specifications & Standards',
       de: 'Technische Spezifikationen & Normen',
     },
-    specs: [
-      'Fleet Digital Twin Simulation',
-      'Edge Vibration Telemetry',
-      'Automated Conflict Resolution',
-      'Passenger Comfort IoT',
-    ],
+    specs: {
+      en: [
+        'Fleet Digital Twin Simulation',
+        'Edge Vibration Telemetry',
+        'Automated Conflict Resolution',
+        'Passenger Comfort IoT',
+      ],
+      de: [
+        'Digitaler Flottenzwilling',
+        'Edge-Schwingungstelemetrie',
+        'Automatisierte Konfliktlösung',
+        'IoT für Fahrgastkomfort',
+      ],
+    },
     alignRight: false,
   },
   {
@@ -114,12 +138,20 @@ const SUB_SYSTEMS = [
       en: 'Technical Specifications & Standards',
       de: 'Technische Spezifikationen & Normen',
     },
-    specs: [
-      '25 kV AC 50 Hz Catenary',
-      'Smart Substation Grid Feedback',
-      'Modular LFP Hybrid Units',
-      'Phase Break Micro-Controllers',
-    ],
+    specs: {
+      en: [
+        '25 kV AC 50 Hz Catenary',
+        'Smart Substation Grid Feedback',
+        'Modular LFP Hybrid Units',
+        'Phase Break Micro-Controllers',
+      ],
+      de: [
+        '25-kV-AC-50-Hz-Oberleitung',
+        'Netzrückspeisung über intelligente Unterwerke',
+        'Modulare LFP-Hybrideinheiten',
+        'Mikrocontroller für Phasentrennstellen',
+      ],
+    },
     alignRight: true,
   },
   {
@@ -143,12 +175,20 @@ const SUB_SYSTEMS = [
       en: 'Technical Specifications & Standards',
       de: 'Technische Spezifikationen & Normen',
     },
-    specs: [
-      'Ballastless Slab Track (Rheda System)',
-      'Floating Track Slab Mats',
-      'Automated Turnout Point Diagnostics',
-      'Sub-mm Geotechnical Sensing',
-    ],
+    specs: {
+      en: [
+        'Ballastless Slab Track (Rheda System)',
+        'Floating Track Slab Mats',
+        'Automated Turnout Point Diagnostics',
+        'Sub-mm Geotechnical Sensing',
+      ],
+      de: [
+        'Feste Fahrbahn (System Rheda)',
+        'Elastomermatten für Masse-Feder-Systeme',
+        'Automatisierte Weichendiagnose',
+        'Geotechnische Sensorik im Submillimeterbereich',
+      ],
+    },
     alignRight: false,
   },
   {
@@ -172,12 +212,20 @@ const SUB_SYSTEMS = [
       en: 'Technical Specifications & Standards',
       de: 'Technische Spezifikationen & Normen',
     },
-    specs: [
-      'TSI Interoperability Compliance',
-      'Turnkey EPC Delivery',
-      'ERA & RDSO Homologation',
-      'EMC System Integration',
-    ],
+    specs: {
+      en: [
+        'TSI Interoperability Compliance',
+        'Turnkey EPC Delivery',
+        'ERA & RDSO Homologation',
+        'EMC System Integration',
+      ],
+      de: [
+        'TSI-Interoperabilitätskonformität',
+        'Schlüsselfertige EPC-Lieferung',
+        'ERA- & RDSO-Zulassung',
+        'EMV-Systemintegration',
+      ],
+    },
     alignRight: true,
   },
   {
@@ -201,18 +249,114 @@ const SUB_SYSTEMS = [
       en: 'Operational Assurance Matrix',
       de: 'Betriebliche Sicherungsmatrix',
     },
-    specs: [
-      '40-Year Structural Integrity Protocol',
-      'Automated Depot Way-In Laser Profile Scanners',
-      'Circular Remanufacturing & Overhaul Programs',
-      '24/7 Mission-Critical SLA Dispatch & Logistics',
-    ],
+    specs: {
+      en: [
+        '40-Year Structural Integrity Protocol',
+        'Automated Depot Way-In Laser Profile Scanners',
+        'Circular Remanufacturing & Overhaul Programs',
+        '24/7 Mission-Critical SLA Dispatch & Logistics',
+      ],
+      de: [
+        '40-Jahres-Protokoll für strukturelle Integrität',
+        'Automatisierte Laser-Profilscanner an der Depoteinfahrt',
+        'Zirkuläre Aufarbeitungs- & Revisionsprogramme',
+        '24/7-SLA-Disposition & Logistik für kritische Einsätze',
+      ],
+    },
     alignRight: false,
   },
 ];
 
+/* Page copy that isn't shared with Home. Shared passages (intro, Bangalore
+   section, quote) come from translations.js via t() so the two pages stay in sync. */
+const COPY = {
+  en: {
+    heroAlt: 'Zebrold IHL Manufacturing Plant and Scolome High Speed Train',
+    heroDesc:
+      'Precision-engineered aerodynamic rolling stock designed for sustainable high-capacity rail transport across continents.',
+    introLeadRest:
+      'is a German rolling stock engineering and technology company headquartered in Frankfurt am Main, Germany, dedicated to advancing the future of rail transportation through innovation, engineering excellence, and intelligent railway solutions.',
+    introP2Before: 'Today,',
+    introP2After:
+      'represents our dedicated railway initiative, bringing together a comprehensive vision for rolling stock engineering, railway signalling, electrification, digital rail, infrastructure, components, services, and turnkey solutions. Our manufacturing vision is centred in Germany, bringing together German engineering standards, precision manufacturing, and an international approach to railway technology development.',
+    splitTitle: 'From Bangalore to Frankfurt — A Cross-Border Vision',
+    splitAlt: 'Scolome high-speed trainset running at speed through open countryside',
+    cabinAlt: 'Scolome intercity trainset waiting at a covered station platform',
+    cabinCaption: 'Aerodynamic Cohesion & Passenger Comfort',
+    cabinTitle: 'Aerodynamic Cohesion & Passenger Experience',
+    cabinP1:
+      "Rolling stock is at the centre of Scolome's railway engineering vision. We are focused on advancing the design and development of modern railway vehicles, with particular emphasis on railway coaches, passenger experience, engineering performance, and system integration.",
+    cabinP2:
+      'Our ambition is to develop rolling stock solutions that combine contemporary industrial design with engineering principles focused on efficiency, reliability, safety, passenger comfort, maintainability, and operational requirements.',
+    cabinP3:
+      'Through our rolling stock initiative, Scolome Apex, we explore vehicle architecture, interior design, structural development, onboard technologies, energy efficiency, and operational integration.',
+    cabinFooter:
+      "Scolome's rolling stock vision is centred on developing railway vehicles that bring together functional performance, intelligent design, and manufacturing precision.",
+    systemsTitle: 'Integrated Railway Sub-Systems Architecture',
+    systemsSubtitle:
+      'An integrated architecture of German precision engineering and advanced cross-border intelligence formulated to solve the mission-critical lifecycle, safety, and operational demands of modern high-speed and mainline rail networks.',
+    mfgTitle: 'Manufacturing in Germany',
+    mfgMeta: 'Frankfurt am Main Production Centre • DIN Specifications',
+    mfgLead:
+      'Germany serves as the headquarters and manufacturing focus of our railway engineering vision. Through our German base in Frankfurt am Main, Zebrold IHL is developing an approach that brings together engineering, precision manufacturing, quality, and international railway technology development.',
+    mfgP:
+      'Our manufacturing ambition is focused on producing rolling stock and related railway solutions through a structured engineering and manufacturing process. We recognise the importance of quality assurance, technical compliance, manufacturing consistency, and rigorous testing in the development of railway vehicles and components.',
+    mfgNote:
+      "German manufacturing represents an important part of our intended railway identity, while our engineering roots in Bangalore, India, remain part of the company's development journey.",
+    visionTitle: 'Our Vision for the Future',
+    visionMeta: 'Integrated Transportation Ecosystem',
+    visionP1:
+      'At Scolome, we believe the future of rail transportation will be shaped by the integration of advanced rolling stock, intelligent signalling, digital technologies, electrification, infrastructure, and engineering services. Our ambition is to contribute to this future by developing a railway-focused technology ecosystem that connects individual products with the systems and infrastructure that support their operation.',
+    visionP2:
+      'From the advancement of railway coaches to the exploration of AI-enabled signalling and digital rail solutions, our focus is on building engineering capabilities that respond to the evolving demands of transportation. We aim to combine innovative thinking with practical engineering, developing a foundation for solutions that support efficiency, reliability, passenger experience, and long-term operational performance.',
+    quoteCite: 'ZEBROLD INTERNATIONAL HOLDINGS LIMITED · SCOLOME RAIL INITIATIVE',
+  },
+  de: {
+    heroAlt: 'Zebrold IHL Fertigungswerk und Scolome Hochgeschwindigkeitszug',
+    heroDesc:
+      'Präzisionsgefertigte, aerodynamische Schienenfahrzeuge für nachhaltigen Hochkapazitätsverkehr über Kontinente hinweg.',
+    introLeadRest:
+      'ist ein deutsches Schienenfahrzeug- und Technologieunternehmen mit Hauptsitz in Frankfurt am Main, das sich der Weiterentwicklung des Schienenverkehrs durch Innovation, ingenieurtechnische Exzellenz und intelligente Bahntechnik widmet.',
+    introP2Before: 'Heute repräsentiert',
+    introP2After:
+      'unsere dedizierte Eisenbahninitiative, die eine umfassende Vision für Schienenfahrzeugtechnik, Signaltechnik, Elektrifizierung, digitale Schiene, Infrastruktur, Komponenten, Services und schlüsselfertige Lösungen vereint. Unsere Produktionsvision ist in Deutschland verankert und vereint deutsche Ingenieurstandards, Präzisionsfertigung und einen internationalen Entwicklungsansatz.',
+    splitTitle: 'Von Bangalore nach Frankfurt eine grenzüberschreitende Vision',
+    splitAlt: 'Scolome-Hochgeschwindigkeitszug in voller Fahrt durch offene Landschaft',
+    cabinAlt: 'Scolome-Intercityzug an einem überdachten Bahnsteig',
+    cabinCaption: 'Aerodynamische Geschlossenheit & Fahrgastkomfort',
+    cabinTitle: 'Aerodynamische Geschlossenheit & Fahrgasterlebnis',
+    cabinP1:
+      'Schienenfahrzeuge stehen im Mittelpunkt der Ingenieurvision von Scolome. Wir treiben Design und Entwicklung moderner Schienenfahrzeuge voran – mit besonderem Fokus auf Reisezugwagen, Fahrgasterlebnis, technische Leistungsfähigkeit und Systemintegration.',
+    cabinP2:
+      'Unser Anspruch ist es, Fahrzeuglösungen zu entwickeln, die zeitgemäßes Industriedesign mit ingenieurtechnischen Prinzipien verbinden – ausgerichtet auf Effizienz, Zuverlässigkeit, Sicherheit, Fahrgastkomfort, Instandhaltbarkeit und betriebliche Anforderungen.',
+    cabinP3:
+      'Mit unserer Fahrzeuginitiative Scolome Apex erforschen wir Fahrzeugarchitektur, Innenraumgestaltung, Strukturentwicklung, Bordtechnologien, Energieeffizienz und betriebliche Integration.',
+    cabinFooter:
+      'Die Fahrzeugvision von Scolome zielt auf Schienenfahrzeuge, die funktionale Leistungsfähigkeit, intelligentes Design und Fertigungspräzision vereinen.',
+    systemsTitle: 'Integrierte Architektur der Bahn-Teilsysteme',
+    systemsSubtitle:
+      'Eine integrierte Architektur aus deutscher Präzisionstechnik und grenzüberschreitender Intelligenz – entwickelt für die kritischen Lebenszyklus-, Sicherheits- und Betriebsanforderungen moderner Hochgeschwindigkeits- und Fernverkehrsnetze.',
+    mfgTitle: 'Fertigung in Deutschland',
+    mfgMeta: 'Produktionszentrum Frankfurt am Main • DIN-Normen',
+    mfgLead:
+      'Deutschland ist Hauptsitz und Fertigungsschwerpunkt unserer Vision für die Bahntechnik. Von unserem Standort in Frankfurt am Main aus entwickelt Zebrold IHL einen Ansatz, der Engineering, Präzisionsfertigung, Qualität und internationale Bahntechnologieentwicklung zusammenführt.',
+    mfgP:
+      'Unser Fertigungsanspruch ist es, Schienenfahrzeuge und zugehörige Bahnlösungen in einem strukturierten Engineering- und Fertigungsprozess herzustellen. Qualitätssicherung, technische Normkonformität, gleichbleibende Fertigungsqualität und konsequente Prüfungen sind für uns bei der Entwicklung von Schienenfahrzeugen und Komponenten zentral.',
+    mfgNote:
+      'Die Fertigung in Deutschland ist ein wesentlicher Teil unserer angestrebten Identität als Bahnunternehmen, während unsere ingenieurtechnischen Wurzeln in Bangalore, Indien, fester Bestandteil der Unternehmensentwicklung bleiben.',
+    visionTitle: 'Unsere Vision für die Zukunft',
+    visionMeta: 'Integriertes Verkehrsökosystem',
+    visionP1:
+      'Bei Scolome sind wir überzeugt, dass die Zukunft des Schienenverkehrs durch das Zusammenspiel moderner Schienenfahrzeuge, intelligenter Signaltechnik, digitaler Technologien, Elektrifizierung, Infrastruktur und Engineering-Dienstleistungen geprägt wird. Wir wollen zu dieser Zukunft beitragen, indem wir ein bahnspezifisches Technologieökosystem aufbauen, das einzelne Produkte mit den Systemen und der Infrastruktur für ihren Betrieb verbindet.',
+    visionP2:
+      'Von der Weiterentwicklung von Reisezugwagen bis zur Erforschung KI-gestützter Signaltechnik und digitaler Bahnlösungen konzentrieren wir uns auf ingenieurtechnische Kompetenzen, die den sich wandelnden Anforderungen des Verkehrs gerecht werden. Wir verbinden innovatives Denken mit praxisnahem Engineering und schaffen so die Grundlage für Lösungen, die Effizienz, Zuverlässigkeit, Fahrgasterlebnis und langfristige Betriebsleistung fördern.',
+    quoteCite: 'ZEBROLD INTERNATIONAL HOLDINGS LIMITED · SCOLOME-BAHNINITIATIVE',
+  },
+};
+
 export default function About() {
-  const { lang } = useLanguage();
+  const { lang, t } = useLanguage();
+  const c = COPY[lang];
 
   return (
     <div className="aboutPage">
@@ -228,19 +372,15 @@ export default function About() {
         <div className="aboutHero__stage">
           <img
             src={heroImg}
-            alt="Scolome Next-Generation High Speed Train"
+            alt={c.heroAlt}
             className="aboutHero__img"
             loading="eager"
             fetchPriority="high"
           />
           <div className="aboutHero__scrim" aria-hidden="true" />
           <div className="aboutHero__card">
-            <h2 className="aboutHero__cardTitle">
-              Pioneering Ultra Speed Intelligent Rolling Stocks
-            </h2>
-            <p className="aboutHero__cardDesc">
-              Precision-engineered aerodynamic rolling stock designed for sustainable high-capacity rail transport across continents.
-            </p>
+            <h2 className="aboutHero__cardTitle">{t('home_pioneering_title')}</h2>
+            <p className="aboutHero__cardDesc">{c.heroDesc}</p>
           </div>
         </div>
       </section>
@@ -251,19 +391,16 @@ export default function About() {
         <section className="aboutSec aboutSec--intro">
           <div className="aboutIntro__grid">
             <div className="aboutIntro__titleCol">
-              <h1 className="aboutIntro__heading">
-                Engineering the Future of Rail Mobility
-              </h1>
+              <h1 className="aboutIntro__heading">{t('home_future_title')}</h1>
             </div>
             <div className="aboutIntro__contentCol">
               <p className="aboutIntro__lead">
-                <strong>Zebrold International Holdings Limited (Zebrold IHL)</strong> is a German rolling stock engineering and technology company headquartered in Frankfurt am Main, Germany, dedicated to advancing the future of rail transportation through innovation, engineering excellence, and intelligent railway solutions.
+                <strong>Zebrold International Holdings Limited (Zebrold IHL)</strong>{' '}
+                {c.introLeadRest}
               </p>
+              <p>{t('home_future_p1')}</p>
               <p>
-                The company began its root operations in 2024 in Bangalore, India, establishing the foundation for its railway technology vision and engineering development. From these early beginnings, Zebrold IHL has continued to shape its ambitions around the design, development, and manufacturing of advanced rolling stock and the technologies that support modern rail transportation.
-              </p>
-              <p>
-                Today, <strong>Scolome</strong> represents our dedicated railway initiative, bringing together a comprehensive vision for rolling stock engineering, railway signalling, electrification, digital rail, infrastructure, components, services, and turnkey solutions. Our manufacturing vision is centred in Germany, bringing together German engineering standards, precision manufacturing, and an international approach to railway technology development.
+                {c.introP2Before} <strong>Scolome</strong> {c.introP2After}
               </p>
             </div>
           </div>
@@ -273,19 +410,11 @@ export default function About() {
         <section className="aboutSec aboutSec--split">
           <div className="aboutSplit__grid">
             <div className="aboutSplit__text">
-              <h2 className="aboutSec__title">
-                From Bangalore to Frankfurt — A Cross-Border Vision
-              </h2>
+              <h2 className="aboutSec__title">{c.splitTitle}</h2>
               <div className="aboutSplit__paragraphs">
-                <p>
-                  Scolome's journey is rooted in Bangalore, India, where Zebrold IHL began its initial operations in 2024. This foundation represents the beginning of our engineering and technology journey, connecting India's growing technical talent and innovation ecosystem with our long-term ambition to develop internationally focused railway solutions.
-                </p>
-                <p>
-                  With Germany as our headquarters and manufacturing base, we are building a cross-border engineering vision that brings together design, technical development, manufacturing, and railway system capabilities. Our approach is centred on developing railway technologies that combine thoughtful engineering, precision, quality, and a forward-looking understanding of the transportation industry.
-                </p>
-                <p className="aboutText--subtle">
-                  Our development journey reflects a commitment to building railway capabilities across multiple interconnected disciplines. From the design of railway coaches and rolling stock components to intelligent signalling and electrification systems, Scolome aims to create a foundation for a broader railway technology ecosystem.
-                </p>
+                <p>{t('home_pioneering_p1')}</p>
+                <p>{t('home_pioneering_p2')}</p>
+                <p className="aboutText--subtle">{t('home_pioneering_p3')}</p>
               </div>
             </div>
             <div className="aboutSplit__mediaCol">
@@ -293,7 +422,7 @@ export default function About() {
                 <div className="aboutMediaCard__inner">
                   <img
                     src={trainNoseImg}
-                    alt="Scolome high-speed trainset running at speed through open countryside"
+                    alt={c.splitAlt}
                     className="aboutMediaCard__img"
                     loading="lazy"
                   />
@@ -312,36 +441,24 @@ export default function About() {
                 <div className="aboutCabinCard__frame">
                   <img
                     src={cabinImg}
-                    alt="Scolome intercity trainset waiting at a covered station platform"
+                    alt={c.cabinAlt}
                     className="aboutCabinCard__img"
                     loading="lazy"
                   />
                 </div>
-                <div className="aboutCabinCard__caption">
-                  Aerodynamic Cohesion &amp; Passenger Comfort
-                </div>
+                <div className="aboutCabinCard__caption">{c.cabinCaption}</div>
               </div>
               <div className="aboutCabinCard__textCol">
                 <div className="aboutCabinCard__body">
-                  <h2 className="aboutCabinCard__title">
-                    Aerodynamic Cohesion &amp; Passenger Experience
-                  </h2>
+                  <h2 className="aboutCabinCard__title">{c.cabinTitle}</h2>
                   <div className="aboutCabinCard__desc">
-                    <p>
-                      Rolling stock is at the centre of Scolome's railway engineering vision. We are focused on advancing the design and development of modern railway vehicles, with particular emphasis on railway coaches, passenger experience, engineering performance, and system integration.
-                    </p>
-                    <p>
-                      Our ambition is to develop rolling stock solutions that combine contemporary industrial design with engineering principles focused on efficiency, reliability, safety, passenger comfort, maintainability, and operational requirements.
-                    </p>
-                    <p className="aboutText--subtle">
-                      Through our rolling stock initiative, Scolome Apex, we explore vehicle architecture, interior design, structural development, onboard technologies, energy efficiency, and operational integration.
-                    </p>
+                    <p>{c.cabinP1}</p>
+                    <p>{c.cabinP2}</p>
+                    <p className="aboutText--subtle">{c.cabinP3}</p>
                   </div>
                 </div>
                 <div className="aboutCabinCard__footer">
-                  <p>
-                    Scolome's rolling stock vision is centred on developing railway vehicles that bring together functional performance, intelligent design, and manufacturing precision.
-                  </p>
+                  <p>{c.cabinFooter}</p>
                 </div>
               </div>
             </div>
@@ -351,12 +468,8 @@ export default function About() {
         {/* ══ 5. Section: Technical Pillars / Sub-Systems Architecture ══ */}
         <section className="aboutSec aboutSec--systems">
           <div className="aboutSystems__head">
-            <h2 className="aboutSystems__mainTitle">
-              Integrated Railway Sub-Systems Architecture
-            </h2>
-            <p className="aboutSystems__mainSubtitle">
-              An integrated architecture of German precision engineering and advanced cross-border intelligence formulated to solve the mission-critical lifecycle, safety, and operational demands of modern high-speed and mainline rail networks.
-            </p>
+            <h2 className="aboutSystems__mainTitle">{c.systemsTitle}</h2>
+            <p className="aboutSystems__mainSubtitle">{c.systemsSubtitle}</p>
           </div>
 
           <div className="aboutSystems__list">
@@ -366,9 +479,6 @@ export default function About() {
                 className={`aboutSystemRow ${item.alignRight ? 'aboutSystemRow--reverse' : ''}`}
               >
                 <div className="aboutSystemRow__titleCol">
-                  <span className="aboutSystemRow__badge">
-                    SUB-SYSTEM {item.num} // {item.category}
-                  </span>
                   <h3 className="aboutSystemRow__heading">
                     {item.title[lang]}
                   </h3>
@@ -386,7 +496,7 @@ export default function About() {
                       {item.specsTitle[lang]}
                     </div>
                     <div className="aboutSystemRow__specsList mono">
-                      {item.specs.map((spec, sIdx) => (
+                      {item.specs[lang].map((spec, sIdx) => (
                         <span key={spec}>
                           {sIdx > 0 && <span className="aboutSystemRow__specsDot">•</span>}
                           {spec}
@@ -406,39 +516,25 @@ export default function About() {
             {/* Manufacturing in Germany */}
             <div className="aboutGovRow">
               <div className="aboutGovRow__head">
-                <h4 className="aboutGovRow__title">Manufacturing in Germany</h4>
-                <p className="aboutGovRow__meta">
-                  Frankfurt am Main Production Centre • DIN Specifications
-                </p>
+                <h4 className="aboutGovRow__title">{c.mfgTitle}</h4>
+                <p className="aboutGovRow__meta">{c.mfgMeta}</p>
               </div>
               <div className="aboutGovRow__body">
-                <p className="aboutGovRow__lead">
-                  Germany serves as the headquarters and manufacturing focus of our railway engineering vision. Through our German base in Frankfurt am Main, Zebrold IHL is developing an approach that brings together engineering, precision manufacturing, quality, and international railway technology development.
-                </p>
-                <p>
-                  Our manufacturing ambition is focused on producing rolling stock and related railway solutions through a structured engineering and manufacturing process. We recognise the importance of quality assurance, technical compliance, manufacturing consistency, and rigorous testing in the development of railway vehicles and components.
-                </p>
-                <p className="aboutGovRow__footerNote">
-                  German manufacturing represents an important part of our intended railway identity, while our engineering roots in Bangalore, India, remain part of the company's development journey.
-                </p>
+                <p className="aboutGovRow__lead">{c.mfgLead}</p>
+                <p>{c.mfgP}</p>
+                <p className="aboutGovRow__footerNote">{c.mfgNote}</p>
               </div>
             </div>
 
             {/* Our Vision for the Future */}
             <div className="aboutGovRow">
               <div className="aboutGovRow__head">
-                <h4 className="aboutGovRow__title">Our Vision for the Future</h4>
-                <p className="aboutGovRow__meta">
-                  Integrated Transportation Ecosystem
-                </p>
+                <h4 className="aboutGovRow__title">{c.visionTitle}</h4>
+                <p className="aboutGovRow__meta">{c.visionMeta}</p>
               </div>
               <div className="aboutGovRow__body">
-                <p>
-                  At Scolome, we believe the future of rail transportation will be shaped by the integration of advanced rolling stock, intelligent signalling, digital technologies, electrification, infrastructure, and engineering services. Our ambition is to contribute to this future by developing a railway-focused technology ecosystem that connects individual products with the systems and infrastructure that support their operation.
-                </p>
-                <p>
-                  From the advancement of railway coaches to the exploration of AI-enabled signalling and digital rail solutions, our focus is on building engineering capabilities that respond to the evolving demands of transportation. We aim to combine innovative thinking with practical engineering, developing a foundation for solutions that support efficiency, reliability, passenger experience, and long-term operational performance.
-                </p>
+                <p>{c.visionP1}</p>
+                <p>{c.visionP2}</p>
               </div>
             </div>
           </div>
@@ -447,12 +543,8 @@ export default function About() {
         {/* ══ 7. Closing Quote ══ */}
         <section className="aboutSec aboutSec--quote">
           <blockquote className="aboutQuote">
-            <p className="aboutQuote__text">
-              “Rolling stock is the future of transportation, and Scolome is redefining the future of mobility through innovation and engineering excellence.”
-            </p>
-            <cite className="aboutQuote__cite mono">
-              ZEBROLD INTERNATIONAL HOLDINGS LIMITED · SCOLOME RAIL INITIATIVE
-            </cite>
+            <p className="aboutQuote__text">{t('home_quote')}</p>
+            <cite className="aboutQuote__cite mono">{c.quoteCite}</cite>
           </blockquote>
         </section>
       </div>

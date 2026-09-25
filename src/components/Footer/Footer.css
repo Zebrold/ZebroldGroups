@@ -23,17 +23,6 @@
   margin-bottom: 1.6rem;
 }
 
-.ftr__tagline {
-  font-size: var(--text-base);
-  line-height: 1.6;
-  color: rgba(255, 255, 255, 0.7);
-  max-width: 30ch;
-}
-
-.ftr__social {
-  margin-top: 2.25rem;
-}
-
 .ftr__socialBtn {
   width: 42px;
   height: 42px;
@@ -118,19 +107,6 @@
   font-weight: 600;
   color: #fff;
   letter-spacing: 0.01em;
-}
-
-.ftr__locBadge {
-  font-family: var(--font-mono);
-  font-size: 0.62rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  padding: 0.12rem 0.45rem;
-  border-radius: var(--radius-pill);
-  background: rgba(242, 72, 56, 0.16);
-  color: var(--coral-300);
-  border: 1px solid rgba(242, 72, 56, 0.32);
 }
 
 .ftr__locAddress {
@@ -225,10 +201,6 @@
 
   .ftr__locCard {
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  }
-
-  .ftr__tagline {
-    max-width: 48ch;
   }
 }
 

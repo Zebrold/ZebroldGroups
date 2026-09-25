@@ -1,6 +1,6 @@
 import SEO from '../../components/SEO/SEO';
 import '../RollingStock/RailShowcase.css';
-import sgHero from '../../assets/autonomous_rail_sensor.jpg';
+import sgHero from '../../assets/rail_signalling_dwarf.jpg';
 import sgCab from '../../assets/train_cockpit_digital.jpg';
 import sgMetro from '../../assets/metro_trainset.jpg';
 import sgTrackside from '../../assets/rail_catenary_corridor.jpg';
@@ -39,7 +39,7 @@ export default function Signalling() {
           {/* Primary Hero Visual Showcase */}
           <div className="rail-showcase-box">
             <img
-              alt="Forward-facing trackside detection sensor mounted on a trainset"
+              alt="Trackside railway dwarf signal illuminated at dusk along continental mainline corridor"
               className="rail-showcase-img"
               src={sgHero}
               loading="eager"

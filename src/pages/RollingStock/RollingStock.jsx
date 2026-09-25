@@ -1,6 +1,6 @@
 import SEO from '../../components/SEO/SEO';
 import './RailShowcase.css';
-import rsHero from '../../assets/highspeed_in_service.jpg';
+import rsHero from '../../assets/rolling_stock_highspeed.jpg';
 import rsApex from '../../assets/scolome_hero.jpg';
 import rsHorizon from '../../assets/metro_trainset.jpg';
 import rsVelox from '../../assets/intercity_platform.webp';
@@ -35,7 +35,7 @@ export default function RollingStock() {
           {/* Primary High-Speed Train Editorial Showcase */}
           <div className="rail-showcase-box">
             <img
-              alt="Red high-speed trainset running at speed through open countryside"
+              alt="Blue high-speed electric passenger train on mainline railway tracks"
               className="rail-showcase-img"
               src={rsHero}
               loading="eager"

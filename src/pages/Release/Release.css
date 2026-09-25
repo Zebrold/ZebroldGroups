@@ -333,7 +333,7 @@
 
 .rel__quote blockquote {
   font-family: var(--font-serif);
-  font-style: italic;
+  font-style: normal;
   font-weight: 400;
   font-size: clamp(1.25rem, 2.6vw, 2rem);
   line-height: 1.38;

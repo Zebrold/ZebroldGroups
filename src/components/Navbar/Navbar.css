@@ -388,10 +388,9 @@
 }
 
 .nav__menuLabel {
-  font-size: var(--text-2xs);
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
-  color: var(--muted-light);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--muted);
   padding: 0 0.5rem 0.65rem;
   margin-bottom: 0.3rem;
   border-bottom: 1px solid var(--rule);

@@ -17,14 +17,11 @@ export const translations = {
     skip_to_content: 'Skip to content',
 
     /* ── Footer ── */
-    footer_tagline:
-      'We partner with forward-thinking organisations to build value that inspires, performs, and endures.',
     footer_company: 'Company',
     footer_sectors: 'Sectors',
     footer_resources: 'Resources',
     footer_locations: 'Global Locations',
     footer_hq: 'Global Headquarters',
-    footer_follow: 'Follow Us',
     footer_contact: 'Contact',
     footer_products: 'Products',
     footer_rolling_stock: 'Rolling Stock',
@@ -33,8 +30,6 @@ export const translations = {
     footer_infrastructure: 'Infrastructure',
     footer_digital_rail: 'Digital rail',
     footer_services: 'Services',
-    footer_aerospace: 'Aerospace',
-    footer_automotive: 'Automotive',
     footer_insights: 'Insights',
     footer_faqs: 'FAQs',
     footer_rights: 'All rights reserved.',
@@ -154,14 +149,11 @@ export const translations = {
     skip_to_content: 'Zum Inhalt springen',
 
     /* ── Footer ── */
-    footer_tagline:
-      'Wir arbeiten mit zukunftsorientierten Organisationen zusammen, um Werte zu schaffen, die inspirieren, leisten und Bestand haben.',
     footer_company: 'Unternehmen',
     footer_sectors: 'Sektoren',
     footer_resources: 'Ressourcen',
     footer_locations: 'Globale Standorte',
     footer_hq: 'Globaler Hauptsitz',
-    footer_follow: 'Folgen Sie uns',
     footer_contact: 'Kontakt',
     footer_products: 'Produkte',
     footer_rolling_stock: 'Schienenfahrzeuge',
@@ -170,8 +162,6 @@ export const translations = {
     footer_infrastructure: 'Infrastruktur',
     footer_digital_rail: 'Digitale Schiene',
     footer_services: 'Service',
-    footer_aerospace: 'Luft- und Raumfahrt',
-    footer_automotive: 'Automobil',
     footer_insights: 'Einblicke',
     footer_faqs: 'FAQ',
     footer_rights: 'Alle Rechte vorbehalten.',

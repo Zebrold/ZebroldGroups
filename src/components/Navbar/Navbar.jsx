@@ -137,7 +137,7 @@ export default function Navbar() {
                 {...(productsOpen ? {} : { inert: true })}
               >
                 <div className="nav__menuInner">
-                  <p className="nav__menuLabel mono">{t('nav_products_label')}</p>
+                  <p className="nav__menuLabel">{t('nav_products_label')}</p>
                   <ul className="nav__menuGrid" role="list">
                     {solutions.map((item) => (
                       <li key={item.id}>

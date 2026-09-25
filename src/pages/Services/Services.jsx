@@ -80,15 +80,16 @@ export default function Services() {
         </section>
 
         {/* ══ SECTION 2: BILATERAL STRATEGIC FRAMEWORK ══ */}
-        <section className="rail-container sv-framework">
-          <div className="sv-framework-head">
-            <span className="sv-eyebrow">Axis architecture • Frankfurt • Kassel • Bengaluru • Hyderabad</span>
-            <h2 className="sv-h2">Diplomatic Accord Meets Heavy Industrial Execution</h2>
-            <p className="sv-lede">
-              Zebrold IHL acts as the sole sovereign EPC legal envelope, absorbing contractor interface liabilities
-              and coordinating bilateral industrial capability across continental Europe and the Indian subcontinent.
-            </p>
-          </div>
+        <section className="rail-mandate-section sv-framework-section">
+          <div className="rail-container">
+            <div className="sv-framework-head">
+              <span className="sv-eyebrow">Axis architecture • Frankfurt • Kassel • Bengaluru • Hyderabad</span>
+              <h2 className="sv-h2">Diplomatic Accord Meets Heavy Industrial Execution</h2>
+              <p className="sv-lede">
+                Zebrold IHL acts as the sole sovereign EPC legal envelope, absorbing contractor interface liabilities
+                and coordinating bilateral industrial capability across continental Europe and the Indian subcontinent.
+              </p>
+            </div>
 
           <div className="sv-pillars">
             {/* Pillar 01 */}
@@ -173,7 +174,8 @@ export default function Services() {
               </dl>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
         {/* ══ SECTION 3: FLAGSHIP CORRIDORS ══ */}
         <section className="rail-container rail-narrative-section">

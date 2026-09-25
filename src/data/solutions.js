@@ -1,8 +1,8 @@
-import solRollingStock from '../assets/trainset_rollout.jpg';
-import solSignalling from '../assets/autonomous_rail_sensor.jpg';
-import solComponents from '../assets/traction_inverter.jpg';
+import solRollingStock from '../assets/rolling_stock_highspeed.jpg';
+import solSignalling from '../assets/rail_signalling_dwarf.jpg';
+import solComponents from '../assets/bogie_components_production.jpg';
 import solInfrastructure from '../assets/rail_catenary_corridor.jpg';
-import solDigitalRail from '../assets/field_engineer_diagnostics.jpg';
+import solDigitalRail from '../assets/digital_rail_sunset_train.jpg';
 import solServices from '../assets/depot_maintenance_bay.webp';
 
 /** The "complete range of mobility solutions" rail on the homepage. */
@@ -12,8 +12,8 @@ export const solutions = [
     image:
       solRollingStock,
     alt: {
-      en: 'Completed trainset rolling out of the assembly hall',
-      de: 'Fertiger Triebzug bei der Ausfahrt aus der Montagehalle',
+      en: 'High-speed electric passenger train on mainline railway tracks',
+      de: 'Hochgeschwindigkeits-Elektrotriebzug auf der Hauptstrecke',
     },
     name: { en: 'Rolling stock', de: 'Schienenfahrzeuge' },
     blurb: {
@@ -27,8 +27,8 @@ export const solutions = [
     image:
       solSignalling,
     alt: {
-      en: 'Forward-facing sensor array mounted in a trainset nose',
-      de: 'Vorausschauendes Sensorarray in der Zugfront',
+      en: 'Trackside railway dwarf signal illuminated at dusk',
+      de: 'Gleisseitiges Signal mit Signalbegriff in der Dämmerung',
     },
     name: { en: 'Signalling', de: 'Signaltechnik' },
     blurb: {
@@ -42,8 +42,8 @@ export const solutions = [
     image:
       solComponents,
     alt: {
-      en: 'Engineer testing a silicon-carbide traction inverter on a bench',
-      de: 'Ingenieur prüft einen Siliziumkarbid-Traktionsumrichter am Prüfstand',
+      en: 'High-speed train bogie frames and wheelsets in manufacturing workshop',
+      de: 'Drehgestellrahmen und Radsätze in der Fertigungshalle',
     },
     name: { en: 'Components', de: 'Komponenten' },
     blurb: {
@@ -72,8 +72,8 @@ export const solutions = [
     image:
       solDigitalRail,
     alt: {
-      en: 'Engineer running diagnostics on a trainset in the depot',
-      de: 'Ingenieur bei der Diagnose an einem Triebzug im Depot',
+      en: 'Zebrold high-speed train travelling through landscape at sunset',
+      de: 'Zebrold Hochgeschwindigkeitszug auf der Strecke bei Sonnenuntergang',
     },
     name: { en: 'Digital rail', de: 'Digitale Schiene' },
     path: '/digital-rail',

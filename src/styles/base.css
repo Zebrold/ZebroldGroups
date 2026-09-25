@@ -49,6 +49,14 @@ ol {
   list-style: none;
 }
 
+/* Site-wide upright text: no browser-default italics on emphasis or citations */
+em,
+i,
+cite,
+address {
+  font-style: normal;
+}
+
 ::selection {
   background-color: var(--burgundy-850);
   color: #fff;
@@ -118,7 +126,7 @@ ol {
 }
 
 .display em {
-  font-style: italic;
+  font-style: normal;
   font-weight: 400;
   color: var(--burgundy-850);
 }

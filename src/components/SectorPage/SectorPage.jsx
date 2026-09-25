@@ -21,7 +21,7 @@ export default function SectorPage({ page, seo }) {
         <div className="shell sector__mastheadInner">
           <div className="sector__mastheadMain">
             <span className="eyebrow">{page.eyebrow[lang]}</span>
-            {/* First-party static copy; the only markup is <em> for the italic clause. */}
+            {/* First-party static copy; the only markup is <em> for the accent clause. */}
             <h1 className="display" dangerouslySetInnerHTML={{ __html: page.title[lang] }} />
           </div>
 

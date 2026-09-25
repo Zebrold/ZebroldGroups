@@ -1,6 +1,6 @@
 import SEO from '../../components/SEO/SEO';
 import '../RollingStock/RailShowcase.css';
-import cpHero from '../../assets/high_speed_bogie.jpg';
+import cpHero from '../../assets/bogie_components_production.jpg';
 import cpBogie from '../../assets/assembly_line_robotics.webp';
 import cpMotor from '../../assets/traction_inverter.jpg';
 import cpPantograph from '../../assets/highspeed_in_service.jpg';
@@ -39,8 +39,8 @@ export default function Components() {
           {/* Primary Industrial Context & Workshop Hero Image */}
           <div className="rail-showcase-box">
             <img
-              alt="High-speed bogie frame and wheelset assembly"
-              className="rail-showcase-img is-grayscale"
+              alt="High-speed train bogie frames and wheelsets in manufacturing workshop"
+              className="rail-showcase-img"
               src={cpHero}
               loading="eager"
             />

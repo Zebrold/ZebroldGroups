@@ -11,11 +11,11 @@ import { news } from '../../data/news';
 import { events } from '../../data/events';
 import { formatDate } from '../../utils/formatDate';
 import './Home.css';
-import bogieImg from '../../assets/carbody_laser_welding.jpg';
+import manufacturingPlantImg from '../../assets/zebrold_manufacturing_plant.jpg';
 import societyImg from '../../assets/station_trainshed.jpg';
 
 const BOGIE_IMG =
-  bogieImg;
+  manufacturingPlantImg;
 
 const SOCIETY_IMG =
   societyImg;
@@ -123,14 +123,14 @@ export default function Home() {
             <p className="homePioneeringGrid__p">{t('home_pioneering_p3')}</p>
           </div>
           <div className="homePioneeringGrid__colMedia">
-            <div className="homeBogieCard card-lift">
+            <div className="homeBogieCard">
               <div className="homeBogieCard__inner">
                 <img
                   src={BOGIE_IMG}
                   alt={
                     lang === 'de'
-                      ? 'Laserschweißen von Scolome-Wagenkastensektionen'
-                      : 'Robotic laser welding of Scolome carbody sections'
+                      ? 'Zebrold IHL Fertigungswerk mit Scolome Hochgeschwindigkeitszug'
+                      : 'Zebrold IHL manufacturing plant with Scolome high-speed train'
                   }
                   loading="lazy"
                   decoding="async"

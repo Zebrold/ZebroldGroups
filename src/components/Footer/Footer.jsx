@@ -5,15 +5,6 @@ import zebroldLogoMark from '../../assets/zebrold_logo_mark.png';
 import { LOCATIONS } from '../../data/locations';
 import './Footer.css';
 
-function PinIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
-      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" strokeLinecap="round" strokeLinejoin="round" />
-      <circle cx="12" cy="10" r="3" />
-    </svg>
-  );
-}
-
 function MailIcon() {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
@@ -46,8 +37,6 @@ export default function Footer() {
         { label: t('footer_infrastructure'), to: '/infrastructure' },
         { label: t('footer_digital_rail'), to: '/digital-rail' },
         { label: t('footer_services'), to: '/services' },
-        { label: t('footer_aerospace'), to: '/aerospace' },
-        { label: t('footer_automotive'), to: '/automotive' },
       ],
     },
     {
@@ -74,10 +63,7 @@ export default function Footer() {
               height="44"
               loading="lazy"
             />
-            <p className="ftr__tagline">{t('footer_tagline')}</p>
-
             <div className="ftr__social">
-              <h2 className="ftr__heading">{t('footer_follow')}</h2>
               <a
                 href="https://www.linkedin.com/company/zebrold"
                 target="_blank"
@@ -116,9 +102,6 @@ export default function Footer() {
                 <div key={loc.id} className="ftr__locCard">
                   <div className="ftr__locHead">
                     <span className="ftr__locTitle">{loc.title[lang] || loc.title.en}</span>
-                    {loc.isPrimary && (
-                      <span className="ftr__locBadge">{loc.tag[lang] || 'Primary'}</span>
-                    )}
                   </div>
                   <p className="ftr__locAddress">
                     {loc.fullAddress}
