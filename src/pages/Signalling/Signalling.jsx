@@ -161,11 +161,6 @@ export default function Signalling() {
           {/* System 01: High-Speed ETCS Level 2 / Level 3 */}
           <article className="rail-article">
             <div className="rail-article-text">
-              <div className="rail-badges">
-                <span className="rail-badge-dark">SYSTEM 01 • HIGH-SPEED ETCS</span>
-                <span className="rail-badge-outline">TSI / SIL-4 COMPLIANT</span>
-              </div>
-
               <h3 className="rail-article-title">
                 ETCS Level 2 &amp; 3 Moving Block
                 <span>Continuous 5G FRMCS Radio Supervision</span>
@@ -221,11 +216,6 @@ export default function Signalling() {
             </div>
 
             <div className="rail-article-text">
-              <div className="rail-badges">
-                <span className="rail-badge-dark">SYSTEM 02 • URBAN CBTC</span>
-                <span className="rail-badge-outline">IEEE 1474 / GoA4</span>
-              </div>
-
               <h3 className="rail-article-title">
                 Autonomous CBTC GoA4
                 <span>Sub-15mm Station Precision Docking</span>
@@ -259,11 +249,6 @@ export default function Signalling() {
           {/* System 03: Fail-Safe Solid-State Computer Interlocking */}
           <article className="rail-article">
             <div className="rail-article-text">
-              <div className="rail-badges">
-                <span className="rail-badge-dark">SYSTEM 03 • FAIL-SAFE INTERLOCKING</span>
-                <span className="rail-badge-outline">SIL-4 / 2oo3 VOTING</span>
-              </div>
-
               <h3 className="rail-article-title">
                 Solid-State Computer Interlocking
                 <span>Triplicate Voting Microprocessor Fabric</span>
@@ -319,11 +304,6 @@ export default function Signalling() {
             </div>
 
             <div className="rail-article-text">
-              <div className="rail-badges">
-                <span className="rail-badge-dark">SYSTEM 04 • ALGORITHMIC DISPATCH</span>
-                <span className="rail-badge-outline">REAL-TIME TRAFFIC MGMT</span>
-              </div>
-
               <h3 className="rail-article-title">
                 Real-Time TMS Dispatch Engine
                 <span>Algorithmic Corridor Conflict Resolution</span>

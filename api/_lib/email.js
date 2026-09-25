@@ -19,8 +19,14 @@
  *   CONTACT_NOTIFICATION_EMAIL   inbox for contact enquiries (default info@zebrold.de)
  */
 
+import { LOCATIONS } from '../../src/data/locations.js';
+
 const DEFAULT_FROM = 'Zebrold IHL <onboarding@resend.dev>';
-const LOGO_URL = 'https://www.zebrold.de/favicon.png';
+const SITE_URL = 'https://www.zebrold.de';
+const LINKEDIN_URL = 'https://www.linkedin.com/company/zebrold';
+// public/email-logo.png is 360×190; the tag's width/height keep that ratio so
+// mail clients can't squash it.
+const LOGO = { url: `${SITE_URL}/email-logo.png`, width: 91, height: 48 };
 const BRAND = '#792D32';
 const EMAIL_RE = /^[^\s@<>"',;]+@[^\s@<>"',;]+\.[^\s@<>"',;]+$/;
 
@@ -45,6 +51,33 @@ const langOf = (value) => (value === 'de' ? 'de' : 'en');
 
 /* ══ Layout ══ */
 
+function locationCell(loc, lang, side) {
+  const pad = side === 'left' ? 'padding:0 12px 16px 0;' : 'padding:0 0 16px 12px;';
+  return `<td width="50%" valign="top" style="${pad}">
+            <div style="font-size:12px; font-weight:700; color:#111827; margin:0 0 3px 0;">${escapeHtml(loc.title[lang] || loc.title.en)}</div>
+            <div style="font-size:11.5px; line-height:1.5; color:#6B7280;">${escapeHtml(loc.fullAddress)}</div>
+          </td>`;
+}
+
+function footer(lang) {
+  const rows = [];
+  for (let i = 0; i < LOCATIONS.length; i += 2) {
+    const [left, right] = LOCATIONS.slice(i, i + 2);
+    rows.push(`<tr>${locationCell(left, lang, 'left')}${right ? locationCell(right, lang, 'right') : '<td width="50%"></td>'}</tr>`);
+  }
+  const link = `color:${BRAND}; font-weight:600; text-decoration:none;`;
+
+  return `<tr><td style="background-color:#F9FAFB; padding:24px 32px; border-top:1px solid #E5E7EB;">
+          <table width="100%" border="0" cellspacing="0" cellpadding="0">${rows.join('')}</table>
+          <div style="border-top:1px solid #E5E7EB; padding-top:16px; text-align:center; font-size:12.5px;">
+            <a href="${LINKEDIN_URL}" style="${link}">LinkedIn</a>
+            <span style="color:#D1D5DB;">&nbsp;&nbsp;&bull;&nbsp;&nbsp;</span>
+            <a href="${SITE_URL}" style="${link}">www.zebrold.de</a>
+          </div>
+          <div style="text-align:center; font-size:11px; color:#9CA3AF; margin-top:10px;">&copy; ${new Date().getFullYear()} Zebrold International Holdings Limited</div>
+        </td></tr>`;
+}
+
 function layout({ lang, heading, bodyHtml }) {
   return `<!DOCTYPE html>
 <html lang="${lang}">
@@ -55,7 +88,7 @@ function layout({ lang, heading, bodyHtml }) {
       <table width="100%" border="0" cellspacing="0" cellpadding="0" style="max-width:580px; background-color:#FFFFFF; border:1px solid #E5E7EB; border-radius:10px; overflow:hidden;">
         <tr><td style="padding:22px 32px; border-bottom:3px solid ${BRAND};">
           <table width="100%" border="0" cellspacing="0" cellpadding="0"><tr>
-            <td align="left" valign="middle"><img src="${LOGO_URL}" alt="Zebrold" height="28" style="display:block; height:28px; width:auto; border:0;" /></td>
+            <td align="left" valign="middle"><img src="${LOGO.url}" alt="Zebrold" width="${LOGO.width}" height="${LOGO.height}" style="display:block; width:${LOGO.width}px; height:${LOGO.height}px; max-width:${LOGO.width}px; border:0;" /></td>
             <td align="right" valign="middle" style="font-size:15px; font-weight:700; line-height:1.25; color:#111827;">Zebrold International<br/>Holdings Limited</td>
           </tr></table>
         </td></tr>
@@ -63,9 +96,7 @@ function layout({ lang, heading, bodyHtml }) {
           <h1 style="font-size:21px; font-weight:700; color:#111827; margin:0 0 18px 0;">${escapeHtml(heading)}</h1>
           ${bodyHtml}
         </td></tr>
-        <tr><td style="background-color:#F9FAFB; padding:20px 32px; border-top:1px solid #E5E7EB; text-align:center; font-size:11px; line-height:1.6; color:#6B7280;">
-          &copy; ${new Date().getFullYear()} Zebrold International Holdings Limited &bull; Frankfurt am Main, Germany &bull; <a href="https://www.zebrold.de" style="color:#6B7280;">zebrold.de</a>
-        </td></tr>
+        ${footer(lang)}
       </table>
     </td></tr>
   </table>

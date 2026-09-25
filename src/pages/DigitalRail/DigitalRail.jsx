@@ -145,11 +145,6 @@ export default function DigitalRail() {
           {/* Platform 01 */}
           <article className="rail-article">
             <div className="rail-article-text">
-              <div className="rail-badges">
-                <span className="rail-badge-dark">MODULE 01 • CLOUD &amp; EDGE</span>
-                <span className="rail-badge-outline">TWINOS RUNTIME</span>
-              </div>
-
               <h3 className="rail-article-title">
                 Scolome TwinOS
                 <span>Sub-Millisecond Dynamic Digital Twin Platform</span>
@@ -205,11 +200,6 @@ export default function DigitalRail() {
             </div>
 
             <div className="rail-article-text">
-              <div className="rail-badges">
-                <span className="rail-badge-dark">MODULE 02 • NEURAL PROGNOSTICS</span>
-                <span className="rail-badge-outline">14-DAY FORECAST</span>
-              </div>
-
               <h3 className="rail-article-title">
                 AI Predictive Maintenance Engine
                 <span>Deep Cognition &amp; Automated Depot Work-Orders</span>
@@ -246,11 +236,6 @@ export default function DigitalRail() {
           {/* Platform 03 */}
           <article className="rail-article">
             <div className="rail-article-text">
-              <div className="rail-badges">
-                <span className="rail-badge-dark">MODULE 03 • ATO &amp; DISPATCH</span>
-                <span className="rail-badge-outline">GoA2 TO GoA4 READY</span>
-              </div>
-
               <h3 className="rail-article-title">
                 Autonomous Dispatch &amp; Energy Optimisation
                 <span>Algorithmic Coasting &amp; Headway Compression</span>
@@ -305,11 +290,6 @@ export default function DigitalRail() {
             </div>
 
             <div className="rail-article-text">
-              <div className="rail-badges">
-                <span className="rail-badge-dark">MODULE 04 • CYBER INTEGRITY</span>
-                <span className="rail-badge-outline">IEC 62443 / TS 50701</span>
-              </div>
-
               <h3 className="rail-article-title">
                 Cyber-Secure Rail Architecture
                 <span>Hardware Security Modules &amp; Air-Gapped Diodes</span>

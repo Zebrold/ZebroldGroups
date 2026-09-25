@@ -165,11 +165,6 @@ export default function Components() {
           {/* Component 01: High-Speed Bogie Assemblies */}
           <article className="rail-article">
             <div className="rail-article-text">
-              <div className="rail-badges">
-                <span className="rail-badge-dark">COMPONENT 01</span>
-                <span className="rail-badge-outline">EN 13749 CLASS E</span>
-              </div>
-
               <h3 className="rail-article-title">
                 High-Speed Bogie Assemblies
                 <span>KSL-350 Fabricated Frame with Active Yaw Damping</span>
@@ -225,11 +220,6 @@ export default function Components() {
             </div>
 
             <div className="rail-article-text">
-              <div className="rail-badges">
-                <span className="rail-badge-dark">COMPONENT 02</span>
-                <span className="rail-badge-outline">SIL-4 CONTROLLER</span>
-              </div>
-
               <h3 className="rail-article-title">
                 High-Torque Permanent Magnet Traction Motors
                 <span>Silicon-Carbide (SiC) Power Topologies &amp; Converters</span>
@@ -263,11 +253,6 @@ export default function Components() {
           {/* Component 03: Carbon-Composite Pantographs */}
           <article className="rail-article">
             <div className="rail-article-text">
-              <div className="rail-badges">
-                <span className="rail-badge-dark">COMPONENT 03</span>
-                <span className="rail-badge-outline">EN 50206-1 COMPLIANT</span>
-              </div>
-
               <h3 className="rail-article-title">
                 Carbon-Composite Pantographs &amp; Current Collectors
                 <span>Aerodynamic Active Contact Force &amp; Auto-Drop System</span>
@@ -323,11 +308,6 @@ export default function Components() {
             </div>
 
             <div className="rail-article-text">
-              <div className="rail-badges">
-                <span className="rail-badge-dark">COMPONENT 04</span>
-                <span className="rail-badge-outline">UIC 541-05 SPEC</span>
-              </div>
-
               <h3 className="rail-article-title">
                 Mechatronic Electro-Pneumatic Braking Units
                 <span>Kinematic Energy Recuperation &amp; WSP Micro-Adhesion</span>

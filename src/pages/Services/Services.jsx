@@ -193,11 +193,6 @@ export default function Services() {
           {/* Corridor 01 */}
           <article className="rail-article">
             <div className="rail-article-text">
-              <div className="rail-badges">
-                <span className="rail-badge-dark">CORRIDOR 01</span>
-                <span className="rail-badge-outline">CONTINENTAL FREIGHT • TSI / EBA</span>
-              </div>
-
               <h3 className="rail-article-title">
                 Rhein-Main Rapid Freight Link
                 <span>284 km multi-modal high-density corridor</span>
@@ -246,11 +241,6 @@ export default function Services() {
             </div>
 
             <div className="rail-article-text">
-              <div className="rail-badges">
-                <span className="rail-badge-dark">CORRIDOR 02</span>
-                <span className="rail-badge-outline">HEAVY-HAUL • RDSO / EN 50128</span>
-              </div>
-
               <h3 className="rail-article-title">
                 Deccan Express Industrial Trunk
                 <span>512 km heavy-haul corridor &amp; centralised OCC</span>
@@ -286,11 +276,6 @@ export default function Services() {
           {/* Corridor 03 */}
           <article className="rail-article">
             <div className="rail-article-text">
-              <div className="rail-badges">
-                <span className="rail-badge-dark">CORRIDOR 03</span>
-                <span className="rail-badge-outline">ALPINE HIGH-SPEED • TSI / CENELEC</span>
-              </div>
-
               <h3 className="rail-article-title">
                 Nord-Süd Alpine Transit Pass
                 <span>146 km 25 kV alpine base tunnel &amp; viaducts</span>

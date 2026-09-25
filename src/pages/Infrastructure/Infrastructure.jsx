@@ -165,11 +165,6 @@ export default function Infrastructure() {
           {/* System 01: Monolithic Slab Trackbed */}
           <article className="rail-article">
             <div className="rail-article-text">
-              <div className="rail-badges">
-                <span className="rail-badge-dark">SYSTEM 01 • TRACKWORK ARCHITECTURE</span>
-                <span className="rail-badge-outline">TSI INF / EN 16432</span>
-              </div>
-
               <h3 className="rail-article-title">
                 Monolithic Slab Trackbed
                 <span>Continuous Ballastless Dynamics (RHEDA-2000 Standard)</span>
@@ -225,11 +220,6 @@ export default function Infrastructure() {
             </div>
 
             <div className="rail-article-text">
-              <div className="rail-badges">
-                <span className="rail-badge-dark">SYSTEM 02 • TRACTION POWER</span>
-                <span className="rail-badge-outline">IEC 60913 / 25 kV</span>
-              </div>
-
               <h3 className="rail-article-title">
                 25 kV AC High-Speed Catenary System
                 <span>Auto-Tensioned Overhead Electrification</span>
@@ -263,11 +253,6 @@ export default function Infrastructure() {
           {/* System 03: Robotic Underfloor Inspection Depots */}
           <article className="rail-article">
             <div className="rail-article-text">
-              <div className="rail-badges">
-                <span className="rail-badge-dark">SYSTEM 03 • AUTOMATED DEPOT</span>
-                <span className="rail-badge-outline">SIL-4 / ISO 9001</span>
-              </div>
-
               <h3 className="rail-article-title">
                 Robotic Underfloor Inspection Depots
                 <span>Autonomous Turnaround &amp; Diagnostic Gantries</span>
@@ -323,11 +308,6 @@ export default function Infrastructure() {
             </div>
 
             <div className="rail-article-text">
-              <div className="rail-badges">
-                <span className="rail-badge-dark">SYSTEM 04 • PORTAL AERODYNAMICS</span>
-                <span className="rail-badge-outline">UIC 779-11 / TSI SRT</span>
-              </div>
-
               <h3 className="rail-article-title">
                 Aerodynamic Sonic Wave Portals
                 <span>Micro-Pressure Wave Mitigation &amp; Floating Beds</span>

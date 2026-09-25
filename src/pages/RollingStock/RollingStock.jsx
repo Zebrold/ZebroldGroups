@@ -151,11 +151,6 @@ export default function RollingStock() {
           {/* Fleet Narrative 01: Apex 350 */}
           <article className="rail-article">
             <div className="rail-article-text">
-              <div className="rail-badges">
-                <span className="rail-badge-dark">CLASS A • HIGH-SPEED</span>
-                <span className="rail-badge-outline">TSI / SIL-4 COMPLIANT</span>
-              </div>
-
               <h3 className="rail-article-title">
                 Scolome Apex 350
                 <span>Ultra High-Speed Distributed Traction EMU</span>
@@ -211,11 +206,6 @@ export default function RollingStock() {
             </div>
 
             <div className="rail-article-text">
-              <div className="rail-badges">
-                <span className="rail-badge-dark">CLASS B • ZERO EMISSION</span>
-                <span className="rail-badge-outline">TSI / RDSO TESTED</span>
-              </div>
-
               <h3 className="rail-article-title">
                 Scolome B-EMU Horizon
                 <span>Mainline Zero-Emission Battery Multiple Unit</span>
@@ -249,11 +239,6 @@ export default function RollingStock() {
           {/* Fleet Narrative 03: InterCity Velox */}
           <article className="rail-article">
             <div className="rail-article-text">
-              <div className="rail-badges">
-                <span className="rail-badge-dark">CLASS C • INTERCITY REGIONAL</span>
-                <span className="rail-badge-outline">TSI / EN 13749</span>
-              </div>
-
               <h3 className="rail-article-title">
                 Scolome InterCity Velox
                 <span>High-Capacity Regional Passenger Architecture</span>
