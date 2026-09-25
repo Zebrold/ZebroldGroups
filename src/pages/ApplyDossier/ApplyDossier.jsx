@@ -363,6 +363,8 @@ export default function ApplyDossier() {
         email: form.email,
         phone: `${form.dial} ${form.phone}`,
         jobTitle: job ? job.title?.en : COPY.en.speculative,
+        roleLabel: job ? job.title?.[lang] ?? job.title?.en : c.speculative,
+        lang,
         department: job
           ? JOB_CATEGORIES.find((k) => k.id === job.category)?.label.en ?? '—'
           : 'Talent acquisition',

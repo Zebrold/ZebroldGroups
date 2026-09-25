@@ -50,7 +50,7 @@ export default function Contact() {
 
     setSending(true);
     try {
-      await sendContactEmail(form);
+      await sendContactEmail({ ...form, lang });
       setToast({ type: 'success', message: t('contact_success') });
       setForm(EMPTY);
     } catch {
