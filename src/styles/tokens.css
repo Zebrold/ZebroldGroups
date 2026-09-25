@@ -11,6 +11,7 @@
   --burgundy-600: #4a1119;
 
   /* ══ Coral accent ══ */
+  --coral-700: #a53936; /* accent text on white — coral-500 is too light for small type */
   --coral-500: #f24838;
   --coral-400: #fe7c74;
   --coral-300: #ffb3ad;

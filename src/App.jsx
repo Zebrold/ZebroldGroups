@@ -7,6 +7,7 @@ import Footer from './components/Footer/Footer';
 
 import Home from './pages/Home/Home';
 import About from './pages/About/About';
+import Leadership from './pages/Leadership/Leadership';
 import Newsroom from './pages/Newsroom/Newsroom';
 import Release from './pages/Release/Release';
 import Careers from './pages/Careers/Careers';
@@ -55,6 +56,7 @@ function Shell() {
       />
       <Route path="/" element={<Home />} />
       <Route path="/about" element={<About />} />
+      <Route path="/leadership" element={<Leadership />} />
       <Route path="/newsroom" element={<Newsroom />} />
       <Route path="/newsroom/:id" element={<Release />} />
       <Route path="/careers" element={<Careers />} />

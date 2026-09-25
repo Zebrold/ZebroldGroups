@@ -21,10 +21,14 @@ export default function Navbar() {
 
   /* Products is a menu, not a destination — the rest are plain links. */
   const navLinks = [
-    { label: t('nav_about'), path: '/about' },
+    { label: t('nav_about'), path: '/about', subPaths: ['/leadership'] },
     { label: t('nav_newsroom'), path: '/newsroom' },
     { label: t('nav_careers'), path: '/careers' },
   ];
+
+  /* Sub-pages (e.g. /leadership under About) keep their parent link highlighted. */
+  const isLinkActive = (link, isActive) =>
+    isActive || Boolean(link.subPaths?.includes(location.pathname));
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -172,7 +176,7 @@ export default function Navbar() {
               <li key={link.path} className="nav__item">
                 <NavLink
                   to={link.path}
-                  className={({ isActive }) => `nav__link ${isActive ? 'is-active' : ''}`}
+                  className={({ isActive }) => `nav__link ${isLinkActive(link, isActive) ? 'is-active' : ''}`}
                 >
                   {link.label}
                 </NavLink>
@@ -207,7 +211,7 @@ export default function Navbar() {
             <NavLink
               key={link.path}
               to={link.path}
-              className={({ isActive }) => `nav__overlayLink ${isActive ? 'is-active' : ''}`}
+              className={({ isActive }) => `nav__overlayLink ${isLinkActive(link, isActive) ? 'is-active' : ''}`}
               style={{ '--i': i }}
               onClick={() => setMobileOpen(false)}
             >

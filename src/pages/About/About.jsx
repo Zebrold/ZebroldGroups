@@ -1,5 +1,7 @@
 import { useLanguage } from '../../context/LanguageContext';
 import SEO from '../../components/SEO/SEO';
+import ArrowLink from '../../components/ArrowLink/ArrowLink';
+import { EXECUTIVES } from '../../data/leadership';
 import heroImg from '../../assets/zebrold_manufacturing_plant.jpg';
 import trainNoseImg from '../../assets/highspeed_in_service.jpg';
 import cabinImg from '../../assets/intercity_platform.webp';
@@ -309,6 +311,10 @@ const COPY = {
       'At Scolome, we believe the future of rail transportation will be shaped by the integration of advanced rolling stock, intelligent signalling, digital technologies, electrification, infrastructure, and engineering services. Our ambition is to contribute to this future by developing a railway-focused technology ecosystem that connects individual products with the systems and infrastructure that support their operation.',
     visionP2:
       'From the advancement of railway coaches to the exploration of AI-enabled signalling and digital rail solutions, our focus is on building engineering capabilities that respond to the evolving demands of transportation. We aim to combine innovative thinking with practical engineering, developing a foundation for solutions that support efficiency, reliability, passenger experience, and long-term operational performance.',
+    leadershipTitle: 'Leadership & Engineering Directorate',
+    leadershipText:
+      'Meet the board, executives and engineering domain leads guiding Zebrold IHL and the Scolome rail initiative across Germany and India.',
+    leadershipCta: 'Meet our leadership',
     quoteCite: 'ZEBROLD INTERNATIONAL HOLDINGS LIMITED · SCOLOME RAIL INITIATIVE',
   },
   de: {
@@ -350,6 +356,10 @@ const COPY = {
       'Bei Scolome sind wir überzeugt, dass die Zukunft des Schienenverkehrs durch das Zusammenspiel moderner Schienenfahrzeuge, intelligenter Signaltechnik, digitaler Technologien, Elektrifizierung, Infrastruktur und Engineering-Dienstleistungen geprägt wird. Wir wollen zu dieser Zukunft beitragen, indem wir ein bahnspezifisches Technologieökosystem aufbauen, das einzelne Produkte mit den Systemen und der Infrastruktur für ihren Betrieb verbindet.',
     visionP2:
       'Von der Weiterentwicklung von Reisezugwagen bis zur Erforschung KI-gestützter Signaltechnik und digitaler Bahnlösungen konzentrieren wir uns auf ingenieurtechnische Kompetenzen, die den sich wandelnden Anforderungen des Verkehrs gerecht werden. Wir verbinden innovatives Denken mit praxisnahem Engineering und schaffen so die Grundlage für Lösungen, die Effizienz, Zuverlässigkeit, Fahrgasterlebnis und langfristige Betriebsleistung fördern.',
+    leadershipTitle: 'Unternehmensleitung & Engineering-Direktion',
+    leadershipText:
+      'Lernen Sie die Unternehmensleitung, das Management und die Engineering-Fachbereichsleitungen kennen, die Zebrold IHL und die Bahninitiative Scolome in Deutschland und Indien führen.',
+    leadershipCta: 'Zur Unternehmensleitung',
     quoteCite: 'ZEBROLD INTERNATIONAL HOLDINGS LIMITED · SCOLOME-BAHNINITIATIVE',
   },
 };
@@ -540,7 +550,28 @@ export default function About() {
           </div>
         </section>
 
-        {/* ══ 7. Closing Quote ══ */}
+        {/* ══ 7. Leadership teaser → /leadership ══ */}
+        <section className="aboutSec aboutSec--leadership" aria-labelledby="about-leadership-title">
+          <div className="aboutLeaders__grid">
+            <div className="aboutLeaders__intro">
+              <h2 className="aboutSec__title" id="about-leadership-title">
+                {c.leadershipTitle}
+              </h2>
+              <p className="aboutLeaders__text">{c.leadershipText}</p>
+              <ArrowLink to="/leadership">{c.leadershipCta}</ArrowLink>
+            </div>
+            <ul className="aboutLeaders__list" role="list">
+              {EXECUTIVES.map((person) => (
+                <li key={person.id} className="aboutLeaders__item">
+                  <span className="aboutLeaders__name">{person.name}</span>
+                  <span className="aboutLeaders__role">{person.role[lang]}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
+        {/* ══ 8. Closing Quote ══ */}
         <section className="aboutSec aboutSec--quote">
           <blockquote className="aboutQuote">
             <p className="aboutQuote__text">{t('home_quote')}</p>

@@ -1,0 +1,228 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   LEADERSHIP & ENGINEERING DIRECTORATE
+   Uses project design tokens from tokens.css / base.css exclusively
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.ldrPage {
+  background-color: var(--paper);
+  color: var(--ink);
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.ldrShell {
+  width: 100%;
+  max-width: 72rem;
+  margin: 0 auto;
+  /* Top padding clears the fixed capsule navbar. */
+  padding: calc(var(--navbar-h) + clamp(3rem, 7vw, 6rem)) var(--gutter) clamp(4rem, 8vw, 6.5rem);
+}
+
+/* ══ Header ══ */
+.ldrHead {
+  margin-bottom: clamp(3rem, 6vw, 5rem);
+}
+
+.ldrHead__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--muted);
+  margin-bottom: 1.25rem;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.ldrHead__back:hover {
+  color: var(--ink);
+}
+
+.ldrHead__title {
+  font-family: var(--font-sans);
+  font-size: var(--text-4xl);
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  margin: 0;
+}
+
+/* ══ Executive profiles ══ */
+.ldrExecs {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(3rem, 6vw, 5rem);
+}
+
+.ldrExec {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: clamp(2rem, 4.5vw, 4rem);
+  align-items: center;
+}
+
+.ldrExec--reverse {
+  grid-template-columns: 7fr 5fr;
+}
+
+.ldrExec--reverse .ldrExec__media {
+  order: 2;
+}
+
+.ldrExec--reverse .ldrExec__text {
+  order: 1;
+}
+
+.ldrExec__media {
+  display: flex;
+  justify-content: center;
+}
+
+.ldrPortrait {
+  position: relative;
+  width: 100%;
+  max-width: 28rem;
+  aspect-ratio: 1;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--rule);
+  background-color: var(--stone);
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+}
+
+.ldrPortrait__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ldrPortrait__initials {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--muted-light);
+}
+
+.ldrExec__name {
+  font-size: clamp(1.6rem, 3vw, 2.5rem);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin: 0 0 0.5rem;
+}
+
+.ldrExec__role {
+  font-size: var(--text-md);
+  font-weight: 500;
+  color: var(--coral-700);
+  margin: 0 0 1rem;
+}
+
+.ldrExec__bio {
+  font-size: var(--text-md);
+  line-height: 1.75;
+  color: var(--ink-soft);
+  margin: 0;
+  max-width: 62ch;
+}
+
+/* ══ Domain leads ══ */
+.ldrLeads {
+  margin-top: clamp(4rem, 8vw, 6rem);
+  padding-top: clamp(2.5rem, 4vw, 3.5rem);
+  border-top: 1px solid var(--rule);
+}
+
+.ldrLeads__head {
+  margin-bottom: clamp(2.5rem, 4vw, 3rem);
+}
+
+.ldrLeads__title {
+  font-size: var(--text-2xl);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  margin: 0 0 0.6rem;
+}
+
+.ldrLeads__subtitle {
+  font-size: var(--text-base);
+  line-height: 1.7;
+  color: var(--muted);
+  max-width: 65ch;
+  margin: 0;
+}
+
+.ldrLeads__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2.5rem 3rem;
+}
+
+.ldrLead__name {
+  font-size: var(--text-lg);
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--ink);
+  margin: 0 0 0.25rem;
+}
+
+.ldrLead__role {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--coral-700);
+  margin: 0 0 0.5rem;
+}
+
+.ldrLead__bio {
+  font-size: var(--text-sm);
+  line-height: 1.65;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+/* ══ Responsive ══ */
+@media (max-width: 1024px) {
+  .ldrExec,
+  .ldrExec--reverse {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+
+  /* Stacked: portrait always first */
+  .ldrExec--reverse .ldrExec__media,
+  .ldrExec--reverse .ldrExec__text {
+    order: unset;
+  }
+
+  .ldrExec__media {
+    justify-content: flex-start;
+  }
+
+  .ldrPortrait {
+    max-width: 20rem;
+  }
+
+  .ldrLeads__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .ldrShell {
+    padding-inline: 1rem;
+  }
+
+  .ldrLeads__grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
