@@ -379,7 +379,7 @@
     {
       "id": "firmware-architect",
       "ref": "ZEB-SW-115",
-      "category": "software",
+      "category": "internships",
       "location": {
         "en": "Frankfurt am Main, Germany",
         "de": "Frankfurt am Main, Deutschland"
@@ -730,12 +730,12 @@
       },
       "salary": "€2,100 – €2,500 / mo",
       "terms": {
-        "en": "6 months · Internship",
-        "de": "6 Monate · Praktikum"
+        "en": "3 months · Internship",
+        "de": "3 Monate · Praktikum"
       },
       "title": {
-        "en": "Engineering Intern — Hardware Design & Power Electronics",
-        "de": "Praktikum Technik — Hardwaredesign & Leistungselektronik"
+        "en": "Engineering Intern - Hardware Design & Power Electronics",
+        "de": "Praktikum Technik - Hardwaredesign & Leistungselektronik"
       },
       "summary": {
         "en": "Support lab testing of silicon carbide switches, gate driver thermal performance, test bench harness wiring and oscilloscope waveform analysis.",
@@ -820,6 +820,34 @@
           "Hintergrund in Robotik, SLAM oder Geometrie",
           "Bereitschaft zur Arbeit mit unsauberen Realdaten"
         ]
+      }
+    },
+    {
+      "id": "a",
+      "ref": "ansnsn",
+      "category": "software",
+      "title": {
+        "en": "ams",
+        "de": ""
+      },
+      "location": {
+        "en": "asa",
+        "de": ""
+      },
+      "terms": {
+        "en": "ss",
+        "de": ""
+      },
+      "salary": "asa",
+      "summary": {
+        "en": "as",
+        "de": ""
+      },
+      "requirements": {
+        "en": [
+          "as"
+        ],
+        "de": []
       }
     }
   ],
