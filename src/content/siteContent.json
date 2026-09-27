@@ -823,31 +823,49 @@
       }
     },
     {
-      "id": "a",
-      "ref": "ansnsn",
-      "category": "software",
+      "id": "int-485",
+      "ref": "ZEB-INT-467",
+      "category": "internships",
       "title": {
-        "en": "ams",
-        "de": ""
+        "en": "AI/ML Engineer – Railway Intelligence",
+        "de": "KI-/ML-Ingenieur für intelligente Bahnsysteme"
       },
       "location": {
-        "en": "asa",
-        "de": ""
+        "en": "Bangalore, India",
+        "de": "Bangalore, India"
       },
       "terms": {
-        "en": "ss",
-        "de": ""
+        "en": "Entry level",
+        "de": "Berufseinstieg"
       },
-      "salary": "asa",
+      "salary": "€2,300 gross per month (Brutto/Monat)",
       "summary": {
-        "en": "as",
-        "de": ""
+        "en": "Scolome, the rolling stock initiative of Zebrold International Holdings Limited, is seeking a motivated Software Engineer – Rolling Stock Systems to contribute to the development of next-generation railway technologies. The role focuses on railway software, embedded systems, intelligent mobility solutions, and digital train systems. The successful candidate will work with engineering teams to develop, test, and integrate software solutions for modern railway transportation.",
+        "de": "Scolome, die Rolling-Stock-Initiative der Zebrold International Holdings Limited, sucht einen motivierten Softwareingenieur für Schienenfahrzeugsysteme zur Entwicklung zukunftsweisender Bahntechnologien. Die Position umfasst die Entwicklung von Bahnsoftware, Embedded-Systemen, intelligenten Mobilitätslösungen und digitalen Zugsystemen. Die ausgewählte Person arbeitet mit Entwicklungsteams zusammen, um Softwarelösungen für den modernen Schienenverkehr zu entwickeln, zu testen und zu integrieren."
       },
       "requirements": {
         "en": [
-          "as"
+          "Bachelor's degree in Computer Science, Software Engineering, Information Technology, or a related field",
+          "Knowledge of programming languages such as C, C++, Python, or Java",
+          "Understanding of software development principles and object-oriented programming",
+          "Familiarity with embedded systems, operating systems, or real-time systems",
+          "Basic knowledge of software testing, debugging, and version control",
+          "Interest in railway technology, rolling stock, and intelligent transportation systems",
+          "Strong analytical, problem-solving, and communication skills",
+          "Ability to work independently and collaboratively in a team",
+          "Fresh graduates and entry-level candidates are welcome"
         ],
-        "de": []
+        "de": [
+          "Abgeschlossenes Bachelorstudium in Informatik, Software Engineering, Informationstechnologie oder einem verwandten Fachgebiet",
+          "Kenntnisse in Programmiersprachen wie C, C++, Python oder Java",
+          "Verständnis von Softwareentwicklungsprinzipien und objektorientierter Programmierung",
+          "Grundkenntnisse in Embedded-Systemen, Betriebssystemen oder Echtzeitsystemen",
+          "Grundkenntnisse in Softwaretests, Debugging und Versionsverwaltung",
+          "Interesse an Bahntechnologie, Schienenfahrzeugen und intelligenten Verkehrssystemen",
+          "Ausgeprägte analytische Fähigkeiten sowie Problemlösungs- und Kommunikationskompetenz",
+          "Fähigkeit, selbstständig und im Team zu arbeiten",
+          "Berufseinsteiger und Hochschulabsolventen sind willkommen"
+        ]
       }
     }
   ],
