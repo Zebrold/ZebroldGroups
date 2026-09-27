@@ -871,43 +871,17 @@
   ],
   "documents": [
     {
-      "id": "q3-interim",
+      "id": "zeb-fy",
       "title": {
-        "en": "Q3 2026 interim statement",
-        "de": "Zwischenbericht Q3 2026"
+        "en": "FY 2025/26",
+        "de": ""
       },
       "meta": {
-        "en": "Published 12 Aug 2026 · PDF (2.4 MB)",
-        "de": "Veröffentlicht 12. Aug. 2026 · PDF (2,4 MB)"
+        "en": "",
+        "de": ""
       },
-      "href": "/docs/Zebrold-Q3-2026-Interim-Statement.pdf",
-      "filename": "Zebrold-Q3-2026-Interim-Statement.pdf"
-    },
-    {
-      "id": "annual-report",
-      "title": {
-        "en": "Annual report & ESG impact review",
-        "de": "Geschäftsbericht & ESG-Bericht"
-      },
-      "meta": {
-        "en": "Full year 2025/26 · PDF (4.8 MB)",
-        "de": "Gesamtjahr 2025/26 · PDF (4,8 MB)"
-      },
-      "href": "/docs/Zebrold-Annual-Report-ESG-2025-26.pdf",
-      "filename": "Zebrold-Annual-Report-ESG-2025-26.pdf"
-    },
-    {
-      "id": "delivery-pipeline",
-      "title": {
-        "en": "Scolome fleet delivery pipeline 2026–32",
-        "de": "Scolome-Lieferplan 2026–32"
-      },
-      "meta": {
-        "en": "Programme release · PDF (3.1 MB)",
-        "de": "Programmveröffentlichung · PDF (3,1 MB)"
-      },
-      "href": "/docs/Scolome-Fleet-Delivery-Pipeline-2026-32.pdf",
-      "filename": "Scolome-Fleet-Delivery-Pipeline-2026-32.pdf"
+      "href": "",
+      "filename": ""
     }
   ],
   "calendar": [
