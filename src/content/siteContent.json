@@ -103,37 +103,6 @@
   ],
   "news": [
     {
-      "id": "transpennine-battery-fleet",
-      "date": "2026-09-11",
-      "category": "contract",
-      "region": {
-        "en": "United Kingdom",
-        "de": "Vereinigtes Königreich"
-      },
-      "source": {
-        "en": "Frankfurt & London bureau",
-        "de": "Büro Frankfurt & London"
-      },
-      "featured": true,
-      "image": "trainset_rollout.jpg",
-      "alt": {
-        "en": "Battery-electric trainset leaving the assembly hall",
-        "de": "Batterieelektrischer Triebzug verlässt die Montagehalle"
-      },
-      "title": {
-        "en": "Zebrold and TransPennine Express sign €1.2 billion contract for Scolome mainline battery-electric fleet",
-        "de": "Zebrold und TransPennine Express unterzeichnen Vertrag über 1,2 Mrd. € für die batterieelektrische Scolome-Hauptstreckenflotte"
-      },
-      "excerpt": {
-        "en": "The award covers 48 five-car battery-electric trainsets, a 20-year availability contract and depot electrification across the northern corridor.",
-        "de": "Der Auftrag umfasst 48 fünfteilige batterieelektrische Triebzüge, einen 20-jährigen Verfügbarkeitsvertrag und die Elektrifizierung der Depots im Nordkorridor."
-      },
-      "body": {
-        "en": "The award covers 48 five-car battery-electric trainsets for mainline service, together with a 20-year availability contract and depot electrification across the northern corridor. The fleet runs on battery power over un-electrified sections and recharges under existing catenary without route infrastructure changes.\n\nDelivery is phased against the operator timetable change. The availability regime is managed from the Kassel service hub, and driver training runs jointly with the operator.",
-        "de": "Der Auftrag umfasst 48 fünfteilige batterieelektrische Triebzüge für den Hauptstreckenverkehr, einen 20-jährigen Verfügbarkeitsvertrag sowie die Elektrifizierung der Depots im Nordkorridor. Die Flotte fährt auf nicht elektrifizierten Abschnitten im Batteriebetrieb und lädt unter vorhandener Oberleitung nach.\n\nDie Auslieferung erfolgt zum Fahrplanwechsel. Das Verfügbarkeitsregime steuert der Service-Hub Kassel, die Triebfahrzeugführerschulung läuft gemeinsam mit dem Betreiber."
-      }
-    },
-    {
       "id": "sic-traction-architecture",
       "date": "2026-10-28",
       "category": "technology",
@@ -161,7 +130,8 @@
       "body": {
         "en": "The next-generation traction package uses 3.3 kV silicon-carbide MOSFET power modules delivering 98.2% electrical energy conversion efficiency. Lower switching losses remove a cooling stage from the converter, cutting mass and one scheduled maintenance intervention from the lifecycle.\n\nThe architecture is common across the high-speed and regional platforms, so spares and diagnostic tooling are shared between fleets.",
         "de": "Das Traktionspaket der nächsten Generation nutzt 3,3-kV-Siliziumkarbid-MOSFET-Module mit 98,2 % elektrischem Wirkungsgrad. Geringere Schaltverluste erlauben den Entfall einer Kühlstufe — das spart Masse und ein Wartungsintervall im Lebenszyklus.\n\nDie Architektur ist plattformübergreifend einheitlich, sodass Ersatzteile und Diagnosewerkzeuge zwischen den Flotten geteilt werden."
-      }
+      },
+      "featured": false
     },
     {
       "id": "long-distance-fleet",
@@ -191,12 +161,13 @@
       "body": {
         "en": "The contract covers sixteen-car trainsets configured for 1,100-passenger capacity across seated, couchette and sleeper accommodation on transcontinental overnight services. Carbody structures are fabricated in Germany; traction control and passenger information software is developed in India.\n\nEach set carries redundant SIL-4 train control computers and a distributed telemetry network feeding the predictive maintenance model.",
         "de": "Der Auftrag umfasst sechzehnteilige Triebzüge für 1.100 Fahrgäste in Sitz-, Liege- und Schlafwagenkonfiguration im transkontinentalen Nachtverkehr. Die Wagenkastenstrukturen entstehen in Deutschland, die Traktions- und Fahrgastinformationssoftware in Indien.\n\nJeder Zug führt redundante SIL-4-Zugsteuerungsrechner sowie ein verteiltes Telemetrienetz für das prädiktive Wartungsmodell."
-      }
+      },
+      "featured": false
     },
     {
       "id": "q1-progress",
       "date": "2026-07-22",
-      "category": "results",
+      "category": "press",
       "region": {
         "en": "Frankfurt am Main",
         "de": "Frankfurt am Main"
@@ -205,7 +176,7 @@
         "en": "Investor relations",
         "de": "Investor Relations"
       },
-      "image": "assembly_line_robotics.webp",
+      "image": "/uploads/c4-mul3oyt2.png",
       "alt": {
         "en": "Robotic assembly line building carbody sections",
         "de": "Roboterfertigungslinie beim Bau von Wagenkastensektionen"
@@ -221,7 +192,8 @@
       "body": {
         "en": "Order intake for the quarter reached €560 million against a book-to-bill ratio of 1.38, with 14 trainsets handed over to operators. The carbody shop held its target takt throughout the period.\n\nSoftware recertification of the traction control stack was completed within the quarter, clearing the path to the next authorisation milestone.",
         "de": "Der Auftragseingang des Quartals erreichte 560 Mio. € bei einem Book-to-Bill-Verhältnis von 1,38; 14 Triebzüge wurden an Betreiber übergeben. Die Wagenkastenfertigung hielt ihren Zieltakt durchgehend.\n\nDie Rezertifizierung des Traktionssteuerungs-Stacks wurde im Quartal abgeschlossen und ebnet den Weg zum nächsten Zulassungsmeilenstein."
-      }
+      },
+      "featured": true
     },
     {
       "id": "fy-milestones",
@@ -251,7 +223,8 @@
       "body": {
         "en": "Full-year revenue reached €1.62 billion with 62 trainsets delivered across the programme. Order backlog closed the year at €4.85 billion, equivalent to roughly three years of current output.\n\nAdditive manufacturing moved from prototype to series for interior and bracketry parts, reducing part count on the latest platform.",
         "de": "Der Jahresumsatz erreichte 1,62 Mrd. € bei 62 ausgelieferten Triebzügen. Der Auftragsbestand lag zum Jahresende bei 4,85 Mrd. € — rund drei Jahre der aktuellen Produktionsleistung.\n\nDie additive Fertigung ging bei Innenausbau- und Halterungsteilen in die Serie und reduzierte die Teilezahl der jüngsten Plattform."
-      }
+      },
+      "featured": false
     },
     {
       "id": "scolome-2-order",
@@ -281,7 +254,8 @@
       "body": {
         "en": "The operator has exercised options for a further 25 trainsets under the existing framework agreement, lifting the regional fleet to 91 units. The platform reduces tare mass through a revised extruded-aluminium carbody and lattice-structure interior fittings.\n\nDeliveries run against the existing production slot allocation without additional tooling investment.",
         "de": "Der Betreiber hat Optionen für weitere 25 Triebzüge aus dem bestehenden Rahmenvertrag gezogen und erhöht die Regionalflotte damit auf 91 Einheiten. Die Plattform senkt die Leermasse durch einen überarbeiteten Aluminium-Wagenkasten und Innenausbauten in Gitterstruktur.\n\nDie Auslieferung erfolgt im Rahmen der bestehenden Produktionsslots ohne zusätzliche Werkzeuginvestitionen."
-      }
+      },
+      "featured": false
     },
     {
       "id": "corridor-consortium",
@@ -312,7 +286,8 @@
       "body": {
         "en": "The consortium will resignal 1,240 route kilometres to ETCS Level 2 and upgrade traction power provision across the corridors in scope. The programme raises line capacity without new alignment construction.\n\nInterlocking and traffic-management systems are supplied from the Hyderabad software centre, with trackside installation delivered by regional partners.",
         "de": "Das Konsortium rüstet 1.240 Streckenkilometer auf ETCS Level 2 um und baut die Fahrstromversorgung der betroffenen Korridore aus. Das Programm erhöht die Streckenkapazität ohne Neubautrassen.\n\nStellwerks- und Verkehrsmanagementsysteme kommen aus dem Softwarezentrum Hyderabad; die streckenseitige Installation übernehmen regionale Partner."
-      }
+      },
+      "featured": false
     },
     {
       "id": "ai-safety-trials",
@@ -342,7 +317,8 @@
       "body": {
         "en": "Trials combine long-wave infrared, millimetre-wave radar and stereo vision into a single forward-facing perception stack, detecting track obstructions at up to 1,100 metres in fog, heavy rain and night conditions.\n\nThe system advises the driver rather than commanding the brake, leaving the certified SIL-4 braking chain unmodified while the evidence base for autonomous intervention is built.",
         "de": "Die Erprobung kombiniert langwelliges Infrarot, Millimeterwellenradar und Stereokameras zu einem vorausschauenden Wahrnehmungssystem, das Gleishindernisse bei Nebel, Starkregen und Dunkelheit auf bis zu 1.100 Metern erkennt.\n\nDas System berät den Triebfahrzeugführer, statt die Bremse anzusteuern — die zertifizierte SIL-4-Bremskette bleibt unverändert, während die Nachweisbasis für autonome Eingriffe entsteht."
-      }
+      },
+      "featured": false
     },
     {
       "id": "velocity-360-trials",
@@ -372,7 +348,8 @@
       "body": {
         "en": "Dynamic trials on the Velim test ring completed the stability, ride-comfort and regenerative braking programme required for type authorisation. Measured aerodynamic drag held within 1.4% of the computational model, and interior noise stayed below 72 dBA at sustained maximum velocity.\n\nThe runs close the vehicle-level evidence package; trackside interoperability testing follows on the national network.",
         "de": "Die dynamischen Versuche auf dem Versuchsring Velim schlossen das für die Typzulassung erforderliche Programm zu Fahrstabilität, Fahrkomfort und Rekuperation ab. Der gemessene Luftwiderstand lag innerhalb von 1,4 % des Rechenmodells, das Innengeräusch blieb bei Dauerhöchstgeschwindigkeit unter 72 dBA.\n\nDamit ist der fahrzeugseitige Nachweisteil abgeschlossen; die streckenseitige Interoperabilitätsprüfung folgt im nationalen Netz."
-      }
+      },
+      "featured": false
     }
   ],
   "jobs": [
