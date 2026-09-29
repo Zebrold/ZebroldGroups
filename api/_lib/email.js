@@ -6,22 +6,29 @@
  * The server composes every message. Callers choose a form type and send field
  * values only — never recipients, senders or HTML — so the endpoint cannot be used
  * as an open relay. Each submission sends:
- *   1. a notification to the internal inbox (must succeed, else 502)
- *   2. a confirmation to the visitor (best effort)
+ *   1. a notification to the internal inbox (must succeed, else 502) — for job
+ *      applications this carries the candidate's files as attachments
+ *   2. a confirmation to the visitor (best effort, never carries attachments)
  *
  * Environment:
  *   RESEND_API_KEY               required
- *   RESEND_FROM_EMAIL            sender, e.g. "Zebrold IHL <no-reply@zebrold.de>". Its
- *                                domain must be verified in Resend; the fallback
+ *   RESEND_FROM_EMAIL            sender, default "Zebrold IHL <no-reply@zebrold.de>". Its
+ *                                domain must be verified in Resend. The test sender
  *                                onboarding@resend.dev only delivers to the Resend
- *                                account owner's own address.
+ *                                account owner's own address, so candidates get nothing.
  *   TALENT_NOTIFICATION_EMAIL    inbox for job applications (default talent.acquisition@zebrold.de)
  *   CONTACT_NOTIFICATION_EMAIL   inbox for contact enquiries (default info@zebrold.de)
  */
 
 import { LOCATIONS } from '../../src/data/locations.js';
+import {
+  APPLICATION_FILE_TYPES,
+  MAX_APPLICATION_FILES,
+  MAX_APPLICATION_FILES_BYTES,
+  extensionOf,
+} from '../../src/data/applicationUploads.js';
 
-const DEFAULT_FROM = 'Zebrold IHL <onboarding@resend.dev>';
+const DEFAULT_FROM = 'Zebrold IHL <no-reply@zebrold.de>';
 const SITE_URL = 'https://www.zebrold.de';
 const LINKEDIN_URL = 'https://www.linkedin.com/company/zebrold';
 // public/email-logo.png is 360×190; the tag's width/height keep that ratio so
@@ -48,6 +55,63 @@ const escapeHtml = (value) =>
 const html = (value) => escapeHtml(value).replace(/\n/g, '<br/>');
 
 const langOf = (value) => (value === 'de' ? 'de' : 'en');
+
+const fileSize = (bytes) =>
+  bytes < 1024 * 1024 ? `${Math.ceil(bytes / 1024)} KB` : `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
+
+/* ══ Attachments ══ */
+
+const BASE64_RE = /^[A-Za-z0-9+/]*={0,2}$/;
+const isZip = (buf) => buf.subarray(0, 4).equals(Buffer.from([0x50, 0x4b, 0x03, 0x04]));
+const isStep = (buf) => buf.subarray(0, 256).toString('latin1').includes('ISO-10303-21');
+
+// The extension alone proves nothing, so each file must also start like one.
+const SIGNATURES = {
+  pdf: (buf) => buf.subarray(0, 1024).includes('%PDF-'),
+  doc: (buf) => buf.subarray(0, 8).equals(Buffer.from([0xd0, 0xcf, 0x11, 0xe0, 0xa1, 0xb1, 0x1a, 0xe1])),
+  docx: isZip,
+  zip: isZip,
+  step: isStep,
+  stp: isStep,
+};
+
+const cleanFilename = (value) =>
+  (typeof value === 'string' ? value : '')
+    .split(/[\\/]/)
+    .pop()
+    .replace(/[^\p{L}\p{N} ._()-]+/gu, '_')
+    .trim()
+    .slice(-120);
+
+/** Validates `[{ filename, content(base64) }]` from the form. */
+function readAttachments(list) {
+  if (list === undefined) return { files: [] };
+  if (!Array.isArray(list) || list.length > MAX_APPLICATION_FILES) return { error: 'Too many attachments' };
+
+  const files = [];
+  let total = 0;
+  for (const item of list) {
+    const filename = cleanFilename(item?.filename);
+    const ext = extensionOf(filename);
+    if (!APPLICATION_FILE_TYPES.includes(ext)) {
+      return { error: `Allowed file types: ${APPLICATION_FILE_TYPES.join(', ')}` };
+    }
+
+    const encoded = typeof item.content === 'string' ? item.content : '';
+    if (!BASE64_RE.test(encoded)) return { error: `"${filename}" could not be read` };
+    const buf = Buffer.from(encoded, 'base64');
+    if (!buf.length) return { error: `"${filename}" is empty` };
+
+    total += buf.length;
+    if (total > MAX_APPLICATION_FILES_BYTES) {
+      return { error: `Attachments may total at most ${fileSize(MAX_APPLICATION_FILES_BYTES)}`, status: 413 };
+    }
+    if (!SIGNATURES[ext](buf)) return { error: `"${filename}" is not a valid ${ext.toUpperCase()} file` };
+
+    files.push({ filename, content: buf.toString('base64'), size: buf.length });
+  }
+  return { files };
+}
 
 /* ══ Layout ══ */
 
@@ -192,11 +256,14 @@ function buildApplication(body, env) {
     roleLabel: field(body.roleLabel, 200),
     department: field(body.department, 200),
     details: field(body.coverNote, 20000),
-    cvFileName: field(body.cvFileName, 255),
     lang: langOf(body.lang),
   };
   if (!f.name) return { error: 'Name is required' };
   if (!EMAIL_RE.test(f.email)) return { error: 'A valid email address is required' };
+
+  const uploads = readAttachments(body.attachments);
+  if (uploads.error) return uploads;
+  const fileList = uploads.files.map((file) => `${file.filename} (${fileSize(file.size)})`).join(', ') || '—';
 
   const inbox =
     env.TALENT_NOTIFICATION_EMAIL || env.VITE_TALENT_NOTIFICATION_EMAIL || 'talent.acquisition@zebrold.de';
@@ -205,6 +272,7 @@ function buildApplication(body, env) {
     to: [inbox],
     reply_to: f.email,
     subject: oneLine(`[New applicant] ${f.name} — ${f.role}`),
+    attachments: uploads.files.length ? uploads.files.map(({ filename, content }) => ({ filename, content })) : undefined,
     html: layout({
       lang: 'en',
       heading: `New application: ${f.role}`,
@@ -215,7 +283,7 @@ function buildApplication(body, env) {
           ['Phone', escapeHtml(f.phone || '—')],
           ['Role', escapeHtml(f.role)],
           ['Department', escapeHtml(f.department || '—')],
-          ['CV file name', escapeHtml(f.cvFileName || '—')],
+          ['Attachments', escapeHtml(fileList)],
         ]) + (f.details ? noteBlock('Application details', f.details) : ''),
     }),
     text: [
@@ -224,7 +292,7 @@ function buildApplication(body, env) {
       `Email: ${f.email}`,
       `Phone: ${f.phone || '—'}`,
       `Department: ${f.department || '—'}`,
-      `CV file name: ${f.cvFileName || '—'}`,
+      `Attachments: ${fileList}`,
       '',
       f.details,
     ].join('\n'),
@@ -314,9 +382,15 @@ export async function handleSendEmail(body, env) {
   if (!build) return json(400, { error: 'Unknown form type' });
 
   const built = build(body, env);
-  if (built.error) return json(400, { error: built.error });
+  if (built.error) return json(built.status || 400, { error: built.error });
 
   const from = env.RESEND_FROM_EMAIL || DEFAULT_FROM;
+  if (/@resend\.dev\b/i.test(from)) {
+    console.warn(
+      '[send-email] RESEND_FROM_EMAIL is the resend.dev test sender: Resend only delivers it to the account ' +
+        "owner's address, so visitors get no confirmation. Verify zebrold.de in Resend and change the sender."
+    );
+  }
 
   try {
     await sendViaResend(env.RESEND_API_KEY, { from, ...built.team });

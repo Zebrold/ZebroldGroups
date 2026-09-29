@@ -77,17 +77,28 @@ component that calls `useScrollReveal()`. All motion is disabled under
 
 ## Email
 
-`src/services/emailService.js` posts the contact and application forms through EmailJS and
-falls back to a local log when unconfigured. Set these to enable real delivery:
+The contact and application forms post to `/api/send-email` (`api/_lib/email.js`), which
+sends through [Resend](https://resend.com): a notification to the team inbox, with the
+candidate's CV and portfolio attached, and a confirmation to the visitor. If Resend fails,
+the browser falls back to FormSubmit for the team copy only; files aren't attached on that path.
+
+Set these in `.env` locally and in the Vercel project settings (never with a `VITE_` prefix,
+which would expose them to the browser):
 
 ```
-VITE_EMAILJS_SERVICE_ID
-VITE_EMAILJS_TEMPLATE_CONTACT
-VITE_EMAILJS_PUBLIC_KEY
+RESEND_API_KEY
+RESEND_FROM_EMAIL            Zebrold IHL <no-reply@zebrold.de>
+TALENT_NOTIFICATION_EMAIL    talent.acquisition@zebrold.de
+CONTACT_NOTIFICATION_EMAIL   info@zebrold.de
 ```
 
-Per-mailbox overrides (`..._NOREPLY`, `..._TALENT`, `..._INFO`) are supported — see
-`MAILBOX_CONFIG` in that file.
+`zebrold.de` must be verified in Resend (Domains → add the SPF/DKIM DNS records). Until it
+is, the test sender `onboarding@resend.dev` only delivers to the Resend account owner, so
+candidates receive no confirmation.
+
+Uploads travel inside the request body, and Vercel caps that at 4.5 MB, so an application's
+files may total 3 MB (`src/data/applicationUploads.js`). Larger files would need
+direct-to-storage uploads such as Vercel Blob.
 
 ## Images
 

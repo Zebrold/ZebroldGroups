@@ -4,7 +4,15 @@ import { useLanguage } from '../../context/LanguageContext';
 import SEO from '../../components/SEO/SEO';
 import { findJobByRef, RELOCATION_SITES, JOB_CATEGORIES } from '../../data/careersData';
 import { sendApplicationEmail } from '../../services/emailService';
+import {
+  APPLICATION_FILE_TYPES,
+  APPLICATION_FILES_ACCEPT,
+  MAX_APPLICATION_FILES_BYTES,
+  extensionOf,
+} from '../../data/applicationUploads';
 import './ApplyDossier.css';
+
+const MAX_FILES_MB = MAX_APPLICATION_FILES_BYTES / (1024 * 1024);
 
 /* ── Form vocabulary, kept local to this page ── */
 const COPY = {
@@ -48,7 +56,9 @@ const COPY = {
     rationaleHint:
       'Address your perspective on decarbonised intercity transport, the German–Indian engineering corridor, and high-speed rail competing with short-haul aviation.',
     s4: 'Engineering Dossier & Credential Vault',
-    s4meta: 'PDF / CAD / ZIP up to 25 MB each',
+    s4meta: `PDF / DOC / ZIP / STEP · max. ${MAX_FILES_MB} MB in total`,
+    fileType: 'Please choose a PDF, DOC, DOCX, ZIP or STEP file.',
+    fileSize: `Your files can total at most ${MAX_FILES_MB} MB. Please compress them, or send larger material to talent.acquisition@zebrold.de after applying.`,
     cvTitle: 'Curriculum vitae / résumé',
     cvHint: 'Structured technical CV highlighting your track record',
     cvBtn: 'Choose CV file',
@@ -125,7 +135,9 @@ const COPY = {
     rationaleHint:
       'Gehen Sie auf dekarbonisierten Fernverkehr, den deutsch-indischen Ingenieurkorridor und den Wettbewerb der Hochgeschwindigkeitsbahn mit Kurzstreckenflügen ein.',
     s4: 'Technisches Dossier & Nachweise',
-    s4meta: 'PDF / CAD / ZIP, je bis 25 MB',
+    s4meta: `PDF / DOC / ZIP / STEP · max. ${MAX_FILES_MB} MB insgesamt`,
+    fileType: 'Bitte wählen Sie eine PDF-, DOC-, DOCX-, ZIP- oder STEP-Datei.',
+    fileSize: `Ihre Dateien dürfen insgesamt höchstens ${MAX_FILES_MB} MB groß sein. Bitte komprimieren Sie sie oder senden Sie umfangreichere Unterlagen nach der Bewerbung an talent.acquisition@zebrold.de.`,
     cvTitle: 'Lebenslauf',
     cvHint: 'Strukturierter technischer Lebenslauf mit Ihrem Werdegang',
     cvBtn: 'Lebenslauf auswählen',
@@ -261,11 +273,26 @@ export default function ApplyDossier() {
   const [form, setForm] = useState(EMPTY);
   const [cvFile, setCvFile] = useState(null);
   const [portfolioFile, setPortfolioFile] = useState(null);
+  const [fileError, setFileError] = useState('');
   const [sending, setSending] = useState(false);
   const [sent, setSent] = useState(false);
   const [notice, setNotice] = useState(null);
 
   const set = (field) => (e) => setForm((f) => ({ ...f, [field]: e.target.value }));
+
+  /* Files are emailed as attachments, so type and combined size are checked up front. */
+  const attach = (setFile, otherFile) => (file) => {
+    if (!APPLICATION_FILE_TYPES.includes(extensionOf(file.name))) {
+      setFileError(c.fileType);
+      return;
+    }
+    if (file.size + (otherFile?.size ?? 0) > MAX_APPLICATION_FILES_BYTES) {
+      setFileError(c.fileSize);
+      return;
+    }
+    setFileError('');
+    setFile(file);
+  };
 
   const toggleIn = (field, value) =>
     setForm((f) => ({
@@ -387,7 +414,7 @@ export default function ApplyDossier() {
           '',
           `Rationale:\n${form.rationale}`,
         ].join('\n'),
-        cvFileName: cvFile?.name ?? '',
+        files: [cvFile, portfolioFile].filter(Boolean),
       });
 
       try {
@@ -741,7 +768,7 @@ export default function ApplyDossier() {
                 hint={c.cvHint}
                 button={c.cvBtn}
                 file={cvFile}
-                onFile={setCvFile}
+                onFile={attach(setCvFile, portfolioFile)}
               />
               <DropZone
                 id="portfolio-upload"
@@ -749,9 +776,15 @@ export default function ApplyDossier() {
                 hint={c.portfolioHint}
                 button={c.portfolioBtn}
                 file={portfolioFile}
-                onFile={setPortfolioFile}
+                onFile={attach(setPortfolioFile, cvFile)}
               />
             </div>
+
+            {fileError && (
+              <p className="dnotice dnotice--error" role="alert">
+                {fileError}
+              </p>
+            )}
 
             {[cvFile, portfolioFile].filter(Boolean).map((file, i) => (
               <div className="dfile" key={`${file.name}-${i}`}>
@@ -764,7 +797,11 @@ export default function ApplyDossier() {
                 <button
                   type="button"
                   className="dfile__remove"
-                  onClick={() => (i === 0 && cvFile ? setCvFile(null) : setPortfolioFile(null))}
+                  onClick={() => {
+                    setFileError('');
+                    if (i === 0 && cvFile) setCvFile(null);
+                    else setPortfolioFile(null);
+                  }}
                 >
                   {c.remove}
                 </button>
@@ -920,8 +957,12 @@ function DropZone({ id, title, hint, button, file, onFile }) {
         id={id}
         type="file"
         className="sr-only"
-        accept=".pdf,.doc,.docx,.zip,.step,.stp"
-        onChange={(e) => take(e.target.files)}
+        accept={APPLICATION_FILES_ACCEPT}
+        onChange={(e) => {
+          take(e.target.files);
+          // Clear it so choosing the same file again (after Remove) still fires onChange.
+          e.target.value = '';
+        }}
       />
       <label htmlFor={id} className="dzone__btn">
         {button}

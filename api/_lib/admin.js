@@ -211,6 +211,12 @@ export function githubStorage(env) {
       body: payload ? JSON.stringify(payload) : undefined,
     });
     const data = await res.json().catch(() => ({}));
+    if (res.status === 401 || res.status === 403) {
+      throw new Error(
+        `GitHub rejected GITHUB_TOKEN (${res.status}). Check in Vercel that it hasn't expired and has ` +
+          `"Contents: read and write" on ${repo}, then redeploy.`
+      );
+    }
     if (res.status === 409 || res.status === 422) {
       const err = new Error('The content was changed by someone else. Reload the admin and try again.');
       err.status = 409;

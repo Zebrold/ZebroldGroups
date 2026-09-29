@@ -49,7 +49,18 @@ async function submit(payload, fallbackSubject, fallbackFields) {
   }
 }
 
-export function sendApplicationEmail({
+/** Resolves to the file's bytes as plain base64 (no data: prefix). */
+function readAsBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(String(reader.result).split(',')[1] ?? '');
+    reader.onerror = () => reject(reader.error);
+    reader.readAsDataURL(file);
+  });
+}
+
+/** `files` are File objects; they reach the talent inbox as attachments. */
+export async function sendApplicationEmail({
   candidateName,
   email,
   phone,
@@ -57,11 +68,16 @@ export function sendApplicationEmail({
   roleLabel,
   department,
   coverNote,
-  cvFileName,
+  files = [],
   lang,
 }) {
+  const attachments = await Promise.all(
+    files.map(async (file) => ({ filename: file.name, content: await readAsBase64(file) }))
+  );
+  const fileNames = files.map((file) => file.name).join(', ');
+
   return submit(
-    { type: 'application', candidateName, email, phone, jobTitle, roleLabel, department, coverNote, cvFileName, lang },
+    { type: 'application', candidateName, email, phone, jobTitle, roleLabel, department, coverNote, attachments, lang },
     `[New applicant] ${candidateName} — ${jobTitle}`,
     {
       Candidate: candidateName,
@@ -69,7 +85,8 @@ export function sendApplicationEmail({
       Phone: phone,
       Role: jobTitle,
       Department: department,
-      'CV file name': cvFileName || '—',
+      // FormSubmit's JSON endpoint can't carry files.
+      Attachments: fileNames ? `${fileNames} (not attached — ask the candidate to send them)` : '—',
       Details: coverNote,
       _replyto: email,
     }

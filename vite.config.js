@@ -3,12 +3,25 @@ import react from '@vitejs/plugin-react'
 import { handleLogin, handleGetContent, handleSaveContent, handleUpload, fsStorage, run } from './api/_lib/admin.js'
 import { handleSendEmail } from './api/_lib/email.js'
 
+// Same cap Vercel puts on function request bodies, so oversized uploads fail in dev too.
+const MAX_BODY_BYTES = 4.5 * 1024 * 1024;
+
 const readBody = (req) =>
   new Promise((resolve, reject) => {
-    let raw = '';
-    req.on('data', (chunk) => (raw += chunk));
+    // Collect raw bytes: joining chunks as strings can split a multi-byte character.
+    const chunks = [];
+    let size = 0;
+    req.on('data', (chunk) => {
+      size += chunk.length;
+      chunks.push(chunk);
+    });
     req.on('end', () => {
+      if (size > MAX_BODY_BYTES) {
+        reject(Object.assign(new Error('Request body is larger than 4.5 MB'), { status: 413 }));
+        return;
+      }
       try {
+        const raw = Buffer.concat(chunks).toString('utf8');
         resolve(raw ? JSON.parse(raw) : {});
       } catch (err) {
         reject(err);
