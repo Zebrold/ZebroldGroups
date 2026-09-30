@@ -30,6 +30,15 @@ const NEWS_CATEGORIES = [
 const blankI18n = () => ({ en: '', de: '' });
 const blankTags = () => ({ en: [], de: [] });
 
+/* People have no page of their own, so their id is only a stable list key —
+   generated here rather than asked for. */
+const personId = () => `person-${Date.now().toString(36)}${Math.random().toString(36).slice(2, 6)}`;
+
+const PERSON_FIELDS = [
+  { key: 'name', type: 'text', label: 'Full name', hint: 'Include a title if used, e.g. "Dr. Hendrik Vance".' },
+  { key: 'role', type: 'i18n', label: 'Role' },
+];
+
 export const COLLECTIONS = [
   {
     id: 'events',
@@ -141,6 +150,37 @@ export const COLLECTIONS = [
       summary: blankI18n(),
       requirements: blankTags(),
     }),
+  },
+
+  {
+    id: 'executives',
+    label: 'Leadership — executives',
+    where: 'Leadership page — the large profiles at the top, and the list on the About page',
+    noun: 'executive',
+    titleKey: 'name',
+    help: 'Shown in this order, alternating photo left and right. Use the arrows to reorder.',
+    fields: [
+      ...PERSON_FIELDS,
+      { key: 'bio', type: 'i18nBody', label: 'Biography' },
+      {
+        key: 'image',
+        type: 'image',
+        label: 'Portrait photo',
+        hint: 'Shown as a square, so a square photo of at least 800 × 800 px works best. Leave empty to show initials.',
+      },
+    ],
+    blank: () => ({ id: personId(), name: '', role: blankI18n(), bio: blankI18n(), image: '' }),
+  },
+
+  {
+    id: 'leads',
+    label: 'Leadership — domain leads',
+    where: 'Leadership page — "Engineering Directorate & Domain Leads" cards',
+    noun: 'domain lead',
+    titleKey: 'name',
+    help: 'Shown as cards in this order. Use the arrows to reorder.',
+    fields: [...PERSON_FIELDS, { key: 'bio', type: 'i18nArea', label: 'Short biography' }],
+    blank: () => ({ id: personId(), name: '', role: blankI18n(), bio: blankI18n() }),
   },
 
   {
@@ -272,6 +312,12 @@ export function validate(content) {
     }
     if (!job.id?.trim()) add('jobs', `“${where}” needs a reference id.`);
   });
+
+  for (const tab of ['executives', 'leads']) {
+    (content[tab] ?? []).forEach((person, i) => {
+      if (!person.name?.trim()) add(tab, `Person ${i + 1} needs a name.`);
+    });
+  }
 
   // Not enforced by the API, but these would render as an empty slot on the site.
   content.events.forEach((e, i) => {

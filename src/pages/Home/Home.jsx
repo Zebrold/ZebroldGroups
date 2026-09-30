@@ -12,7 +12,7 @@ import { events } from '../../data/events';
 import { formatDate } from '../../utils/formatDate';
 import './Home.css';
 import manufacturingPlantImg from '../../assets/zebrold_manufacturing_plant.jpg';
-import societyImg from '../../assets/station_trainshed.jpg';
+import societyImg from '../../assets/highspeed_in_service.jpg';
 
 const BOGIE_IMG =
   manufacturingPlantImg;
@@ -343,7 +343,7 @@ export default function Home() {
                 alt={t('home_society_title')}
                 loading="lazy"
                 decoding="async"
-                style={{ objectPosition: '36% 50%', transform: 'scale(1.4)' }}
+                style={{ objectPosition: '62% 55%' }}
               />
             </div>
             <div className="societyCapsule__body">

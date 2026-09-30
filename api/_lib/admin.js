@@ -19,7 +19,18 @@ const SESSION_TTL_MS = 12 * 60 * 60 * 1000;
 const MAX_UPLOAD_BYTES = 3 * 1024 * 1024;
 const MAX_CONTENT_BYTES = 1024 * 1024;
 
-const LIST_KEYS = ['events', 'news', 'jobs', 'documents', 'calendar', 'metrics', 'segments', 'regions'];
+const LIST_KEYS = [
+  'events',
+  'news',
+  'jobs',
+  'documents',
+  'calendar',
+  'metrics',
+  'segments',
+  'regions',
+  'executives',
+  'leads',
+];
 
 const UPLOAD_KINDS = {
   image: { dir: 'public/uploads', exts: ['jpg', 'jpeg', 'png', 'webp', 'avif'] },
@@ -103,6 +114,9 @@ function validateContent(content) {
   }
 
   if (content.events.filter((e) => e.featured).length > 1) return 'Only one event can be featured.';
+  for (const key of ['executives', 'leads']) {
+    if (content[key].some((person) => !person?.name?.trim())) return 'Every leadership profile needs a name.';
+  }
   return null;
 }
 

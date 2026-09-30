@@ -1,7 +1,7 @@
 import heroBrandTrain from '../assets/scolome_hero.jpg';
 import heroInService from '../assets/highspeed_in_service.jpg';
 import heroCabin from '../assets/tram_carbody_shop.jpg';
-import heroBogie from '../assets/high_speed_bogie.jpg';
+import heroBogie from '../assets/bogie_components_production.jpg';
 import heroCockpit from '../assets/train_cockpit_digital.jpg';
 
 /**

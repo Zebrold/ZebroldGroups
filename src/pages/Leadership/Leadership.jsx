@@ -21,8 +21,9 @@ const COPY = {
 
 /** "Dr. Hendrik Vance" → "HV" — shown until a portrait photo is added. */
 function initials(name) {
-  const parts = name.replace(/^Dr\.\s+/, '').split(/\s+/);
-  return `${parts[0][0]}${parts[parts.length - 1][0]}`.toUpperCase();
+  const parts = name.replace(/^(Dr|Prof)\.\s+/i, '').trim().split(/\s+/).filter(Boolean);
+  if (!parts.length) return '';
+  return `${parts[0][0]}${parts.length > 1 ? parts[parts.length - 1][0] : ''}`.toUpperCase();
 }
 
 function Portrait({ person }) {
